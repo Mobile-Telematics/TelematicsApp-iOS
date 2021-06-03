@@ -1,6 +1,6 @@
 # Telematics App with Firebase© integration
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/mainlogo.jpg)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/mainlogo.jpg)
 
 ![](https://img.shields.io/cocoapods/v/RaxelPulse) ![](https://img.shields.io/badge/release-blueviolet) ![](https://img.shields.io/badge/free-release) ![](https://img.shields.io/badge/AppStore-ready-important)
 
@@ -24,57 +24,57 @@ Step 1: After creating your Firebase© account, open your console at https://con
 
 Click "Create a project" button.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f01.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f01.png)
 
 Step 2: Enter the name of your future Project. Click "Continue" button.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f02.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f02.png)
 
 Step 3: For ease of integration, at the next step, we recommend deactivating the "Enable Google Analytics" checkbox.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f03.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f03.png)
 
 Click "Create project". Congratulations!
 
 Step 4: Now you need to create a configuration for your iOS app. Click on the "iOS icon" as shown in the picture.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f04.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f04.png)
 
 Step 5: Enter your unique iOS Bundle ID. This identifier must be used in your application in xCode. Enter App Nickname. Click "Register app" next.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f05.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f05.png)
 
 Step 6: In this step, download the provided  `GoogleService-Info.plist`  file. You need to put it in our Telematics App source code, as shown in the picture below.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f06.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f06.png)
 
 Step 7: You can skip the "Add Firebase SDK" & "Add initialization code" steps below, because we did it for you in our Telematics App:) Finish the setup and click "Continue to console".
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f07.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f07.png)
 
 Step 8: Important. In order for your users to create accounts to log into your app, you need go to "Authentication" section on the left side of the menu.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f08.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f08.png)
 
 Step 9: In the "Sign-in method" tab, click on the Provider's "Email/Password" on the right "pencil" (Edit configuration hint) as in the picture below. If you need to perform authorization using the "Phone" Provider - select the setting of this item.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f09.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f09.png)
 
 Step 10: Switch to "Enable" and click "Save" button. It's very good! Now your users can login to the app.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f10.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f10.png)
 
 Step 11: Left a little. We need to activate Firebase© Realtime Database. This will allow you to store the data of all your users in this simple web interface. Go to the Realtime Database section on the left side of the menu and click the "Create Database" button.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f11.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f11.png)
 
 Step 12: Choose any Realtime Database location value in this step.
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f12.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f12.png)
 
 Step 13: Select "Start a locked mode" in this step and click the "Enable" button. It's all!
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f13.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f13.png)
 
 Step 14: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to the project (See Step 5 above) and Enjoy. 
 
@@ -84,7 +84,7 @@ Build & Run!
 
 Open our Telematics App source code by tapping TelematicsApp.xcworkspace file. 
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/f14.png)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f14.png)
 
 For your convenience, we have created a standard iOS file with parameters named`Configuration.plist`, in which you can specify the basic settings for your future app.
 Using this file, you can configure the basic parameters of your application by specifying server addresses, basic settings and links, as well as specifying several images for an individual design. Carefully study the parameters provided below for further work.
