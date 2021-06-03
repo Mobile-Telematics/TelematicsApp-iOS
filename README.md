@@ -6,21 +6,21 @@
 
 ## Description
 
-This Telematics App is created by DATA MOTION PTE. LTD. and is distributed free of charge to all customers & users and can be used to create your own app for iOS in few steps with help of Firebase© services.
+This Telematics App is created by DATA MOTION PTE. LTD. and is distributed free of charge to all customers & users and can be used to create your own app for iOS in few steps with the help of Firebase© services.
 
 ## Basic concepts & credentials
 
-For commercial use, you need create sandbox account https://userdatahub.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with our API.
+For commercial use, you need to create sandbox account https://userdatahub.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with our API.
 
-`!!!` Additionally, to authenticate users in your app and store users data, you need to create an  individual account at https://firebase.google.com
+Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
 
-All user data will be stored in the Firebase© Realtime Database, which will allow you to make a app users database without programming skills in a few minutes.
+All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills in a few minutes.
 
 ## Setup Firebase© Project
 
 In the next few simple steps, we'll show you how easy it is to create and configure an app in the Firebase© console.
 
-Step 1: After creating your Firebase© account, open your console at https://console.firebase.google.com
+Step 1: After creating your Firebase© account, open your console: https://console.firebase.google.com
 
 Click "Create a project" button.
 
@@ -34,9 +34,9 @@ Step 3: For ease of integration, at the next step, we recommend deactivating the
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f03.png)
 
-Click "Create project". Congratulations!
+Click "Create project".
 
-Step 4: Now you need to create a configuration for your iOS app. Click on the "iOS icon" as shown in the picture.
+Step 4: Now you need to create a configuration for your iOS app. Click on the "iOS icon" as it us shown on the picture below:
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f04.png)
 
@@ -44,15 +44,15 @@ Step 5: Enter your unique iOS Bundle ID. This identifier must be used in your ap
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f05.png)
 
-Step 6: In this step, download the provided  `GoogleService-Info.plist`  file. You need to put it in our Telematics App source code, as shown in the picture below.
+Step 6: On this step, download the provided  `GoogleService-Info.plist`  file. You need to put it in our Telematics App source code, as it is shown on the picture below:
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f06.png)
 
-Step 7: You can skip the "Add Firebase SDK" & "Add initialization code" steps below, because we did it for you in our Telematics App:) Finish the setup and click "Continue to console".
+Step 7: You can skip the "Add Firebase SDK" & "Add initialization code" steps below, because we already did it for you in our Telematics App:) Finish the setup and click on "Continue to console".
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f07.png)
 
-Step 8: Important. In order for your users to create accounts to log into your app, you need go to "Authentication" section on the left side of the menu.
+Step 8: Important. In order for your users to create accounts to log into your app, you need to go to "Authentication" section on the left side of the menu.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f08.png)
 
@@ -60,23 +60,23 @@ Step 9: In the "Sign-in method" tab, click on the Provider's "Email/Password" on
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f09.png)
 
-Step 10: Switch to "Enable" and click "Save" button. It's very good! Now your users can login to the app.
+Step 10: Switch to "Enable" and click "Save" button. Now your users can login to the app.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f10.png)
 
-Step 11: Left a little. We need to activate Firebase© Realtime Database. This will allow you to store the data of all your users in this simple web interface. Go to the Realtime Database section on the left side of the menu and click the "Create Database" button.
+Step 11: We need to activate Firebase© Realtime Database. This will allow you to store the data of all your users in this simple web interface. Go to the Realtime Database section on the left side of the menu and click on the "Create Database" button.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f11.png)
 
-Step 12: Choose any Realtime Database location value in this step.
+Step 12: Choose any Realtime Database location value.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f12.png)
 
-Step 13: Select "Start a locked mode" in this step and click the "Enable" button. It's all!
+Step 13: Select "Start a locked mode" and click the "Enable" button.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f13.png)
 
-Step 14: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to the project (See Step 5 above) and Enjoy. 
+Step 14: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to your project (See Step 5 above) and Enjoy! 
 
 Build & Run!
 
@@ -86,7 +86,7 @@ Open our Telematics App source code by tapping TelematicsApp.xcworkspace file.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f14.png)
 
-For your convenience, we have created a standard iOS file with parameters named`Configuration.plist`, in which you can specify the basic settings for your future app.
+For your convenience, we have created a standard iOS file with parameters named `Configuration.plist`, where you can specify the basic settings for your future app.
 Using this file, you can configure the basic parameters of your application by specifying server addresses, basic settings and links, as well as specifying several images for an individual design. Carefully study the parameters provided below for further work.
                     
 Settings Key  | Value
