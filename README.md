@@ -1,6 +1,6 @@
 # Telematics App with Firebase© integration
 
-![](https://raw.githubusercontent.com/pavelbowie/xxx-test/master/img_readme/mainlogo.jpg)
+![](https://raw.githubusercontent.com/Mobile-Telematics/TelematicsAppFirebase-iOS/master/img_readme/mainlogo.jpg)
 
 ![](https://img.shields.io/cocoapods/v/RaxelPulse) ![](https://img.shields.io/badge/release-blueviolet) ![](https://img.shields.io/badge/free-release) ![](https://img.shields.io/badge/AppStore-ready-important)
 
