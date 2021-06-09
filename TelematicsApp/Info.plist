@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CFBundleDevelopmentRegion</key>
+	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>FireApp</string>
+	<key>CFBundleExecutable</key>
+	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict/>
+	<key>CFBundleIcons~ipad</key>
+	<dict/>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CFBundlePackageType</key>
+	<string>APPL</string>
+	<key>CFBundleShortVersionString</key>
+	<string>$(MARKETING_VERSION)</string>
+	<key>CFBundleSignature</key>
+	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array/>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>Input Files</key>
+	<string>$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>mailto</string>
+		<string>TelematicsApp</string>
+	</array>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSAppleMusicUsageDescription</key>
+	<string>We use your photo gallery &amp; media files only to upload your selected photos to your profile</string>
+	<key>NSCameraUsageDescription</key>
+	<string>We use your camera so that you take a photo, and only to upload your selected photos for an avatar or documents for a car</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>We use location service for evaluating your driving manner. By enabling "Always" on location, the app will be able to automatically determine when you have started and ended a drive</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We use location service for evaluating your driving manner. By enabling "Always" on location, the app will be able to automatically determine when you have started and ended a drive</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We use location service for evaluating your driving manner. By enabling "Always" on location, the app will be able to automatically determine when you have started and ended a drive</string>
+	<key>NSMotionUsageDescription</key>
+	<string>We use motion sensors for evaluating your driving manner</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>We use your photo gallery only to upload your user avatar for Profile</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>SanFranciscoText-Light.otf</string>
+		<string>SanFranciscoText-Medium.otf</string>
+		<string>SanFranciscoText-Regular.otf</string>
+		<string>SanFranciscoText-Semibold.otf</string>
+	</array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>location</string>
+		<string>remote-notification</string>
+	</array>
+	<key>UIFileSharingEnabled</key>
+	<false/>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>armv7</string>
+	</array>
+	<key>UIRequiresFullScreen</key>
+	<true/>
+	<key>UIStatusBarStyle</key>
+	<string>UIStatusBarStyleDefault</string>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
+</dict>
+</plist>

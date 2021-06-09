@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CongratulationsPopup">
+            <rect key="frame" x="0.0" y="0.0" width="326" height="330"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-EE-NvH">
+                    <rect key="frame" x="25" y="19" width="276" height="32"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="32" id="hse-qo-bus"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <color key="textColor" red="0.25490196079999999" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grow your Safe Driving Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zg-Qy-Eq7">
+                    <rect key="frame" x="25" y="144" width="276" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="CZf-TD-395"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have given access to all permissions and now you can use full power of TelematicsApp app" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uef-Zy-KQC">
+                    <rect key="frame" x="25" y="52" width="276" height="85"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="85" id="IdJ-GM-le8"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="15"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-Kw-Ulg" customClass="GeneralButton">
+                    <rect key="frame" x="103" y="266" width="120" height="32"/>
+                    <color key="backgroundColor" red="0.25490196079999999" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="120" id="Uis-NL-zqd"/>
+                        <constraint firstAttribute="height" constant="32" id="Www-nE-vvK"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                    <state key="normal" title="LET'S GO!">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete with your Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haW-Os-C22">
+                    <rect key="frame" x="25" y="179" width="276" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="7Hg-uv-5QR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Challenges &amp; Gain Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeK-4s-pIw">
+                    <rect key="frame" x="25" y="214" width="276" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="P1w-eP-fLd"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="5zg-Qy-Eq7" firstAttribute="centerX" secondItem="Uef-Zy-KQC" secondAttribute="centerX" id="6ja-Bk-aVh"/>
+                <constraint firstItem="5zg-Qy-Eq7" firstAttribute="width" secondItem="Uef-Zy-KQC" secondAttribute="width" id="A3N-El-aCa"/>
+                <constraint firstItem="LeK-4s-pIw" firstAttribute="top" secondItem="haW-Os-C22" secondAttribute="bottom" constant="15" id="DEo-id-bM3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jmm-EE-NvH" secondAttribute="trailing" constant="25" id="J5o-zU-nbQ"/>
+                <constraint firstItem="jmm-EE-NvH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="KTT-SO-l6u"/>
+                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="103" id="PCj-OW-z4a"/>
+                <constraint firstItem="jmm-EE-NvH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="PbI-PI-xV7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rdp-Kw-Ulg" secondAttribute="trailing" priority="750" constant="103" id="VXX-6y-0Hm"/>
+                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="top" secondItem="LeK-4s-pIw" secondAttribute="bottom" constant="32" id="W49-d9-2d7"/>
+                <constraint firstItem="5zg-Qy-Eq7" firstAttribute="top" secondItem="Uef-Zy-KQC" secondAttribute="bottom" constant="7" id="X7u-Kt-z9m"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uef-Zy-KQC" secondAttribute="trailing" constant="25" id="afF-6h-teA"/>
+                <constraint firstItem="haW-Os-C22" firstAttribute="top" secondItem="5zg-Qy-Eq7" secondAttribute="bottom" constant="15" id="c06-v7-B6H"/>
+                <constraint firstItem="Uef-Zy-KQC" firstAttribute="top" secondItem="jmm-EE-NvH" secondAttribute="bottom" constant="1" id="er5-EK-ard"/>
+                <constraint firstItem="LeK-4s-pIw" firstAttribute="centerX" secondItem="haW-Os-C22" secondAttribute="centerX" id="iZd-De-gPZ"/>
+                <constraint firstItem="Uef-Zy-KQC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="l7a-T4-oAI"/>
+                <constraint firstItem="LeK-4s-pIw" firstAttribute="width" secondItem="haW-Os-C22" secondAttribute="width" id="pQT-dq-7Oy"/>
+                <constraint firstItem="Uef-Zy-KQC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="rpT-61-oEE"/>
+                <constraint firstItem="haW-Os-C22" firstAttribute="width" secondItem="5zg-Qy-Eq7" secondAttribute="width" id="s7q-2M-50s"/>
+                <constraint firstItem="haW-Os-C22" firstAttribute="centerX" secondItem="5zg-Qy-Eq7" secondAttribute="centerX" id="xgr-WC-5Rm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uef-Zy-KQC" secondAttribute="trailing" constant="25" id="ykp-To-rlc"/>
+                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="yl8-j1-ESH"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="ad1Text" destination="5zg-Qy-Eq7" id="GCH-X6-kB7"/>
+                <outlet property="ad2Text" destination="haW-Os-C22" id="mpV-Ki-btH"/>
+                <outlet property="ad3Text" destination="LeK-4s-pIw" id="TgG-VG-AsH"/>
+                <outlet property="messageLabel" destination="Uef-Zy-KQC" id="igH-KL-WSV"/>
+                <outlet property="okBtn" destination="Rdp-Kw-Ulg" id="Cp5-Kf-Ypy"/>
+                <outlet property="titleLabel" destination="jmm-EE-NvH" id="LwI-iq-ZVH"/>
+            </connections>
+            <point key="canvasLocation" x="24" y="6.2968515742128943"/>
+        </view>
+    </objects>
+</document>

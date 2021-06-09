@@ -1,0 +1,348 @@
+/* 
+  Localizable.strings
+  TelematicsApp
+
+  Created by DATA MOTION PTE. LTD. on 05.01.20.
+  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+*/
+
+/* main */
+"TelematicsApp" = "TelematicsApp";
+"dashboard_title" = "Dashboard";
+"feed_title" = "Feed";
+"profile_title" = "Profile";
+"settings_title" = "Settings";
+"trip_detailed_title" = "Trip Details";
+
+
+/* login */
+"success_login" = "Successfully Logged In";
+"This phone is not registered.\nDo you want to proceed registration with this phone number?" = "This phone is not registered.\nDo you want to proceed registration with this phone number?";
+"This Email is not registered.\nDo you want to proceed registration with this Email?" = "This Email is not registered.\nDo you want to proceed registration with this Email?";
+"Welcome!" = "Welcome!";
+"CONFIRM" = "CONFIRM";
+"CANCEL" = "CANCEL";
+"JOIN" = "JOIN";
+"Join using Email" = "Join using Email";
+"JOIN USING EMAIL" = "JOIN USING EMAIL";
+"Join via Phone Number" = "Join via Phone Number";
+"JOIN VIA PHONE NUMBER" = "JOIN VIA PHONE NUMBER";
+"log_in_text" = "LOG IN";
+"SIGN IN" = "SIGN IN";
+"Use your email address" = "Use your email address";
+"Use your phone number. One-Time Password 123456\n\nCheck ''needGeneratePassword'' key in app Configuration.plist" = "Use your phone number. One-Time Password 123456\n\nCheck ''needGeneratePassword'' key in app Configuration.plist";
+"enter phone" = "enter phone";
+"Select Countries" = "Select Countries";
+"Select Country" = "Select Country";
+"Get a new password" = "Get a new password";
+"Sign in with another email" = "Sign in with another email";
+"Sign in with another phone" = "Sign in with another phone";
+"enter password" = "enter password";
+"Enter your password" = "Enter your password";
+"You were logged in as %@" = "You were logged in as %@";
+"You were logged in" = "You were logged in";
+"Wrong password, please repeat again" = "Wrong password, please repeat again";
+"Message with a password was sent to %@\nEnter it in the field below" = "Message with a password was sent to %@\nEnter it in the field below";
+"Enter the password from sms" = "Enter the password from sms";
+"Resend password after %d sec" = "Resend password after %d sec";
+"An error occurred while changing the password. Try again please" = "An error occurred while changing the password. Try again please";
+
+
+/* settings menu */
+"menuitem_profile" = "My Profile";
+"menuitem_connectOBD" = "Connect OBD device";
+"menuitem_measures" = "Measures";
+"menuitem_companyId" = "Join a Company";
+"menuitem_claims" = "Claims";
+"menuitem_leaderboard" = "Leaderboard";
+"menuitem_howiw" = "How it works";
+"menuitem_tsettings" = "Telematics Settings";
+"menuitem_connectobd" = "Connect OBD device";
+"menuitem_security" = "Security";
+"menuitem_chat" = "Chat";
+"menuitem_logout" = "Log Out";
+"menuitem_privacy" = "Privacy Policy";
+"menuitem_terms" = "Terms of Use";
+"menuitem_rate" = "Rate our app";
+"menuitem_help" = "Help";
+
+
+/* settings logout*/
+"Logout" = "Logout";
+"Are you sure you want to quit?" = "Are you sure you want to quit?";
+
+
+/* common */
+"Ok" = "Ok";
+"Yes" = "Yes";
+"No" = "No";
+"Cancel" = "Cancel";
+"Done" = "Done";
+"Email" = "Email";
+"BACK" = "BACK";
+"Back" = "Back";
+"COMPLETE" = "COMPLETE";
+"NEXT STEP" = "NEXT STEP";
+"Success" = "Success";
+"Successful" = "Successful";
+"Successfully" = "Successfully";
+"placeholder_name" = "Your name";
+"error_title" = "Error";
+"Search" = "Search";
+"Support" = "Support";
+"Camera Roll" = "Camera Roll";
+
+
+/* dashboard */
+"Welcome aboard!" = "Welcome aboard!";
+"Start" = "Start";
+"START\nTEST-DRIVE" = "START\nTEST-DRIVE";
+"dash_overall" = "Overall Score";
+"dash_acceleration" = "Acceleration Score";
+"dash_braking" = "Braking Score";
+"dash_phone" = "Phone Usage Score";
+"dash_speeding" = "Speeding Score";
+"dash_cornering" = "Cornering Score";
+"Users drive " = "Users drive ";
+"60% safer" = "60% safer";
+" with our awesome app!" = " with our awesome app!";
+"Save time & money when searching for the best auto, life, home, or health insurance policy online" = "Save time & money when searching for the best auto, life, home, or health insurance policy online";
+"Always listen " = "Always listen ";
+"carefully" = "carefully";
+" to our advices!" = " to our advices!";
+"Inappropriate braking behaviour has a cumulative effect on a vehicle safety systems. This leads to increased risk!" = "Inappropriate braking behaviour has a cumulative effect on a vehicle safety systems. This leads to increased risk!";
+"Total Trips" = "Total Trips";
+"Mileage" = "Mileage";
+"Time Driven" = "Time Driven";
+"quantity" = "quantity";
+"km" = "km";
+"mi" = "mi";
+"hours" = "hours";
+"dash_points" = "points";
+"dash_km" = "km";
+"dash_hours" = "hours";
+"dash_miles" = "mi";
+"Rank" = "Rank";
+"LATEST SCORED TRIP" = "LATEST SCORED TRIP";
+"Scoring is available in:" = "Scoring is available in:";
+"Drive as you do normally" = "Drive as you do normally";
+"TRIP" = "TRIP";
+"SHARED TRIP" = "SHARED TRIP";
+"CHALLENGE" = "CHALLENGE";
+"MESSAGE" = "MESSAGE";
+"Make your first trip! It will appear here soon." = "Make your first trip! It will appear here soon.";
+"Useful" = "Useful";
+
+
+/* feed */
+"TRIPS" = "TRIPS";
+"delete_trip" = "Are you sure you want to delete this trip?";
+"passanger_title" = "Have you been a passenger on this trip?";
+"passanger_tag_title" = "Was this trip Personal or for Business?";
+"more_info" = "More";
+"trip_mileage_value" = "%d km";
+"trip_mileage_value_short" = "%.1f km";
+"trip_duration_value" = "%d min";
+"select_origin" = "Were you the driver in this journey?";
+"Shared by me" = "Shared by me";
+"Shared by\n%@ %@" = "Shared by\n%@ %@";
+"great_trip" = "Your trip is great. Keep on driving and earning new points.";
+"Driver" = "Driver";
+"Passenger" = "Passenger";
+"tripdetails_acc" = "Acceleration";
+"tripdetails_brake" = "Braking";
+"tripdetails_corner" = "Cornering";
+"%@\n%@\n\nSpeed: %@ km/h\nMax Force: %@ m/s/s" = "%@\n%@\n\nSpeed: %@ km/h\nMax Force: %@ m/s/s";
+"%@\n%@\n\nSpeed: %@ mi/h\nMax Force: %@ m/s/s" = "%@\n%@\n\nSpeed: %@ mi/h\nMax Force: %@ m/s/s";
+"sheet_acc" = "Acceleration Score";
+"sheet_braking" = "Braking Score";
+"sheet_phone" = "Phone Distraction Score";
+"sheet_speeding" = "Speeding Score";
+"sheet_cornering" = "Cornering Score";
+
+
+/* profile */
+"Driver Information" = "Driver Information";
+"Profile Information" = "Profile Information";
+"My Cars" = "My Cars";
+"Your Vehicles" = "Your Vehicles";
+"nickname_placeholder" = "Nickname";
+"validation_confirm_password" = "Confirm the password";
+"You have successfully uploaded your documents. Expect their verification" = "You have successfully uploaded your documents. Expect their verification";
+"You have successfully uploaded your documents. Expect their verification. Your profile will be filled out automatically very soon" = "You have successfully uploaded your documents. Expect their verification. Your profile will be filled out automatically very soon";
+"Uploading" = "Uploading";
+"Take photos of the front and back side of the document or select from the Gallery" = "Take photos of the front and back side of the document or select from the Gallery";
+"Take Photo" = "Take Photo";
+"Photo Library" = "Photo Library";
+"Image Gallery" = "Image Gallery";
+"Phone: %@" = "Phone: %@";
+"Phone:" = "Phone:";
+"Married" = "Married";
+"Widowed" = "Widowed";
+"Divorced" = "Divorced";
+"Single" = "Single";
+"Not specified" = "Not specified";
+"No kids" = "No kids";
+"Marital Status: %@     Kids: %@" = "Marital Status: %@     Kids: %@";
+"Marital Status:" = "Marital Status:";
+"Kids:" = "Kids:";
+"Add New Document" = "Add New Document";
+"Driving license not specified" = "Driving license not specified";
+"License #: %@" = "License #: %@";
+"Add New Vehicle" = "Add New Vehicle";
+"Car make not specified" = "Car make not specified";
+"Mileage can't be changed after adding a car" = "Mileage can't be changed after adding a car";
+"VIN: %@" = "VIN: %@";
+"LICENSE: %@" = "LICENSE: %@";
+"Stop verification" = "Stop verification";
+"Are you sure you want to stop verification of your documents?" = "Are you sure you want to stop verification of your documents?";
+"Your Account Status" = "Your Account Status";
+"Uncompleted" = "Uncompleted";
+"Complete info in order to use all features available within the app!" = "Complete info in order to use all features available within the app!";
+"FIX ISSUES" = "FIX ISSUES";
+"      Personal Info" = "      Personal Info";
+"             Personal Info" = "             Personal Info";
+"      Driver Info" = "      Driver Info";
+"             Driver Info" = "             Driver Info";
+"      Vehicle Info" = "      Vehicle Info";
+"             Vehicle Info" = "             Vehicle Info";
+"Verified Account" = "Verified Account";
+
+
+/* contacts */
+"support_name" = "Support";
+"support_comment" = "Your сomment or sentence";
+"support_nomail" = "On your iPhone is not set up email accounts in Mail application";
+
+
+/* validation */
+"validation_enter_email" = "The email is missing. Try again";
+"validation_invalid_email" = "Email address isn’t correct";
+"validation_enter_phone" = "The phone number is invalid";
+"validation_invalid_phone" = "Phone number isn’t correct";
+"validation_invalid_email_password" = "Password is incorrect. Please see email or get new password";
+"validation_invalid_password" = "Password is incorrect. Please see SMS or get new password";
+"validation_invalid_password_small" = "Password is too small";
+"validation_invalid_code_phone" = "Code is incorrect. Please see SMS or get new code again";
+"validation_invalid_code_check_phone" = "Code is incorrect. Please see SMS";
+"validation_invalid_code_email" = "Code is incorrect. Please see email or get new code again";
+"validation_enter_password" = "The password is missing. Try again";
+"validation_enter_symbols" = "The password is invalid";
+"validation_enter_symbols_six" = "Password must be at least 6 characters long";
+
+
+/* change password */
+"Change Password" = "Change Password";
+"Old Password" = "Old Password";
+"New Password" = "New Password";
+"Enter old password" = "Enter old password";
+"Enter new password" = "Enter new password";
+"SAVE" = "SAVE";
+"Save" = "Save";
+"You have changed password for your account" = "You have changed password for your account";
+"You entered the wrong password" = "You entered the wrong password";
+"Password can not be empty" = "Password can not be empty";
+
+
+/* additional */
+"Monday" = "Monday";
+"Tuesday" = "Tuesday";
+"Wednesday" = "Wednesday";
+"Thursday" = "Thursday";
+"Friday" = "Friday";
+"Saturday" = "Saturday";
+"Sunday" = "Sunday";
+"Turn On Telematics Data" = "Turn On Telematics Data";
+"To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp app, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits." = "To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp app, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits.";
+"To collect accurate data and complete app operation, you need to resolve access to the following functions:" = "To collect accurate data and complete app operation, you need to resolve access to the following functions:";
+"Enable GPS always" = "Enable GPS always";
+"Enable Motions" = "Enable Motions";
+"Enable Push-notifications" = "Enable Push-notifications";
+
+"Date of Birth\nNot specified" = "Date of Birth\nNot specified";
+"Date of Birth\n%@" = "Date of Birth\n%@";
+"Address\nNot specified" = "Address\nNot specified";
+"Address\n%@" = "Address\n%@";
+
+
+/* congratulation popup */
+"Congratulations!" = "Congratulations!";
+"You have given access to all permissions and now you can use full power of\nTelematicsApp app!" = "You have given access to all permissions and now you can use full power of\nTelematicsApp app!";
+"      Grow your Safe Driving Score" = "      Grow your Safe Driving Score";
+"             Grow your Safe Driving Score" = "             Grow your Safe Driving Score";
+"      Complete with your Friends" = "      Complete with your Friends";
+"             Complete with your Friends" = "             Complete with your Friends";
+"      Complete Challenges & Gain Coins" = "      Complete Challenges & Gain Coins";
+"             Complete Challenges & Gain Coins" = "             Complete Challenges & Gain Coins";
+
+
+/* wizard */
+"FIRST NAME" = "FIRST NAME";
+"LAST NAME" = "LAST NAME";
+"EMAIL" = "EMAIL";
+"PHONE NUMBER" = "PHONE NUMBER";
+"BIRTH DATE" = "BIRTH DATE";
+"MARITAL STATUS" = "MARITAL STATUS";
+"CHILDREN" = "CHILDREN";
+"ADDRESS" = "ADDRESS";
+" ADDRESS" = " ADDRESS";
+"ID (Optional)" = "ID (Optional)";
+"LICENSE NUMBER" = "LICENSE NUMBER";
+"REGISTRATION DATE" = "REGISTRATION DATE";
+"DOCUMENT VALID UNTIL" = "DOCUMENT VALID UNTIL";
+"DOCUMENT ISSUED BY" = "DOCUMENT ISSUED BY";
+"REGISTRATION LOCATION" = "REGISTRATION LOCATION";
+"CATEGORY" = "CATEGORY";
+"LICENSE PLATE" = "LICENSE PLATE";
+"VIN NUMBER" = "VIN NUMBER";
+"MAKE & MODEL" = "MAKE & MODEL";
+"CAR TYPE" = "CAR TYPE";
+"YEAR OF ISSUE" = "YEAR OF ISSUE";
+"CHASSY NUMBER" = "CHASSY NUMBER";
+"COLOR" = "COLOR";
+"ENGINE POWER KWt" = "ENGINE POWER KWt";
+"ENGINE POWER HP" = "ENGINE POWER HP";
+"ECOLOGY CLASS" = "ECOLOGY CLASS";
+"TECHNICAL PASSPORT SERIES" = "TECHNICAL PASSPORT SERIES";
+"TECHNICAL PASSPORT NUMBER" = "TECHNICAL PASSPORT NUMBER";
+"MAX CAR WEIGHT" = "MAX CAR WEIGHT";
+"NO LOAD CAR WEIGHT" = "NO LOAD CAR WEIGHT";
+"OWNER FIRST NAME" = "OWNER FIRST NAME";
+"OWNER LAST NAME" = "OWNER LAST NAME";
+"OWNER PATRONYMIC" = "OWNER PATRONYMIC";
+"SPECIAL MARKS" = "SPECIAL MARKS";
+"Uploaded Driver License" = "Uploaded Driver License";
+"Uploaded Passport Photos" = "Uploaded Passport Photos";
+"Uploaded Car Document" = "Uploaded Car Document";
+"Complete Account" = "Complete Account";
+"Profile Info" = "Profile Info";
+"Driving License" = "Driving License";
+"Car Info" = "Car Info";
+"Registration:" = "Registration:";
+"Valid Until:" = "Valid Until:";
+"Issued By:" = "Issued By:";
+"Location:" = "Location:";
+"Category:" = "Category:";
+"Engine Volume:" = "Engine Volume:";
+"Engine Power:" = "Engine Power:";
+"Color:" = "Color:";
+"Max Weight:" = "Max Weight:";
+"Ecology Class:" = "Ecology Class:";
+"License Plate:" = "License Plate:";
+"Make & Model:" = "Make & Model:";
+"Car Type:" = "Car Type:";
+"Owner:" = "Owner:";
+"Address:" = "Address:";
+"LICENSE:" = "LICENSE:";
+"VIN:" = "VIN:";
+
+
+/* permission warning
+"We use your photo gallery & media files only to upload your selected photos to your profile" = "We use your photo gallery & media files only to upload your selected photos to your profile";
+"We use Bluetooth devices to connect them to the phone" = "We use Bluetooth devices to connect them to the phone";
+"We use your camera so that you take a photo, and only to upload your selected photos for an avatar or documents for a car" = "We use your camera so that you take a photo, and only to upload your selected photos for an avatar or documents for a car";
+"We use your contacts to give you the opportunity to invite your friends to your Community" = "We use your contacts to give you the opportunity to invite your friends to your Community";
+"We use location service for evaluating your driving manner. By enabling \"Always\" on location, the app will be able to automatically determine when you have started and ended a drive" = "We use location service for evaluating your driving manner. By enabling \"Always\" on location, the app will be able to automatically determine when you have started and ended a drive";
+"We use motion sensors for evaluating your driving manner" = "We use motion sensors for evaluating your driving manner";
+"We use your photo gallery only to upload your selected photos" = "We use your photo gallery only to upload your selected photos";
+*/

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="ZenAppModel" representedClassName="ZenAppModel" syncable="YES">
+        <attribute name="current_user" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detailsAllDrivingScores" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
+        <attribute name="detailsScoreAcceleration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detailsScoreDeceleration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detailsScoreOverall" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detailsScorePhoneUsage" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detailsScoreSpeeding" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="detailsScoreTurn" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="notFirstRunApp" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statDistanceForScoring" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statDrivingLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statEco" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statEcoScoringBrakes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statEcoScoringDepreciation" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statEcoScoringFuel" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statEcoScoringTyres" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statMonthlyAverageSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statMonthlyMaxSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statMonthlyTotalKm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statPhoneLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statPreviousEcoScoring" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statPreviousRating" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statRating" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statSpeedLevel" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statSummaryDistance" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statSummaryDuration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statTimeOfDayScore" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statTrackCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statWeeklyAverageSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statWeeklyMaxSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statWeeklyTotalKm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statYearlyAverageSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statYearlyMaxSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="statYearlyTotalKm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userAvatarLink" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userBirthday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userClientId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userFirebaseId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userFirstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userFullName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userGender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userLastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhotoData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="vehicleCarYear" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="vehicleShortData" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <entity name="ZenLeaderboardModel" representedClassName="ZenLeaderboardModel" syncable="YES">
+        <attribute name="leaderboard_user" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="leaderboardAcceleration" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardDeceleration" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardDistance" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardDistraction" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardDuration" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardGlobal" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardRate" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardSpeeding" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardTrips" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="leaderboardTurn" optional="YES" attributeType="Transformable" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ZenAppModel" positionX="-63" positionY="-18" width="128" height="749"/>
+        <element name="ZenLeaderboardModel" positionX="-63" positionY="144" width="128" height="194"/>
+    </elements>
+</model>

@@ -1,0 +1,28 @@
+//
+//  TelematicsAppPrefixHeader.pch
+//  TelematicsApp
+//
+//  Created by DATA MOTION PTE. LTD. on 14.01.18.
+//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+#import "Configurator.h"
+#import "MainApiRequest.h"
+#import "APIRequest.h"
+#import "APIErrorHandler.h"
+#import "ZenAppModel.h"
+#import "ZenLeaderboardModel.h"
+#import "CoreDataCoordinator.h"
+#import "GeneralService.h"
+#import "BaseViewController.h"
+#import <RaxelPulse/RaxelPulse.h>
+#import "MagicalRecord/MagicalRecord.h"
+#import "NSUserDefaults-helper.h"
+#import "MainEmailViewCtrl.h"
+#import "Color.h"
+#import "Font.h"
+#import "Format.h"
+#import <TelematicsApp-Swift.h>
+#import <LoginAuth/LoginAuth.h>
+@import Firebase;

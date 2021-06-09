@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNp-aA-EJZ">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--DashboardMain-->
+        <scene sceneID="PeO-3N-U06">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DashboardMain" id="Xjl-Ko-PDo" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Dashboard" image="dashboard_unselected" selectedImage="dashboard_selected" id="igc-fZ-LRD"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YW7-AF-QPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-385" y="-1034"/>
+        </scene>
+        <!--Feed-->
+        <scene sceneID="0ZT-QK-1jb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" id="9cH-jE-4kc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Feed" image="feed_unselected" selectedImage="feed_selected" id="QmS-ox-wmJ"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ahv-Qx-vhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-462" y="-747"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="oml-Gs-4U2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="f3o-Rx-ufb" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile_unselected" selectedImage="profile_selected" id="7aR-nM-R8h"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wrX-gp-7hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-429" y="-459"/>
+        </scene>
+        <!--CoreTabBar-->
+        <scene sceneID="m1L-op-UxI">
+            <objects>
+                <tabBarController storyboardIdentifier="CoreTabBarController" title="Main" id="oNp-aA-EJZ" userLabel="CoreTabBar" customClass="CoreTabBarController" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="9Le-6G-9sd">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="barTintColor" red="0.27450980392156865" green="0.27450980392156865" blue="0.27450980392156865" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="Xjl-Ko-PDo" kind="relationship" relationship="viewControllers" id="gyn-hx-mcr"/>
+                        <segue destination="9cH-jE-4kc" kind="relationship" relationship="viewControllers" id="FdQ-3F-hDC"/>
+                        <segue destination="f3o-Rx-ufb" kind="relationship" relationship="viewControllers" id="Lim-oX-jco"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h8x-L6-4cd" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-973" y="-746"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="dashboard_selected" width="37" height="37"/>
+        <image name="dashboard_unselected" width="37" height="37"/>
+        <image name="feed_selected" width="37" height="37"/>
+        <image name="feed_unselected" width="37" height="37"/>
+        <image name="profile_selected" width="37" height="37"/>
+        <image name="profile_unselected" width="37" height="37"/>
+    </resources>
+</document>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="GeneralPopup">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="330"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-Kw-Ulg" customClass="GeneralButton">
+                    <rect key="frame" x="25" y="212" width="325" height="45"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="Www-nE-vvK"/>
+                        <constraint firstAttribute="height" constant="45" id="yJM-XY-cg1"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <state key="normal" title="Enable Motions">
+                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On Telematics Data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-EE-NvH">
+                    <rect key="frame" x="25" y="14" width="325" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="hse-qo-bus"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To collect accurate data and complete app operation, you need to resolve access to the following functions:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uef-Zy-KQC">
+                    <rect key="frame" x="25" y="45" width="325" height="102"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-Lh-VRM" customClass="GeneralButton">
+                    <rect key="frame" x="25" y="160" width="325" height="45"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="mWo-6L-iJA"/>
+                        <constraint firstAttribute="height" constant="45" id="yTY-fV-wCT"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <state key="normal" title="Enable GPS always">
+                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95E-3a-dIe" customClass="GeneralButton">
+                    <rect key="frame" x="25" y="265" width="325" height="45"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="45" id="P2m-A6-smO"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                    <state key="normal" title="Enable Push-notifications">
+                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="95E-3a-dIe" secondAttribute="bottom" constant="20" id="1l2-E2-H82"/>
+                <constraint firstItem="UNv-Lh-VRM" firstAttribute="trailing" secondItem="Rdp-Kw-Ulg" secondAttribute="trailing" id="6u2-mr-azB"/>
+                <constraint firstItem="95E-3a-dIe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="710-Sd-nnd"/>
+                <constraint firstItem="Uef-Zy-KQC" firstAttribute="top" secondItem="jmm-EE-NvH" secondAttribute="bottom" constant="1" id="9Oo-eC-DEA"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="jmm-EE-NvH" secondAttribute="trailing" constant="25" id="J5o-zU-nbQ"/>
+                <constraint firstItem="jmm-EE-NvH" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="KTT-SO-l6u"/>
+                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="PCj-OW-z4a"/>
+                <constraint firstItem="jmm-EE-NvH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="14" id="PbI-PI-xV7"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rdp-Kw-Ulg" secondAttribute="trailing" constant="25" id="VXX-6y-0Hm"/>
+                <constraint firstItem="UNv-Lh-VRM" firstAttribute="top" secondItem="Uef-Zy-KQC" secondAttribute="bottom" constant="13" id="WJt-99-Lc1"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uef-Zy-KQC" secondAttribute="trailing" constant="25" id="afF-6h-teA"/>
+                <constraint firstItem="95E-3a-dIe" firstAttribute="top" secondItem="Rdp-Kw-Ulg" secondAttribute="bottom" constant="8" id="eih-5f-NXJ"/>
+                <constraint firstItem="UNv-Lh-VRM" firstAttribute="leading" secondItem="Rdp-Kw-Ulg" secondAttribute="leading" id="gSi-89-Hq4"/>
+                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="top" secondItem="UNv-Lh-VRM" secondAttribute="bottom" constant="7" id="iw9-NJ-8pY"/>
+                <constraint firstItem="Uef-Zy-KQC" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="25" id="l7a-T4-oAI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="95E-3a-dIe" secondAttribute="trailing" constant="25" id="vTM-tW-5Aa"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="gpsButton" destination="UNv-Lh-VRM" id="7bg-Df-y1S"/>
+                <outlet property="messageLabel" destination="Uef-Zy-KQC" id="cLf-kq-tNU"/>
+                <outlet property="motionButton" destination="Rdp-Kw-Ulg" id="bFK-Vm-adA"/>
+                <outlet property="pushButton" destination="95E-3a-dIe" id="9NO-Ss-auQ"/>
+                <outlet property="titleLabel" destination="jmm-EE-NvH" id="LwI-iq-ZVH"/>
+            </connections>
+            <point key="canvasLocation" x="23.199999999999999" y="19.790104947526238"/>
+        </view>
+    </objects>
+</document>

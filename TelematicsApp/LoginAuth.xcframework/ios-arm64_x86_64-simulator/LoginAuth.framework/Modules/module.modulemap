@@ -1,0 +1,6 @@
+framework module LoginAuth {
+  umbrella header "LoginAuth.h"
+
+  export *
+  module * { export * }
+}
