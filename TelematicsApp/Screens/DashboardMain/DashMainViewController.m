@@ -237,6 +237,7 @@
             [self getDashboardEcoDataWeek];
             [self getDashboardEcoDataMonth];
             [self getDashboardEcoDataYear];
+            [self hidePreloader];
         });
     } else {
         self.disableCounting = NO;

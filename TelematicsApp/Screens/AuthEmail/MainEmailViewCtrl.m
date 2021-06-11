@@ -45,7 +45,7 @@
     [super viewDidLoad];
     
     self.mainLogoImg.image = [UIImage imageNamed:[Configurator sharedInstance].mainLogoColor];
-    self.useEmailLbl.text = localizeString(@"Use your email address for Firebase Auth.\n\nCreate and Enter any password at next step");
+    self.useEmailLbl.text = localizeString(@"Use your email address\n\n");
     
     [self.emailField makeFormFieldZero];
     [self.emailField setBackgroundColor:[Color lightSeparatorColor]];
@@ -104,7 +104,7 @@
         self.useEmailLbl.text = localizeString(@"validation_invalid_email");
         self.useEmailLbl.textColor = [Color officialRedColor];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.useEmailLbl.text = localizeString(@"Use your email address for Firebase Auth.\n\nCreate and Enter any password at next step");
+            self.useEmailLbl.text = localizeString(@"Use your email address\n\n");
             self.useEmailLbl.textColor = [Color darkGrayColor];
         });
         return;
@@ -112,17 +112,42 @@
     
     [self.view endEditing:YES];
     
-    EmailLoginViewCtrl* logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailLoginViewCtrl"];
-    logIn.enteredEmail = self.emailField.text;
-    logIn.userName = self.checkData.Result.FirstName ? self.checkData.Result.FirstName : @"";
-    logIn.userPhotoUrl = self.checkData.Result.ImageUrl;
-    [self.navigationController pushViewController:logIn animated:YES];
+    //GENERATE SAMPLE PASSWORD
+    NSString *checkUserExistSamplePassword = [self randomPasswordWithLength:6];
+    
+    //CHECK IF USER EXIST IN DATABASE FOR USER-FRIENDLY INTERFACE
+    [[FIRAuth auth] signInWithEmail:self.emailField.text password:checkUserExistSamplePassword completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+        if (error.code == 17009) {
+            
+            //17009 USER EXIST LOGIN IN APP WELCOME TEXT
+            EmailLoginViewCtrl* logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailLoginViewCtrl"];
+            logIn.enteredEmail = self.emailField.text;
+            logIn.userName = self.checkData.Result.FirstName ? self.checkData.Result.FirstName : @"";
+            logIn.userPhotoUrl = self.checkData.Result.ImageUrl;
+            logIn.welcomeText = [NSString stringWithFormat:@"Enter your password for %@", self.emailField.text];
+            logIn.signInBtnText = @"LOG IN";
+            logIn.isUserExist = YES;
+            [self.navigationController pushViewController:logIn animated:YES];
+            
+        } else {
+            [self showAlertForNewUser];
+        }
+    }];
 }
 
 - (void)showAlertForNewUser {
-    [[TelematicsAppRegPopup showMessage:localizeString(@"This Email is not registered.\nDo you want to proceed registration with this Email?") withTitle:localizeString(@"Welcome!")]
+    [[TelematicsAppRegPopup showMessage:localizeString(@"This Email is not registered.\nDo you want to proceed registration\nwith this Email?") withTitle:localizeString(@"Welcome!")]
      withConfirm:localizeString(@"CONFIRM") onConfirm:^{
-        //
+        
+        EmailLoginViewCtrl* signIn = [self.storyboard instantiateViewControllerWithIdentifier:@"EmailLoginViewCtrl"];
+        signIn.enteredEmail = self.emailField.text;
+        signIn.userName = self.checkData.Result.FirstName ? self.checkData.Result.FirstName : @"";
+        signIn.userPhotoUrl = self.checkData.Result.ImageUrl;
+        signIn.welcomeText = [NSString stringWithFormat:@"Create your password for %@", self.emailField.text];
+        signIn.signInBtnText = @"SIGN IN";
+        signIn.isUserExist = NO;
+        [self.navigationController pushViewController:signIn animated:YES];
+        
     } withCancel:localizeString(@"CANCEL") onCancel:^{
         //DO NOTHING
     }];
@@ -233,6 +258,20 @@
         return YES;
     }
     return YES;
+}
+
+
+#pragma mark Helpers
+
+- (NSString*)randomPasswordWithLength:(NSUInteger)length {
+    NSMutableString* random = [NSMutableString stringWithCapacity:length];
+
+    for (NSUInteger i=0; i<length; i++) {
+        char c = '0' + (unichar)arc4random()%36;
+        if(c > '9') c += ('a'-'9'-1);
+        [random appendFormat:@"%c", c];
+    }
+    return random;
 }
 
 @end
