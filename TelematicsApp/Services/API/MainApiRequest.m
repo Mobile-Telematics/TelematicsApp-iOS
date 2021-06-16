@@ -91,14 +91,6 @@
     return headers;
 }
 
-    
-#pragma mark CheckUserExist
-
-- (void)checkUserData:(CheckUserRequestData*)checkData {
-    NSDictionary* params = [checkData paramsDictionary];
-    [self performRequestWithPath:@"Check/userexists" responseClass:[CheckResponse class] parameters:params method:GET];
-}
-
 
 #pragma mark RefreshToken
 

@@ -25,7 +25,16 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
-	<array/>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.976593118185-7lg0149gan3tmibkejnkkvggrbf34ig3</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
@@ -46,8 +55,14 @@
 	</dict>
 	<key>NSAppleMusicUsageDescription</key>
 	<string>We use your photo gallery &amp; media files only to upload your selected photos to your profile</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>The app needs access to Bluetooth to communicate with your Tag</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>The app needs access to Bluetooth to communicate with your Tag</string>
 	<key>NSCameraUsageDescription</key>
 	<string>We use your camera so that you take a photo, and only to upload your selected photos for an avatar or documents for a car</string>
+	<key>NSContactsUsageDescription</key>
+	<string>We use your contacts only for Firebase app</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We use location service for evaluating your driving manner. By enabling "Always" on location, the app will be able to automatically determine when you have started and ended a drive</string>
 	<key>NSLocationAlwaysUsageDescription</key>

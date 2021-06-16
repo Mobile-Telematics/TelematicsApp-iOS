@@ -69,7 +69,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     [RPEntry instance].lowPowerModeDelegate = self;
     [RPEntry instance].accuracyAuthorizationDelegate = self;
     
-    //WE NEED START PERMISSION WIZARD  FOR USER AFTER LOGIN! - TEMPORARY STOP BY USER DEFAULTS
+    //WE NEED START PERMISSION WIZARD FOR USER AFTER LOGIN! - TEMPORARY STOP BY USER DEFAULTS
     if ([defaults_object(@"needTrackingOnRequired") boolValue]) {
         
         NSLog(@"%@", [GeneralService sharedInstance].device_token_number);

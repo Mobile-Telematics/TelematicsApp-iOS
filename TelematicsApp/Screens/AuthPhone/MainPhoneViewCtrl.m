@@ -9,7 +9,6 @@
 #import "MainPhoneViewCtrl.h"
 #import "CoreTabBarController.h"
 #import "PhoneLoginViewCtrl.h"
-#import "CreatePhoneViewCtrl.h"
 #import "UIViewController+Preloader.h"
 #import "UITextField+Form.h"
 #import "CheckResponse.h"
@@ -61,9 +60,8 @@
     [self.phoneField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.phoneField.layer setBorderWidth:0.5];
     self.phoneField.placeholder = localizeString(@"enter phone");
-    //[self.phoneField.formatter setDefaultOutputPattern:@"(___) ___-__-__"];
     
-    self.usePhoneLbl.text = localizeString(@"Use your real phone number.");
+    self.usePhoneLbl.text = localizeString(@"Use your phone number");
     
     [self.countryButton.layer setMasksToBounds:YES];
     [self.countryButton.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
@@ -175,7 +173,7 @@
         self.usePhoneLbl.text = localizeString(@"validation_invalid_phone");
         self.usePhoneLbl.textColor = [Color officialRedColor];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            self.usePhoneLbl.text = localizeString(@"Use your real phone number.");
+            self.usePhoneLbl.text = localizeString(@"Use your phone number");
             self.usePhoneLbl.textColor = [Color darkGrayColor];
         });
         return;
@@ -197,81 +195,35 @@
     
     checkData.Phone = [NSString stringWithFormat:@"+%@", delPhoneChar];
     
-//    [self showPreloader];
-//
-//    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-//        [self hidePreloader];
-//        if ([response isSuccesful]) {
-//
-//            self.checkData = ((CheckResponse*)response);
-//
-//            if (self.checkData.Result.UserExists.integerValue == 1) {
-//                PhoneLoginViewCtrl* logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"PhoneLoginViewCtrl"];
-//                NSString *phone = [NSString stringWithFormat:@"%@ %@", self.selectedCode, self.phoneField.text];
-//                logIn.enteredPhone = phone;
-//                logIn.userName = self.checkData.Result.FirstName ? self.checkData.Result.FirstName : @"";
-//                logIn.userPhotoUrl = self.checkData.Result.ImageUrl;
-//                [self.navigationController pushViewController:logIn animated:YES];
-//            } else {
-//                [self showAlertForNewUser];
-//            }
-//        } else {
-//            [self dismissKeyboard];
-//
-//            self.usePhoneLbl.text = localizeString(@"Temporarily unavailable. Try again in a few minutes");
-//            self.usePhoneLbl.textColor = [Color officialRedColor];
-//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                self.usePhoneLbl.text = localizeString(@"Use your email address");
-//                self.usePhoneLbl.textColor = [Color darkGrayColor];
-//            });
-//        }
-//    }] checkUserData:checkData];
-}
-
-- (void)showAlertForNewUser {
-    [[TelematicsAppRegPopup showMessage:localizeString(@"This phone is not registered.\nDo you want to proceed registration with this phone number?") withTitle:localizeString(@"Welcome!")]
-     withConfirm:localizeString(@"CONFIRM") onConfirm:^{
-         [self createUserAccount];
-     } withCancel:localizeString(@"CANCEL") onCancel:^{
-         //DO NOTHING
-     }];
+    [FIRAuth auth].languageCode = @"en";
+    [[FIRPhoneAuthProvider provider] verifyPhoneNumber:[NSString stringWithFormat:@"+%@", delPhoneChar]
+                                            UIDelegate:nil
+                                            completion:^(NSString * _Nullable verificationID, NSError * _Nullable error) {
+     
+        if (error) {
+            [self dismissKeyboard];
+            self.usePhoneLbl.text = localizeString(@"Temporarily unavailable. Try again in a few minutes");
+            self.usePhoneLbl.textColor = [Color officialRedColor];
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                self.usePhoneLbl.text = localizeString(@"Use your email address");
+                self.usePhoneLbl.textColor = [Color darkGrayColor];
+            });
+            return;
+        }
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setObject:verificationID forKey:@"authVerificationID"];
+        //'NSString *verificationIDrestore = [defaults stringForKey:@"authVerificationID"]; //IF NEEDED FOR NEXT FIREBASE AUTH ALL AROUND
+        
+        PhoneLoginViewCtrl* logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"PhoneLoginViewCtrl"];
+        logIn.enteredPhone = checkData.Phone;
+        logIn.savedVerificationId = verificationID;
+        [self.navigationController pushViewController:logIn animated:NO];
+    }];
 }
 
 - (void)createUserAccount {
-//    RegPhoneRequestData* regData = [[RegPhoneRequestData alloc] init];
-//    NSString *phone = [NSString stringWithFormat:@"%@%@", self.selectedCode, self.phoneField.text];
-//    NSString *delPhoneChar = [[phone componentsSeparatedByCharactersInSet:
-//                               [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-//                              componentsJoinedByString:@""];
-//
-//    regData.createAccessToken = @"true";
-//    regData.generatePassword = [Configurator sharedInstance].needGeneratePassword;
-//    if ([[Configurator sharedInstance].needGeneratePassword isEqualToString:@"false"])
-//        regData.password = [Configurator sharedInstance].defaultUserPassword;
-//    regData.phone = [NSString stringWithFormat:@"+%@", delPhoneChar];
-//
-//    [self dismissKeyboard];
-//    [self showPreloader];
-//
-//    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-//        [self hidePreloader];
-//        if ([response isSuccesful]) {
-//            self.userData = ((RegResponse*)response);
-//
-//            if ([self.userData.Status isEqual:@"1005"]) {
-//                [self dismissKeyboard];
-//                [self.errorHandler showErrorMessages:[self.userData.Title componentsSeparatedByString:@","]];
-//                return;
-//            } else {
-//                CreatePhoneViewCtrl* pass = [self.storyboard instantiateViewControllerWithIdentifier:@"CreatePhoneViewCtrl"];
-//                pass.enteredPhone = [NSString stringWithFormat:@"%@%@", self.selectedCode, self.phoneField.text];
-//                [self.navigationController pushViewController:pass animated:YES];
-//            }
-//        } else {
-//            [self dismissKeyboard];
-//            [self.errorHandler handleError:error response:response];
-//        }
-//    }] registerUserWithParameters:regData];
+    //
 }
 
 - (IBAction)loginWithEmail:(id)sender {
@@ -296,7 +248,7 @@
 }
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
-    [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:NO completion:nil];
 }
 
 
@@ -348,9 +300,9 @@
     
     [UIView beginAnimations:@"LogoMoveAnimation" context:nil];
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
-    [UIView setAnimationDuration:0.5];
+    [UIView setAnimationDuration:0.3];
     
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         
         [self.view setFrame:CGRectMake(0.f, -170.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
         self.mainLogoImg.transform = transform;

@@ -7,7 +7,6 @@
 //
 
 #import "PhoneLoginViewCtrl.h"
-#import "RestorePhoneViewCtrl.h"
 #import "UIViewController+Preloader.h"
 #import "UITextField+Form.h"
 #import "UIImageView+WebCache.h"
@@ -39,6 +38,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _realtimeDatabase = [[FIRDatabase database] reference];
+    
     self.loggedNameLbl.textColor = [Color officialMainAppColor];
     
     self.passField.delegate = self;
@@ -59,9 +60,10 @@
     [self.loginBtn.layer setMasksToBounds:YES];
     [self.loginBtn.layer setCornerRadius:15.0f];
     [self.loginBtn.titleLabel setFont:[Font medium13]];
-    [self.loginBtn setTitle:localizeString(@"SIGN IN") forState:UIControlStateNormal];
+    //[self.loginBtn setTitle:localizeString(@"SIGN IN") forState:UIControlStateNormal];
+    [self.loginBtn setTitle:localizeString(@"LOG IN") forState:UIControlStateNormal];
     
-    self.enterPassLbl.text = localizeString(@"Enter your password");
+    self.enterPassLbl.text = localizeString(@"Enter your password from sms");
     
     [self.linesGreenBackground setImage:[UIImage imageNamed:@"zigzag"]];
     
@@ -84,11 +86,7 @@
     
     [self setRepeatPasswordLabel];
     
-    if (_userName.length > 0) {
-        [self.loggedNameLbl setText:[NSString stringWithFormat:localizeString(@"You were logged in as %@"), _userName]];
-    } else {
-        [self.loggedNameLbl setText:localizeString(@"Login to your account")];
-    }
+    [self.loggedNameLbl setText:localizeString(@"Login to your account")];
     
     self.shiftHeight = -1;
     [self registerForKeyboardNotifications];
@@ -111,37 +109,269 @@
 
 - (IBAction)loginBtnClick:(id)sender {
     
-//    LoginPhoneRequestData* loginData = [[LoginPhoneRequestData alloc] init];
-//    
-//    NSString *delPhoneChar = [[self.enteredPhone componentsSeparatedByCharactersInSet:
-//                               [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-//                              componentsJoinedByString:@""];
-//    NSString *plusPhone = [NSString stringWithFormat:@"+%@", delPhoneChar];
-//    
-//    loginData.loginFields = @{@"Phone": plusPhone};
-//    loginData.password = self.passField.text;
-//    
-//    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-//        //[self hidePreloader];
-//        if ([response isSuccesful]) {
-//            self.loginData = ((LoginResponse*)response);
-//            if (self.loginData.Status.integerValue != 200 && self.loginData.Status != nil) {
-//                NSString *err = [NSString stringWithFormat:@"%@", [self.loginData.Errors.firstObject valueForKey:@"Message"]];
-//                if ([err isEqual:@""]) {
-//                    [self errorPhoneLoginFunction];
-//                } else {
-//                    [self errorPhoneLoginFunction];
+    FIRAuthCredential *credential = [[FIRPhoneAuthProvider provider] credentialWithVerificationID:_savedVerificationId verificationCode:self.passField.text];
+    
+    [[FIRAuth auth] signInWithCredential:credential
+                              completion:^(FIRAuthDataResult * _Nullable authResult,
+                                           NSError * _Nullable error) {
+        
+        if (error.code == FIRAuthErrorCodeSecondFactorRequired) {
+//              FIRMultiFactorResolver *resolver = error.userInfo[FIRAuthErrorUserInfoMultiFactorResolverKey];
+//              NSMutableString *displayNameString = [NSMutableString string];
+//              for (FIRMultiFactorInfo *tmpFactorInfo in resolver.hints) {
+//                [displayNameString appendString:tmpFactorInfo.displayName];
+//                [displayNameString appendString:@" "];
+//              }
+//              [self showTextInputPromptWithMessage:[NSString stringWithFormat:@"Select factor to sign in\n%@", displayNameString]
+//                                   completionBlock:^(BOOL userPressedOK, NSString *_Nullable displayName) {
+//               FIRPhoneMultiFactorInfo* selectedHint;
+//               for (FIRMultiFactorInfo *tmpFactorInfo in resolver.hints) {
+//                 if ([displayName isEqualToString:tmpFactorInfo.displayName]) {
+//                   selectedHint = (FIRPhoneMultiFactorInfo *)tmpFactorInfo;
+//                 }
+//               }
+//               [FIRPhoneAuthProvider.provider
+//                verifyPhoneNumberWithMultiFactorInfo:selectedHint
+//                UIDelegate:nil
+//                multiFactorSession:resolver.session
+//                completion:^(NSString * _Nullable verificationID, NSError * _Nullable error) {
+//                  if (error) {
+//                      NSLog(@"dd");
+//                      //[self showMessagePrompt:error.localizedDescription];
+//                  } else {
+//                      [self showMessageWithTitle:[NSString stringWithFormat:@"Verification code for %@", selectedHint.displayName] subTitle:[NSString stringWithFormat:@"Verification code for %@", selectedHint.displayName] type:RMessageTypeNormal];
+//
+//
+//                    [self showTextInputPromptWithMessage:[NSString stringWithFormat:@"Verification code for %@", selectedHint.displayName]
+//                                         completionBlock:^(BOOL userPressedOK, NSString *_Nullable verificationCode) {
+//                     FIRPhoneAuthCredential *credential =
+//                         [[FIRPhoneAuthProvider provider] credentialWithVerificationID:verificationID
+//                                                                      verificationCode:verificationCode];
+//                     FIRMultiFactorAssertion *assertion = [FIRPhoneMultiFactorGenerator assertionWithCredential:credential];
+//                     [resolver resolveSignInWithAssertion:assertion completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
+//                       if (error) {
+//                         [self showMessagePrompt:error.localizedDescription];
+//                       } else {
+//                         NSLog(@"Multi factor finanlize sign in succeeded.");
+//                       }
+//                     }];
+//                   }];
+//                  }
+//                }];
+//             }];
+        } else if (error) {
+            [self.errorHandler handleError:error response:nil];
+            return;
+        }
+        
+        // User successfully signed in. Get user data from the FIRUser object
+        if (authResult == nil) { return; }
+        
+        [GeneralService sharedInstance].user_FIR = authResult.user;
+
+        FIRDatabaseQuery *allUserData = [[self.realtimeDatabase child:@"users"] child:authResult.user.uid];
+        [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+
+            if (snapshot.value == [NSNull null]) {
+                NSLog(@"No user data in Firebase Database! Create this if deleted NEW USER!");
+                
+                [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
+                                                                          instanceKey:[Configurator sharedInstance].instanceKey
+                                                                               result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                    
+                    //STORE IN SHAREDSERVICE
+                    [GeneralService sharedInstance].device_token_number = deviceToken;
+                    [GeneralService sharedInstance].jwt_token_number = jwToken;
+                    [GeneralService sharedInstance].refresh_token_number = refreshToken;
+                    [GeneralService sharedInstance].firebase_user_id = authResult.user.uid;
+                    
+                    //CHECK ALL AT NIL
+                    //FIREBASE DATABASE DID'T WORK WITH NIL
+                    NSString *finishedPhoneNumber = self.enteredPhone ? self.enteredPhone : @"";
+                    [GeneralService sharedInstance].stored_userPhone = finishedPhoneNumber;
+                    
+                    // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
+                    // STORE OTHER USER INFO IN DATABASE
+                    [[[self->_realtimeDatabase child:@"users"]
+                                               child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedInstance].device_token_number,
+                                                                                     @"userId": authResult.user.uid,
+                                                                                     @"email": @"",
+                                                                                     @"phone": finishedPhoneNumber,
+                                                                                     @"firstName": @"",
+                                                                                     @"lastName": @"",
+                                                                                     @"birthday": @"",
+                                                                                     @"address": @"",
+                                                                                     @"clientId": @""}];
+                    }];
+                    
+                    [GeneralService sharedInstance].user_FIR = authResult.user;
+                    [GeneralService sharedInstance].firebase_user_id = authResult.user.uid;
+                
+                    [GeneralService sharedInstance].stored_userEmail = @"";
+                    [GeneralService sharedInstance].stored_userPhone = self.enteredPhone;
+                    [GeneralService sharedInstance].stored_firstName = @"";
+                    [GeneralService sharedInstance].stored_lastName = @"";
+                    [GeneralService sharedInstance].stored_birthday = @"";
+                    [GeneralService sharedInstance].stored_address = @"";
+                    [GeneralService sharedInstance].stored_clientId = @"";
+                    
+                    //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST
+                    [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
+                                                                jwToken:[GeneralService sharedInstance].jwt_token_number
+                                                           refreshToken:[GeneralService sharedInstance].refresh_token_number];
+                    
+                    [self hidePreloader];
+                
+            } else {
+                
+                //GET SNAPSHOT USER DATA FROM FIREBASE DATABASE
+                NSDictionary *allUsersData = (NSDictionary*)snapshot.value;
+                NSLog(@"All Users Data From Firebase Database%@", allUsersData);
+                
+                [GeneralService sharedInstance].device_token_number = allUsersData[@"deviceToken"];
+                [GeneralService sharedInstance].firebase_user_id = allUsersData[@"userId"];
+                
+                [GeneralService sharedInstance].stored_userEmail = allUsersData[@"email"];
+                [GeneralService sharedInstance].stored_userPhone = allUsersData[@"phone"];
+                [GeneralService sharedInstance].stored_firstName = allUsersData[@"firstName"];
+                [GeneralService sharedInstance].stored_lastName = allUsersData[@"lastName"];
+                [GeneralService sharedInstance].stored_birthday = allUsersData[@"birthday"];
+                [GeneralService sharedInstance].stored_address = allUsersData[@"address"];
+                [GeneralService sharedInstance].stored_clientId = allUsersData[@"clientId"];
+                [GeneralService sharedInstance].stored_avatarLink = allUsersData[@"avatarLink"];
+                
+                
+                //
+                //IF DEVICE TOKEN IS LOST IT CANNOT BE RESTORED!
+                //THE USER WILL GET A NEW TOKEN AND LOSE ALL ITS DATA!
+                //
+                //IF WE DID NOT HAVE DEVICE TOKEN - GET HERE NOW, IT IS REQUIRED!
+                //CHECK USER DEVICE TOKEN & SAFE IN FIREBASE DATABASE ALWAYS
+                //
+                if (allUsersData[@"deviceToken"] == nil || [allUsersData[@"deviceToken"] isEqual:@""]) {
+                    
+                    //GET NEW DEVICETOKEN FOR USER
+                    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
+                                                                              instanceKey:[Configurator sharedInstance].instanceKey
+                                                                                   result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                        
+                        //STORE IN SHAREDSERVICE
+                        [GeneralService sharedInstance].device_token_number = deviceToken;
+                        [GeneralService sharedInstance].jwt_token_number = jwToken;
+                        [GeneralService sharedInstance].refresh_token_number = refreshToken;
+                        [GeneralService sharedInstance].firebase_user_id = authResult.user.uid;
+                        
+                        //CHECK ALL AT NIL
+                        //FIREBASE DATABASE DID'T WORK WITH NIL
+                        NSString *phoneSelected = self.enteredPhone ? self.enteredPhone : @"";
+                        [GeneralService sharedInstance].stored_userPhone = phoneSelected;
+                        
+                        NSString *email = [GeneralService sharedInstance].stored_userEmail ? [GeneralService sharedInstance].stored_userEmail : @"";
+                        NSString *firstName = [GeneralService sharedInstance].stored_firstName ? [GeneralService sharedInstance].stored_firstName : @"";
+                        NSString *lastName = [GeneralService sharedInstance].stored_lastName ? [GeneralService sharedInstance].stored_lastName : @"";
+                        NSString *birthday = [GeneralService sharedInstance].stored_birthday ? [GeneralService sharedInstance].stored_birthday : @"";
+                        NSString *address = [GeneralService sharedInstance].stored_address ? [GeneralService sharedInstance].stored_address : @"";
+                        NSString *clientId = [GeneralService sharedInstance].stored_clientId ? [GeneralService sharedInstance].stored_clientId : @"";
+                        
+                        [[[self->_realtimeDatabase child:@"users"]
+                                                   child:authResult.user.uid] setValue:@{@"deviceToken": deviceToken,
+                                                                                         @"userId": authResult.user.uid,
+                                                                                         @"email": email,
+                                                                                         @"phone": phoneSelected,
+                                                                                         @"firstName": firstName,
+                                                                                         @"lastName": lastName,
+                                                                                         @"birthday": birthday,
+                                                                                         @"address": address,
+                                                                                         @"clientId": clientId}
+                         ];
+                        
+                        //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
+                        [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
+                                                                    jwToken:[GeneralService sharedInstance].jwt_token_number
+                                                               refreshToken:[GeneralService sharedInstance].refresh_token_number];
+                        
+                        [self hidePreloader];
+                    }];
+                        
+                } else {
+                    
+                    //ELSE GET JWTOKEN & REFRESHTOKEN FOR EXIST USER BY DEVICETOKEN SAVED FROM FIREBASE DATABASE
+                    //LOGIN EXIST USER IN YOUR APP
+                    
+                    [[LoginAuthCore sharedManager] getJWTokenForUserWithDeviceToken:[GeneralService sharedInstance].device_token_number
+                                                                         instanceId:[Configurator sharedInstance].instanceId
+                                                                        instanceKey:[Configurator sharedInstance].instanceKey
+                                                                             result:^(NSString *newJWToken, NSString *newRefreshToken) {
+                        NSLog(@"NEW RESTORED jwToken by DEVICETOKEN %@", newJWToken);
+                        NSLog(@"NEW RESTORED refreshToken by DEVICETOKEN %@", newRefreshToken);
+                        
+                        //STORE IN SHAREDSERVICE
+                        [GeneralService sharedInstance].jwt_token_number = newJWToken;
+                        [GeneralService sharedInstance].refresh_token_number = newRefreshToken;
+                        
+                        //LOGIN EXIST USER IN APP
+                        [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
+                                                                    jwToken:[GeneralService sharedInstance].jwt_token_number
+                                                               refreshToken:[GeneralService sharedInstance].refresh_token_number];
+                        
+                        [self hidePreloader];
+                    }];
+                    
+                }
+            }
+        }];
+        
+//        [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
+//                                                                  instanceKey:[Configurator sharedInstance].instanceKey
+//                                                                       result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+//
+//            //STORE IN SHAREDSERVICE
+//            [GeneralService sharedInstance].device_token_number = deviceToken;
+//            [GeneralService sharedInstance].jwt_token_number = jwToken;
+//            [GeneralService sharedInstance].refresh_token_number = refreshToken;
+//
+//            FIRUserProfileChangeRequest *changeRequest = [[FIRAuth auth].currentUser profileChangeRequest];
+//            changeRequest.displayName = self.enteredPhone;
+//            [changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
+//
+//                if (error) {
+//                    [self hidePreloader];
+//                    return;
 //                }
-//                return;
-//            } else {
-//                [self showPreloader];
-//                [self dismissKeyboard];
-//                //[[GeneralService sharedInstance] loginAfterRigistration:response];
-//            }
-//        } else {
-//            [self.errorHandler handleError:error response:response];
-//        }
-//    }] loginInApp:loginData];
+//
+//                // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
+//                // STORE OTHER USER INFO IN DATABASE
+//                [[[self->_realtimeDatabase child:@"users"]
+//                                           child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedInstance].device_token_number,
+//                                                                                 @"userId": authResult.user.uid,
+//                                                                                 @"email": @"",
+//                                                                                 @"phone": self.enteredPhone,
+//                                                                                 @"firstName": @"",
+//                                                                                 @"lastName": @"",
+//                                                                                 @"birthday": @"",
+//                                                                                 @"address": @"",
+//                                                                                 @"clientId": @""}];
+//                }];
+//
+//                [GeneralService sharedInstance].user_FIR = authResult.user;
+//                [GeneralService sharedInstance].firebase_user_id = authResult.user.uid;
+//
+//                [GeneralService sharedInstance].stored_userEmail = @"";
+//                [GeneralService sharedInstance].stored_userPhone = self.enteredPhone;
+//                [GeneralService sharedInstance].stored_firstName = @"";
+//                [GeneralService sharedInstance].stored_lastName = @"";
+//                [GeneralService sharedInstance].stored_birthday = @"";
+//                [GeneralService sharedInstance].stored_address = @"";
+//                [GeneralService sharedInstance].stored_clientId = @"";
+//
+//                //LOGIN USER IN APP
+//                [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
+//                                                            jwToken:[GeneralService sharedInstance].jwt_token_number
+//                                                       refreshToken:[GeneralService sharedInstance].refresh_token_number];
+//
+//                [self hidePreloader];
+//        }];
+    }];
 }
 
 - (void)errorPhoneLoginFunction {
@@ -155,12 +385,14 @@
         if (IS_IPHONE_5 || IS_IPHONE_4)
             self.enterPassLbl.font = [Font regular12];
         
-        self.enterPassLbl.text = localizeString(@"Enter your password");
+        self.enterPassLbl.text = localizeString(@"Enter your password from sms");
         self.enterPassLbl.textColor = [Color darkGrayColor];
     });
 }
 
 - (IBAction)getNewPassword:(id)sender {
+    
+    
     
 //    RegPhoneRequestData* regData = [[RegPhoneRequestData alloc] init];
 //    

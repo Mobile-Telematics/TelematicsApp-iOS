@@ -215,6 +215,12 @@
     
     [[FIRAuth auth] signOut:nil];
     
+    NSError *signOutError;
+    BOOL status = [[FIRAuth auth] signOut:&signOutError];
+    if (!status) {
+        NSLog(@"Firebase error signing out: %@", signOutError);
+    }
+    
     [[AppDelegate appDelegate] updateRootController];
 }
 

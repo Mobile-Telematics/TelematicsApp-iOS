@@ -7,7 +7,6 @@
 //
 
 #import "EmailLoginViewCtrl.h"
-#import "RestoreEmailViewCtrl.h"
 #import "UIViewController+Preloader.h"
 #import "UITextField+Form.h"
 #import "UIImageView+WebCache.h"
