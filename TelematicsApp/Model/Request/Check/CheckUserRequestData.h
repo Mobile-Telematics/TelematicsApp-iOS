@@ -11,11 +11,11 @@
 @interface CheckUserRequestData: RequestData
 
 @property (nonatomic, copy) NSString<Optional>* Email;
+@property (nonatomic, copy) NSString<Optional>* Password;
 @property (nonatomic, copy) NSString<Optional>* Phone;
 @property (nonatomic, copy) NSString<Optional>* ClientId;
 @property (nonatomic, copy) NSString<Optional>* NeedConfirm;
 @property (nonatomic, copy) NSString<Optional>* ConfirmationCode;
-@property (nonatomic, copy) NSString<Optional>* Password;
 @property (nonatomic, copy) NSString<Optional>* ResetTypeDataContract;
 @property (nonatomic, copy) NSString<Optional>* ResetType;
 

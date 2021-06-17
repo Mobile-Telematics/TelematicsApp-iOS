@@ -7,7 +7,12 @@
 //
 
 #import "BaseViewController.h"
+@import  Firebase;
 
 @interface MainEmailViewCtrl: BaseViewController
+
+@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
+
+@property (nonatomic, assign) BOOL isSignUpPressed;
 
 @end

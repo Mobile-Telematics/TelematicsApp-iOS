@@ -12,7 +12,6 @@
 #import "ProfileViewController.h"
 #import "LeaderboardViewCtrl.h"
 #import "MeasuresViewCtrl.h"
-#import "ChangePasswordViewCtrl.h"
 #import <MessageUI/MessageUI.h>
 #import "LogSetup.h"
 #import "AFNetworking.h"
@@ -56,7 +55,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 6;
+        return 5;
     } if (section == 1) {
         return 2;
     } if (section == 2) {
@@ -91,9 +90,6 @@
             cell.titleLbl.text = localizeString(@"menuitem_connectobd");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_ridehailing"]];
         } else if (indexPath.row == 4) {
-            cell.titleLbl.text = localizeString(@"menuitem_security");
-            [cell.iconImg setImage:[UIImage imageNamed:@"ic_sec"]];
-        } else if (indexPath.row == 5) {
             cell.titleLbl.text = localizeString(@"menuitem_measures");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_meas"]];
         }
@@ -179,8 +175,6 @@
         } else if (indexPath.row == 3) {
             [self openConnectOBDDevice];
         } else if (indexPath.row == 4) {
-            [self openChangePassword];
-        } else if (indexPath.row == 5) {
             [self openMeasuresSettings];
         }
 	} else if (indexPath.section == 1) {
@@ -224,11 +218,6 @@
 - (void)openMeasuresSettings {
     MeasuresViewCtrl *meas = [self.storyboard instantiateViewControllerWithIdentifier:@"MeasuresViewCtrl"];
     [self.navigationController pushViewController:meas animated:YES];
-}
-
-- (void)openChangePassword {
-    ChangePasswordViewCtrl *pEdit = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangePasswordViewCtrl"];
-    [self.navigationController pushViewController:pEdit animated:YES];
 }
 
 - (void)openChat {

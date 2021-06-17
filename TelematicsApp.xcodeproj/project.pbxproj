@@ -180,7 +180,6 @@
 		E99ACAFA2200E1140083DD99 /* ProfileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF52200E1140083DD99 /* ProfileResponse.m */; };
 		E9A842AE225244530090461E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A842AC225244530090461E /* BaseViewController.m */; };
 		E9B28DE423F59861004DE7CB /* ErrorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B28DE323F59861004DE7CB /* ErrorObject.m */; };
-		E9BD8855227278CC0059FCA1 /* ChangePasswordViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BD8854227278CC0059FCA1 /* ChangePasswordViewCtrl.m */; };
 		E9BFA2FB21FE467900D80C21 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BFA2F721FE467900D80C21 /* Countries.swift */; };
 		E9BFA2FC21FE467900D80C21 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BFA2F821FE467900D80C21 /* CountriesViewController.swift */; };
 		E9BFA2FD21FE467900D80C21 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BFA2F921FE467900D80C21 /* Country.swift */; };
@@ -556,8 +555,6 @@
 		E9A842AD225244530090461E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E9B28DE223F59861004DE7CB /* ErrorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorObject.h; sourceTree = "<group>"; };
 		E9B28DE323F59861004DE7CB /* ErrorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorObject.m; sourceTree = "<group>"; };
-		E9BD8853227278CC0059FCA1 /* ChangePasswordViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangePasswordViewCtrl.h; sourceTree = "<group>"; };
-		E9BD8854227278CC0059FCA1 /* ChangePasswordViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangePasswordViewCtrl.m; sourceTree = "<group>"; };
 		E9BFA2F621FE467900D80C21 /* CountriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountriesViewController.h; sourceTree = "<group>"; };
 		E9BFA2F721FE467900D80C21 /* Countries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		E9BFA2F821FE467900D80C21 /* CountriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -1535,8 +1532,6 @@
 		E9BD8852227278CC0059FCA1 /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				E9BD8853227278CC0059FCA1 /* ChangePasswordViewCtrl.h */,
-				E9BD8854227278CC0059FCA1 /* ChangePasswordViewCtrl.m */,
 				E925550C24352E9B00B4EF17 /* MeasuresViewCtrl.h */,
 				E925550D24352E9C00B4EF17 /* MeasuresViewCtrl.m */,
 			);
@@ -2062,7 +2057,6 @@
 				E96ABEDF2612229100C0AC24 /* UsePhotoViewCtrl.swift in Sources */,
 				17AEDC6C1DA0063800E707B8 /* UIImage+FixOrientation.m in Sources */,
 				E96ABF4A2612807600C0AC24 /* CarPickerCtrl.m in Sources */,
-				E9BD8855227278CC0059FCA1 /* ChangePasswordViewCtrl.m in Sources */,
 				E96ABF5A261281C700C0AC24 /* VehicleResultResponse.m in Sources */,
 				E9866101258A9B810074BE6F /* UserActivityCell.m in Sources */,
 				E96ABF1F26127D7400C0AC24 /* SwiftSpinner.swift in Sources */,
@@ -2294,7 +2288,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MTK2QVQ5B8;
@@ -2333,7 +2327,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MTK2QVQ5B8;
 				ENABLE_BITCODE = NO;

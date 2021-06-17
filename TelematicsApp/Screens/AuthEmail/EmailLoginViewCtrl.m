@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _realtimeDatabase = [[FIRDatabase database] reference];
+    _realtimeDatabaseRef = [[FIRDatabase database] reference];
     
     self.loggedNameLbl.textColor = [Color officialMainAppColor];
     
@@ -107,7 +107,7 @@
             
                                     [GeneralService sharedInstance].user_FIR = existUser.user;
             
-                                    FIRDatabaseQuery *allUserData = [[self.realtimeDatabase child:@"users"] child:existUser.user.uid];
+                                    FIRDatabaseQuery *allUserData = [[self.realtimeDatabaseRef child:@"users"] child:existUser.user.uid];
                                     [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
               
                                         if (snapshot.value == [NSNull null]) {
@@ -163,7 +163,7 @@
                                                     NSString *address = [GeneralService sharedInstance].stored_address ? [GeneralService sharedInstance].stored_address : @"";
                                                     NSString *clientId = [GeneralService sharedInstance].stored_clientId ? [GeneralService sharedInstance].stored_clientId : @"";
                                                     
-                                                    [[[self->_realtimeDatabase child:@"users"]
+                                                    [[[self->_realtimeDatabaseRef child:@"users"]
                                                                                child:existUser.user.uid] setValue:@{@"deviceToken": deviceToken,
                                                                                                                     @"userId": existUser.user.uid,
                                                                                                                     @"email": email,
@@ -242,7 +242,7 @@
                         
                         // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
                         // STORE OTHER USER INFO IN DATABASE
-                        [[[self->_realtimeDatabase child:@"users"]
+                        [[[self->_realtimeDatabaseRef child:@"users"]
                                                    child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedInstance].device_token_number,
                                                                                          @"userId": authResult.user.uid,
                                                                                          @"email": self.enteredEmail,

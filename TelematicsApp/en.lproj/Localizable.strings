@@ -19,6 +19,7 @@
 "success_login" = "Successfully Logged In";
 "This phone is not registered.\nDo you want to proceed registration with this phone number?" = "This phone is not registered.\nDo you want to proceed registration with this phone number?";
 "This Email is not registered.\nDo you want to proceed registration with this Email?" = "This Email is not registered.\nDo you want to proceed registration with this Email?";
+"Sign Up\n"= "Sign Up\n";
 "Welcome!" = "Welcome!";
 "CONFIRM" = "CONFIRM";
 "CANCEL" = "CANCEL";
@@ -30,7 +31,6 @@
 "log_in_text" = "LOG IN";
 "SIGN IN" = "SIGN IN";
 "Use your email address" = "Use your email address";
-"Use your phone number. One-Time Password 123456\n\nCheck ''needGeneratePassword'' key in app Configuration.plist" = "Use your phone number. One-Time Password 123456\n\nCheck ''needGeneratePassword'' key in app Configuration.plist";
 "enter phone" = "enter phone";
 "Select Countries" = "Select Countries";
 "Select Country" = "Select Country";
