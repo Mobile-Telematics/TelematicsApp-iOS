@@ -13,7 +13,6 @@
 #import "LeaderboardViewCtrl.h"
 #import "MeasuresViewCtrl.h"
 #import <MessageUI/MessageUI.h>
-#import "LogSetup.h"
 #import "AFNetworking.h"
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>

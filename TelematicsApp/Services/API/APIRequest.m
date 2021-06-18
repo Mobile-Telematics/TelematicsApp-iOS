@@ -11,7 +11,6 @@
 #import "AppDelegate.h"
 #import <ifaddrs.h>
 #import <arpa/inet.h>
-#import "LogSetup.h"
 #import "AppDelegate.h"
 #import "DashboardResponse.h"
 #import "NSString+Date.h"
@@ -43,7 +42,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 @implementation APIRequest
 
 - (void)dealloc {
-    DDLogDebug(@"%s %@", __func__, NSStringFromClass([self class]));
+    //
 }
 
 + (NSString *)userServiceRootURL {
@@ -144,7 +143,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -166,7 +165,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -211,7 +210,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] statisticServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -232,7 +231,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] carServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -253,7 +252,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] leaderboardServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -299,7 +298,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.completed = YES;
-            DDLogError(@"%s %@ ERROR %@ JSON: %@", __func__, arequest.URL.absoluteString, error, parsedObject);
+            //DDLogError(@"%s %@ ERROR %@ JSON: %@", __func__, arequest.URL.absoluteString, error, parsedObject);
             
             if (((NSHTTPURLResponse*)response).statusCode == 401) {
                 
@@ -317,7 +316,6 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                 NSString *contentRT = [[NSString alloc] initWithContentsOfFile:fileRefreshKey usedEncoding:nil error:nil];
                 refreshData.refreshToken = contentRT;
                 
-                
                 NSDate *date = [NSDate new];
                 NSCalendar *calendar = [NSCalendar currentCalendar];
                 NSObject *savedObject = defaults_object(@"lastAuthTokenRequest");
@@ -330,7 +328,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                         differenceInMilliSec = 1000;
                     NSLog(@"differenceInMilliSec %d", differenceInMilliSec);
                     
-                    if (differenceInMilliSec >= 200) {
+                    if (differenceInMilliSec >= 50) {
                         
                         defaults_set_object(@"lastAuthTokenRequest", date);
                         

@@ -7,7 +7,6 @@
 //
 
 #import "BaseViewController.h"
-#import "LogSetup.h"
 #import "UIActionSheet+Blocks.h"
 #import "SystemServices.h"
 #import <CoreLocation/CoreLocation.h>
@@ -31,7 +30,6 @@
 @implementation BaseViewController
 
 - (void)dealloc {
-    DDLogVerbose(@"%s %@", __func__, NSStringFromClass([self class]));
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

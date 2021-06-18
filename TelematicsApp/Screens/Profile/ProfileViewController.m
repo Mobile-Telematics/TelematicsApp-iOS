@@ -434,7 +434,7 @@
     imageAttachment.image = [UIImage imageNamed:@"profile_verifed"];
     imageAttachment.bounds = CGRectMake(-6, -2, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
     NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
-    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
+    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@"   "];
     [completeText appendAttributedString:attachmentString];
     NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:text];
     [completeText appendAttributedString:textAfterIcon];
@@ -446,7 +446,7 @@
     imageAttachment.image = [UIImage imageNamed:@"profile_verifednot"];
     imageAttachment.bounds = CGRectMake(-6, -2, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
     NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
-    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
+    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@"   "];
     [completeText appendAttributedString:attachmentString];
     NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:text];
     [completeText appendAttributedString:textAfterIcon];

@@ -28,7 +28,6 @@
 @property (nonatomic, strong) NSNumber<Optional>* TrackCount;
 @property (nonatomic, strong) NSNumber<Optional>* SummaryDuration;
 @property (nonatomic, strong) NSNumber<Optional>* SummaryDistance;
-@property (nonatomic, strong) NSNumber<Optional>* DistanceForScoring;
 
 @property (nonatomic, strong) NSNumber<Optional>* WeeklyMaxSpeed;
 @property (nonatomic, strong) NSNumber<Optional>* WeeklyAverageSpeed;

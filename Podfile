@@ -11,10 +11,9 @@ def available_pods
     pod ‘Firebase/Database’
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
-    #pod 'FirebaseUI/Database'
     pod 'AFNetworking'
     pod 'JSONModel'
-    pod 'CocoaLumberjack/Swift', '3.5.3'
+    #pod 'CocoaLumberjack/Swift', '3.5.3'
     pod 'SDWebImage', '5.9.0'
     pod 'GKImagePicker@robseward'
     pod 'SystemServices'
@@ -23,7 +22,7 @@ def available_pods
     pod 'UIActionSheet+Blocks'
     pod 'UIAlertView+Blocks'
     pod 'CMTabbarView', '0.2.0'
-    pod 'Charts', '3.3.0'
+    #pod 'Charts', '3.3.0'
     pod 'YYWebImage'
     pod 'SHSPhoneComponent'
     pod "IQDropDownTextField"
@@ -32,7 +31,7 @@ def available_pods
     pod "IQMediaPickerController"
     pod 'libPhoneNumber-iOS', '~> 0.8'
     pod 'KDLoadingView'
-    pod 'ImagePicker', '3.1.0'
+    pod 'ImagePicker'//, '3.1.0'
     pod 'CircleTimer', '0.2.0'
 end
 

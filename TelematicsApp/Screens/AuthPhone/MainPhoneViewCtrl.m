@@ -18,7 +18,6 @@
 #import "TelematicsAppRegPopup.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
-#import "LogSetup.h"
 #import <KVNProgress/KVNProgress.h>
 #import "libPhoneNumber_iOS/NBPhoneNumberUtil.h"
 #import "libPhoneNumber_iOS/NBPhoneNumber.h"
@@ -171,7 +170,7 @@
     
     if (![phoneUtil isValidNumber:checkNumber]) {
         self.usePhoneLbl.text = localizeString(@"validation_invalid_phone");
-        self.usePhoneLbl.textColor = [Color officialRedColor];
+        self.usePhoneLbl.textColor = [Color officialDarkRedColor];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.usePhoneLbl.text = localizeString(@"Use your phone number");
             self.usePhoneLbl.textColor = [Color darkGrayColor];
@@ -203,7 +202,7 @@
         if (error) {
             [self dismissKeyboard];
             self.usePhoneLbl.text = localizeString(@"Temporarily unavailable. Try again in a few minutes");
-            self.usePhoneLbl.textColor = [Color officialRedColor];
+            self.usePhoneLbl.textColor = [Color officialDarkRedColor];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 self.usePhoneLbl.text = localizeString(@"Use your email address");
                 self.usePhoneLbl.textColor = [Color darkGrayColor];

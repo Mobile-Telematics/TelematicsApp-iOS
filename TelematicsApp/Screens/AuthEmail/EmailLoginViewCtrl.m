@@ -10,7 +10,6 @@
 #import "UIViewController+Preloader.h"
 #import "UITextField+Form.h"
 #import "UIImageView+WebCache.h"
-#import "LogSetup.h"
 
 @interface EmailLoginViewCtrl () <UITextFieldDelegate>
 

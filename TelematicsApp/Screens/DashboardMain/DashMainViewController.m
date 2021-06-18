@@ -65,7 +65,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView                *mainBackgroundView;
 
 @property (weak, nonatomic) IBOutlet UIView                     *needDistanceView;
-@property (weak, nonatomic) IBOutlet UIImageView                *needDistanceDemoView;
+@property (weak, nonatomic) IBOutlet UIImageView                *needDistanceDemoImgView;
 @property (weak, nonatomic) IBOutlet UIView                     *needDistanceAverageStatView;
 @property (weak, nonatomic) IBOutlet UILabel                    *needDistanceLabel;
 @property (nonatomic) IBOutlet ProgressBarView                  *progressBarDistance;
@@ -228,9 +228,12 @@
         self.appModel.notFirstRunApp = YES;
         self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
         
+        self.mainDashboardView.hidden = YES;
+        self.needDistanceView.hidden = NO;
+        
         self.disableCounting = YES;
         [self startFetchStatisticData];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.disableCounting = YES;
             [self getDashboardStatisticsData];
             [self getDashboardEcoDataAllTime];
@@ -239,6 +242,7 @@
             [self getDashboardEcoDataYear];
             [self hidePreloader];
         });
+        [self hidePreloader];
     } else {
         self.disableCounting = NO;
         [self updateDataFromCacheForDashboard];
@@ -303,8 +307,7 @@
         [self mainCheckPermissions];
     });
     
-    if (IS_IPHONE_5 || IS_IPHONE_4)
-        [self lowFontsForOldDevices];
+    if (IS_IPHONE_5 || IS_IPHONE_4) [self lowFontsForOldDevices];
     
     [curvePageCtrl setNumberOfPages:6];
     [demoCurvePageCtrl setNumberOfPages:6];
@@ -348,14 +351,12 @@
 }
 
 - (void)startFetchStatisticData {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.disableCounting = YES;
-        [self getDashboardStatisticsData];
-        [self getDashboardEcoDataAllTime];
-        [self getDashboardEcoDataWeek];
-        [self getDashboardEcoDataMonth];
-        [self getDashboardEcoDataYear];
-    });
+    self.disableCounting = YES;
+    [self getDashboardStatisticsData];
+    [self getDashboardEcoDataAllTime];
+    [self getDashboardEcoDataWeek];
+    [self getDashboardEcoDataMonth];
+    [self getDashboardEcoDataYear];
 }
 
 
@@ -379,7 +380,7 @@
         if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
             userRealDistance = convertKmToMiles(userRealDistance);
         }
-        if (userRealDistance < requiredDistance) {
+        if (userRealDistance < requiredDistance || requiredDistance == 0) {
             self.mainDashboardView.hidden = YES;
             self.needDistanceView.hidden = NO;
         } else {
@@ -465,14 +466,7 @@
         if (!error && [response isSuccesful]) {
             self.dashboard = ((DashboardResponse *)response).Result;
             
-            if ([[Configurator sharedInstance].needDistanceForScoringKm isEqual:@0]) {
-                self.appModel.statDistanceForScoring = self.dashboard.DistanceForScoring;
-                if (self.dashboard.DistanceForScoring.intValue == 0) {
-                    self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
-                }
-            } else {
-                self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
-            }
+            self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
             
             if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
                 float miles = convertKmToMiles(self.appModel.statDistanceForScoring.floatValue);
@@ -486,20 +480,14 @@
             NSDate *currentDate = [NSDate date];
             [self getDashboardScoringsIndividualOnCurrentDay:currentDate endDate:currentDate];
         } else {
-            if ([[Configurator sharedInstance].needDistanceForScoringKm isEqual:@0]) {
-                self.appModel.statDistanceForScoring = self.dashboard.DistanceForScoring;
-                if (self.dashboard.DistanceForScoring.intValue == 0) {
-                    self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
-                }
-            } else {
-                self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
-            }
+            self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
             
             if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
                 float miles = convertKmToMiles(self.appModel.statDistanceForScoring.floatValue);
                 self.appModel.statDistanceForScoring = @(miles);
             }
             
+            self.appModel.statSummaryDistance = 0;
             [self getDashboardScoringsIndividualOnCurrentDay:startDate endDate:endDate];
         }
     }] getStatisticsIndividualAllTime:sDate endDate:eDate];
@@ -777,19 +765,19 @@
             NSNumber *value;
             int count = +1;
             if (type == 0 && count == 1) {
-                value = ddObj.OverallScore;
+                value = ddObj[@"OverallScore"];
             } else if (type == 1) {
-                value = ddObj.AccelerationScore;
+                value = ddObj[@"AccelerationScore"];
             } else if (type == 2) {
-                value = ddObj.BrakingScore;
+                value = ddObj[@"BrakingScore"];
             } else if (type == 3) {
-                value = ddObj.DistractedScore;
+                value = ddObj[@"DistractedScore"];
             } else if (type == 4) {
-                value = ddObj.SpeedingScore;
+                value = ddObj[@"SpeedingScore"];
             } else if (type == 5) {
-                value = ddObj.CorneringScore;
+                value = ddObj[@"CorneringScore"];
             } else {
-                value = ddObj.OverallScore;
+                value = ddObj[@"OverallScore"];
             }
             chartData[i] = [NSNumber numberWithFloat:value.floatValue];
             if (self.appModel.detailsAllDrivingScores.count == 1) {
@@ -812,8 +800,9 @@
         daysWeek = [NSMutableArray arrayWithCapacity:self.appModel.detailsAllDrivingScores.count];
         for (int i=0; i < self.appModel.detailsAllDrivingScores.count; i++) {
             
-            DrivingDetailsObject *ddObj = self.appModel.detailsAllDrivingScores[i];
-            NSString *currentDateValue = ddObj.CalcDate;
+            DrivingDetailsObject *individualObj = self.appModel.detailsAllDrivingScores[i];
+            NSString *currentDateValue = individualObj[@"CalcDate"];
+            
             if (currentDateValue == nil)
                 return;
             NSDate *dateStart = [NSDate dateWithISO8601String:currentDateValue];
@@ -884,7 +873,6 @@
         NSInteger numSection = indexPath.section;
         if (numSection == 0) {
             [cell loadGauge:self.appModel.detailsScoreOverall curveName:localizeString(@"dash_overall")];
-            //[cell loadGauge:@90 curveName:localizeString(@"dash_overall")]; //test
         } else if (numSection == 1) {
             [cell loadGauge:self.appModel.detailsScoreAcceleration curveName:localizeString(@"dash_acceleration")];
         } else if (numSection == 2) {
@@ -1256,7 +1244,7 @@
                     userRealDistance = convertKmToMiles(userRealDistance);
                 }
                 
-                if (userRealDistance < requiredDistance) {
+                if (userRealDistance < requiredDistance || requiredDistance == 0) {
                     self.mainDashboardView.hidden = YES;
                     self.needDistanceView.hidden = NO;
                     [self updateMainConstraints];
@@ -1295,7 +1283,7 @@
                 userRealDistance = convertKmToMiles(userRealDistance);
             }
             
-            if (userRealDistance < requiredDistance) {
+            if (userRealDistance < requiredDistance || requiredDistance == 0) {
                 self.mainDashboardView.hidden = YES;
                 self.needDistanceView.hidden = NO;
             } else {
@@ -1361,7 +1349,7 @@
                 userRealDistance = convertKmToMiles(userRealDistance);
             }
             
-            if (userRealDistance < requiredDistance) {
+            if (userRealDistance < requiredDistance || requiredDistance == 0) {
                 self.mainDashboardView.hidden = YES;
                 self.needDistanceView.hidden = NO;
                 [self updateMainConstraints];
@@ -1420,7 +1408,7 @@
                 userRealDistance = convertKmToMiles(userRealDistance);
             }
                 
-            if (userRealDistance < requiredDistance) {
+            if (userRealDistance < requiredDistance || requiredDistance == 0) {
                 self.mainDashboardView.hidden = YES;
                 self.needDistanceView.hidden = NO;
             } else {
@@ -1437,7 +1425,7 @@
         if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
             userRealDistance = convertKmToMiles(userRealDistance);
         }
-        if (userRealDistance < requiredDistance) {
+        if (userRealDistance < requiredDistance || requiredDistance == 0) {
             self.mainDashboardView.hidden = YES;
             self.needDistanceView.hidden = NO;
             self->permissionPopup.disabledGPS = NO;
@@ -1563,38 +1551,41 @@
                 });
             } motionManagerResponce:^(BOOL granted, NSError * _Nullable error) {
                 NSLog(@"MOTION INIT SUCCESS");
-                NSString *xs = @"Btn tapped now";
+                self->permissionPopup.disabledMotion = NO;
+                defaults_set_object(@"needMotionOn", @(YES));
                 
-                switch ([CMMotionActivityManager authorizationStatus]) {
-                    case CMAuthorizationStatusNotDetermined:
-                    {
-                        NSLog(@"NotDetermined");
-                        xs = @"NotDetermined";
-                        [TelematicsAppPrivacyRequestManager requestAuthorizationMotionImmediately];
-                            //defaults_set_object(@"needMotionOn", @(YES));
-                    }
-                        break;
-                    case CMAuthorizationStatusRestricted:
-                    {
-                        NSLog(@"Restricted");
-                        xs = @"Restricted";
-                        [TelematicsAppPrivacyRequestManager requestAuthorizationMotionImmediately];
-                    }
-                        break;
-                    case CMAuthorizationStatusDenied:
-                    {
-                        NSLog(@"Denied");
-                        xs = @"Denied";
-                    }
-                        break;
-                    case CMAuthorizationStatusAuthorized:
-                    {
-                        NSLog(@"Authorized");
-                        xs = @"Authorized";
-                    }
-                    default:
-                        break;
-                }
+//                NSString *xs = @"Btn tapped now";
+//
+//                switch ([CMMotionActivityManager authorizationStatus]) {
+//                    case CMAuthorizationStatusNotDetermined:
+//                    {
+//                        NSLog(@"NotDetermined");
+//                        xs = @"NotDetermined";
+//                        [TelematicsAppPrivacyRequestManager requestAuthorizationMotionImmediately];
+//                            //defaults_set_object(@"needMotionOn", @(YES));
+//                    }
+//                        break;
+//                    case CMAuthorizationStatusRestricted:
+//                    {
+//                        NSLog(@"Restricted");
+//                        xs = @"Restricted";
+//                        [TelematicsAppPrivacyRequestManager requestAuthorizationMotionImmediately];
+//                    }
+//                        break;
+//                    case CMAuthorizationStatusDenied:
+//                    {
+//                        NSLog(@"Denied");
+//                        xs = @"Denied";
+//                    }
+//                        break;
+//                    case CMAuthorizationStatusAuthorized:
+//                    {
+//                        NSLog(@"Authorized");
+//                        xs = @"Authorized";
+//                    }
+//                    default:
+//                        break;
+//                }
             } locationManagerResponce:^(CLAuthorizationStatus status) {
                 NSLog(@"LOCATION INIT SUCCESS");
             }];
@@ -2207,7 +2198,7 @@
             break;
         }
     }
-    if (userRealDistance >= requiredDistance) {
+    if (userRealDistance >= requiredDistance && requiredDistance != 0) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             heightConstraint.constant = 850;
         } else if (IS_IPHONE_8) {
@@ -2219,7 +2210,7 @@
         } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
             heightConstraint.constant = 580;
         }
-    } else if (userRealDistance < requiredDistance) {
+    } else if (userRealDistance < requiredDistance || requiredDistance == 0) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             heightConstraint.constant = 940;
         } else if (IS_IPHONE_8 || IS_IPHONE_8P) {

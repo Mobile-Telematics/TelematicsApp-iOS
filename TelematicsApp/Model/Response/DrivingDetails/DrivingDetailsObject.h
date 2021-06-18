@@ -10,7 +10,7 @@
 
 @protocol DrivingDetailsObject;
 
-@interface DrivingDetailsObject: ResponseObject
+@interface DrivingDetailsObject: NSDictionary
 
 @property (nonatomic, strong) NSNumber<Optional>* OverallScore;
 @property (nonatomic, strong) NSNumber<Optional>* AccelerationScore;

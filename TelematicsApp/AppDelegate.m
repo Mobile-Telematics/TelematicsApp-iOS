@@ -10,7 +10,6 @@
 #import "Configurator.h"
 #import "CoreDataCoordinator.h"
 #import <MagicalRecord/MagicalRecord.h>
-#import "LogSetup.h"
 #import "Helpers.h"
 #import "MainPhoneViewCtrl.h"
 #import "FeedViewController.h"
@@ -283,7 +282,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    DDLogError(@"%s %@", __func__, error);
+    //
 }
 
 

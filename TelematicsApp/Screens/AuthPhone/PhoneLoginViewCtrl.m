@@ -11,7 +11,6 @@
 #import "UITextField+Form.h"
 #import "UIImageView+WebCache.h"
 #import "Helpers.h"
-#import "LogSetup.h"
 
 @interface PhoneLoginViewCtrl () <UITextFieldDelegate> {
     int currSeconds;

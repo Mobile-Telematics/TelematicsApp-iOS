@@ -14,7 +14,6 @@
 #import "ProfileResponse.h"
 #import "RefreshTokenRequestData.h"
 #import "VehicleResponse.h"
-#import "LogSetup.h"
 
 
 @interface GeneralService ()
@@ -158,7 +157,6 @@
 //            [CoreDataCoordinator saveCoreDataCoordinatorContext];
         } else {
             self.vehicles = ((VehicleResponse *)response).Result;
-            DDLogError(@"%s %@ %@", __func__, response, error);
         }
     }] getUserAllVehicles];
 }
@@ -182,6 +180,8 @@
 }
 
 - (void)logout {
+    self.appModel.notFirstRunApp = NO;
+    
     [ZenAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);

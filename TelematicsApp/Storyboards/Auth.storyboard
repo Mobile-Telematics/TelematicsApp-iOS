@@ -40,7 +40,7 @@
                                     <constraint firstAttribute="height" constant="172" id="k6g-If-TQk"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Use your email address" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MQ-uj-EKB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Sign In" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2MQ-uj-EKB">
                                 <rect key="frame" x="0.0" y="465" width="414" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="yhH-cH-s1n"/>
@@ -60,7 +60,7 @@
                                     <outlet property="delegate" destination="SMm-eF-RBH" id="EYX-P4-Ueq"/>
                                 </connections>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="242" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="create password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJu-sx-37K">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="242" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="enter password" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJu-sx-37K">
                                 <rect key="frame" x="45" y="560" width="324" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="J7I-B3-d4L"/>
@@ -187,7 +187,7 @@
                         <outlet property="passwordField" destination="UJu-sx-37K" id="9NG-2f-iPa"/>
                         <outlet property="privacyBtn" destination="wWD-cc-jih" id="1bK-Zx-N7b"/>
                         <outlet property="signInBtn" destination="T5P-bo-Tu1" id="8Dx-NU-rSH"/>
-                        <outlet property="useEmailLbl" destination="2MQ-uj-EKB" id="J31-uh-UwP"/>
+                        <outlet property="welcomeLbl" destination="2MQ-uj-EKB" id="iHC-Jv-bJL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M1n-pj-TQh" userLabel="First Responder" sceneMemberID="firstResponder"/>
