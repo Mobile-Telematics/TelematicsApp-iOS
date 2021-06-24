@@ -23,8 +23,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *userBirthday;
 @property (nullable, nonatomic, retain) NSString *userAddress;
 @property (nullable, nonatomic, retain) NSString *userGender;
+@property (nullable, nonatomic, retain) NSString *userMaritalStatus;
+@property (nullable, nonatomic, retain) NSString *userChildrenCount;
 @property (nullable, nonatomic, retain) NSString *userClientId;
-@property (nullable, nonatomic, retain) NSString *userAvatarLink;
+@property (nullable, nonatomic, retain) NSString *userProfilePictureLink;
 @property (nullable, nonatomic, retain) NSData *userPhotoData;
 
 @property (nonatomic, assign) BOOL notFirstRunApp;

@@ -22,7 +22,9 @@
 @dynamic userAddress;
 @dynamic userClientId;
 @dynamic userGender;
-@dynamic userAvatarLink;
+@dynamic userMaritalStatus;
+@dynamic userChildrenCount;
+@dynamic userProfilePictureLink;
 @dynamic userPhotoData;
 
 @dynamic notFirstRunApp;

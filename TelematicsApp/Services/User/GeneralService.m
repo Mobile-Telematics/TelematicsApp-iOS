@@ -27,7 +27,7 @@
 
 @implementation GeneralService
 
-+ (instancetype)sharedInstance {
++ (instancetype)sharedService {
     static GeneralService *_sharedService = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -59,8 +59,11 @@
     defaults_set_object(@"authUserLastName", self.stored_lastName);
     defaults_set_object(@"authUserBirthday", self.stored_birthday);
     defaults_set_object(@"authUserAddress", self.stored_address);
+    defaults_set_object(@"autUserGender", self.stored_gender);
+    defaults_set_object(@"autUserMaritalStatus", self.stored_maritalStatus);
+    defaults_set_object(@"autUserChildrenCount", self.stored_childrenCount);
     defaults_set_object(@"autUserClientId", self.stored_clientId);
-    defaults_set_object(@"authUserAvatarLink", self.stored_avatarLink);
+    defaults_set_object(@"authUserProfilePictureLink", self.stored_profilePictureLink);
 }
 
 - (void)loadCredentials {
@@ -85,8 +88,11 @@
     self.stored_lastName = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserLastName"];
     self.stored_birthday = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserBirthday"];
     self.stored_address = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserAddress"];
+    self.stored_gender = [[NSUserDefaults standardUserDefaults] valueForKey:@"autUserGender"];
+    self.stored_maritalStatus = [[NSUserDefaults standardUserDefaults] valueForKey:@"autUserMaritalStatus"];
+    self.stored_childrenCount = [[NSUserDefaults standardUserDefaults] valueForKey:@"autUserChildrenCount"];
     self.stored_clientId = [[NSUserDefaults standardUserDefaults] valueForKey:@"autUserClientId"];
-    self.stored_avatarLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserAvatarLink"];
+    self.stored_profilePictureLink = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserProfilePictureLink"];
     
     if (self.device_token_number) {
         self.isLoggedOn = YES;
@@ -94,30 +100,73 @@
 }
 
 - (void)loadProfile {
+    if (self.isLoggedOn) {
+        
+        //FETCH USER PROFILE UPDATES FROM FIREBASE EVERY TIME IF NEEDED
+        self.realtimeDatabase = [[FIRDatabase database] reference];
+        
+        FIRDatabaseQuery *allUserData = [[self.realtimeDatabase child:@"users"] child:[GeneralService sharedService].firebase_user_id];
+        [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+
+            if (snapshot.value == [NSNull null]) {
+                NSLog(@"No user data!");
+            } else {
+                
+                //GET SNAPSHOT USER DATA FROM FIREBASE DATABASE
+                NSDictionary *allUsersData = (NSDictionary*)snapshot.value;
+                
+                [GeneralService sharedService].device_token_number = allUsersData[@"deviceToken"];
+                [GeneralService sharedService].firebase_user_id = allUsersData[@"userId"];
+                
+                [GeneralService sharedService].stored_userEmail = allUsersData[@"email"];
+                [GeneralService sharedService].stored_userPhone = allUsersData[@"phone"];
+                [GeneralService sharedService].stored_firstName = allUsersData[@"firstName"];
+                [GeneralService sharedService].stored_lastName = allUsersData[@"lastName"];
+                [GeneralService sharedService].stored_birthday = allUsersData[@"birthday"];
+                [GeneralService sharedService].stored_address = allUsersData[@"address"];
+                [GeneralService sharedService].stored_gender = allUsersData[@"gender"];
+                [GeneralService sharedService].stored_maritalStatus = allUsersData[@"maritalStatus"];
+                [GeneralService sharedService].stored_childrenCount = allUsersData[@"childrenCount"];
+                [GeneralService sharedService].stored_clientId = allUsersData[@"clientId"];
+                [GeneralService sharedService].stored_profilePictureLink = allUsersData[@"profilePictureLink"];
+                
+                NSLog(@"deviceToken %@", [GeneralService sharedService].device_token_number);
+                NSLog(@"firebaseId %@", [GeneralService sharedService].firebase_user_id);
+                NSLog(@"email %@", [GeneralService sharedService].stored_userEmail);
+                NSLog(@"phone %@", [GeneralService sharedService].stored_userPhone);
+                NSLog(@"firstName %@", [GeneralService sharedService].stored_firstName);
+                NSLog(@"lastName %@", [GeneralService sharedService].stored_lastName);
+                NSLog(@"birthday %@", [GeneralService sharedService].stored_birthday);
+                NSLog(@"address %@", [GeneralService sharedService].stored_address);
+                NSLog(@"gender %@", [GeneralService sharedService].stored_gender);
+                NSLog(@"maritalStatus %@", [GeneralService sharedService].stored_maritalStatus);
+                NSLog(@"childrenCount %@", [GeneralService sharedService].stored_childrenCount);
+                NSLog(@"clientId %@", [GeneralService sharedService].stored_clientId);
+                NSLog(@"profilePictureLink %@", [GeneralService sharedService].stored_profilePictureLink);
+                
+                [self applyProfileInformationInCore];
+            }
+        }];
+    }
+}
+
+- (void)applyProfileInformationInCore {
     
     self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
-    NSLog(@"deviceToken %@", [GeneralService sharedInstance].device_token_number);
-    NSLog(@"firebaseId %@", [GeneralService sharedInstance].firebase_user_id);
-    NSLog(@"email %@", [GeneralService sharedInstance].stored_userEmail);
-    NSLog(@"phone %@", [GeneralService sharedInstance].stored_userPhone);
-    NSLog(@"firstName %@", [GeneralService sharedInstance].stored_firstName);
-    NSLog(@"lastName %@", [GeneralService sharedInstance].stored_lastName);
-    NSLog(@"birthday %@", [GeneralService sharedInstance].stored_birthday);
-    NSLog(@"address %@", [GeneralService sharedInstance].stored_address);
-    NSLog(@"clientId %@", [GeneralService sharedInstance].stored_clientId);
-    NSLog(@"avatarLink %@", [GeneralService sharedInstance].stored_avatarLink);
-    
-    self.appModel.userFirebaseId = [GeneralService sharedInstance].firebase_user_id;
-    self.appModel.userEmail = [GeneralService sharedInstance].stored_userEmail;
-    self.appModel.userPhone = [GeneralService sharedInstance].stored_userPhone;
-    self.appModel.userFirstName = [GeneralService sharedInstance].stored_firstName;
-    self.appModel.userLastName = [GeneralService sharedInstance].stored_lastName;
-    self.appModel.userBirthday = [GeneralService sharedInstance].stored_birthday;
-    self.appModel.userAddress = [GeneralService sharedInstance].stored_address;
-    self.appModel.userClientId = [GeneralService sharedInstance].stored_clientId;
-    self.appModel.userAvatarLink = [GeneralService sharedInstance].stored_avatarLink;
-    self.appModel.userFullName = [NSString stringWithFormat:@"%@ %@", [GeneralService sharedInstance].stored_firstName, [GeneralService sharedInstance].stored_lastName];
+    self.appModel.userFirebaseId = [GeneralService sharedService].firebase_user_id;
+    self.appModel.userEmail = [GeneralService sharedService].stored_userEmail;
+    self.appModel.userPhone = [GeneralService sharedService].stored_userPhone;
+    self.appModel.userFirstName = [GeneralService sharedService].stored_firstName;
+    self.appModel.userLastName = [GeneralService sharedService].stored_lastName;
+    self.appModel.userBirthday = [GeneralService sharedService].stored_birthday;
+    self.appModel.userAddress = [GeneralService sharedService].stored_address;
+    self.appModel.userGender = [GeneralService sharedService].stored_gender;
+    self.appModel.userMaritalStatus = [GeneralService sharedService].stored_maritalStatus;
+    self.appModel.userChildrenCount = [GeneralService sharedService].stored_childrenCount;
+    self.appModel.userClientId = [GeneralService sharedService].stored_clientId;
+    self.appModel.userProfilePictureLink = [GeneralService sharedService].stored_profilePictureLink;
+    self.appModel.userFullName = [NSString stringWithFormat:@"%@ %@", [GeneralService sharedService].stored_firstName, [GeneralService sharedService].stored_lastName];
     
     if (self.isLoggedOn) {
         [self saveCredentials];
@@ -126,7 +175,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateProfileTableDataNow" object:self];
     
     dispatch_async(dispatch_get_global_queue(0,0), ^{
-        NSData * data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:self.appModel.userAvatarLink]];
+        NSData * data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:self.appModel.userProfilePictureLink]];
         if (data != nil) {
             self.appModel.userPhotoData = data;
         }

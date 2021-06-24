@@ -52,6 +52,7 @@ typedef void (^CompleteNewJWTokenByDeviceToken)(NSString* jwToken, NSString* ref
                                   result:(void (^)(NSString* jwToken, NSString* refreshToken))completion;
 
 
-+ (id)sharedManager;
+//+ (id)sharedManager;
++ (LoginAuthCore *)sharedManager;
 
 @end

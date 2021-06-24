@@ -72,20 +72,17 @@
 
 + (NSDictionary *)customRequestHeaders {
     NSMutableDictionary* headers = [[super customRequestHeaders] mutableCopy];
-    if ([GeneralService sharedInstance].jwt_token_number) {
-        NSString *authToken = [NSString stringWithFormat:@"Bearer %@", [GeneralService sharedInstance].jwt_token_number];
+    if ([GeneralService sharedService].jwt_token_number) {
+        NSString *authToken = [NSString stringWithFormat:@"Bearer %@", [GeneralService sharedService].jwt_token_number]; //'Bearer ' IS REQUIRED
         headers[@"Authorization"] = authToken;
     }
     
     headers[@"InstanceId"] = [self instanceId];
     headers[@"InstanceKey"] = [self instanceKey];
     headers[@"appversion"] = APP_VERSION;
-
-    headers[@"DeviceToken"] = [GeneralService sharedInstance].device_token_number;
     
-#if TARGET_IPHONE_SIMULATOR
-    //headers[@"refreshToken"] = [GeneralService sharedInstance].refresh_token_number;
-#endif
+    headers[@"DeviceToken"] = [GeneralService sharedService].device_token_number;
+    
     
     NSLog(@"%@", headers);
     return headers;

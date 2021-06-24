@@ -42,7 +42,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 @implementation APIRequest
 
 - (void)dealloc {
-    //
+    DDLogDebug(@"%s %@", __func__, NSStringFromClass([self class]));
 }
 
 + (NSString *)userServiceRootURL {
@@ -116,7 +116,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 + (instancetype)requestWithCompletion:(APIRequestCompletionBlock)completion progress:(void (^)(float))progress {
-    APIRequest* result = [[self alloc] initWithDelegate:(id<UIDropInteractionDelegate>)self]; //nil
+    APIRequest* result = [[self alloc] initWithDelegate:(id<UIDropInteractionDelegate>)self];
     [result setCompletionBlock:completion];
     [result setProgressBlock:progress];
     return result;
@@ -143,11 +143,11 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-    request.timeoutInterval = 180;
+    request.timeoutInterval = 120;
     NSLog(@"req %@", request.URL.absoluteString);
     NSDictionary* customHeaders = [[self class] customRequestHeaders];
     for (NSString* key in customHeaders.allKeys) {
@@ -165,11 +165,11 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-    request.timeoutInterval = 180;
+    request.timeoutInterval = 120;
     NSLog(@"req %@", request.URL.absoluteString);
     NSDictionary* customHeaders = [[self class] customRequestHeaders];
     for (NSString* key in customHeaders.allKeys) {
@@ -210,7 +210,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] statisticServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -231,7 +231,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] carServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -252,7 +252,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
         path = [NSString stringWithFormat:@"%@/%@", [[self class] leaderboardServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    //DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
     AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
     NSError* error = nil;
     NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
@@ -298,7 +298,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.completed = YES;
-            //DDLogError(@"%s %@ ERROR %@ JSON: %@", __func__, arequest.URL.absoluteString, error, parsedObject);
+            DDLogError(@"%s %@ ERROR %@ JSON: %@", __func__, arequest.URL.absoluteString, error, parsedObject);
             
             if (((NSHTTPURLResponse*)response).statusCode == 401) {
                 
@@ -328,7 +328,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                         differenceInMilliSec = 1000;
                     NSLog(@"differenceInMilliSec %d", differenceInMilliSec);
                     
-                    if (differenceInMilliSec >= 50) {
+                    if (differenceInMilliSec >= 200) {
                         
                         defaults_set_object(@"lastAuthTokenRequest", date);
                         
@@ -344,7 +344,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                                 }
 
                                 NSLog(@"<<<<<<<<<<WE REFRESH MAIN AUTH TOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
-                                [[GeneralService sharedInstance] refreshJWToken:response];
+                                [[GeneralService sharedService] refreshJWToken:response];
 
                                 NSMutableURLRequest *request = self.savedRequest;
                                 NSDictionary* customHeaders = [[self class] customRequestHeaders];
@@ -393,7 +393,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                             }
 
                             NSLog(@"<<<<<<<<<<WE REFRESH MAIN AUTH TOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
-                            [[GeneralService sharedInstance] refreshJWToken:response];
+                            [[GeneralService sharedService] refreshJWToken:response];
 
                         } else if (((RootResponse*)response).Status.intValue == 419) {
                             [[NSOperationQueue mainQueue] cancelAllOperations];
@@ -450,7 +450,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.completed = YES;
             
-            //NSLog(@"********PARSEDRESULTBACKEND>>>>>>>>>> %@", parsedObject);
+            NSLog(@"********PARSEDRESULTBACKEND>>>>>>>>>> %@", parsedObject);
             
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                 self.responseHeaders = ((NSHTTPURLResponse *)response).allHeaderFields;
@@ -504,23 +504,8 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 
                                 NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOKENONCE: RESPONSE %d", ((RootResponse*)response).Status.intValue);
 
-                                [[GeneralService sharedInstance] refreshJWToken:response];
-
-//                                if (self.counter == 1 || self.counter == 100) {
-//                                    NSMutableURLRequest *request = self.savedRequest;
-//                                    NSDictionary* customHeaders = [[self class] customRequestHeaders];
-//                                    for (NSString* key in customHeaders.allKeys) {
-//                                        [request setValue:customHeaders[key] forHTTPHeaderField:key];
-//                                    }
-//                                    NSString *reqUrl = [NSString stringWithFormat:@"%@%@", [Configurator sharedInstance].userServiceRootURL, @"/Auth/RefreshToken"];
-//                                    NSString *savedUrl = [NSString stringWithFormat:@"%@", self.savedRequest.URL];
-//                                    if (![savedUrl isEqual:reqUrl] && ![savedUrl isEqualToString:@"(null)"]) {
-//                                        [self performRequest:request withResponseClass:responseClass];
-//                                        [[NSOperationQueue mainQueue] cancelAllOperations];
-//                                        [self.currentOperation cancel];
-//                                    }
-//                                }
-
+                                [[GeneralService sharedService] refreshJWToken:response];
+                                
                                 self.counter = 0;
                                 self.extraMainResetCounter = 0;
                                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.counter] forKey:@"counterRefreshKey"];

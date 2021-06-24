@@ -278,7 +278,7 @@
                                 actionWithTitle:localizeString(@"Yes")
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action) {
-                                    [[GeneralService sharedInstance] logout];
+                                    [[GeneralService sharedService] logout];
                                 }];
     
     [alert addAction:noButton];

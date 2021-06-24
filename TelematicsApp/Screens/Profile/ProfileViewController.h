@@ -12,6 +12,7 @@
 @interface ProfileViewController: BaseViewController
 
 @property (assign, nonatomic) BOOL hideBackButton;
+
 - (void)showCompletePopupNow;
 
 @end

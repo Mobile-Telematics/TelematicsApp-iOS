@@ -10,7 +10,7 @@
 
 @interface PhoneLoginViewCtrl: BaseViewController
 
-@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
+//@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
 
 @property (strong, nonatomic) NSString *enteredPhone;
 @property (strong, nonatomic) NSString *savedVerificationId;

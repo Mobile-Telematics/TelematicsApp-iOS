@@ -20,9 +20,9 @@
 		<key>instanceKey</key>
 		<string>8e4e55c1-eac7-430a-9499-cb5036d2627b</string>
 		<key>linkPrivacyPolicy</key>
-		<string>https://raxeltelematics.com/policy</string>
+		<string>https://telematicssdk.com/privacy-policy/</string>
 		<key>linkTermsOfUse</key>
-		<string>https://raxeltelematics.com/tnc</string>
+		<string>https://telematicssdk.com/privacy-policy/</string>
 		<key>linkHowItWorks</key>
 		<string>https://help.telematicssdk.com/en/collections/1827809-mobile-application</string>
 		<key>telematicsSettingsOS12</key>

@@ -14,9 +14,8 @@
 
 @interface GeneralService: NSObject
 
-+ (instancetype)sharedInstance;
-
 @property FIRUser *user_FIR;
+@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
 
 @property (nonatomic, assign, readonly) BOOL isLoggedOn;
 
@@ -32,14 +31,10 @@
 @property (nonatomic, copy, readwrite) NSString *stored_birthday;
 @property (nonatomic, copy, readwrite) NSString *stored_address;
 @property (nonatomic, copy, readwrite) NSString *stored_clientId;
-@property (nonatomic, copy, readwrite) NSString *stored_avatarLink;
-
-////
-//@property (nonatomic, copy, readonly) NSString* token;
-//@property (nonatomic, copy, readonly) NSString* expiresIn;
-//@property (nonatomic, copy, readonly) NSString* refreshToken;
-//@property (nonatomic, copy, readonly) NSString* virtualDeviceToken;
-////
+@property (nonatomic, copy, readwrite) NSString *stored_gender;
+@property (nonatomic, copy, readwrite) NSString *stored_maritalStatus;
+@property (nonatomic, copy, readwrite) NSString *stored_childrenCount;
+@property (nonatomic, copy, readwrite) NSString *stored_profilePictureLink;
 
 @property (nonatomic, strong) NSString* claimsToken;
 
@@ -52,5 +47,7 @@
 - (void)logout;
 
 + (void)alert:(NSString *)getMessage title:(NSString *)getTitle;
+
++ (instancetype)sharedService;
 
 @end

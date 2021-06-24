@@ -11,9 +11,9 @@
 
 @interface ResponseObject: JSONModel
 
-@property (nonatomic, copy) NSString<Optional>*     Title;
-@property (nonatomic, copy) NSString<Optional>*     Status;
-@property (nonatomic, copy) NSArray<Optional>*      Errors;
+@property (nonatomic, copy) NSString<Optional>* Title;
+@property (nonatomic, copy) NSString<Optional>* Status;
+@property (nonatomic, copy) NSArray<Optional>* Errors;
 
 - (BOOL)isSuccesful;
 

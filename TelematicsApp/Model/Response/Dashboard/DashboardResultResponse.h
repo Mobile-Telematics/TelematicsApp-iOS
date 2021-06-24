@@ -10,14 +10,6 @@
 
 @interface DashboardResultResponse: ResponseObject
 
-@property (nonatomic, strong) NSNumber<Optional>* Rating;
-@property (nonatomic, strong) NSNumber<Optional>* PreviousRating;
-@property (nonatomic, strong) NSNumber<Optional>* MileageLevel;
-@property (nonatomic, strong) NSNumber<Optional>* SpeedLevel;
-@property (nonatomic, strong) NSNumber<Optional>* DrivingLevel;
-@property (nonatomic, strong) NSNumber<Optional>* PhoneLevel;
-@property (nonatomic, strong) NSNumber<Optional>* TimeOfDayScore;
-
 @property (nonatomic, strong) NSNumber<Optional>* EcoScoringFuel;
 @property (nonatomic, strong) NSNumber<Optional>* EcoScoringTyres;
 @property (nonatomic, strong) NSNumber<Optional>* EcoScoringBrakes;

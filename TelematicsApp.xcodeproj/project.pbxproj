@@ -39,9 +39,6 @@
 		C9D3C4DBE053C3875EE6ED55 /* Pods_TelematicsApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B1FC27917FCF444ABC51B3EB /* Pods_TelematicsApp.framework */; };
 		E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90088FB21D1BC0B00D33D85 /* SettingsNoIconCell.m */; };
 		E900890121D2C65100D33D85 /* UserImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E900890021D2C65100D33D85 /* UserImagePickerViewController.m */; };
-		E904B96C2670C34B009CD77B /* LoginAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E904B96B2670C34B009CD77B /* LoginAuth.xcframework */; };
-		E904B96D2670C34B009CD77B /* LoginAuth.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E904B96B2670C34B009CD77B /* LoginAuth.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E904B99E2670C3C9009CD77B /* LoginAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E904B96B2670C34B009CD77B /* LoginAuth.xcframework */; };
 		E904B9D22670D2E7009CD77B /* CheckUserRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */; };
 		E914DBA921598CF5002BB116 /* CheckResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBA521598CF5002BB116 /* CheckResponse.m */; };
 		E914DBAA21598CF5002BB116 /* CheckResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBA821598CF5002BB116 /* CheckResultResponse.m */; };
@@ -220,6 +217,8 @@
 		E9F5497F22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */; };
 		E9F6E520204F600A003BFAD3 /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51D204F6009003BFAD3 /* NSDate+ISO8601.m */; };
 		E9F6E521204F600A003BFAD3 /* ISO8601Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51F204F600A003BFAD3 /* ISO8601Serialization.m */; };
+		E9FA62612684AF0D00A725E0 /* LoginAuth.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E904B96B2670C34B009CD77B /* LoginAuth.xcframework */; };
+		E9FA62622684AF0D00A725E0 /* LoginAuth.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E904B96B2670C34B009CD77B /* LoginAuth.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		E9FCB5FB22F3862F002C9944 /* CongratulationsPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB5F522F3862F002C9944 /* CongratulationsPopup.m */; };
 		E9FCB5FD22F3862F002C9944 /* CongratulationsPopupDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FCB5F622F3862F002C9944 /* CongratulationsPopupDelegate.m */; };
 		E9FCB5FF22F3862F002C9944 /* CongratulationsPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9FCB5F722F3862F002C9944 /* CongratulationsPopup.xib */; };
@@ -228,13 +227,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E9322E43265D95B500CF1147 /* Embed Frameworks */ = {
+		E9FA62632684AF0D00A725E0 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				E904B96D2670C34B009CD77B /* LoginAuth.xcframework in Embed Frameworks */,
+				E9FA62622684AF0D00A725E0 /* LoginAuth.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -554,6 +553,7 @@
 		E9A842AD225244530090461E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E9B28DE223F59861004DE7CB /* ErrorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorObject.h; sourceTree = "<group>"; };
 		E9B28DE323F59861004DE7CB /* ErrorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorObject.m; sourceTree = "<group>"; };
+		E9BC556726814677004312AB /* LogSetup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogSetup.h; sourceTree = "<group>"; };
 		E9BFA2F621FE467900D80C21 /* CountriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountriesViewController.h; sourceTree = "<group>"; };
 		E9BFA2F721FE467900D80C21 /* Countries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
 		E9BFA2F821FE467900D80C21 /* CountriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -651,8 +651,7 @@
 				17AAD5AF1D6B581E00076E91 /* libc++.tbd in Frameworks */,
 				17AAD5AD1D6B580D00076E91 /* libz.tbd in Frameworks */,
 				C9D3C4DBE053C3875EE6ED55 /* Pods_TelematicsApp.framework in Frameworks */,
-				E904B96C2670C34B009CD77B /* LoginAuth.xcframework in Frameworks */,
-				E904B99E2670C3C9009CD77B /* LoginAuth.xcframework in Frameworks */,
+				E9FA62612684AF0D00A725E0 /* LoginAuth.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +783,7 @@
 				E9788B822267B774004D1A14 /* HapticHelper */,
 				E96ABF14261226EA00C0AC24 /* Global.swift */,
 				173973471D62173D00C9447E /* Helpers.h */,
+				E9BC556726814677004312AB /* LogSetup.h */,
 				E9332F1722AF10D100EC70B6 /* Format.h */,
 				E9332F1622AF10D100EC70B6 /* Format.m */,
 				E9FF4C06202D1A5C00DD0B86 /* Reachability.h */,
@@ -1473,8 +1473,8 @@
 			isa = PBXGroup;
 			children = (
 				E98E20D6255096ED00BA30AF /* LatestDayScoringResponse.h */,
-				E98E20D7255096ED00BA30AF /* LatestDayScoringResultResponse.h */,
 				E98E20D8255096ED00BA30AF /* LatestDayScoringResponse.m */,
+				E98E20D7255096ED00BA30AF /* LatestDayScoringResultResponse.h */,
 				E98E20D9255096ED00BA30AF /* LatestDayScoringResultResponse.m */,
 			);
 			path = LatestDayScoring;
@@ -1731,7 +1731,7 @@
 				173973261D620CDB00C9447E /* Frameworks */,
 				173973271D620CDB00C9447E /* Resources */,
 				E225AECB7370581E6DED15F2 /* [CP] Embed Pods Frameworks */,
-				E9322E43265D95B500CF1147 /* Embed Frameworks */,
+				E9FA62632684AF0D00A725E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1753,7 +1753,9 @@
 				TargetAttributes = {
 					173973281D620CDB00C9447E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = MTK2QVQ5B8;
 						LastSwiftMigration = 0910;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1832,6 +1834,7 @@
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/CMTabbarView/CMTabbarView.framework",
 				"${BUILT_PRODUCTS_DIR}/CircleTimer/CircleTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DBCameraButton/DBCameraButton.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseAuth/FirebaseAuth.framework",
 				"${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework",
@@ -1847,6 +1850,7 @@
 				"${BUILT_PRODUCTS_DIR}/HexColors/HexColors.framework",
 				"${BUILT_PRODUCTS_DIR}/IQDropDownTextField/IQDropDownTextField.framework",
 				"${BUILT_PRODUCTS_DIR}/IQMediaPickerController/IQMediaPickerController.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/JSONModel/JSONModel.framework",
 				"${BUILT_PRODUCTS_DIR}/KDLoadingView/KDLoadingView.framework",
 				"${BUILT_PRODUCTS_DIR}/KVNProgress/KVNProgress.framework",
@@ -1874,6 +1878,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CMTabbarView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircleTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DBCameraButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseAuth.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FirebaseCore.framework",
@@ -1889,6 +1894,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HexColors.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQDropDownTextField.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQMediaPickerController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSONModel.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDLoadingView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KVNProgress.framework",
@@ -2280,7 +2286,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MTK2QVQ5B8;
@@ -2297,7 +2303,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telematics.firebaseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2319,7 +2325,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 8;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MTK2QVQ5B8;
 				ENABLE_BITCODE = NO;
@@ -2335,7 +2341,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = com.telematics.firebaseapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";

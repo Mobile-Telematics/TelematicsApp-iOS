@@ -10,11 +10,11 @@
 
 @class CheckUserRequestData;
 @class RefreshTokenRequestData;
-@class ForgotRequestData;
 @class ProfileRequestData;
 @class FeedRequestData;
 @class ChangePasswordRequestData;
 @class VehicleRequestData;
+
 
 @interface MainApiRequest: APIRequest
 
@@ -36,12 +36,6 @@
 
 - (void)getEcoDataAllTime;
 - (void)getEcoStatisticForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
-
-
-#pragma mark Feed
-
-- (void)getAllEvents:(FeedRequestData*)eventData;
-- (void)getTypeEvents:(FeedRequestData*)eventData;
 
 
 #pragma mark DeleteTrack Status

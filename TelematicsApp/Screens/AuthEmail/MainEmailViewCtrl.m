@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _realtimeDatabase = [[FIRDatabase database] reference];
+    [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference];
     
     self.mainLogoImg.image = [UIImage imageNamed:[Configurator sharedInstance].mainLogoColor];
     self.welcomeLbl.text = localizeString(@"Sign In\n");
@@ -168,9 +168,9 @@
                                                 return;
                                             }
                     
-                                            [GeneralService sharedInstance].user_FIR = existUser.user;
+                                            [GeneralService sharedService].user_FIR = existUser.user;
                     
-                                            FIRDatabaseQuery *allUserData = [[self.realtimeDatabase child:@"users"] child:existUser.user.uid];
+                                            FIRDatabaseQuery *allUserData = [[[GeneralService sharedService].realtimeDatabase child:@"users"] child:existUser.user.uid];
                                             [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
                       
                                                 if (snapshot.value == [NSNull null]) {
@@ -181,17 +181,20 @@
                                                     NSDictionary *allUsersData = (NSDictionary*)snapshot.value;
                                                     NSLog(@"All Users Data From Firebase Database%@", allUsersData);
                                                     
-                                                    [GeneralService sharedInstance].device_token_number = allUsersData[@"deviceToken"];
-                                                    [GeneralService sharedInstance].firebase_user_id = allUsersData[@"userId"];
+                                                    [GeneralService sharedService].device_token_number = allUsersData[@"deviceToken"];
+                                                    [GeneralService sharedService].firebase_user_id = allUsersData[@"userId"];
                                                     
-                                                    [GeneralService sharedInstance].stored_userEmail = allUsersData[@"email"];
-                                                    [GeneralService sharedInstance].stored_userPhone = allUsersData[@"phone"];
-                                                    [GeneralService sharedInstance].stored_firstName = allUsersData[@"firstName"];
-                                                    [GeneralService sharedInstance].stored_lastName = allUsersData[@"lastName"];
-                                                    [GeneralService sharedInstance].stored_birthday = allUsersData[@"birthday"];
-                                                    [GeneralService sharedInstance].stored_address = allUsersData[@"address"];
-                                                    [GeneralService sharedInstance].stored_clientId = allUsersData[@"clientId"];
-                                                    [GeneralService sharedInstance].stored_avatarLink = allUsersData[@"avatarLink"];
+                                                    [GeneralService sharedService].stored_userEmail = allUsersData[@"email"];
+                                                    [GeneralService sharedService].stored_userPhone = allUsersData[@"phone"];
+                                                    [GeneralService sharedService].stored_firstName = allUsersData[@"firstName"];
+                                                    [GeneralService sharedService].stored_lastName = allUsersData[@"lastName"];
+                                                    [GeneralService sharedService].stored_birthday = allUsersData[@"birthday"];
+                                                    [GeneralService sharedService].stored_address = allUsersData[@"address"];
+                                                    [GeneralService sharedService].stored_gender = allUsersData[@"gender"];
+                                                    [GeneralService sharedService].stored_maritalStatus = allUsersData[@"maritalStatus"];
+                                                    [GeneralService sharedService].stored_childrenCount = allUsersData[@"childrenCount"];
+                                                    [GeneralService sharedService].stored_clientId = allUsersData[@"clientId"];
+                                                    [GeneralService sharedService].stored_profilePictureLink = allUsersData[@"profilePictureLink"];
                                                     
                                                     
                                                     //
@@ -207,26 +210,30 @@
                                                         [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
                                                                                                                   instanceKey:[Configurator sharedInstance].instanceKey
                                                                                                                        result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
-                                                            
+
                                                             //STORE IN SHAREDSERVICE
-                                                            [GeneralService sharedInstance].device_token_number = deviceToken;
-                                                            [GeneralService sharedInstance].jwt_token_number = jwToken;
-                                                            [GeneralService sharedInstance].refresh_token_number = refreshToken;
-                                                            [GeneralService sharedInstance].firebase_user_id = existUser.user.uid;
-                                                            
+                                                            [GeneralService sharedService].device_token_number = deviceToken;
+                                                            [GeneralService sharedService].jwt_token_number = jwToken;
+                                                            [GeneralService sharedService].refresh_token_number = refreshToken;
+                                                            [GeneralService sharedService].firebase_user_id = existUser.user.uid;
+
                                                             //CHECK ALL AT NIL
                                                             //FIREBASE DATABASE DID'T WORK WITH NIL
                                                             NSString *email = self.emailField.text ? self.emailField.text : @"";
-                                                            [GeneralService sharedInstance].stored_userEmail = email;
-                                                            
-                                                            NSString *phone = [GeneralService sharedInstance].stored_userPhone ? [GeneralService sharedInstance].stored_userPhone : @"";
-                                                            NSString *firstName = [GeneralService sharedInstance].stored_firstName ? [GeneralService sharedInstance].stored_firstName : @"";
-                                                            NSString *lastName = [GeneralService sharedInstance].stored_lastName ? [GeneralService sharedInstance].stored_lastName : @"";
-                                                            NSString *birthday = [GeneralService sharedInstance].stored_birthday ? [GeneralService sharedInstance].stored_birthday : @"";
-                                                            NSString *address = [GeneralService sharedInstance].stored_address ? [GeneralService sharedInstance].stored_address : @"";
-                                                            NSString *clientId = [GeneralService sharedInstance].stored_clientId ? [GeneralService sharedInstance].stored_clientId : @"";
-                                                            
-                                                            [[[self->_realtimeDatabase child:@"users"]
+                                                            [GeneralService sharedService].stored_userEmail = email;
+
+                                                            NSString *phone = [GeneralService sharedService].stored_userPhone ? [GeneralService sharedService].stored_userPhone : @"";
+                                                            NSString *firstName = [GeneralService sharedService].stored_firstName ? [GeneralService sharedService].stored_firstName : @"";
+                                                            NSString *lastName = [GeneralService sharedService].stored_lastName ? [GeneralService sharedService].stored_lastName : @"";
+                                                            NSString *birthday = [GeneralService sharedService].stored_birthday ? [GeneralService sharedService].stored_birthday : @"";
+                                                            NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
+                                                            NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
+                                                            NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
+                                                            NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+                                                            NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
+                                                            NSString *profileImg = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
+
+                                                            [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
                                                                                        child:existUser.user.uid] setValue:@{@"deviceToken": deviceToken,
                                                                                                                             @"userId": existUser.user.uid,
                                                                                                                             @"email": email,
@@ -235,14 +242,18 @@
                                                                                                                             @"lastName": lastName,
                                                                                                                             @"birthday": birthday,
                                                                                                                             @"address": address,
-                                                                                                                            @"clientId": clientId}
+                                                                                                                            @"gender": gender,
+                                                                                                                            @"maritalStatus": marital,
+                                                                                                                            @"childrenCount": children,
+                                                                                                                            @"clientId": clientId,
+                                                                                                                            @"profilePictureLink": profileImg}
                                                              ];
-                                                            
+
                                                             //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
-                                                            [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
-                                                                                                        jwToken:[GeneralService sharedInstance].jwt_token_number
-                                                                                                   refreshToken:[GeneralService sharedInstance].refresh_token_number];
-                                                            
+                                                            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                                                        jwToken:[GeneralService sharedService].jwt_token_number
+                                                                                                   refreshToken:[GeneralService sharedService].refresh_token_number];
+
                                                             [self hidePreloader];
                                                         }];
                                                             
@@ -251,22 +262,22 @@
                                                         //ELSE GET JWTOKEN & REFRESHTOKEN FOR EXIST USER BY DEVICETOKEN SAVED FROM FIREBASE DATABASE
                                                         //LOGIN EXIST USER IN YOUR APP
                                                         
-                                                        [[LoginAuthCore sharedManager] getJWTokenForUserWithDeviceToken:[GeneralService sharedInstance].device_token_number
+                                                        [[LoginAuthCore sharedManager] getJWTokenForUserWithDeviceToken:[GeneralService sharedService].device_token_number
                                                                                                              instanceId:[Configurator sharedInstance].instanceId
                                                                                                             instanceKey:[Configurator sharedInstance].instanceKey
                                                                                                                  result:^(NSString *newJWToken, NSString *newRefreshToken) {
                                                             NSLog(@"NEW RESTORED jwToken by DEVICETOKEN %@", newJWToken);
                                                             NSLog(@"NEW RESTORED refreshToken by DEVICETOKEN %@", newRefreshToken);
-                                                            
+
                                                             //STORE IN SHAREDSERVICE
-                                                            [GeneralService sharedInstance].jwt_token_number = newJWToken;
-                                                            [GeneralService sharedInstance].refresh_token_number = newRefreshToken;
-                                                            
+                                                            [GeneralService sharedService].jwt_token_number = newJWToken;
+                                                            [GeneralService sharedService].refresh_token_number = newRefreshToken;
+
                                                             //LOGIN EXIST USER IN APP
-                                                            [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
-                                                                                                        jwToken:[GeneralService sharedInstance].jwt_token_number
-                                                                                                   refreshToken:[GeneralService sharedInstance].refresh_token_number];
-                                                            
+                                                            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                                                        jwToken:[GeneralService sharedService].jwt_token_number
+                                                                                                   refreshToken:[GeneralService sharedService].refresh_token_number];
+
                                                             [self hidePreloader];
                                                         }];
                                                         
@@ -276,7 +287,6 @@
                 }];
 
             }
-            return;
             
         } else {
 
@@ -286,9 +296,9 @@
                                                                            result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
                 
                 //STORE IN SHAREDSERVICE
-                [GeneralService sharedInstance].device_token_number = deviceToken;
-                [GeneralService sharedInstance].jwt_token_number = jwToken;
-                [GeneralService sharedInstance].refresh_token_number = refreshToken;
+                [GeneralService sharedService].device_token_number = deviceToken;
+                [GeneralService sharedService].jwt_token_number = jwToken;
+                [GeneralService sharedService].refresh_token_number = refreshToken;
                 
                 FIRUserProfileChangeRequest *changeRequest = [[FIRAuth auth].currentUser profileChangeRequest];
                 changeRequest.displayName = self.emailField.text;
@@ -301,8 +311,8 @@
                     
                     // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
                     // STORE OTHER USER INFO IN DATABASE
-                    [[[self->_realtimeDatabase child:@"users"]
-                                               child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedInstance].device_token_number,
+                    [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
+                                               child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedService].device_token_number,
                                                                                      @"userId": authResult.user.uid,
                                                                                      @"email": self.emailField.text,
                                                                                      @"phone": @"",
@@ -310,32 +320,25 @@
                                                                                      @"lastName": @"",
                                                                                      @"birthday": @"",
                                                                                      @"address": @"",
-                                                                                     @"clientId": @""}];
+                                                                                     @"clientId": @"",
+                                                                                     @"profilePictureLink": @""
+                                               }];
                     }];
                     
-                    [GeneralService sharedInstance].user_FIR = authResult.user;
-                    [GeneralService sharedInstance].firebase_user_id = authResult.user.uid;
+                    [GeneralService sharedService].user_FIR = authResult.user;
+                    [GeneralService sharedService].firebase_user_id = authResult.user.uid;
                 
-                    [GeneralService sharedInstance].stored_userEmail = self.emailField.text;
-                    [GeneralService sharedInstance].stored_userPhone = @"";
-                    [GeneralService sharedInstance].stored_firstName = @"";
-                    [GeneralService sharedInstance].stored_lastName = @"";
-                    [GeneralService sharedInstance].stored_birthday = @"";
-                    [GeneralService sharedInstance].stored_address = @"";
-                    [GeneralService sharedInstance].stored_clientId = @"";
+                    [GeneralService sharedService].stored_userEmail = self.emailField.text;
+                    [GeneralService sharedService].stored_userPhone = @"";
+                    [GeneralService sharedService].stored_firstName = @"";
+                    [GeneralService sharedService].stored_lastName = @"";
+                    [GeneralService sharedService].stored_birthday = @"";
+                    [GeneralService sharedService].stored_address = @"";
+                    [GeneralService sharedService].stored_clientId = @"";
                 
-//                    //LOGIN USER IN APP
-//                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                        [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
-//                                                                    jwToken:[GeneralService sharedInstance].jwt_token_number
-//                                                               refreshToken:[GeneralService sharedInstance].refresh_token_number];
-//                
-//                        [self hidePreloader];
-//                    });
-                
-                    [[GeneralService sharedInstance] enterUserInAppWith:[GeneralService sharedInstance].device_token_number
-                                                                jwToken:[GeneralService sharedInstance].jwt_token_number
-                                                           refreshToken:[GeneralService sharedInstance].refresh_token_number];
+                    [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                jwToken:[GeneralService sharedService].jwt_token_number
+                                                           refreshToken:[GeneralService sharedService].refresh_token_number];
 
                     [self hidePreloader];
             }];

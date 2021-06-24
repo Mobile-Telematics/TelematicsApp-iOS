@@ -10,8 +10,6 @@
 
 @interface EmailLoginViewCtrl: BaseViewController
 
-@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabaseRef;
-
 @property (nonatomic, assign) BOOL isUserExist;
 
 @property (strong, nonatomic) NSString *welcomeText;

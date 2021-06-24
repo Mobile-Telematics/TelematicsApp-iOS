@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) ZenAppModel                                       *appModel;
 
-@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
+//@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
 
 @property (weak, nonatomic) IBOutlet UIScrollView                               *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView                                *mainHeaderImg;
@@ -55,7 +55,7 @@
     self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     //INITIALIZE FIREBASE REALTIMEDATABASE FOR WRITING
-    _realtimeDatabase = [[FIRDatabase database] reference];
+    [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference];
     
     [self.saveBtn setTitle:localizeString(@"Save") forState:UIControlStateNormal];
     
@@ -209,40 +209,57 @@
     NSString *lastName = _lastNameField.text ? _lastNameField.text : @"";
     NSString *birthday = _birthdaySelect ? _birthdaySelect : @"";
     NSString *address = _addressField.text ? _addressField.text : @"";
+    NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
+    NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
+    NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
     NSString *clientId = _clientIdField.text ? _clientIdField.text : @"";
+    NSString *profilePictureLink = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
     
-    [[[self->_realtimeDatabase child:@"users"]
-                               child:[GeneralService sharedInstance].firebase_user_id] setValue:@{@"deviceToken": [GeneralService sharedInstance].device_token_number,
-                                                                                                  @"userId": [GeneralService sharedInstance].firebase_user_id,
+    [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
+                               child:[GeneralService sharedService].firebase_user_id] setValue:@{@"deviceToken": [GeneralService sharedService].device_token_number,
+                                                                                                  @"userId": [GeneralService sharedService].firebase_user_id,
                                                                                                   @"email": email,
                                                                                                   @"phone": phone,
                                                                                                   @"firstName": firstName,
                                                                                                   @"lastName": lastName,
                                                                                                   @"birthday": birthday,
                                                                                                   @"address": address,
-                                                                                                  @"clientId": clientId}
+                                                                                                  @"gender": gender,
+                                                                                                  @"maritalStatus": marital,
+                                                                                                  @"childrenCount": children,
+                                                                                                  @"clientId": clientId,
+                                                                                                  @"profilePictureLink": profilePictureLink
+                               }
      ];
     
-    [GeneralService sharedInstance].stored_userEmail = email;
-    [GeneralService sharedInstance].stored_userPhone = phone;
-    [GeneralService sharedInstance].stored_firstName = firstName;
-    [GeneralService sharedInstance].stored_lastName = lastName;
-    [GeneralService sharedInstance].stored_birthday = birthday;
-    [GeneralService sharedInstance].stored_address = address;
-    [GeneralService sharedInstance].stored_clientId = clientId;
+    [GeneralService sharedService].stored_userEmail = email;
+    [GeneralService sharedService].stored_userPhone = phone;
+    [GeneralService sharedService].stored_firstName = firstName;
+    [GeneralService sharedService].stored_lastName = lastName;
+    [GeneralService sharedService].stored_birthday = birthday;
+    [GeneralService sharedService].stored_address = address;
+    [GeneralService sharedService].stored_gender = gender;
+    [GeneralService sharedService].stored_maritalStatus = marital;
+    [GeneralService sharedService].stored_childrenCount = children;
+    [GeneralService sharedService].stored_clientId = clientId;
+    [GeneralService sharedService].stored_profilePictureLink = profilePictureLink;
     
-    NSLog(@"deviceToken %@", [GeneralService sharedInstance].device_token_number);
-    NSLog(@"firebaseUserId %@", [GeneralService sharedInstance].firebase_user_id);
+    NSLog(@"deviceToken %@", [GeneralService sharedService].device_token_number);
+    NSLog(@"firebaseUserId %@", [GeneralService sharedService].firebase_user_id);
     NSLog(@"email %@", email);
     NSLog(@"phone %@", phone);
     NSLog(@"firstName %@", firstName);
     NSLog(@"lastName %@", lastName);
     NSLog(@"birthday %@", birthday);
     NSLog(@"address %@", address);
+    NSLog(@"gender %@", gender);
+    NSLog(@"marital %@", marital);
+    NSLog(@"children %@", children);
     NSLog(@"clientId %@", clientId);
+    NSLog(@"profilePicture %@", profilePictureLink);
     
     //UPDATE PROFILE
-    [[GeneralService sharedInstance] loadProfile];
+    [[GeneralService sharedService] loadProfile];
     
     [self quitAndUpdate];
     

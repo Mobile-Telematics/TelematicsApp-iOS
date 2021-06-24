@@ -309,11 +309,11 @@
             [self hidePreloader];
             if (!error && [response isSuccesful]) {
                 completionSaveVehicle();
-                [[GeneralService sharedInstance] loadProfile];
+                [[GeneralService sharedService] loadProfile];
                 [self quitAndUpdateVehiclesTableData];
             } else {
                 completionSaveVehicle();
-                [[GeneralService sharedInstance] loadProfile];
+                [[GeneralService sharedService] loadProfile];
                 [self quitAndUpdateVehiclesTableData];
             }
         }] putVehicle:saveVehicleData vehicle:self.vehicleTokenString];
@@ -335,7 +335,7 @@
                 } else {
                     completionSaveVehicle();
                     //self.newVehicle = NO;
-                    [[GeneralService sharedInstance] loadProfile];
+                    [[GeneralService sharedService] loadProfile];
                     [self quitAndUpdateVehiclesTableData];
                 }
             } else {
@@ -343,7 +343,7 @@
                     completionSaveVehicle();
                 } else {
                     completionSaveVehicle();
-                    [[GeneralService sharedInstance] loadProfile];
+                    [[GeneralService sharedService] loadProfile];
                     [self quitAndUpdateVehiclesTableData];
                 }
             }
@@ -371,10 +371,10 @@
        [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
            [self hidePreloader];
            if (!error && [response isSuccesful]) {
-               [[GeneralService sharedInstance] loadProfile];
+               [[GeneralService sharedService] loadProfile];
                [self quitAndUpdateVehiclesTableData];
            } else {
-               [[GeneralService sharedInstance] loadProfile];
+               [[GeneralService sharedService] loadProfile];
                [self quitAndUpdateVehiclesTableData];
            }
        }] deleteVehicle:delVehicleData vehicle:self.vehicleTokenString];

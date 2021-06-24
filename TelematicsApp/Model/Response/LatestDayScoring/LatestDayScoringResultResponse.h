@@ -12,5 +12,9 @@
 
 @property (nonatomic, strong) NSString<Optional>* LatestTrackDate;
 @property (nonatomic, strong) NSString<Optional>* LatestScoringDate;
+@property (nonatomic, strong) NSString<Optional>* CompanyId;
+@property (nonatomic, strong) NSString<Optional>* AppId;
+@property (nonatomic, strong) NSString<Optional>* DeviceToken;
+@property (nonatomic, strong) NSString<Optional>* InstanceId;
 
 @end

@@ -16,7 +16,7 @@
 #import "VehicleObject.h"
 #import "UIViewController+Preloader.h"
 #import "UIImage+FixOrientation.h"
-#import "HapticHelper.h"b
+#import "HapticHelper.h"
 #import "ProfileResultResponse.h"
 #import "ProfileResponse.h"
 #import "EditProfileCtrl.h"
@@ -379,9 +379,89 @@
 - (void)imagePicker:(UserImagePickerViewController *)imagePicker didSelectImage:(UIImage *)image {
     [self showPreloader];
     
-    //TODO UPLOAD USER AVATAR
-    [[GeneralService sharedInstance] loadProfile];
-    [self setMainUserAccount];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.avatarImg.image = image;
+        
+        //USER PROFILE PICTURE TO NSDATA
+        NSData *imageData = [UIImage scaleImageForAvatar:self.avatarImg.image];
+        self.appModel.userPhotoData = imageData;
+        [CoreDataCoordinator saveCoreDataCoordinatorContext];
+        
+        
+        // SETUP FIREBASE CLOUD STORAGE
+        // Get a reference to the storage service using the default Firebase App
+        FIRStorage *storage = [FIRStorage storage];
+
+        // Create a storage reference from our storage service
+        FIRStorageReference *storageRef = [storage reference];
+        
+        NSString *fileName = [NSString stringWithFormat:@"profile_images/%@.png", [GeneralService sharedService].firebase_user_id];
+
+        // Create a reference to the file you want to upload
+        FIRStorageReference *riversRef = [storageRef child:fileName];
+
+        // Upload the file to the path "images/rivers.jpg"
+        FIRStorageUploadTask *uploadTask = [riversRef putData:imageData
+                                                     metadata:nil
+                                                   completion:^(FIRStorageMetadata *metadata,
+                                                                NSError *error) {
+          if (error != nil) {
+            // Uh-oh, an error occurred!
+          } else {
+              // You can also access to download URL after upload.
+              [riversRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
+                  if (error != nil) {
+                      NSLog(@"Error occuued");
+                      [self hidePreloader];
+                  } else {
+                      NSURL *downloadURL = URL;
+                      
+                      NSLog(@"STORE FINAL PROFILE PICTURE URL%@", downloadURL.absoluteString);
+                      
+                      
+                      NSString *email = [GeneralService sharedService].stored_userEmail ? [GeneralService sharedService].stored_userEmail : @"";
+                      NSString *phone = [GeneralService sharedService].stored_userPhone ? [GeneralService sharedService].stored_userPhone : @"";
+                      NSString *firstName = [GeneralService sharedService].stored_firstName ? [GeneralService sharedService].stored_firstName : @"";
+                      NSString *lastName = [GeneralService sharedService].stored_lastName ? [GeneralService sharedService].stored_lastName : @"";
+                      NSString *birthday = [GeneralService sharedService].stored_birthday ? [GeneralService sharedService].stored_birthday : @"";
+                      NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
+                      NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
+                      NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
+                      NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+                      NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
+                      //NSString *profilePictureLink = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
+                      
+                      [GeneralService sharedService].stored_profilePictureLink = downloadURL.absoluteString;
+                      NSLog(@"profilePictureLink %@", [GeneralService sharedService].stored_profilePictureLink);
+                      
+                      [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
+                                                 child:[GeneralService sharedService].firebase_user_id] setValue:@{@"deviceToken": [GeneralService sharedService].device_token_number,
+                                                                                                                    @"userId": [GeneralService sharedService].firebase_user_id,
+                                                                                                                    @"email": email,
+                                                                                                                    @"phone": phone,
+                                                                                                                    @"firstName": firstName,
+                                                                                                                    @"lastName": lastName,
+                                                                                                                    @"birthday": birthday,
+                                                                                                                    @"address": address,
+                                                                                                                    @"gender": gender,
+                                                                                                                    @"maritalStatus": marital,
+                                                                                                                    @"childrenCount": children,
+                                                                                                                    @"clientId": clientId,
+                                                                                                                    @"profilePictureLink": downloadURL.absoluteString
+                                                 }
+                       ];
+                      
+                      [uploadTask cancel];
+                      
+                      [[GeneralService sharedService] loadProfile];
+                      [self setMainUserAccount];
+                      
+                      [self hidePreloader];
+                  }
+              }];
+            }
+        }];
+    });
 }
 
 

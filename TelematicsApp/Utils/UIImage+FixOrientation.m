@@ -172,7 +172,7 @@
     if (image != nil) {
         
         float compressionVal = 1.0;
-        float maxVal = 0.4; //MB
+        float maxVal = 0.3; //MB
         UIImage *compressedImage = image;
         int iterations = 0;
         int totalIterations = 0;

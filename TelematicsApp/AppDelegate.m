@@ -49,18 +49,37 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     FIRDatabaseReference *usersDatabase = [[FIRDatabase database] referenceWithPath:@"users"];
     [usersDatabase keepSynced:YES];
     
-    // SETUP FIREBASE CLOUD STORAGE
-    //FIRStorage storage = [FIRStorage storageWithURL:@"gs://YOUR-NAME.appspot.com/"];
+//    // SETUP FIREBASE CLOUD STORAGE
+//    // Get a reference to the storage service using the default Firebase App
+//    FIRStorage *storage = [FIRStorage storage];
+//
+//    // Create a storage reference from our storage service
+//    FIRStorageReference *storageRef = [storage reference];
+//
+//    // Create a child reference
+//    // imagesRef now points to "images"
+//    //FIRStorageReference *imagesRef = [storageRef child:@"images"];
+//
+//    // Child references can also take paths delimited by '/'
+//    // spaceRef now points to "images/space.jpg"
+//    // imagesRef still points to "images"
+//    FIRStorageReference *spaceRef = [storageRef child:@"images/space.jpg"];
+//
+//    // This is equivalent to creating the full reference
+//    spaceRef = [storage referenceForURL:@"gs://zytertelematics.appspot.com/images/space.jpg"];
+//
+//    ///
+    
     
     //SETUP APP CONFIGURATOR.PLIST
     [Configurator setMainAppConfigurationFromPlist];
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
-    if (![defaults_object(@"TelematicsAppShouldMigrateV10") boolValue]) {
+    if (![defaults_object(@"TelematicsAppShouldMigrateCoreDataV10") boolValue]) {
         [ZenAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
         
         [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kRecipesStoreName];
-        defaults_set_object(@"TelematicsAppShouldMigrateV10", @(YES));
+        defaults_set_object(@"TelematicsAppShouldMigrateCoreDataV10", @(YES));
     }
     
     //TELEMATICS SDK INITIALIZATION
@@ -71,8 +90,8 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     //WE NEED START PERMISSION WIZARD FOR USER AFTER LOGIN! - TEMPORARY STOP BY USER DEFAULTS
     if ([defaults_object(@"needTrackingOnRequired") boolValue]) {
         
-        NSLog(@"%@", [GeneralService sharedInstance].device_token_number);
-        [RPEntry instance].virtualDeviceToken = [GeneralService sharedInstance].device_token_number; //REQUIRED
+        NSLog(@"%@", [GeneralService sharedService].device_token_number);
+        [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number; //REQUIRED
         
         if ([Configurator sharedInstance].sdkEnableHF) {
             [RPEntry enableHF:YES];
@@ -92,8 +111,8 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
         }
     } else {
         
-        NSLog(@"%@", [GeneralService sharedInstance].device_token_number);
-        [RPEntry instance].virtualDeviceToken = [GeneralService sharedInstance].device_token_number; //REQUIRED
+        NSLog(@"%@", [GeneralService sharedService].device_token_number);
+        [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number; //REQUIRED
         
         if ([Configurator sharedInstance].sdkEnableHF) {
             [RPEntry enableHF:YES];
@@ -164,13 +183,13 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 
 - (void)updateRootController {
     UIViewController* rootVc = nil;
-    BOOL loggedIn = [GeneralService sharedInstance].isLoggedOn;
+    BOOL loggedIn = [GeneralService sharedService].isLoggedOn;
     if (loggedIn) {
         
-        [[GeneralService sharedInstance] loadProfile];
+        [[GeneralService sharedService] loadProfile];
         
-        NSLog(@"%@", [GeneralService sharedInstance].device_token_number);
-        [RPEntry instance].virtualDeviceToken = [GeneralService sharedInstance].device_token_number;
+        NSLog(@"%@", [GeneralService sharedService].device_token_number);
+        [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number;
         
         rootVc = [[UIStoryboard storyboardWithName:@"MainTabBar" bundle:nil] instantiateInitialViewController];
         
@@ -185,14 +204,14 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 }
 
 - (void)logoutOn401 {
-    if ([GeneralService sharedInstance].isLoggedOn) {
-        [[GeneralService sharedInstance] logout];
+    if ([GeneralService sharedService].isLoggedOn) {
+        [[GeneralService sharedService] logout];
     }
 }
 
 - (void)logoutOn419 {
-    if ([GeneralService sharedInstance].isLoggedOn) {
-        [[GeneralService sharedInstance] logout];
+    if ([GeneralService sharedService].isLoggedOn) {
+        [[GeneralService sharedService] logout];
     }
 }
 

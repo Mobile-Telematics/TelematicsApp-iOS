@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
     <entity name="ZenAppModel" representedClassName="ZenAppModel" syncable="YES">
         <attribute name="current_user" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="detailsAllDrivingScores" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
@@ -36,8 +36,8 @@
         <attribute name="statYearlyMaxSpeed" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="statYearlyTotalKm" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="userAddress" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userAvatarLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userBirthday" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userChildrenCount" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userClientId" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userFirebaseId" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,8 +45,10 @@
         <attribute name="userFullName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userGender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userLastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userMaritalStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userPhone" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userPhotoData" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="userProfilePictureLink" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vehicleCarYear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vehicleShortData" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
@@ -64,7 +66,7 @@
         <attribute name="leaderboardTurn" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ZenAppModel" positionX="-63" positionY="-18" width="128" height="749"/>
+        <element name="ZenAppModel" positionX="-63" positionY="-18" width="128" height="779"/>
         <element name="ZenLeaderboardModel" positionX="-63" positionY="144" width="128" height="194"/>
     </elements>
 </model>

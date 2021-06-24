@@ -113,9 +113,11 @@ class ConnectOBDViewCtrl: UIViewController {
     }
     
     @objc private func refreshVehiclesData(_ sender: Any) {
+        
         self.searchVehicles()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            GeneralService.sharedInstance()?.loadProfile()
+            GeneralService.shared()?.loadProfile()
         }
     }
     

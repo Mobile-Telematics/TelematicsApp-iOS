@@ -545,10 +545,10 @@
                                     <outlet property="delegate" destination="G1M-BS-GpO" id="J8x-Lp-sgh"/>
                                 </connections>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="You were logged in" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaN-ry-Ewb">
-                                <rect key="frame" x="19" y="266" width="381" height="40"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Login to your account" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uaN-ry-Ewb">
+                                <rect key="frame" x="19" y="271" width="381" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="Y25-Iu-84K"/>
+                                    <constraint firstAttribute="height" constant="30" id="Y25-Iu-84K"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                 <color key="textColor" red="0.3294117647" green="0.78039215689999997" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -580,11 +580,11 @@
                                     <action selector="backBtnClick:" destination="G1M-BS-GpO" eventType="touchUpInside" id="h5a-DN-cbJ"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="200" verticalHuggingPriority="200" verticalCompressionResistancePriority="700" image="no_avatar" translatesAutoresizingMaskIntoConstraints="NO" id="HFd-N2-VTG">
-                                <rect key="frame" x="107" y="58" width="200" height="200"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="200" verticalHuggingPriority="200" verticalCompressionResistancePriority="700" image="app_logo_colorTelematicsApp" translatesAutoresizingMaskIntoConstraints="NO" id="HFd-N2-VTG">
+                                <rect key="frame" x="97" y="85" width="220" height="172"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="YZl-9z-gfN"/>
-                                    <constraint firstAttribute="height" constant="200" id="uNn-e1-KKu"/>
+                                    <constraint firstAttribute="width" constant="220" id="YZl-9z-gfN"/>
+                                    <constraint firstAttribute="height" constant="172" id="uNn-e1-KKu"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvP-sA-c5i">
@@ -622,16 +622,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="uaN-ry-Ewb" firstAttribute="top" secondItem="HFd-N2-VTG" secondAttribute="bottom" constant="8" id="4mr-Kq-gd2"/>
-                            <constraint firstItem="YVX-Au-xQC" firstAttribute="centerY" secondItem="HFd-N2-VTG" secondAttribute="centerY" id="6Cf-i7-DKD"/>
+                            <constraint firstItem="uaN-ry-Ewb" firstAttribute="top" secondItem="HFd-N2-VTG" secondAttribute="bottom" constant="14" id="4mr-Kq-gd2"/>
+                            <constraint firstItem="YVX-Au-xQC" firstAttribute="centerY" secondItem="HFd-N2-VTG" secondAttribute="centerY" constant="-13" id="6Cf-i7-DKD"/>
                             <constraint firstItem="P0p-JQ-G1Z" firstAttribute="top" secondItem="gvP-sA-c5i" secondAttribute="bottom" constant="13" id="6IV-lU-SLl"/>
                             <constraint firstItem="gvP-sA-c5i" firstAttribute="leading" secondItem="OFa-fD-Tgp" secondAttribute="leading" id="8xM-j0-C9r"/>
                             <constraint firstItem="OTX-Uj-k5q" firstAttribute="centerX" secondItem="HFd-N2-VTG" secondAttribute="centerX" id="9ZI-6P-M7L"/>
                             <constraint firstItem="OTX-Uj-k5q" firstAttribute="top" secondItem="hDU-Eg-zAx" secondAttribute="bottom" constant="4" id="DI9-8T-JXe"/>
-                            <constraint firstItem="HFd-N2-VTG" firstAttribute="centerX" secondItem="uaN-ry-Ewb" secondAttribute="centerX" constant="-2.5" id="FRm-GV-rZJ"/>
                             <constraint firstItem="hDU-Eg-zAx" firstAttribute="leading" secondItem="OFa-fD-Tgp" secondAttribute="leading" constant="88" id="FdY-GN-0C6"/>
                             <constraint firstItem="zOV-DK-ebW" firstAttribute="top" secondItem="P0p-JQ-G1Z" secondAttribute="bottom" constant="18" id="HSb-7n-Zfi"/>
-                            <constraint firstItem="HFd-N2-VTG" firstAttribute="top" secondItem="61r-RM-gT9" secondAttribute="bottom" constant="14" id="MFV-1G-QbL"/>
+                            <constraint firstItem="HFd-N2-VTG" firstAttribute="top" secondItem="61r-RM-gT9" secondAttribute="bottom" constant="41" id="MFV-1G-QbL"/>
                             <constraint firstItem="fKu-pe-1EQ" firstAttribute="top" secondItem="OTX-Uj-k5q" secondAttribute="bottom" constant="62" id="OR2-Ui-ynh"/>
                             <constraint firstAttribute="trailing" secondItem="hDU-Eg-zAx" secondAttribute="trailing" constant="88" id="Qba-cn-fNF"/>
                             <constraint firstItem="P0p-JQ-G1Z" firstAttribute="leading" secondItem="OFa-fD-Tgp" secondAttribute="leadingMargin" constant="44" id="Rei-8d-q83"/>
@@ -647,7 +646,7 @@
                             <constraint firstAttribute="trailing" secondItem="YVX-Au-xQC" secondAttribute="trailing" id="myb-Av-1KG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="P0p-JQ-G1Z" secondAttribute="trailing" constant="39" id="pPh-PK-j12"/>
                             <constraint firstItem="zOV-DK-ebW" firstAttribute="width" secondItem="P0p-JQ-G1Z" secondAttribute="width" id="rEZ-xq-fF0"/>
-                            <constraint firstAttribute="bottom" secondItem="uaN-ry-Ewb" secondAttribute="bottom" priority="750" constant="590" id="vt3-eL-GfV"/>
+                            <constraint firstAttribute="bottom" secondItem="uaN-ry-Ewb" secondAttribute="bottom" priority="750" constant="595" id="vt3-eL-GfV"/>
                             <constraint firstItem="wfE-Fr-bDe" firstAttribute="leading" secondItem="OFa-fD-Tgp" secondAttribute="leading" id="w7d-oe-zB5"/>
                             <constraint firstItem="YVX-Au-xQC" firstAttribute="centerX" secondItem="HFd-N2-VTG" secondAttribute="centerX" id="xxH-gP-mNY"/>
                         </constraints>
@@ -660,9 +659,9 @@
                         <outlet property="linesGreenBackground" destination="YVX-Au-xQC" id="syW-zk-Mo9"/>
                         <outlet property="loggedNameLbl" destination="uaN-ry-Ewb" id="XWy-24-egm"/>
                         <outlet property="loginBtn" destination="zOV-DK-ebW" id="NcB-sP-Aod"/>
+                        <outlet property="logoImg" destination="HFd-N2-VTG" id="vKw-p8-UCJ"/>
                         <outlet property="passField" destination="P0p-JQ-G1Z" id="tTs-2Y-pHo"/>
                         <outlet property="repeatPasswordLbl" destination="wfE-Fr-bDe" id="51m-Gu-28a"/>
-                        <outlet property="userAvatarImg" destination="HFd-N2-VTG" id="cP9-g5-D55"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IDT-UZ-8he" userLabel="First Responder" sceneMemberID="firstResponder"/>

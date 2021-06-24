@@ -9,7 +9,7 @@
 #import "RootResponse.h"
 #import "DashboardResultResponse.h"
 
-@interface DashboardResponse: RootResponse
+@interface DashboardResponse: ResponseObject
 
 @property (nonatomic, strong) DashboardResultResponse<Optional>* Result;
 

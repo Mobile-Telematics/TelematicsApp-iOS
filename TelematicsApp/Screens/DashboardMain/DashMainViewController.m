@@ -5,6 +5,7 @@
 //  Created by DATA MOTION PTE. LTD. on 28.05.19.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
+#import "AFNetworking.h"
 
 #import "DashMainViewController.h"
 #import "DashboardResponse.h"
@@ -228,12 +229,11 @@
         self.appModel.notFirstRunApp = YES;
         self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
         
-        self.mainDashboardView.hidden = YES;
-        self.needDistanceView.hidden = NO;
-        
         self.disableCounting = YES;
         [self startFetchStatisticData];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(20.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        //IF NEED REPEAT FOR NEW USERS
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.disableCounting = YES;
             [self getDashboardStatisticsData];
             [self getDashboardEcoDataAllTime];
@@ -242,7 +242,6 @@
             [self getDashboardEcoDataYear];
             [self hidePreloader];
         });
-        [self hidePreloader];
     } else {
         self.disableCounting = NO;
         [self updateDataFromCacheForDashboard];
@@ -351,12 +350,14 @@
 }
 
 - (void)startFetchStatisticData {
-    self.disableCounting = YES;
-    [self getDashboardStatisticsData];
-    [self getDashboardEcoDataAllTime];
-    [self getDashboardEcoDataWeek];
-    [self getDashboardEcoDataMonth];
-    [self getDashboardEcoDataYear];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.disableCounting = YES;
+        [self getDashboardStatisticsData];
+        [self getDashboardEcoDataAllTime];
+        [self getDashboardEcoDataWeek];
+        [self getDashboardEcoDataMonth];
+        [self getDashboardEcoDataYear];
+    });
 }
 
 
@@ -380,7 +381,7 @@
         if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
             userRealDistance = convertKmToMiles(userRealDistance);
         }
-        if (userRealDistance < requiredDistance || requiredDistance == 0) {
+        if (userRealDistance < requiredDistance) {
             self.mainDashboardView.hidden = YES;
             self.needDistanceView.hidden = NO;
         } else {
@@ -451,9 +452,9 @@
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
     [dateComponents setYear:-20];
     NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSDate *dateMinusNeedDays = [calendar dateByAddingComponents:dateComponents toDate:currentDate options:0];
+    NSDate *dateMinusNeedYearsAllTime = [calendar dateByAddingComponents:dateComponents toDate:currentDate options:0];
     
-    [self getDashboardStatisticsIndividualAllTime:dateMinusNeedDays endDate:currentDate];
+    [self getDashboardStatisticsIndividualAllTime:dateMinusNeedYearsAllTime endDate:currentDate];
 }
 
 - (void)getDashboardStatisticsIndividualAllTime:(NSDate *)startDate endDate:(NSDate *)endDate {
@@ -1244,7 +1245,7 @@
                     userRealDistance = convertKmToMiles(userRealDistance);
                 }
                 
-                if (userRealDistance < requiredDistance || requiredDistance == 0) {
+                if (userRealDistance < requiredDistance) {
                     self.mainDashboardView.hidden = YES;
                     self.needDistanceView.hidden = NO;
                     [self updateMainConstraints];
@@ -1283,7 +1284,7 @@
                 userRealDistance = convertKmToMiles(userRealDistance);
             }
             
-            if (userRealDistance < requiredDistance || requiredDistance == 0) {
+            if (userRealDistance < requiredDistance) {
                 self.mainDashboardView.hidden = YES;
                 self.needDistanceView.hidden = NO;
             } else {
@@ -1349,7 +1350,7 @@
                 userRealDistance = convertKmToMiles(userRealDistance);
             }
             
-            if (userRealDistance < requiredDistance || requiredDistance == 0) {
+            if (userRealDistance < requiredDistance) {
                 self.mainDashboardView.hidden = YES;
                 self.needDistanceView.hidden = NO;
                 [self updateMainConstraints];
@@ -1408,7 +1409,7 @@
                 userRealDistance = convertKmToMiles(userRealDistance);
             }
                 
-            if (userRealDistance < requiredDistance || requiredDistance == 0) {
+            if (userRealDistance < requiredDistance) {
                 self.mainDashboardView.hidden = YES;
                 self.needDistanceView.hidden = NO;
             } else {
@@ -1425,7 +1426,7 @@
         if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
             userRealDistance = convertKmToMiles(userRealDistance);
         }
-        if (userRealDistance < requiredDistance || requiredDistance == 0) {
+        if (userRealDistance < requiredDistance) {
             self.mainDashboardView.hidden = YES;
             self.needDistanceView.hidden = NO;
             self->permissionPopup.disabledGPS = NO;
@@ -1479,7 +1480,7 @@
             [self->permissionPopup setupButtonGPS];
             
             [RPEntry initializeWithRequestingPermissions:NO];
-            [RPEntry instance].virtualDeviceToken = [GeneralService sharedInstance].device_token_number;
+            [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number;
             
             if ([Configurator sharedInstance].sdkEnableHF) {
                 [RPEntry enableHF:YES];
@@ -1524,13 +1525,13 @@
             [[RPCSettings returnInstance] setWizardNextButtonBgColor:[Color officialMainAppColor]];
             [[RPCSettings returnInstance] setAppName:localizeString(@"TelematicsApp")];
             
-#warning TODO: Production
+#warning TODO: Production Bluetooth Setup
             [[RPCPermissionsWizard returnInstance] setupBluetoothEnabled]; //IF YOU USE ELM BLUETOOTH CONNECTION ENABLE THIS LINE FOR TELEMATICS SDK
             
             [[RPCPermissionsWizard returnInstance] launchWithFinish:^(BOOL showWizzard) {
                 [RPEntry initializeWithRequestingPermissions:YES];
                 [RPEntry instance].disableTracking = NO;
-                [RPEntry instance].virtualDeviceToken = [GeneralService sharedInstance].device_token_number;
+                [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number;
                 
                 if ([Configurator sharedInstance].sdkEnableHF) {
                     [RPEntry enableHF:YES];
@@ -1665,7 +1666,7 @@
     [self getDashboardEcoDataYear];
     
     [self setupTranslation];
-    defaults_set_object(@"LatestTripTokenTempory", @"");
+    defaults_set_object(@"LatestTripTokenInMemory", @"");
     [sender endRefreshing];
 }
 
@@ -1895,7 +1896,7 @@
         RPFeed* feed = (RPFeed*)response;
         if (feed.tracks.count) {
             NSString *ttk = feed.tracks.firstObject.trackToken;
-            NSString *latestTt = defaults_object(@"LatestTripTokenTempory");
+            NSString *latestTt = defaults_object(@"LatestTripTokenInMemory");
             
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.mapDemo_noTripsView.hidden = YES;
@@ -1946,7 +1947,7 @@
             } else {
                 defaults_set_object(@"LatestTripDistance", [NSString stringWithFormat:@"%.0f", self.track.distance]);
             }
-            defaults_set_object(@"LatestTripTokenTempory", ttk);
+            defaults_set_object(@"LatestTripTokenInMemory", ttk);
             defaults_set_object(@"LatestTripRating", [NSString stringWithFormat:@"%.0f", rating]);
             defaults_set_object(@"LatestTripTimeStart", self.track.startDate);
             defaults_set_object(@"LatestTripTimeEnd", self.track.endDate);
@@ -2198,7 +2199,7 @@
             break;
         }
     }
-    if (userRealDistance >= requiredDistance && requiredDistance != 0) {
+    if (userRealDistance >= requiredDistance) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             heightConstraint.constant = 850;
         } else if (IS_IPHONE_8) {
@@ -2210,7 +2211,7 @@
         } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
             heightConstraint.constant = 580;
         }
-    } else if (userRealDistance < requiredDistance || requiredDistance == 0) {
+    } else if (userRealDistance < requiredDistance) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             heightConstraint.constant = 940;
         } else if (IS_IPHONE_8 || IS_IPHONE_8P) {
