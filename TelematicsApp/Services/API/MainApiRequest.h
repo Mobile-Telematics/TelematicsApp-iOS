@@ -11,9 +11,10 @@
 @class CheckUserRequestData;
 @class RefreshTokenRequestData;
 @class ProfileRequestData;
-@class FeedRequestData;
-@class ChangePasswordRequestData;
 @class VehicleRequestData;
+
+@class ClaimsTokenRequestData;
+@class CreateClaimRequestData;
 
 
 @interface MainApiRequest: APIRequest
@@ -64,6 +65,15 @@
 - (void)updateVehicle:(VehicleRequestData *)vehicleData;
 - (void)putVehicle:(VehicleRequestData *)vehicleData vehicle:(NSString *)vehicleToken;
 - (void)deleteVehicle:(VehicleRequestData *)vehicleData vehicle:(NSString *)vehicleToken;
+
+
+#pragma mark Claims
+
+- (void)getTokenForClaims:(ClaimsTokenRequestData*)claimsData;
+- (void)getUserClaims;
+- (void)getAccidentTypes;
+- (void)deleteUserClaim:(NSString*)claimId;
+- (void)createClaim:(CreateClaimRequestData*)createClaimData;
 
 
 @end

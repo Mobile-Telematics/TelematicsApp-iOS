@@ -48,6 +48,7 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 + (NSString*)statisticServiceURL;
 + (NSString*)leaderboardServiceURL;
 + (NSString*)carServiceURL;
++ (NSString*)claimsServiceURL;
 + (NSDictionary*)customRequestHeaders;
 + (NSString*)contentTypePathToJson;
 + (NSString*)instanceId;
@@ -74,7 +75,8 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 - (void)performRequestStatisticService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
 - (void)performRequestLeaderboardService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
-- (void)performRequestCarService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;\
+- (void)performRequestCarService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
+- (void)performRequestClaimsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
 - (void)performRequest:(NSMutableURLRequest*)arequest withResponseClass:(Class)responseClass;
 - (void)cancel;

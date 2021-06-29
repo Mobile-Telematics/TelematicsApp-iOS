@@ -15,6 +15,8 @@
 		<string>https://mobilesdk.raxeltelematic.com/api/leaderboardservice/v1</string>
 		<key>carServiceURL</key>
 		<string>https://services.telematicssdk.com/api/carservice/v1</string>
+		<key>claimsServiceURL</key>
+		<string>https://insp.telematicssdk.com/api/v1</string>
 		<key>instanceId</key>
 		<string>400f4c9d-da1a-4d6e-9358-99b8aeb72584</string>
 		<key>instanceKey</key>
@@ -41,6 +43,10 @@
 		<string>as4Bl+FBe7eWCj0+zQhL8JHFXy0FPBgZJquiVpkglZrGVUgurPCk29/BYEK+JXCH2PivpBaamQ1EIgj1danQ6VwPOZN04/76ROAWuVYF06dfr3TF9f6Ds+g9BTW3DkgoLTHzwMZqLo/8B0Hz3sJuNoopeYj/YeJsdJ8sFCV4c8bpCreWSFlJpmzzqMwXwWnFH6CSFmJ51lGBTBsKtvvA13NgjdarR8YgoVwH5gWaKL4QrDlaZWo8QrkeGwQhrTvM5PXeLlUewqVGRfBtcdJH1NDGmkO3HWqPbxP9bAmx///Vx/fRskWTQ5Yyu9/yoengEyEKGh7TB7fjp1Nor4GdALXyzi8tvlZuzCQctYnq/2+fVrwf5tw82sXrZdRBF2F8x722d+BBchk+LcheXJmSPdh2gTtxPDBE58O/FkXhzpO/PWWzIuNizXXSYk+snnJdCPErgLVR0+5IXEhdCVVVrYfLVVE/sqnb53KB6cNuCwBVSTJPaiO+k+GF6TS9x4pjNgy4Lik+H3oUvwLF2SDDJsuN1X+B+07HssNhEXmzSG8DqgA7XiWvBZGHtiyoAktw/aQQmtYgMHXB/yoWfsQcm8OGdhXtuGx0q69YjTZSdQTQCUvYYV7I99wxmdVOfg0zC62l2Ijz+pR2ohHLAE/Gpe4NvZ0imBCPJLNcw1aq8hw=</string>
 		<key>mapsRestApiKey</key>
 		<string>t8IWzdVDNpvnJ2XJSD-3I14-Kabb1Hl_t6kzWYTVyMg</string>
+		<key>googleApiKey1</key>
+		<string>&lt;INSERT_YOUR_KEY&gt;</string>
+		<key>googleApiKey</key>
+		<string>&lt;INSERT_YOUR_KEY&gt;</string>
 		<key>mainLogoColor</key>
 		<string>app_logo_colorTelematicsApp</string>
 		<key>mainLogoClear</key>

@@ -15,10 +15,8 @@
 #pragma mark - App Appearance
 
 + (void)setMainAppConfigurationFromPlist {
-    
     [[Configurator sharedInstance] setupWithPlist:@"Configurator"];
     [[Configurator sharedInstance] setCurrentconfigName:TelematicsApp_CONFIG];
-    
 }
 
 @end

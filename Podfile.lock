@@ -104,6 +104,13 @@ PODS:
     - GoogleUtilities/Environment (~> 7.2)
     - nanopb (~> 2.30908.0)
     - PromisesObjC (~> 1.2)
+  - GoogleMaps (3.9.0):
+    - GoogleMaps/Maps (= 3.9.0)
+  - GoogleMaps/Base (3.9.0)
+  - GoogleMaps/Maps (3.9.0):
+    - GoogleMaps/Base
+  - GooglePlaces (3.9.0):
+    - GoogleMaps/Base (= 3.9.0)
   - GoogleUtilities/AppDelegateSwizzler (7.4.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -177,6 +184,8 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/Storage
   - "GKImagePicker@robseward"
+  - GoogleMaps (= 3.9.0)
+  - GooglePlaces (= 3.9.0)
   - HEREMaps
   - ImagePicker
   - IQDropDownTextField
@@ -214,6 +223,8 @@ SPEC REPOS:
     - "GKImagePicker@robseward"
     - GoogleAppMeasurement
     - GoogleDataTransport
+    - GoogleMaps
+    - GooglePlaces
     - GoogleUtilities
     - GTMSessionFetcher
     - HEREMaps
@@ -268,6 +279,8 @@ SPEC CHECKSUMS:
   "GKImagePicker@robseward": 98b9ead2141843574736cef51a2b4813ecefa62c
   GoogleAppMeasurement: 31c7d7655818784b7dd34bdf6884f75b465d5f6c
   GoogleDataTransport: 04c3e9a480bbcaa2ec3f5d27f1cdeb6a92f20c8d
+  GoogleMaps: 4b5346bddfe6911bb89155d43c903020170523ac
+  GooglePlaces: 1634d019549b969d40fe0ccb0b9513055adebe01
   GoogleUtilities: f8a43108b38a68eebe8b3540e1f4f2d28843ce20
   GTMSessionFetcher: b3503b20a988c4e20cc189aa798fd18220133f52
   HEREMaps: e487311662d4031466570eb6706f62baa8f66b7c
@@ -297,6 +310,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: f645c6b7e38f9b7ae6f3c4e5a2eced93cd02351f
+PODFILE CHECKSUM: fda1e5523d16c2d8b5397786bb2911b62c663581
 
 COCOAPODS: 1.10.1

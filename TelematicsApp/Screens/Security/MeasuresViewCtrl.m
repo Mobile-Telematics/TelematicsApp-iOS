@@ -11,7 +11,6 @@
 #import "Color.h"
 #import "Helpers.h"
 #import "UIViewController+Preloader.h"
-#import "GeneralService.h"
 #import "UITextField+Form.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"

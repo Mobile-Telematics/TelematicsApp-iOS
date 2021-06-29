@@ -2,7 +2,7 @@
 //  AppDelegate.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 09.06.18.
+//  Created by DATA MOTION PTE. LTD. on 09.06.21.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -16,11 +16,15 @@
 #import "WiFiGPSChecker.h"
 #import <NMAKit/NMAKit.h>
 #import <AdSupport/AdSupport.h>
+#import <GoogleMaps/GoogleMaps.h>
+@import GooglePlaces;
 
 static NSString * const kRecipesStoreName = @"Model.sqlite";
 
+
 @interface AppDelegate () <RPAccuracyAuthorizationDelegate, RPLowPowerModeDelegate>
 @end
+
 
 @implementation AppDelegate
     
@@ -129,6 +133,11 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     [NMAApplicationContext setAppId:[Configurator sharedInstance].mapsAppIdKey
                             appCode:[Configurator sharedInstance].mapsAppCode
                          licenseKey:[Configurator sharedInstance].mapsLicenseKey];
+    
+    //YOUR OWN GOOGLE MAPS KEYS FOR CLAIMS SECTION REQUIRED!
+    [GMSServices provideAPIKey:[Configurator sharedInstance].googleApiKey];
+    [GMSPlacesClient provideAPIKey:[Configurator sharedInstance].googleApiKey];
+    
     
 //    //LOG SETUP IF NEEDED
 //    [DDLog addLogger:[DDOSLogger sharedInstance]];

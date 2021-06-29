@@ -2,7 +2,7 @@
 //  TelematicsAppPrefixHeader.pch
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 14.01.18.
+//  Created by DATA MOTION PTE. LTD. on 14.01.21.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 #import "ZenLeaderboardModel.h"
 #import "CoreDataCoordinator.h"
 #import "GeneralService.h"
+#import "ClaimsService.h"
 #import "BaseViewController.h"
 #import <RaxelPulse/RaxelPulse.h>
 #import "MagicalRecord/MagicalRecord.h"

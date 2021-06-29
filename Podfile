@@ -32,6 +32,8 @@ def available_pods
     pod 'KDLoadingView'
     pod 'ImagePicker'
     pod 'CircleTimer', '0.2.0'
+    pod 'GoogleMaps', '3.9.0'
+    pod 'GooglePlaces', '3.9.0'
 end
 
 

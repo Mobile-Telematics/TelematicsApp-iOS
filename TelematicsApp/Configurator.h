@@ -19,6 +19,7 @@
 @property(nonatomic, strong) NSString       *statisticServiceURL;
 @property(nonatomic, strong) NSString       *leaderboardServiceURL;
 @property(nonatomic, strong) NSString       *carServiceURL;
+@property(nonatomic, strong) NSString       *claimsServiceURL;
 @property(nonatomic, strong) NSString       *instanceId;
 @property(nonatomic, strong) NSString       *instanceKey;
 
@@ -26,6 +27,7 @@
 @property(nonatomic, strong) NSString       *mapsAppCode;
 @property(nonatomic, strong) NSString       *mapsLicenseKey;
 @property(nonatomic, strong) NSString       *mapsRestApiKey;
+@property(nonatomic, strong) NSString       *googleApiKey;
 
 @property(nonatomic, strong) NSString       *linkPrivacyPolicy;
 @property(nonatomic, strong) NSString       *linkTermsOfUse;

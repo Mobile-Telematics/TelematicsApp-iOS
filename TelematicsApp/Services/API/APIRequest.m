@@ -70,6 +70,11 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     return nil;
 }
 
++ (NSString *)claimsServiceURL {
+    @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [claimsServiceURL] method to provide server URL" userInfo:nil];
+    return nil;
+}
+
 + (NSString *)contentTypePathToJson {
     @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [contentTypePathToJson] method to provide server URL" userInfo:nil];
     return nil;
@@ -157,26 +162,26 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - TelematicsApp Request V2
-
-- (void)performRequestWithPathV2:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
-    self.responseClass = responseClass;
-    if (![path hasPrefix:@"http"]) {
-        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
-    }
-    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
-    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
-    NSError* error = nil;
-    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-    request.timeoutInterval = 120;
-    NSLog(@"req %@", request.URL.absoluteString);
-    NSDictionary* customHeaders = [[self class] customRequestHeaders];
-    for (NSString* key in customHeaders.allKeys) {
-        [request setValue:customHeaders[key] forHTTPHeaderField:key];
-    }
-    [self performRequest:request withResponseClass:responseClass];
-}
+//#pragma mark - TelematicsApp Request V2
+//
+//- (void)performRequestWithPathV2:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
+//    self.responseClass = responseClass;
+//    if (![path hasPrefix:@"http"]) {
+//        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
+//    }
+//    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+//    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+//    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
+//    NSError* error = nil;
+//    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
+//    request.timeoutInterval = 120;
+//    NSLog(@"req %@", request.URL.absoluteString);
+//    NSDictionary* customHeaders = [[self class] customRequestHeaders];
+//    for (NSString* key in customHeaders.allKeys) {
+//        [request setValue:customHeaders[key] forHTTPHeaderField:key];
+//    }
+//    [self performRequest:request withResponseClass:responseClass];
+//}
 
 
 #pragma mark - TelematicsApp Request with Body
@@ -240,6 +245,25 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     for (NSString* key in customHeaders.allKeys) {
         [request setValue:customHeaders[key] forHTTPHeaderField:key];
     }
+    [self performRequest:request withResponseClass:responseClass];
+}
+
+
+#pragma mark - ClaimsServive
+
+- (void)performRequestClaimsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
+    self.responseClass = responseClass;
+    if (![path hasPrefix:@"http"]) {
+        path = [NSString stringWithFormat:@"%@/%@", [[self class] claimsServiceURL], path];
+    }
+    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
+    NSError* error = nil;
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
+    request.timeoutInterval = 120;
+    NSLog(@"req %@", request.URL.absoluteString);
+    [request setValue:[GeneralService sharedService].claimsToken forHTTPHeaderField:@"Authorization"];
     [self performRequest:request withResponseClass:responseClass];
 }
 
