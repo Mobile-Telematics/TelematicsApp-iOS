@@ -1,19 +1,12 @@
-# Telematics App with Firebase integration
+# Telematics App with Firebase© integration
 
-![](https://raw.githubusercontent.com/Mobile-Telematics/telematicsapp/main/telematicsapp.jpg)
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/mainlogo.jpg)
 
-![](https://img.shields.io/badge/version-1.0-blue) ![](https://img.shields.io/cocoapods/v/RaxelPulse) ![](https://img.shields.io/badge/release-blueviolet) ![](https://img.shields.io/badge/free-release) ![](https://img.shields.io/badge/AppStore-ready-important)
+![](https://img.shields.io/cocoapods/v/RaxelPulse) ![](https://img.shields.io/badge/release-blueviolet) ![](https://img.shields.io/badge/free-release) ![](https://img.shields.io/badge/AppStore-ready-important)
 
 ## Description
 
-This Telematics App is created by DATA MOTION PTE. LTD. and is distributed free of charge to all customers & users and can be used to create your own app for iOS in few steps with help of Firebase services.
-
-## Basic concepts & credentials
-
-For commercial use, you need create sandbox account https://userdatahub.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with our API.
-
-Additionally, to authenticate users in your app and store users data, you need to create an  individual account at https://firebase.google.com
-All user data will be stored in the Firebase Realtime Database, which will allow you to make a database without programming skills in few steps.
+This Telematics App is created by DATA MOTION PTE. LTD. and is distributed free of charge to all customers & users and can be used to create your own app for iOS in few steps with the help of Firebase© services.
 
 ## Ready Features
 
@@ -26,40 +19,85 @@ All user data will be stored in the Firebase Realtime Database, which will allow
 - [Connect OBD device screen](#leaderboard-screen)
 - [Advanced Settings & Links](#advanced-settings)
 
-## Setup Firebase Project
+## Basic concepts & credentials
 
-In the next few simple steps, we'll show you how easy it is to create and configure an app in the Firebase console.
+For commercial use, you need to create sandbox account https://userdatahub.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with our API.
 
-Step 1: After creating your Firebase account, open your console at https://console.firebase.google.com
-Click Create a project.
+Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
 
-Step 2: Enter the name of your future project and application. Click "Next". For ease of integration, at the next step, we recommend deactivating the "Enable Google Analytics" checkbox. Click "Create project". Congratulations!
+All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills in a few minutes.
 
-Step 3: Now you need to create a configuration for your iOS app. Click on the iOS icon as shown in the picture.
+## Setup Firebase© Project
 
-Step 4: Enter your unique iOS Bundle ID. This identifier must be used in your application in xCode. Enter App Nickname.
+In the next few simple steps, we'll show you how easy it is to create and configure an app in the Firebase© console.
 
-Step 5: In this step, download the provided GoogleService-Info.plist file. You need to put it in our TelematicsApp, as shown in the picture below.
+Step 1: After creating your Firebase© account, open your console: https://console.firebase.google.com
 
-Step 6: You can skip the Add Firebase SDK & Add initialization code steps below, because we did it for you :) Finish the setup and click "Continue to console".
+Click "Create a project" button.
 
-Step 7: In order for your users to create accounts to log into the application, you need to go to the very first Authentication section on the left side of the menu.
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f01.png)
 
-Step 8: In the Sign-in method tab, click on the Provider's "Email/Password" on the right "pencil" (Edit configuration hint) as in the picture below. If you need to perform authorization using the Provider "Phone" - select the setting of this item.
+Step 2: Enter the name of your future Project. Click "Continue" button.
 
-Step 9: Switch to Enable and click "Save" button. It's very good! Now your users can login to the app.
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f02.png)
 
-Step 10: Left a little. We need to activate Firebase Realtime Database. Go to the Realtime Database section on the left side of the menu and click the "Create Database" button.
+Step 3: For ease of integration, at the next step, we recommend deactivating the "Enable Google Analytics" checkbox.
 
-Step 11: Choose any Realtime Database location value in this step.
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f03.png)
 
-Step 12: Select "Start a locked mode" in this step and click the "Enable" button. It's all!
+Click "Create project".
 
-Step 13: Open our TelematicsApp in xCode, make sure to transfer the GoogleService-Info.plist file to the project (Step 5). Build & Run!
+Step 4: Now you need to create a configuration for your iOS app. Click on the "iOS icon" as it us shown on the picture below:
 
-## Setup Configuration.plist file
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f04.png)
 
-For your convenience, we have created a standard iOS file with parameters named`Configuration.plist`, in which you can specify the basic settings for your future app.
+Step 5: Enter your unique iOS Bundle ID. This identifier must be used in your application in xCode. Enter App Nickname. Click "Register app" next.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f05.png)
+
+Step 6: On this step, download the provided  `GoogleService-Info.plist`  file. You need to put it in our Telematics App source code, as it is shown on the picture below:
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f06.png)
+
+Step 7: You can skip the "Add Firebase SDK" & "Add initialization code" steps below, because we already did it for you in our Telematics App:) Finish the setup and click on "Continue to console".
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f07.png)
+
+Step 8: Important. In order for your users to create accounts to log into your app, you need to go to "Authentication" section on the left side of the menu.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f08.png)
+
+Step 9: In the "Sign-in method" tab, click on the Provider's "Email/Password" on the right "pencil" (Edit configuration hint) as in the picture below. If you need to perform authorization using the "Phone" Provider - select the setting of this item.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f09.png)
+
+Step 10: Switch to "Enable" and click "Save" button. Now your users can login to the app.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f10.png)
+
+Step 11: We need to activate Firebase© Realtime Database. This will allow you to store the data of all your users in this simple web interface. Go to the Realtime Database section on the left side of the menu and click on the "Create Database" button.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f11.png)
+
+Step 12: Choose any Realtime Database location value.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f12.png)
+
+Step 13: Select "Start a locked mode" and click the "Enable" button.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f13.png)
+
+Step 14: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to your project (See Step 5 above) and Enjoy! 
+
+Build & Run!
+
+## Setup Telematics App Configuration.plist file
+
+Open our Telematics App source code by tapping TelematicsApp.xcworkspace file. 
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f14.png)
+
+For your convenience, we have created a standard iOS file with parameters named `Configuration.plist`, where you can specify the basic settings for your future app.
 Using this file, you can configure the basic parameters of your application by specifying server addresses, basic settings and links, as well as specifying several images for an individual design. Carefully study the parameters provided below for further work.
                     
 Settings Key  | Value
@@ -67,11 +105,8 @@ Settings Key  | Value
 configName | Default Your app configuration name. Not need to change, you can use any of your choice. By default `TelematicsApp_Configuration`
 instanceId | Unique ID code for the application to work. `Required!`
 instanceKey | Unique KEY code for the application to work. `Required!`
-userServiceRootURL | Basic https address for user authentication to work with`UserService API`. You will also need to get the keys to work with`HEREmaps API`to view the details of user trips. By default, we provide you https-address of our `TEST` servers for debugging. Before release your app, you can get the addresses to enter `PRODUCTION` environment
 statisticServiceURL | Basic https address to work with `Statistics` and `Scorings` APIs. By default, we provide you https-address of our `TEST` servers for debugging. Before the release your app, you can get the addresses to enter `PRODUCTION` environment
 leaderboardServiceRootURL | Basic https address to work with the user leaderboard and `Leaderboard API`.
-needGeneratePassword | When you create your app, we provide you with a `TEST` environment. In the `TEST` environment we DO NOT SEND ONE-TIME PASSWORD VIA SMS OR EMAIL. `needGeneratePassword` - BOOL parameter, which allows you at the stage of creating your application not to generate a password for new users, but to use any password that you specify in the `defaultUserPassword` section. By default for debug `false` - not need generate password!
-defaultUserPassword | Default password for testing. By default 123456 for `TEST` environment. When you release your app in the `PRODUCTION` environment, the defaultUserPassword is not specified.
 mapsAppIdKey | App Id for `HEREmaps API`
 mapsAppCode | App Code for `HEREmaps API`
 mapsLicenseKey | License key for `HEREmaps API`
@@ -127,7 +162,7 @@ Below we present the basic methods for AppDelegate that allow you to initialize 
         return YES;
     }
 
-## Telematics SDK Permission Wizard
+## Telematics SDK Permission Wizard for Telematics App
 
 An important part to record a user's trips is to properly request permissions to use the user's Location and Motion & Fitness activity. Telematics SDK includes a specially designed `Wizard` that helps the user explain why the application needs it and make the right choice. Below is an example of initialization with the launch of the step-by-step`Wizard`
 
@@ -148,28 +183,27 @@ An important part to record a user's trips is to properly request permissions to
         NSLog(@"LOCATION INIT SUCCESS");
     }];
 
-## App authentication
+## LoginAuth Framework authentication for Telematics App
 
-Primary user authentication in Telematics App occurs in the `UserService API`.
-For your convenience, we have implemented a convenient shared service in the project (Services folder):
-`MainApiRequest.m` - a file that displays all API requests to`UserService API`.
-`UserService.m` - a file that allows you to work with a user profile & receive/store all information from the `UserService API`.
+We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required for statistics and user scorings. `AuthLogin Framework` is integrated into this Telematics App.
 
-For example, by sending request with user's email phone number and with a user's password, in response you will receive a`VIRTUAL_DEVICE_TOKEN` value's for working with Telematics SDK.
-To record trips correctly, you need to pass to the method:
+You can find complete information about LoginAuth Framework in our repository https://github.com/Mobile-Telematics/LoginAuthFramework-iOS
 
-    [RPEntry instance].virtualDeviceToken = `VIRTUAL_DEVICE_TOKEN` // Every time the app is launched!
+#### Basic concepts of LoginAuth Framework
 
-Also, upon successful registration request, you will receive an`Authorization JWT token` in response, which must be used for all `UserService API` calls in format`Bearer AUTH_TOKEN` for Statistics, Scorings, UserProfile requests.
+`deviceToken` - is the main individual SDK user identifier for your app. This identifier is used as a key across all our services.
 
->To use Telematics SDK at the moment & get only user tracks you only need "VIRTUAL_DEVICE_TOKEN".
-Save "VIRTUAL_DEVICE_TOKEN" and "Bearer AUTH_TOKEN" in your app every time.
+`jwToken` - or JSON Web Token (JWT) is the main UserService API key, that allows you to get user individual statistics and user scorings by UserService APIs calls.
 
-## Check User Exist
+`refreshToken` - is a secret key that allows you to refresh the jwToken when it expires.
 
-To improve user experience, we have developed a request to the`UserService API`, which allows you to determine whether the user needs to REGISTER or LOG INTO his account.
-All you need is to pass the user's phone/email to the`UserService API`.
-In the resulting Response, you will see the`UserExists` parameter set to `true/false`. Based on this, you can determine the further operation in your app.
+First of all, when you creating a new user, you need to get a ` deviceToken`  from our service. ` deviceToken`  cannot be recovered if lost! Remember this.
+
+In this Telematics App, we specifically showed an example of use, so that the `deviceToken`  is stored on the Firebase© Realtime Database side, created by you.
+
+If the user has deleted the app or wants to log in again - By owning ` deviceToken`  (stored at Firebase© Realtime Database side) ,  `instanceId`  &  `instanceKey` (received from us), you can always get a  `jwToken`  for further authorization of your user.
+
+` jwToken`  will allow you to request a user statistics and scorings, as we discussed and explained earlier.
 
 ## Dashboard features
 
@@ -213,7 +247,7 @@ Remember that to display the button for switching Driving Signature, you must se
 By default, each trip has the very first role -`OriginalDriver`
                     
 - OriginalDriver
-- Passanger
+- Passenger
 - Bus
 - Motorcycle
 - Train
@@ -269,13 +303,6 @@ On the detailed trip screen, we allow users to see the events that happened to t
 We detect major events:`Acceleration`,`Braking`,`Speeding`,`Cornering`,`PhoneUsage`.
 In the Telematics App, we offer you a clear interface that allows the user to change the event on the map if it is not correct or delete.
 
-## User Profile screen
-
-Telematics App uses UserService API to work with basic user data. On this screen, you will understand how to get basic user parameters, including name, phone number, and save them.
->`UserService.m` - a file that allows you to work with a user profile & receive/store all information from the `UserService API`.
-
-With this shared service you can store any user information used in the Profile screen. 
-
 ## Settings screen
 
 Settings screen gives you the opportunity to make specific settings for the entire application, provide links to instructions, as well as addresses of technical support for the application.
@@ -306,6 +333,7 @@ In the Telematics App source code, we show you an option to clear user data afte
 This can be done using Telematics SDK method:
 
     [[RPEntry instance] removeVirtualDeviceToken];
+    [[FIRAuth auth] signOut:nil];
 
 ## Connect OBD device
 
@@ -331,17 +359,27 @@ In the`UI` project folder you can find all sorts of improvements for labels, but
 
 To fully understand how the Telematics SDK and all our services work, use our detailed docs and guides https://docs.telematicssdk.com/ to make all the process as easy as possible.
 
+All detailed information on using Firebase© can be found in the documentation https://firebase.google.com/docs/auth/ios/start
+
 Telematics App for iOS works together with HERE maps to display the user's trips on a map. To receive a key for the `PRODUCTION` environment, you need to create your own account https://developer.here.com 
 
 Happy coding!
 
 ## Links
 
-[https://telematicssdk.com/](https://telematicssdk.com/)
+[Official product Web-page](https://telematicssdk.com/)
 
-[Official ZenRoad app for iOS](https://apps.apple.com/us/app/zenroad/id1432161345/)
+[Official API services web-page](https://www.telematicssdk.com/api-services/)
 
-[Official ZenRoad app for Android](https://play.google.com/store/apps/details?id=com.raxeltelematics.zenroad&hl=ru&gl=US)
+[Official SDK and API references](https://www.telematicssdk.com/api-services/)
+
+[Official ZenRoad web-page](https://www.telematicssdk.com/telematics-app/)
+
+[Official ZenRoad app for iOS](https://apps.apple.com/jo/app/zenroad/id1563218393)
+
+[Official ZenRoad app for Android](https://play.google.com/store/apps/details?id=com.telematicssdk.zenroad&hl=en&gl=US)
+
+[Official ZenRoad app for Huawei](https://appgallery.huawei.com/#/app/C104163115)
 
 
 ###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
