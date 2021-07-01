@@ -53,28 +53,6 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     FIRDatabaseReference *usersDatabase = [[FIRDatabase database] referenceWithPath:@"users"];
     [usersDatabase keepSynced:YES];
     
-//    // SETUP FIREBASE CLOUD STORAGE
-//    // Get a reference to the storage service using the default Firebase App
-//    FIRStorage *storage = [FIRStorage storage];
-//
-//    // Create a storage reference from our storage service
-//    FIRStorageReference *storageRef = [storage reference];
-//
-//    // Create a child reference
-//    // imagesRef now points to "images"
-//    //FIRStorageReference *imagesRef = [storageRef child:@"images"];
-//
-//    // Child references can also take paths delimited by '/'
-//    // spaceRef now points to "images/space.jpg"
-//    // imagesRef still points to "images"
-//    FIRStorageReference *spaceRef = [storageRef child:@"images/space.jpg"];
-//
-//    // This is equivalent to creating the full reference
-//    spaceRef = [storage referenceForURL:@"gs://zytertelematics.appspot.com/images/space.jpg"];
-//
-//    ///
-    
-    
     //SETUP APP CONFIGURATOR.PLIST
     [Configurator setMainAppConfigurationFromPlist];
     
