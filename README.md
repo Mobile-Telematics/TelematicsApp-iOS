@@ -87,7 +87,11 @@ Step 13: Select "Start a locked mode" and click the "Enable" button.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f13.png)
 
-Step 14: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to your project (See Step 5 above) and Enjoy! 
+Step 14: Now you need to change rules for your Realtime Database. You need to go to “Realtime Database” section on the left side of the menu. In the “Rules” tab change read and write fields to “auth.uid != null”.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f15.png)
+
+Step 15: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to your project (See Step 5 above) and Enjoy! 
 
 Build & Run!
 
