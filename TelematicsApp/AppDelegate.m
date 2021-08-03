@@ -116,7 +116,6 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     [GMSServices provideAPIKey:[Configurator sharedInstance].googleApiKey];
     [GMSPlacesClient provideAPIKey:[Configurator sharedInstance].googleApiKey];
     
-    
 //    //LOG SETUP IF NEEDED
 //    [DDLog addLogger:[DDOSLogger sharedInstance]];
 //    DDFileLogger *fileLogger = [[DDFileLogger alloc] init];

@@ -3,4 +3,54 @@
    uuid = "2EA44355-DB25-46DC-8526-2C29115A9270"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3E167108-ED62-40BE-A15B-6D01002454D1"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TelematicsApp/Screens/AuthEmail/MainEmailViewCtrl.m"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "235"
+            endingLineNumber = "235"
+            landmarkName = "-joinBtnClick:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "3E167108-ED62-40BE-A15B-6D01002454D1 - f77d1ed89a0c434e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[MainEmailViewCtrl joinBtnClick:]_block_invoke_5"
+                  moduleName = "TelematicsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavel/Documents/repo/TelematicsAppFirebase-iOS-NEW/TelematicsApp/Screens/AuthEmail/MainEmailViewCtrl.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "291">
+               </Location>
+               <Location
+                  uuid = "3E167108-ED62-40BE-A15B-6D01002454D1 - f77d1ed89a2c434d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__34-[MainEmailViewCtrl joinBtnClick:]_block_invoke_6"
+                  moduleName = "TelematicsApp"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/pavel/Documents/repo/TelematicsAppFirebase-iOS-NEW/TelematicsApp/Screens/AuthEmail/MainEmailViewCtrl.m"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "235"
+                  endingLineNumber = "235"
+                  offsetFromSymbolStart = "12">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

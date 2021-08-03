@@ -134,12 +134,6 @@
 
 - (IBAction)logBtnClick:(id)sender {
     
-    PhoneLoginViewCtrl* logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"PhoneLoginViewCtrl"];
-    //logIn.enteredPhone = checkData.Phone;
-    //logIn.savedVerificationId = verificationID;
-    [self.navigationController pushViewController:logIn animated:NO];
-    return;
-    
     NSString *phone = [NSString stringWithFormat:@"%@%@", self.selectedCode, self.phoneField.text];
     
     NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];

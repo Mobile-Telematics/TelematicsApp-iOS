@@ -122,11 +122,15 @@
         [GeneralService sharedService].user_FIR = authResult.user;
 
         FIRDatabaseQuery *allUserData = [[[GeneralService sharedService].realtimeDatabase child:@"users"] child:authResult.user.uid];
-        [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+        [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull userProfileSnapshot) {
 
-            if (snapshot.value == [NSNull null]) {
-                NSLog(@"No user data in Firebase Database! Create this if deleted NEW USER!");
+            [self dismissKeyboard];
+            [self showPreloader];
+            
+            if (userProfileSnapshot.value == [NSNull null]) {
                 
+                NSLog(@"No user data in Firebase Database! Create this if deleted NEW USER!");
+                //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
                 [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
                                                                           instanceKey:[Configurator sharedInstance].instanceKey
                                                                                result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
@@ -136,6 +140,12 @@
                     [GeneralService sharedService].jwt_token_number = jwToken;
                     [GeneralService sharedService].refresh_token_number = refreshToken;
                     [GeneralService sharedService].firebase_user_id = authResult.user.uid;
+                    
+                    if (deviceToken == nil || jwToken == nil || refreshToken == nil) {
+                        NSLog(@"BACKEND ERROR NO TOKENS NEED UPDATE COMPANY %@", deviceToken);
+                        [self hidePreloader];
+                        return;
+                    }
 
                     //CHECK ALL AT NIL
                     //FIREBASE DATABASE DID'T WORK WITH NIL
@@ -144,8 +154,8 @@
 
                     // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
                     // STORE OTHER USER INFO IN DATABASE
-                    [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
-                                               child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedService].device_token_number,
+                    [[[[GeneralService sharedService].realtimeDatabase child:@"users"] child:authResult.user.uid] setValue:@{
+                                                                                     @"deviceToken": [GeneralService sharedService].device_token_number,
                                                                                      @"userId": authResult.user.uid,
                                                                                      @"email": @"",
                                                                                      @"phone": finishedPhoneNumber,
@@ -165,7 +175,6 @@
                     [GeneralService sharedService].firebase_user_id = authResult.user.uid;
 
                     [GeneralService sharedService].stored_userEmail = @"";
-                    [GeneralService sharedService].stored_userPhone = self.enteredPhone;
                     [GeneralService sharedService].stored_firstName = @"";
                     [GeneralService sharedService].stored_lastName = @"";
                     [GeneralService sharedService].stored_birthday = @"";
@@ -175,18 +184,20 @@
                     [GeneralService sharedService].stored_childrenCount = @"";
                     [GeneralService sharedService].stored_clientId = @"";
 
-                    //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST
-                    [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                jwToken:[GeneralService sharedService].jwt_token_number
-                                                           refreshToken:[GeneralService sharedService].refresh_token_number];
+                    //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST AFTER STORE SNAPSHOT IN FIREBASE
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                   jwToken:[GeneralService sharedService].jwt_token_number
+                                                              refreshToken:[GeneralService sharedService].refresh_token_number];
 
-                    [self hidePreloader];
+                        [self hidePreloader];
+                    });
                 
             } else {
                 
                 //GET SNAPSHOT USER DATA FROM FIREBASE DATABASE
-                NSDictionary *allUsersData = (NSDictionary*)snapshot.value;
-                NSLog(@"All Users Data From Firebase Database%@", allUsersData);
+                NSDictionary *allUsersData = (NSDictionary*)userProfileSnapshot.value;
+                NSLog(@"Success Fetch Users Data From Firebase Database %@", allUsersData);
                 
                 [GeneralService sharedService].device_token_number = allUsersData[@"deviceToken"];
                 [GeneralService sharedService].firebase_user_id = allUsersData[@"userId"];
@@ -203,7 +214,6 @@
                 [GeneralService sharedService].stored_clientId = allUsersData[@"clientId"];
                 [GeneralService sharedService].stored_profilePictureLink = allUsersData[@"profilePictureLink"];
                 
-                
                 //
                 //IF DEVICE TOKEN IS LOST IT CANNOT BE RESTORED!
                 //THE USER WILL GET A NEW TOKEN AND LOSE ALL ITS DATA!
@@ -213,7 +223,7 @@
                 //
                 if (allUsersData[@"deviceToken"] == nil || [allUsersData[@"deviceToken"] isEqual:@""]) {
                     
-                    //GET NEW DEVICETOKEN FOR USER
+                    //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
                     [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
                                                                               instanceKey:[Configurator sharedInstance].instanceKey
                                                                                    result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
@@ -258,11 +268,13 @@
                          ];
 
                         //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
-                        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                    jwToken:[GeneralService sharedService].jwt_token_number
-                                                               refreshToken:[GeneralService sharedService].refresh_token_number];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                       jwToken:[GeneralService sharedService].jwt_token_number
+                                                                  refreshToken:[GeneralService sharedService].refresh_token_number];
 
-                        [self hidePreloader];
+                            [self hidePreloader];
+                        });
                     }];
                         
                 } else {
@@ -282,11 +294,13 @@
                         [GeneralService sharedService].refresh_token_number = newRefreshToken;
                         
                         //LOGIN EXIST USER IN APP
-                        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                    jwToken:[GeneralService sharedService].jwt_token_number
-                                                               refreshToken:[GeneralService sharedService].refresh_token_number];
-                        
-                        [self hidePreloader];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                       jwToken:[GeneralService sharedService].jwt_token_number
+                                                                  refreshToken:[GeneralService sharedService].refresh_token_number];
+
+                            [self hidePreloader];
+                        });
                     }];
                     
                 }
@@ -312,34 +326,7 @@
 }
 
 - (IBAction)getNewPassword:(id)sender {
-    
-    
-    
-//    RegPhoneRequestData* regData = [[RegPhoneRequestData alloc] init];
-//    
-//    NSString *delPhoneChar = [[self.enteredPhone componentsSeparatedByCharactersInSet:
-//                               [[NSCharacterSet decimalDigitCharacterSet] invertedSet]]
-//                              componentsJoinedByString:@""];
-//    
-//    regData.value = [NSString stringWithFormat:@"+%@", delPhoneChar];
-//    regData.resetTypeDataContract = @"Phone";
-//    
-//    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-//        [self hidePreloader];
-//        if ([response isSuccesful]) {
-//            
-////            RestorePhoneViewCtrl* restorePhone = [self.storyboard instantiateViewControllerWithIdentifier:@"RestorePhoneViewCtrl"];
-////            restorePhone.enteredPhone = [NSString stringWithFormat:@"+%@", delPhoneChar];
-////            [self.navigationController pushViewController:restorePhone animated:YES];
-//            
-//        } else {
-//            if ([error.localizedDescription isEqualToString:@"Request failed: bad request (400)"]) {
-//                [self.errorHandler showErrorMessages:@[localizeString(@"Phone number isn't correct.")]];
-//            } else {
-//                [self.errorHandler handleError:error response:response];
-//            }
-//        }
-//    }] resendPasswordWithPhone:regData];
+    //TODO FIREBASE RESTORE
 }
 
 - (void)runPasswordAlert {

@@ -144,7 +144,7 @@
                                             //
                                             if (allUsersData[@"deviceToken"] == nil || [allUsersData[@"deviceToken"] isEqual:@""]) {
                                                 
-                                                //DAATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
+                                                //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
                                                 [self createUserIfFirebaseDatabaseError:existUser];
                                                     
                                             } else {
@@ -164,11 +164,13 @@
                                                     [GeneralService sharedService].refresh_token_number = newRefreshToken;
 
                                                     //LOGIN EXIST USER IN APP
-                                                    [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                                                jwToken:[GeneralService sharedService].jwt_token_number
-                                                                                           refreshToken:[GeneralService sharedService].refresh_token_number];
+                                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                                                   jwToken:[GeneralService sharedService].jwt_token_number
+                                                                                              refreshToken:[GeneralService sharedService].refresh_token_number];
 
-                                                    [self hidePreloader];
+                                                        [self hidePreloader];
+                                                    });
                                                 }];
                                                 
                                             }
@@ -239,11 +241,13 @@
                         [GeneralService sharedService].stored_clientId = @"";
                         
                         //LOGIN USER IN APP
-                        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                    jwToken:[GeneralService sharedService].jwt_token_number
-                                                               refreshToken:[GeneralService sharedService].refresh_token_number];
-                    
-                        [self hidePreloader];
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                       jwToken:[GeneralService sharedService].jwt_token_number
+                                                                  refreshToken:[GeneralService sharedService].refresh_token_number];
+
+                            [self hidePreloader];
+                        });
                 }];
                 
             }
@@ -298,11 +302,13 @@
          ];
 
         //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
-        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                    jwToken:[GeneralService sharedService].jwt_token_number
-                                               refreshToken:[GeneralService sharedService].refresh_token_number];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                       jwToken:[GeneralService sharedService].jwt_token_number
+                                                  refreshToken:[GeneralService sharedService].refresh_token_number];
 
-        [self hidePreloader];
+            [self hidePreloader];
+        });
     }];
 }
 

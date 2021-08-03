@@ -176,17 +176,17 @@
                                             [GeneralService sharedService].user_FIR = existUser.user;
                     
                                             FIRDatabaseQuery *allUserData = [[[GeneralService sharedService].realtimeDatabase child:@"users"] child:existUser.user.uid];
-                                            [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
+                                            [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull userProfileSnapshot) {
                       
-                                                if (snapshot.value == [NSNull null]) {
+                                                if (userProfileSnapshot.value == [NSNull null]) {
                                                     NSLog(@"No user data!");
-                                                    [self createUserIfFirebaseDatabaseError:existUser];
+                                                    [self createEmailUserIfFirebaseDatabaseError:existUser];
                                                     [self hidePreloader];
                                                 } else {
                                                     
                                                     //GET SNAPSHOT USER DATA FROM FIREBASE DATABASE
-                                                    NSDictionary *allUsersData = (NSDictionary*)snapshot.value;
-                                                    NSLog(@"All Users Data From Firebase Database %@", allUsersData);
+                                                    NSDictionary *allUsersData = (NSDictionary*)userProfileSnapshot.value;
+                                                    NSLog(@"Success Fetch Users Data From Firebase Database %@", allUsersData);
                                                     
                                                     [GeneralService sharedService].device_token_number = allUsersData[@"deviceToken"];
                                                     [GeneralService sharedService].firebase_user_id = allUsersData[@"userId"];
@@ -203,7 +203,6 @@
                                                     [GeneralService sharedService].stored_clientId = allUsersData[@"clientId"];
                                                     [GeneralService sharedService].stored_profilePictureLink = allUsersData[@"profilePictureLink"];
                                                     
-                                                    
                                                     //
                                                     //IF DEVICE TOKEN IS LOST IT CANNOT BE RESTORED!
                                                     //THE USER WILL GET A NEW TOKEN AND LOSE ALL ITS DATA!
@@ -213,8 +212,8 @@
                                                     //
                                                     if (allUsersData[@"deviceToken"] == nil || [allUsersData[@"deviceToken"] isEqual:@""]) {
 
-                                                        //DAATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
-                                                        [self createUserIfFirebaseDatabaseError:existUser];
+                                                        //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
+                                                        [self createEmailUserIfFirebaseDatabaseError:existUser];
                                                             
                                                     } else {
                                                         
@@ -233,11 +232,13 @@
                                                             [GeneralService sharedService].refresh_token_number = newRefreshToken;
 
                                                             //LOGIN EXIST USER IN APP
-                                                            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                                                        jwToken:[GeneralService sharedService].jwt_token_number
-                                                                                                   refreshToken:[GeneralService sharedService].refresh_token_number];
+                                                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                                [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                                                           jwToken:[GeneralService sharedService].jwt_token_number
+                                                                                                      refreshToken:[GeneralService sharedService].refresh_token_number];
 
-                                                            [self hidePreloader];
+                                                                [self hidePreloader];
+                                                            });
                                                         }];
                                                         
                                                     }
@@ -260,7 +261,7 @@
                 [GeneralService sharedService].refresh_token_number = refreshToken;
                 
                 if (deviceToken == nil || jwToken == nil || refreshToken == nil) {
-                    NSLog(@"BACKEND ERROR NO TOKENS %@", deviceToken);
+                    NSLog(@"BACKEND ERROR NO TOKENS NEED UPDATE COMPANY %@", deviceToken);
                     [self hidePreloader];
                     return;
                 }
@@ -301,18 +302,20 @@
                     [GeneralService sharedService].stored_address = @"";
                     [GeneralService sharedService].stored_clientId = @"";
                 
-                    [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                jwToken:[GeneralService sharedService].jwt_token_number
-                                                           refreshToken:[GeneralService sharedService].refresh_token_number];
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                                   jwToken:[GeneralService sharedService].jwt_token_number
+                                                              refreshToken:[GeneralService sharedService].refresh_token_number];
 
-                    [self hidePreloader];
+                        [self hidePreloader];
+                    });
             }];
             
         }
     }];
 }
 
-- (void)createUserIfFirebaseDatabaseError:(FIRAuthDataResult *)existUser {
+- (void)createEmailUserIfFirebaseDatabaseError:(FIRAuthDataResult *)existUser {
     
     [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
                                                               instanceKey:[Configurator sharedInstance].instanceKey
@@ -356,12 +359,14 @@
                                                                         @"profilePictureLink": profileImg}
          ];
 
-        //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
-        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                    jwToken:[GeneralService sharedService].jwt_token_number
-                                               refreshToken:[GeneralService sharedService].refresh_token_number];
+        //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST AFTER STORE SNAPSHOT IN FIREBASE
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                       jwToken:[GeneralService sharedService].jwt_token_number
+                                                  refreshToken:[GeneralService sharedService].refresh_token_number];
 
-        [self hidePreloader];
+            [self hidePreloader];
+        });
     }];
 }
 

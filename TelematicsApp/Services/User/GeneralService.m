@@ -18,10 +18,9 @@
 
 @interface GeneralService ()
 
-@property (strong, nonatomic) TelematicsAppModel                   *appModel;
-@property (nonatomic, assign) BOOL                          isLoggedOn;
-
-@property (nonatomic, strong) VehicleResultResponse         *vehicles;
+@property (strong, nonatomic) TelematicsAppModel                    *appModel;
+@property (nonatomic, assign) BOOL                                  isLoggedOn;
+@property (nonatomic, strong) VehicleResultResponse                 *vehicles;
 
 @end
 
@@ -50,6 +49,7 @@
     NSString *contentRT = self.refresh_token_number;
     [contentRT writeToFile:fileRefreshKey atomically:NO encoding:NSStringEncodingConversionAllowLossy error:nil];
 
+    //SAVE DATA IF NEEDED FOR YOU
     defaults_set_object(@"authUserDeviceToken", self.device_token_number);
     defaults_set_object(@"authUserFirebaseId", self.firebase_user_id);
     
@@ -64,6 +64,10 @@
     defaults_set_object(@"autUserChildrenCount", self.stored_childrenCount);
     defaults_set_object(@"autUserClientId", self.stored_clientId);
     defaults_set_object(@"authUserProfilePictureLink", self.stored_profilePictureLink);
+    
+    if (self.device_token_number) {
+        self.isLoggedOn = YES;
+    }
 }
 
 - (void)loadCredentials {
@@ -79,6 +83,7 @@
     NSString *tokenRefresh = [[NSString alloc] initWithContentsOfFile:fileRefreshKey usedEncoding:nil error:nil];
     self.refresh_token_number = tokenRefresh;
 
+    //LOAD USER CREDENTIALS NOW
     self.device_token_number = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserDeviceToken"];
     self.firebase_user_id = [[NSUserDefaults standardUserDefaults] valueForKey:@"authUserFirebaseId"];
     
@@ -109,7 +114,7 @@
         [allUserData observeSingleEventOfType:FIRDataEventTypeValue withBlock:^(FIRDataSnapshot * _Nonnull snapshot) {
 
             if (snapshot.value == [NSNull null]) {
-                NSLog(@"No user data!");
+                NSLog(@"No user data from Firebase Database!");
             } else {
                 
                 //GET SNAPSHOT USER DATA FROM FIREBASE DATABASE
