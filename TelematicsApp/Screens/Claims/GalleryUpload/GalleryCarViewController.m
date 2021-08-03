@@ -23,7 +23,7 @@
 
 @interface GalleryCarViewController () <KSPhotoBrowserDelegate, UICollectionViewDelegate, UICollectionViewDataSource, GMImagePickerControllerDelegate, UIImagePickerControllerDelegate, IQMediaPickerControllerDelegate>
 
-@property (strong, nonatomic) ZenAppModel *appModel;
+@property (strong, nonatomic) TelematicsAppModel *appModel;
 @property (nonatomic, strong) VehicleResultResponse *vehicle;
 @property (nonatomic, strong) IBOutlet UILabel *titleDoc;
 
@@ -51,7 +51,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     [self setupCollection];
     
     if (_imageManagerType == KSImageManagerTypeSDWebImage) {

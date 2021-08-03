@@ -111,6 +111,8 @@
               
                                         if (snapshot.value == [NSNull null]) {
                                             NSLog(@"No user data!");
+                                            [self createUserIfFirebaseDatabaseError:existUser];
+                                            [self hidePreloader];
                                         } else {
                                             
                                             //GET SNAPSHOT USER DATA FROM FIREBASE DATABASE
@@ -142,57 +144,8 @@
                                             //
                                             if (allUsersData[@"deviceToken"] == nil || [allUsersData[@"deviceToken"] isEqual:@""]) {
                                                 
-                                                //GET NEW DEVICETOKEN FOR USER
-                                                [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
-                                                                                                          instanceKey:[Configurator sharedInstance].instanceKey
-                                                                                                               result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
-
-                                                    //STORE IN SHAREDSERVICE
-                                                    [GeneralService sharedService].device_token_number = deviceToken;
-                                                    [GeneralService sharedService].jwt_token_number = jwToken;
-                                                    [GeneralService sharedService].refresh_token_number = refreshToken;
-                                                    [GeneralService sharedService].firebase_user_id = existUser.user.uid;
-
-                                                    //CHECK ALL AT NIL
-                                                    //FIREBASE DATABASE DID'T WORK WITH NIL
-                                                    NSString *email = self.enteredEmail ? self.enteredEmail : @"";
-                                                    [GeneralService sharedService].stored_userEmail = email;
-
-                                                    NSString *phone = [GeneralService sharedService].stored_userPhone ? [GeneralService sharedService].stored_userPhone : @"";
-                                                    NSString *firstName = [GeneralService sharedService].stored_firstName ? [GeneralService sharedService].stored_firstName : @"";
-                                                    NSString *lastName = [GeneralService sharedService].stored_lastName ? [GeneralService sharedService].stored_lastName : @"";
-                                                    NSString *birthday = [GeneralService sharedService].stored_birthday ? [GeneralService sharedService].stored_birthday : @"";
-                                                    NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
-                                                    NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
-                                                    NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
-                                                    NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
-                                                    NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
-                                                    NSString *profileImg = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
-
-                                                    [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
-                                                                               child:existUser.user.uid] setValue:@{@"deviceToken": deviceToken,
-                                                                                                                    @"userId": existUser.user.uid,
-                                                                                                                    @"email": email,
-                                                                                                                    @"phone": phone,
-                                                                                                                    @"firstName": firstName,
-                                                                                                                    @"lastName": lastName,
-                                                                                                                    @"birthday": birthday,
-                                                                                                                    @"address": address,
-                                                                                                                    @"gender": gender,
-                                                                                                                    @"maritalStatus": marital,
-                                                                                                                    @"childrenCount": children,
-                                                                                                                    @"clientId": clientId,
-                                                                                                                    @"profilePictureLink": profileImg
-                                                                               }
-                                                     ];
-
-                                                    //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
-                                                    [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
-                                                                                                jwToken:[GeneralService sharedService].jwt_token_number
-                                                                                           refreshToken:[GeneralService sharedService].refresh_token_number];
-
-                                                    [self hidePreloader];
-                                                }];
+                                                //DAATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
+                                                [self createUserIfFirebaseDatabaseError:existUser];
                                                     
                                             } else {
                                                 
@@ -225,6 +178,7 @@
         
     } else {
         
+        //CREATE NEW USER IN APP
         [[FIRAuth auth] createUserWithEmail:self.enteredEmail password:self.passField.text completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
             if (error) {
                 [GeneralService alert:error.localizedDescription title:@"Message"];
@@ -296,6 +250,60 @@
         }];
         
     }
+}
+
+- (void)createUserIfFirebaseDatabaseError:(FIRAuthDataResult *)existUser {
+    
+    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
+                                                              instanceKey:[Configurator sharedInstance].instanceKey
+                                                                   result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+
+        //STORE IN SHAREDSERVICE
+        [GeneralService sharedService].device_token_number = deviceToken;
+        [GeneralService sharedService].jwt_token_number = jwToken;
+        [GeneralService sharedService].refresh_token_number = refreshToken;
+        [GeneralService sharedService].firebase_user_id = existUser.user.uid;
+
+        //CHECK ALL AT NIL
+        //FIREBASE DATABASE DID'T WORK WITH NIL
+        NSString *email = self.enteredEmail ? self.enteredEmail : @"";
+        [GeneralService sharedService].stored_userEmail = email;
+
+        NSString *phone = [GeneralService sharedService].stored_userPhone ? [GeneralService sharedService].stored_userPhone : @"";
+        NSString *firstName = [GeneralService sharedService].stored_firstName ? [GeneralService sharedService].stored_firstName : @"";
+        NSString *lastName = [GeneralService sharedService].stored_lastName ? [GeneralService sharedService].stored_lastName : @"";
+        NSString *birthday = [GeneralService sharedService].stored_birthday ? [GeneralService sharedService].stored_birthday : @"";
+        NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
+        NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
+        NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
+        NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+        NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
+        NSString *profileImg = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
+
+        [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
+                                   child:existUser.user.uid] setValue:@{@"deviceToken": deviceToken,
+                                                                        @"userId": existUser.user.uid,
+                                                                        @"email": email,
+                                                                        @"phone": phone,
+                                                                        @"firstName": firstName,
+                                                                        @"lastName": lastName,
+                                                                        @"birthday": birthday,
+                                                                        @"address": address,
+                                                                        @"gender": gender,
+                                                                        @"maritalStatus": marital,
+                                                                        @"childrenCount": children,
+                                                                        @"clientId": clientId,
+                                                                        @"profilePictureLink": profileImg
+                                   }
+         ];
+
+        //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
+        [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
+                                                    jwToken:[GeneralService sharedService].jwt_token_number
+                                               refreshToken:[GeneralService sharedService].refresh_token_number];
+
+        [self hidePreloader];
+    }];
 }
 
 - (IBAction)getNewVerifyCodeOnEmail:(id)sender {

@@ -42,8 +42,8 @@
 @property (weak, nonatomic) IBOutlet UIButton       *settingsBtn;
 @property (weak, nonatomic) IBOutlet UIButton       *chatBtn;
 
-@property (strong, nonatomic) ZenAppModel           *appModel;
-@property (strong, nonatomic) ZenLeaderboardModel   *leaderboardModel;
+@property (strong, nonatomic) TelematicsAppModel           *appModel;
+@property (strong, nonatomic) TelematicsLeaderboardModel   *leaderboardModel;
 
 @property (nonatomic, strong) NSArray<NSArray *>    *sections;
 @property (strong, nonatomic) LeaderboardResponse   *leaderboard;
@@ -65,8 +65,8 @@
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:img];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
-    self.leaderboardModel = [ZenLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.leaderboardModel = [TelematicsLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
     
     self.mainTitle.text = localizeString(@"leaderboard_title_summary");
     

@@ -51,7 +51,7 @@
 @property (weak, nonatomic) NSString                    *paintingString;
 @property (strong, nonatomic) NSArray                   *sectionsArr;
 
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 @property (nonatomic, strong) ProfileResultResponse     *profile;
 
 @end
@@ -62,7 +62,7 @@
     [super viewDidLoad];
     
     //INITIALIZE USER APP MODEL
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     UITabBarItem *tabBarItem4 = [self.tabBarController.tabBar.items objectAtIndex:[[Configurator sharedInstance].profileTabBarNumber intValue]];
     [tabBarItem4 setImage:[[UIImage imageNamed:@"profile_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];

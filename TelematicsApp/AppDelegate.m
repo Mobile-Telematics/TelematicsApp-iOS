@@ -53,12 +53,12 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     FIRDatabaseReference *usersDatabase = [[FIRDatabase database] referenceWithPath:@"users"];
     [usersDatabase keepSynced:YES];
     
-    //SETUP APP CONFIGURATOR.PLIST
+    //SETUP APP GENERAL CONFIGURATOR.PLIST
     [Configurator setMainAppConfigurationFromPlist];
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
     if (![defaults_object(@"TelematicsAppShouldMigrateCoreDataV10") boolValue]) {
-        [ZenAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
+        [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
         
         [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kRecipesStoreName];
         defaults_set_object(@"TelematicsAppShouldMigrateCoreDataV10", @(YES));

@@ -22,7 +22,7 @@
 
 @interface ClaimReviewViewCtrl () <UIScrollViewDelegate, KSPhotoBrowserDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 @property (weak, nonatomic) IBOutlet UIScrollView       *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel            *mainLbl;
 
@@ -61,7 +61,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     _claimPhotosCountLbl.hidden = YES;
     //[KSPhotoBrowser setImageManagerClass:SDWebImageManager.class]; // KSYYImageManager.class];

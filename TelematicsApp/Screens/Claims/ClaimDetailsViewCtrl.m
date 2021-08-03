@@ -15,7 +15,7 @@
 
 @interface ClaimDetailsViewCtrl () <UIScrollViewDelegate>
 
-@property (strong, nonatomic) ZenAppModel                   *appModel;
+@property (strong, nonatomic) TelematicsAppModel                   *appModel;
 @property (weak, nonatomic) IBOutlet UILabel                *mainLbl;
 @property (weak, nonatomic) IBOutlet UIButton               *processingBtn;
 @property (weak, nonatomic) IBOutlet UILabel                *dateLbl;
@@ -33,7 +33,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     [self.processingBtn setTintColor:[Color officialOrangeColor]];
     [self.processingBtn setTitleColor:[Color officialOrangeColor] forState:UIControlStateNormal];

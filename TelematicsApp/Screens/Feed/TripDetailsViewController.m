@@ -42,7 +42,7 @@
 
 @property (nonatomic, strong) NSString                  *selectedDriverSignatureRole;
 
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 @property (strong, nonatomic) BottomSheetPresenter      *bottomSheetPresenter;
 @property (nonatomic, strong) MapPopTip                 *popTip;
 @property (weak, nonatomic) IBOutlet UILabel            *mainTitle;
@@ -80,7 +80,7 @@
     [self.mapView setVisibility:NO forPoiCategory:NMAMapPoiCategoryAll]; //all
 
     //INITIALIZE USER APP MODEL
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     UIView * contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
     contentView.backgroundColor = UIColor.whiteColor;

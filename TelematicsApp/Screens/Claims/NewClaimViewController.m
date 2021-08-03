@@ -22,7 +22,7 @@ static NSString *const reuseIdentifier = @"claimCell";
 @property (weak, nonatomic) IBOutlet UICollectionView               *claimsCollectionView;
 @property (weak, nonatomic) IBOutlet IQDropDownTextField            *textFieldCarPicker;
 @property (strong, nonatomic) DelegateCollectionViewFillLayout      *aLayout;
-@property (strong, nonatomic) ZenAppModel                           *appModel;
+@property (strong, nonatomic) TelematicsAppModel                           *appModel;
 @property (strong, nonatomic) NSMutableArray                        *carsNamesShort;
 
 - (void)setupLayout;

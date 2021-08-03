@@ -1,5 +1,5 @@
 //
-//  ZenAppModel.h
+//  TelematicsAppModel.h
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 28.10.21.
@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZenAppModel : NSManagedObject
+@interface TelematicsAppModel : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "ZenAppModel+CoreDataProperties.h"
+#import "TelematicsAppModel+CoreDataProperties.h"

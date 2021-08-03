@@ -11,7 +11,7 @@
 #import "MainPhoneViewCtrl.h"
 #import "BaseViewController.h"
 #import "Configurator.h"
-#import "ZenAppModel.h"
+#import "TelematicsAppModel.h"
 #import "GeneralService.h"
 #import "ClaimsService.h"
 #import "MagicalRecord/MagicalRecord.h"

@@ -9,27 +9,34 @@
 #import <Foundation/Foundation.h>
 
 // Object callbacks types
-typedef void (^CompleteCreateDeviceToken)(NSString* deviceToken, NSString* jwToken, NSString* refreshToken);
+typedef void (^CompleteCreateDeviceToken)(NSString *deviceToken, NSString *jwToken, NSString *refreshToken);
 typedef void (^CompleteRefreshJWToken)(NSString* jwToken, NSString* refreshToken);
 typedef void (^CompleteNewJWTokenByDeviceToken)(NSString* jwToken, NSString* refreshToken);
 
+typedef void (^CompleteGetUserProfile)(NSString* email, NSString* phone, NSString* firstName, NSString* lastName, NSString* address, NSString* birthday, NSString* gender, NSString* maritalStatus, NSString* childrenCount, NSString* clientId);
+typedef void (^CompleteUpdateUserProfile)(NSString *success);
 
-// Interface [LoginAuthCore sharedManager]
+
 @interface LoginAuthCore : NSObject
 
-@property (copy, nonatomic) CompleteCreateDeviceToken           successCompleteBlock;
-@property (copy, nonatomic) CompleteRefreshJWToken              refreshCompleteBlock;
-@property (copy, nonatomic) CompleteNewJWTokenByDeviceToken     byDeviceTokenCompleteBlock;
+@property (copy, nonatomic) CompleteCreateDeviceToken           successCreateCompletionBlock;
+@property (copy, nonatomic) CompleteRefreshJWToken              successRefreshCompletionBlock;
+@property (copy, nonatomic) CompleteNewJWTokenByDeviceToken     successGetNewJwtByDeviceTokenCompletionBlock;
+@property (copy, nonatomic) CompleteGetUserProfile              userProfileGetCompletionBlock;
+@property (copy, nonatomic) CompleteUpdateUserProfile           userProfileUpdateCompletionBlock;
 
 
-
+// BASIC CONCEPTS
+//
 //
 // Create new user & get deviceToken, jwToken, refreshToken
 // instanceId & instanceKey required
 //
 - (void)createDeviceTokenForUserWithInstanceId:(NSString *)instanceId
                                    instanceKey:(NSString *)instanceKey
-                                        result:(void (^)(NSString* deviceToken, NSString* jwToken, NSString* refreshToken))completion;
+                                        result:(void (^)(NSString* deviceToken,
+                                                         NSString* jwToken,
+                                                         NSString* refreshToken))completion;
 
 
 
@@ -38,7 +45,8 @@ typedef void (^CompleteNewJWTokenByDeviceToken)(NSString* jwToken, NSString* ref
 //
 - (void)refreshJWTokenForUserWith:(NSString *)jwToken
                      refreshToken:(NSString *)refreshToken
-                           result:(void (^)(NSString* newJWToken, NSString* newRefreshToken))completion;
+                           result:(void (^)(NSString* newJWToken,
+                                            NSString* newRefreshToken))completion;
 
 
 
@@ -49,7 +57,75 @@ typedef void (^CompleteNewJWTokenByDeviceToken)(NSString* jwToken, NSString* ref
 - (void)getJWTokenForUserWithDeviceToken:(NSString *)deviceToken
                               instanceId:(NSString *)instanceId
                              instanceKey:(NSString *)instanceKey
-                                  result:(void (^)(NSString* jwToken, NSString* refreshToken))completion;
+                                  result:(void (^)(NSString* jwToken,
+                                                   NSString* refreshToken))completion;
+
+
+
+//
+// ADDITIONAL FOR EXPERIENCE USING
+//
+//
+// Create new user with parameters & get deviceToken, jwToken, refreshToken
+// instanceId & instanceKey required
+//
+- (void)createDeviceTokenForUserWithParametersAndInstanceId:(NSString *)instanceId
+                                                instanceKey:(NSString *)instanceKey
+                                                      email:(NSString *)email
+                                                      phone:(NSString *)phone
+                                                  firstName:(NSString *)firstName
+                                                   lastName:(NSString *)lastName
+                                                    address:(NSString *)address
+                                                   birthday:(NSString *)birthday
+                                                     gender:(NSString *)gender              //   String Male/Female
+                                              maritalStatus:(NSString *)maritalStatus       //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
+                                              childrenCount:(NSString *)childrenCount       //   String count 1-10
+                                                   clientId:(NSString *)clientId
+                                                     result:(void (^)(NSString* deviceToken,
+                                                                      NSString* jwToken,
+                                                                      NSString* refreshToken
+                                                                      ))completion;
+
+
+
+//
+// Get user profile info
+// instanceId & instanceKey required
+//
+- (void)getUserProfileWithInstanceId:(NSString *)instanceId
+                         instanceKey:(NSString *)instanceKey
+                             jwToken:(NSString *)jwToken
+                              result:(void (^)(NSString* email,
+                                               NSString* phone,
+                                               NSString* firstName,
+                                               NSString* lastName,
+                                               NSString* address,
+                                               NSString* birthday,
+                                               NSString* gender,
+                                               NSString* maritalStatus,
+                                               NSString* childrenCount,
+                                               NSString* clientId
+                                               ))completion;
+
+
+//
+// Update user profile info with parameters
+// instanceId & instanceKey required
+//
+- (void)updateUserProfileWithParametersAndInstanceId:(NSString *)instanceId
+                                         instanceKey:(NSString *)instanceKey
+                                             jwToken:(NSString *)jwToken
+                                               email:(NSString *)email
+                                               phone:(NSString *)phone
+                                           firstName:(NSString *)firstName
+                                            lastName:(NSString *)lastName
+                                             address:(NSString *)address
+                                            birthday:(NSString *)birthday
+                                              gender:(NSString *)gender             //   String Male/Female
+                                       maritalStatus:(NSString *)maritalStatus      //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
+                                       childrenCount:(NSString *)childrenCount      //   String count 1-10
+                                            clientId:(NSString *)clientId
+                                              result:(void (^)(NSString *))completion;
 
 
 //+ (id)sharedManager;

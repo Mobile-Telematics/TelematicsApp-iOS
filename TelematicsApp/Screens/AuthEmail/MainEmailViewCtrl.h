@@ -11,6 +11,6 @@
 
 @interface MainEmailViewCtrl: BaseViewController
 
-@property (nonatomic, assign) BOOL isSignUpPressed;
+@property (nonatomic, assign) BOOL isSignUpButtonPressed;
 
 @end

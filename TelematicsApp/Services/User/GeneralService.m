@@ -18,7 +18,7 @@
 
 @interface GeneralService ()
 
-@property (strong, nonatomic) ZenAppModel                   *appModel;
+@property (strong, nonatomic) TelematicsAppModel                   *appModel;
 @property (nonatomic, assign) BOOL                          isLoggedOn;
 
 @property (nonatomic, strong) VehicleResultResponse         *vehicles;
@@ -152,7 +152,7 @@
 
 - (void)applyProfileInformationInCore {
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     self.appModel.userFirebaseId = [GeneralService sharedService].firebase_user_id;
     self.appModel.userEmail = [GeneralService sharedService].stored_userEmail;
@@ -231,7 +231,7 @@
 - (void)logout {
     self.appModel.notFirstRunApp = NO;
     
-    [ZenAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
+    [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];

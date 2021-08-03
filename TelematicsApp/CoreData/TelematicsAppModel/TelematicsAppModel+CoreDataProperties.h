@@ -1,16 +1,16 @@
 //
-//  ZenAppModel+CoreDataProperties.h
+//  TelematicsAppModel+CoreDataProperties.h
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 28.10.21.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
-#import "ZenAppModel.h"
+#import "TelematicsAppModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZenAppModel (CoreDataProperties)
+@interface TelematicsAppModel (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *current_user;
 

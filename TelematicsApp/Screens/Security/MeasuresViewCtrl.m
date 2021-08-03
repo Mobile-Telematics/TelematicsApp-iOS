@@ -25,7 +25,7 @@
 @property (weak, nonatomic) IBOutlet UILabel        *timeChangeLabel;
 @property (weak, nonatomic) IBOutlet UIButton       *backBtn;
 
-@property (strong, nonatomic) ZenAppModel           *appModel;
+@property (strong, nonatomic) TelematicsAppModel           *appModel;
 @property (strong, nonatomic) TagsSwitch          *distanceSwitcher;
 @property (strong, nonatomic) TagsSwitch          *dateSwitcher;
 @property (strong, nonatomic) TagsSwitch          *timeSwitcher;
@@ -38,7 +38,7 @@
     [super viewDidLoad];
     
     //INITIALIZE USER APP MODEL
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     [self setupView];
     [self setupDistanceSwitcher];

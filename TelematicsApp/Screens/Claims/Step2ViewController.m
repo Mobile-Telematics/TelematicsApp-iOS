@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton           *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *nextBtn;
 
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 
 @end
 
@@ -36,7 +36,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     [self setupView];
     [self setupCachedData];

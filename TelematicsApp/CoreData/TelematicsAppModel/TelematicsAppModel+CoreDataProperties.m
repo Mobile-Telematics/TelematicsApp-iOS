@@ -1,14 +1,14 @@
 //
-//  ZenAppModel+CoreDataProperties.m
+//  TelematicsAppModel+CoreDataProperties.m
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 28.10.21.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
-#import "ZenAppModel+CoreDataProperties.h"
+#import "TelematicsAppModel+CoreDataProperties.h"
 
-@implementation ZenAppModel (CoreDataProperties)
+@implementation TelematicsAppModel (CoreDataProperties)
 
 @dynamic current_user;
 

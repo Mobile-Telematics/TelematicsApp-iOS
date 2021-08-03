@@ -19,7 +19,7 @@
 
 @interface EditProfileCtrl () <UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate>
 
-@property (strong, nonatomic) ZenAppModel                                       *appModel;
+@property (strong, nonatomic) TelematicsAppModel                                       *appModel;
 
 //@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
 
@@ -52,7 +52,7 @@
     [super viewDidLoad];
     
     //INITIALIZE USER APP MODEL
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     //INITIALIZE FIREBASE REALTIMEDATABASE FOR WRITING
     [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference];

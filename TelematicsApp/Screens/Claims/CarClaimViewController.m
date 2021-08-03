@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableView            *tableView;
 @property (weak, nonatomic) IBOutlet UILabel                *tablePlaceholderLbl;
 @property (weak, nonatomic) IBOutlet UIButton               *plusBtn;
-@property (strong, nonatomic) ZenAppModel                   *appModel;
+@property (strong, nonatomic) TelematicsAppModel                   *appModel;
 @property (nonatomic) NSInteger                             loadSelectedByUserCar;
 
 @end
@@ -33,7 +33,7 @@
     [super viewDidLoad];
     
     [ClaimsService sharedService].CarToken = nil;
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     if (self.appModel.vehicleShortData.count == 0) {
         self.tablePlaceholderLbl.hidden = NO;

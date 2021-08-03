@@ -1,16 +1,16 @@
 //
-//  ZenLeaderboardModel+CoreDataProperties.h
+//  TelematicsLeaderboardModel+CoreDataProperties.h
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 09.07.19.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
-#import "ZenLeaderboardModel.h"
+#import "TelematicsLeaderboardModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZenLeaderboardModel (CoreDataProperties)
+@interface TelematicsLeaderboardModel (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSNumber *leaderboard_user;
 

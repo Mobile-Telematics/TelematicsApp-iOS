@@ -31,7 +31,7 @@
 @property (strong, nonatomic) UIView *dimBG;
 @property (strong, nonatomic) UIVisualEffectView *blurBG;
 
-@property (strong, nonatomic) ZenAppModel *appModel;
+@property (strong, nonatomic) TelematicsAppModel *appModel;
 
 @end
 

@@ -114,8 +114,8 @@
 		E96ABE5E2611AB6800C0AC24 /* LeaderboardResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE582611AB6800C0AC24 /* LeaderboardResultResponse.m */; };
 		E96ABE5F2611AB6800C0AC24 /* LeaderboardObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE5C2611AB6800C0AC24 /* LeaderboardObject.m */; };
 		E96ABE602611AB6800C0AC24 /* LeaderboardResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE5D2611AB6800C0AC24 /* LeaderboardResponse.m */; };
-		E96ABE682611AC8C00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE662611AC8C00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.m */; };
-		E96ABE6D2611AD2F00C0AC24 /* ZenLeaderboardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE6B2611AD2F00C0AC24 /* ZenLeaderboardModel.m */; };
+		E96ABE682611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE662611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m */; };
+		E96ABE6D2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABE6B2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m */; };
 		E96ABEDC2612229100C0AC24 /* ConnectOBD.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96ABEC82612229100C0AC24 /* ConnectOBD.storyboard */; };
 		E96ABEDD2612229100C0AC24 /* ConnectOBDViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96ABEC92612229100C0AC24 /* ConnectOBDViewCtrl.swift */; };
 		E96ABEDE2612229100C0AC24 /* LookingPopupViewCtrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E96ABECA2612229100C0AC24 /* LookingPopupViewCtrl.swift */; };
@@ -272,8 +272,8 @@
 		E9E21E782641753700EE4FC9 /* VehiclesDictionaryResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E21E752641753700EE4FC9 /* VehiclesDictionaryResultResponse.m */; };
 		E9E21E792641753700EE4FC9 /* VehiclesDictionaryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E21E762641753700EE4FC9 /* VehiclesDictionaryResponse.m */; };
 		E9E21EA226417EFF00EE4FC9 /* CarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E21EA126417EFF00EE4FC9 /* CarCell.m */; };
-		E9F19D6021CC271900523C02 /* ZenAppModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5C21CC271900523C02 /* ZenAppModel+CoreDataProperties.m */; };
-		E9F19D6121CC271900523C02 /* ZenAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5F21CC271900523C02 /* ZenAppModel.m */; };
+		E9F19D6021CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5C21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m */; };
+		E9F19D6121CC271900523C02 /* TelematicsAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */; };
 		E9F5496D22A94E1A00CCA5E5 /* DashboardMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F5496C22A94E1A00CCA5E5 /* DashboardMain.storyboard */; };
 		E9F5497F22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */; };
 		E9F6E520204F600A003BFAD3 /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51D204F6009003BFAD3 /* NSDate+ISO8601.m */; };
@@ -514,10 +514,10 @@
 		E96ABE5B2611AB6800C0AC24 /* LeaderboardResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeaderboardResultResponse.h; sourceTree = "<group>"; };
 		E96ABE5C2611AB6800C0AC24 /* LeaderboardObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardObject.m; sourceTree = "<group>"; };
 		E96ABE5D2611AB6800C0AC24 /* LeaderboardResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeaderboardResponse.m; sourceTree = "<group>"; };
-		E96ABE652611AC8C00C0AC24 /* ZenLeaderboardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenLeaderboardModel.h; sourceTree = "<group>"; };
-		E96ABE662611AC8C00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZenLeaderboardModel+CoreDataProperties.m"; sourceTree = "<group>"; };
-		E96ABE6B2611AD2F00C0AC24 /* ZenLeaderboardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenLeaderboardModel.m; sourceTree = "<group>"; };
-		E96ABE6C2611AD2F00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenLeaderboardModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E96ABE652611AC8C00C0AC24 /* TelematicsLeaderboardModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsLeaderboardModel.h; sourceTree = "<group>"; };
+		E96ABE662611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TelematicsLeaderboardModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		E96ABE6B2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsLeaderboardModel.m; sourceTree = "<group>"; };
+		E96ABE6C2611AD2F00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TelematicsLeaderboardModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		E96ABEC82612229100C0AC24 /* ConnectOBD.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ConnectOBD.storyboard; sourceTree = "<group>"; };
 		E96ABEC92612229100C0AC24 /* ConnectOBDViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectOBDViewCtrl.swift; sourceTree = "<group>"; };
 		E96ABECA2612229100C0AC24 /* LookingPopupViewCtrl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LookingPopupViewCtrl.swift; sourceTree = "<group>"; };
@@ -792,10 +792,10 @@
 		E9E21EA126417EFF00EE4FC9 /* CarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarCell.m; sourceTree = "<group>"; };
 		E9E9CB2221FA53EE004B488B /* NSUserDefaults-macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults-macros.h"; sourceTree = "<group>"; };
 		E9E9CB2321FA53EE004B488B /* NSUserDefaults-helper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults-helper.h"; sourceTree = "<group>"; };
-		E9F19D5C21CC271900523C02 /* ZenAppModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "ZenAppModel+CoreDataProperties.m"; sourceTree = "<group>"; };
-		E9F19D5D21CC271900523C02 /* ZenAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenAppModel.h; sourceTree = "<group>"; };
-		E9F19D5E21CC271900523C02 /* ZenAppModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ZenAppModel+CoreDataProperties.h"; sourceTree = "<group>"; };
-		E9F19D5F21CC271900523C02 /* ZenAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenAppModel.m; sourceTree = "<group>"; };
+		E9F19D5C21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TelematicsAppModel+CoreDataProperties.m"; sourceTree = "<group>"; };
+		E9F19D5D21CC271900523C02 /* TelematicsAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppModel.h; sourceTree = "<group>"; };
+		E9F19D5E21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TelematicsAppModel+CoreDataProperties.h"; sourceTree = "<group>"; };
+		E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppModel.m; sourceTree = "<group>"; };
 		E9F5496C22A94E1A00CCA5E5 /* DashboardMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardMain.storyboard; sourceTree = "<group>"; };
 		E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppCollapsibleConstraints.m; sourceTree = "<group>"; };
 		E9F5497E22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppCollapsibleConstraints.h; sourceTree = "<group>"; };
@@ -1459,15 +1459,15 @@
 			path = Leaderboard;
 			sourceTree = "<group>";
 		};
-		E96ABE622611AC8C00C0AC24 /* ZenNetworkModel */ = {
+		E96ABE622611AC8C00C0AC24 /* TelematicsNetworkModel */ = {
 			isa = PBXGroup;
 			children = (
-				E96ABE652611AC8C00C0AC24 /* ZenLeaderboardModel.h */,
-				E96ABE6B2611AD2F00C0AC24 /* ZenLeaderboardModel.m */,
-				E96ABE6C2611AD2F00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.h */,
-				E96ABE662611AC8C00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.m */,
+				E96ABE652611AC8C00C0AC24 /* TelematicsLeaderboardModel.h */,
+				E96ABE6B2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m */,
+				E96ABE6C2611AD2F00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.h */,
+				E96ABE662611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m */,
 			);
-			path = ZenNetworkModel;
+			path = TelematicsNetworkModel;
 			sourceTree = "<group>";
 		};
 		E96ABEC72612229100C0AC24 /* ConnectOBD */ = {
@@ -1582,8 +1582,8 @@
 		E9745E46218B811D00EE8102 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				E9F19D5B21CC271900523C02 /* ZenAppModel */,
-				E96ABE622611AC8C00C0AC24 /* ZenNetworkModel */,
+				E9F19D5B21CC271900523C02 /* TelematicsAppModel */,
+				E96ABE622611AC8C00C0AC24 /* TelematicsNetworkModel */,
 				E9745E4E218B811D00EE8102 /* Model.xcdatamodeld */,
 				E9745E4C218B811D00EE8102 /* CoreDataCoordinator.h */,
 				E9745E49218B811D00EE8102 /* CoreDataCoordinator.m */,
@@ -2118,15 +2118,15 @@
 			path = UserDefaultsHelpers;
 			sourceTree = "<group>";
 		};
-		E9F19D5B21CC271900523C02 /* ZenAppModel */ = {
+		E9F19D5B21CC271900523C02 /* TelematicsAppModel */ = {
 			isa = PBXGroup;
 			children = (
-				E9F19D5D21CC271900523C02 /* ZenAppModel.h */,
-				E9F19D5F21CC271900523C02 /* ZenAppModel.m */,
-				E9F19D5E21CC271900523C02 /* ZenAppModel+CoreDataProperties.h */,
-				E9F19D5C21CC271900523C02 /* ZenAppModel+CoreDataProperties.m */,
+				E9F19D5D21CC271900523C02 /* TelematicsAppModel.h */,
+				E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */,
+				E9F19D5E21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.h */,
+				E9F19D5C21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m */,
 			);
-			path = ZenAppModel;
+			path = TelematicsAppModel;
 			sourceTree = "<group>";
 		};
 		E9F5497C22A9852200CCA5E5 /* CollapsibleConstraints */ = {
@@ -2444,7 +2444,7 @@
 				E9B6CA052685392D000B5B51 /* KSSDImageManager.m in Sources */,
 				E978BAED23D11CEF00A59A8F /* AccessTokenObject.m in Sources */,
 				171390361D818720007E4007 /* UITextField+Form.m in Sources */,
-				E96ABE6D2611AD2F00C0AC24 /* ZenLeaderboardModel.m in Sources */,
+				E96ABE6D2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m in Sources */,
 				E96ABF5B261281C700C0AC24 /* VehicleResponse.m in Sources */,
 				E9D54B1421F8BDEE006B49C9 /* PhoneLoginViewCtrl.m in Sources */,
 				E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */,
@@ -2527,9 +2527,9 @@
 				E9580AFF22B2E4E60029B22F /* GearLoadingView.m in Sources */,
 				E9332F1822AF10D100EC70B6 /* Format.m in Sources */,
 				E9B6CA5D268544A7000B5B51 /* GMImagePickerController.m in Sources */,
-				E9F19D6021CC271900523C02 /* ZenAppModel+CoreDataProperties.m in Sources */,
+				E9F19D6021CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m in Sources */,
 				E97716A2258AC53700419EB0 /* ClaimAlertPopup.m in Sources */,
-				E96ABE682611AC8C00C0AC24 /* ZenLeaderboardModel+CoreDataProperties.m in Sources */,
+				E96ABE682611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m in Sources */,
 				E9B6CA1F26853DB1000B5B51 /* ConfigGMaps.m in Sources */,
 				E96ABEE82612229100C0AC24 /* NotSupportErrorViewCtrl.swift in Sources */,
 				E9B6CA3926854028000B5B51 /* ClaimsAccidentResultResponse.m in Sources */,
@@ -2647,7 +2647,7 @@
 				E9524306214ECDC800C70E95 /* FeedViewController.m in Sources */,
 				E92963CD25D195E5000BF615 /* TelematicsAppRegPopup.m in Sources */,
 				E96ABEEB2612229100C0AC24 /* ConnectErrorViewCtrl.swift in Sources */,
-				E9F19D6121CC271900523C02 /* ZenAppModel.m in Sources */,
+				E9F19D6121CC271900523C02 /* TelematicsAppModel.m in Sources */,
 				E970305921B5DCDF008CEA13 /* GeneralButton.m in Sources */,
 				E95487DC2593F84C004E2610 /* UIView+Snapshot.m in Sources */,
 				E96ABEEA2612229100C0AC24 /* OBDSlideCarouselViewCtrl.swift in Sources */,

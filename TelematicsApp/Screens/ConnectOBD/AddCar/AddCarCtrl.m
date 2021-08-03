@@ -24,7 +24,7 @@
     NSArray *arrayPaintingTypes;
 }
 
-@property (strong, nonatomic) ZenAppModel                           *appModel;
+@property (strong, nonatomic) TelematicsAppModel                           *appModel;
 @property (nonatomic, strong) VehicleResultResponse                 *vehicle;
 @property (nonatomic, strong) NSDictionary                          *allCarsManufacturers;
 @property (nonatomic, strong) NSDictionary                          *allCarsModels;
@@ -64,7 +64,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     [self.saveBtn setTitle:localizeString(@"Save") forState:UIControlStateNormal];
     
     _licensePlateField.colorNormal = [UIColor groupTableViewBackgroundColor];

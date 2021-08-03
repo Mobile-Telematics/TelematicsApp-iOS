@@ -48,7 +48,7 @@
     CongratulationsPopupDelegate *congratulationsPopup;
 }
 
-@property (strong, nonatomic) ZenAppModel                       *appModel;
+@property (strong, nonatomic) TelematicsAppModel                       *appModel;
 @property (strong, nonatomic) DashboardResultResponse           *dashboard;
 @property (strong, nonatomic) LatestDayScoringResultResponse    *latestScoring;
 @property (strong, nonatomic) DrivingDetailsResponse            *drivingDetails;
@@ -214,7 +214,7 @@
     [super viewDidLoad];
     
     //INITIALIZE USER APP MODEL
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     [self setupRoundViews];
     [self setupTranslation];
@@ -223,11 +223,11 @@
     
     if (!self.appModel.notFirstRunApp) {
         [self showPreloader];
-        [ZenAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
-        self.appModel = [ZenAppModel MR_createEntity];
+        [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
+        self.appModel = [TelematicsAppModel MR_createEntity];
         self.appModel.current_user = @1;
         self.appModel.notFirstRunApp = YES;
-        self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+        self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
         
         self.disableCounting = YES;
         [self startFetchStatisticData];

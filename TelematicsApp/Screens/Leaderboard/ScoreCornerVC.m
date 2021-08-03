@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UIView             *backViewTitle;
 @property (weak, nonatomic) IBOutlet UIView             *placeholderView;
 @property (weak, nonatomic) IBOutlet UIImageView        *placeholderImg;
-@property (strong, nonatomic) ZenLeaderboardModel       *leaderboardModel;
+@property (strong, nonatomic) TelematicsLeaderboardModel       *leaderboardModel;
 @property (strong, nonatomic) LeaderboardResponse       *leaderboard;
 
 @end
@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     
-    self.leaderboardModel = [ZenLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
+    self.leaderboardModel = [TelematicsLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
     self.scoreTitle.attributedText = [self createLabelImgBefore:localizeString(@"Cornering")];
     
     self.tableView.dataSource = self;

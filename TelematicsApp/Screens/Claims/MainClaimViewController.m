@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *claimPlusBtn;
 
 @property (nonatomic, strong) UIRefreshControl          *refreshController;
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 
 @end
 
@@ -49,7 +49,7 @@
     
     [[ClaimsService sharedService] destroyClaimsService];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     [self.tableView setContentSize:(CGSizeMake(self.tableView.frame.size.width, self.tableView.frame.size.height + 150))];
     [self initRefreshControlSpinnerForClaims];
     

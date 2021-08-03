@@ -36,7 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton           *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *nextBtn;
 
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 @property int                                           counterLocationPicker;
 
 @property (nonatomic, strong) NSString                  *dateSelectedByUser;
@@ -57,7 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     self.counterLocationPicker = 0;
     
     [self setupView];

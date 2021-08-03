@@ -1,5 +1,5 @@
 //
-//  ZenLeaderboardModel.h
+//  TelematicsLeaderboardModel.h
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 09.07.19.
@@ -11,10 +11,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ZenLeaderboardModel : NSManagedObject
+@interface TelematicsLeaderboardModel : NSManagedObject
 
 @end
 
 NS_ASSUME_NONNULL_END
 
-#import "ZenLeaderboardModel+CoreDataProperties.h"
+#import "TelematicsLeaderboardModel+CoreDataProperties.h"

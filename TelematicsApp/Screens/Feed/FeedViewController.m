@@ -50,7 +50,7 @@ static NSString *tripCellIdentifier = @"TripCell";
 @property (assign, nonatomic) BOOL                      disableRefresh;
 @property (nonatomic, assign) BOOL                      disableReloadPageDown;
 
-@property (strong, nonatomic) ZenAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel               *appModel;
 @property (nonatomic, strong) NSString                  *selectedTrackToken;
 @property (nonatomic, strong) NSString                  *selectedTrackPoints;
 @property (nonatomic, strong) NSString                  *selectedPredicate;
@@ -69,7 +69,7 @@ static NSString *tripCellIdentifier = @"TripCell";
     [super viewDidLoad];
     
     //INITIALIZE USER APP MODEL
-    self.appModel = [ZenAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     self.mainTitle.text = localizeString(@"feed_title");
     

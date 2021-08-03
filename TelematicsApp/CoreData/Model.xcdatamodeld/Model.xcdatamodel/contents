@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20F71" minimumToolsVersion="Xcode 7.0" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
-    <entity name="ZenAppModel" representedClassName="ZenAppModel" syncable="YES">
+    <entity name="TelematicsAppModel" representedClassName="TelematicsAppModel" syncable="YES">
         <attribute name="current_user" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="detailsAllDrivingScores" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
         <attribute name="detailsScoreAcceleration" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
@@ -52,7 +52,7 @@
         <attribute name="vehicleCarYear" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="vehicleShortData" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
-    <entity name="ZenLeaderboardModel" representedClassName="ZenLeaderboardModel" syncable="YES">
+    <entity name="TelematicsLeaderboardModel" representedClassName="TelematicsLeaderboardModel" syncable="YES">
         <attribute name="leaderboard_user" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="leaderboardAcceleration" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="leaderboardDeceleration" optional="YES" attributeType="Transformable" syncable="YES"/>
@@ -66,7 +66,7 @@
         <attribute name="leaderboardTurn" optional="YES" attributeType="Transformable" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ZenAppModel" positionX="-63" positionY="-18" width="128" height="779"/>
-        <element name="ZenLeaderboardModel" positionX="-63" positionY="144" width="128" height="194"/>
+        <element name="TelematicsAppModel" positionX="160" positionY="192" width="128" height="779"/>
+        <element name="TelematicsLeaderboardModel" positionX="-63" positionY="144" width="128" height="194"/>
     </elements>
 </model>
