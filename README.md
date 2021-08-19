@@ -347,7 +347,7 @@ OBD adapter is a small device that plugs into the CAN-port of your car. Usually 
 Telematics App created by DATA MOTION PTE. LTD, has a full range of functionality that allows you to read almost any information and indicators from your car, and add it to trips recorded by the Telematics App on iOS/Android.
 OBD adapter does not need to be disabled or configured. It is always in your car, the Telematics App works with the OBD adapter only when you are traveling. Connecting and disconnecting to your iOS device happens automatically.
 
-Detailed documentation and the basic principle of operation can be found in the development portal https://docs.telematicssdk.com/sdk-features/bluetooth-obd/elm-api
+Detailed documentation and the basic principle of operation can be found in the development portal https://docs.telematicssdk.com/docs/bluetooth-obd
 To fully work with this functionality, you need additional equipment, which we can provide upon your request.
 
 ## Other features
