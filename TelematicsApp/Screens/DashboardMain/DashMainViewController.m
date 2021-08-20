@@ -2,11 +2,11 @@
 //  DashMainViewController.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 28.05.19.
+//  Created by DATA MOTION PTE. LTD. on 28.05.20.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
-#import "AFNetworking.h"
 
+#import "AFNetworking.h"
 #import "DashMainViewController.h"
 #import "DashboardResponse.h"
 #import "EcoResponse.h"
@@ -14,6 +14,9 @@
 #import "LatestDayScoringResponse.h"
 #import "LatestDayScoringResultResponse.h"
 #import "DrivingDetailsResponse.h"
+#import "CoinsResponse.h"
+#import "CoinsResultResponse.h"
+#import "StreaksResponse.h"
 #import "AppDelegate.h"
 #import "CoreTabBarController.h"
 #import "ProfileViewController.h"
@@ -48,12 +51,19 @@
     CongratulationsPopupDelegate *congratulationsPopup;
 }
 
-@property (strong, nonatomic) TelematicsAppModel                       *appModel;
+@property (strong, nonatomic) TelematicsAppModel                *appModel;
+
 @property (strong, nonatomic) DashboardResultResponse           *dashboard;
 @property (strong, nonatomic) LatestDayScoringResultResponse    *latestScoring;
+
 @property (strong, nonatomic) DrivingDetailsResponse            *drivingDetails;
+
 @property (strong, nonatomic) EcoResultResponse                 *eco;
 @property (strong, nonatomic) EcoIndividualResultResponse       *ecoIndividual;
+
+@property (strong, nonatomic) CoinsResultResponse               *coinsDetails;
+
+@property (strong, nonatomic) StreaksResultResponse             *streaksDetails;
 
 @property (nonatomic, weak) IBOutlet UIButton                   *showLeaderBtn;
 @property (nonatomic, weak) IBOutlet UILabel                    *showLeaderLbl;
@@ -188,6 +198,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_roundPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_arrowPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_zigzagIndividualImg;
+
+//COMING SOON IN NEXT RELEASE
+@property (weak, nonatomic) IBOutlet UILabel                    *streaks_speedingLbl;
+@property (weak, nonatomic) IBOutlet UILabel                    *streaks_speedingValueLbl;
+@property (weak, nonatomic) IBOutlet UILabel                    *streaks_phoneLbl;
+@property (weak, nonatomic) IBOutlet UILabel                    *streaks_phoneValueLbl;
 
 @end
 
@@ -454,7 +470,38 @@
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDate *dateMinusNeedYearsAllTime = [calendar dateByAddingComponents:dateComponents toDate:currentDate options:0];
     
+    NSDateComponents *dateComponentsOneDay = [[NSDateComponents alloc] init];
+    [dateComponentsOneDay setDay:-1];
+    NSDate *dateMinusNeedOneDays = [calendar dateByAddingComponents:dateComponentsOneDay toDate:currentDate options:0];
+    NSLog(@"One day ago: %@", dateMinusNeedOneDays);
+    
+    NSDateComponents *dateComponentsThisMonth = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    dateComponentsThisMonth.day = 1;
+    NSDate *firstDayOfCurrentMonthDate = [[NSCalendar currentCalendar] dateFromComponents:dateComponentsThisMonth];
+    NSLog(@"First day of current month: %@", [firstDayOfCurrentMonthDate descriptionWithLocale:[NSLocale currentLocale]]);
+    
+    NSDateComponents *dateComponentsLastMonth = [[NSCalendar currentCalendar] components:NSCalendarUnitDay | NSCalendarUnitMonth | NSCalendarUnitYear fromDate:[NSDate date]];
+    dateComponentsLastMonth.day = 1;
+    dateComponentsLastMonth.month = dateComponentsLastMonth.month - 1;
+    NSDate *firstDayOfLastMonthDate = [[NSCalendar currentCalendar] dateFromComponents:dateComponentsLastMonth];
+    NSLog(@"First day of last month: %@", [firstDayOfLastMonthDate descriptionWithLocale:[NSLocale currentLocale]]);
+    
+    NSDateComponents *dateComponents14Days = [[NSDateComponents alloc] init];
+    [dateComponents14Days setDay:-13];
+    NSDate *dateMinus14Days = [calendar dateByAddingComponents:dateComponents14Days toDate:currentDate options:0];
+    NSLog(@"14 days ago: %@", dateMinus14Days);
+    
+    //FETCH INDIVIDUAL
     [self getDashboardStatisticsIndividualAllTime:dateMinusNeedYearsAllTime endDate:currentDate];
+    
+    //COINS PRELOAD FOR MYREWARDS SCREEN
+    [self getDashboardCoinsAllTime:dateMinusNeedYearsAllTime endDate:currentDate];
+    [self getDashboardCoinsOneDayTime:dateMinusNeedOneDays endDate:currentDate];
+    [self getDashboardCoinsThisMonthTime:firstDayOfCurrentMonthDate endDate:currentDate];
+    [self getDashboardCoinsLastMonthTime:firstDayOfLastMonthDate endDate:firstDayOfCurrentMonthDate];
+    [self getCoinsLimitAllTimeNow];
+    //STREAKS
+    [self startFetchStreaksForDashboard];
 }
 
 - (void)getDashboardStatisticsIndividualAllTime:(NSDate *)startDate endDate:(NSDate *)endDate {
@@ -674,7 +721,94 @@
 }
 
 
-#pragma mark - Dashboard CachedData
+#pragma mark - Coins
+
+- (void)getCoinsLimitAllTimeNow {
+    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+        if (!error && [response isSuccesful]) {
+            self.coinsDetails = ((CoinsResponse *)response).Result;
+            defaults_set_object(@"userCoinsDailyLimit", self.coinsDetails.DailyLimit);
+        } else {
+            defaults_set_object(@"userCoinsDailyLimit", @20);
+        }
+    }] getCoinsDailyLimit];
+}
+
+- (void)getDashboardCoinsAllTime:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSString *sCoinsDate = [startDate dateTimeStringSpecial];
+    NSString *eCoinsDate = [endDate dateTimeStringSpecial];
+    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+        if (!error && [response isSuccesful]) {
+            self.coinsDetails = ((CoinsResponse *)response).Result;
+            self.mainDashCoinsLbl.text = self.coinsDetails.AcquiredCoins;
+            defaults_set_object(@"userCoinsCountAllTime", self.coinsDetails.TotalEarnedCoins);
+            defaults_set_object(@"userCoinsCountAcquired", self.coinsDetails.AcquiredCoins);
+        } else {
+            self.mainDashCoinsLbl.text = @"0";
+        }
+    }] getCoinsTotal:sCoinsDate endDate:eCoinsDate];
+}
+
+- (void)getDashboardCoinsOneDayTime:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSString *sCoinsDate = [startDate dateTimeStringSpecial];
+    NSString *eCoinsDate = [endDate dateTimeStringSpecial];
+    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+        if (!error && [response isSuccesful]) {
+            self.coinsDetails = ((CoinsResponse *)response).Result;
+            NSLog(@"userCoinsCountOneDay %@", self.coinsDetails.TotalEarnedCoins);
+            defaults_set_object(@"userCoinsCountOneDay", self.coinsDetails.TotalEarnedCoins);
+        } else {
+            defaults_set_object(@"userCoinsCountOneDay", @0);
+        }
+    }] getCoinsTotal:sCoinsDate endDate:eCoinsDate];
+}
+
+- (void)getDashboardCoinsThisMonthTime:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSString *sCoinsDate = [startDate dateTimeStringSpecial];
+    NSString *eCoinsDate = [endDate dateTimeStringSpecial];
+    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+        if (!error && [response isSuccesful]) {
+            self.coinsDetails = ((CoinsResponse *)response).Result;
+            NSLog(@"userCoinsCountThisMonth %@", self.coinsDetails.TotalEarnedCoins);
+            defaults_set_object(@"userCoinsCountThisMonth", self.coinsDetails.TotalEarnedCoins);
+        } else {
+            defaults_set_object(@"userCoinsCountThisMonth", 0);
+        }
+    }] getCoinsTotal:sCoinsDate endDate:eCoinsDate];
+}
+
+- (void)getDashboardCoinsLastMonthTime:(NSDate *)startDate endDate:(NSDate *)endDate {
+    NSString *sCoinsDate = [startDate dateTimeStringSpecial];
+    NSString *eCoinsDate = [endDate dateTimeStringSpecial];
+    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+        if (!error && [response isSuccesful]) {
+            self.coinsDetails = ((CoinsResponse *)response).Result;
+            defaults_set_object(@"userCoinsCountLastMonth", self.coinsDetails.TotalEarnedCoins);
+        } else {
+            defaults_set_object(@"userCoinsCountLastMonth", 0);
+        }
+    }] getCoinsTotal:sCoinsDate endDate:eCoinsDate];
+}
+
+
+#pragma mark - Streaks Backend
+
+- (void)startFetchStreaksForDashboard {
+    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+        NSLog(@"%s %@ %@", __func__, response, error);
+        if (!error && [response isSuccesful]) {
+            self.streaksDetails = ((StreaksResponse *)response).Result;
+            self.streaks_speedingValueLbl.text = [NSString stringWithFormat:@"%@ trips", self.streaksDetails.StreakOverSpeedCurrentStreak.stringValue];
+            self.streaks_phoneValueLbl.text = [NSString stringWithFormat:@"%@ trips", self.streaksDetails.StreakPhoneUsageCurrentStreak.stringValue];
+            NSLog(@"Streaks Ok");
+        } else {
+            NSLog(@"%s %@ %@", __func__, response, error);
+        }
+    }] getIndicatorsStreaks];
+}
+
+
+#pragma mark - Dashboard CachedData For Next App Runnings
 
 - (void)updateDataFromCacheForDashboard {
     
@@ -743,7 +877,7 @@
 }
 
 
-#pragma mark - Linear Chart for Dashboard
+#pragma mark - Linear Chart for Dashboard - Green Graph 2 weeks
 
 - (void)loadLinearChart:(NSInteger)type {
     
@@ -862,7 +996,7 @@
 }
 
 
-#pragma mark - Graph Dashboard CollectionView
+#pragma mark - Graph Dashboard CollectionView Main Graph with Smiles
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -1035,7 +1169,7 @@
 }
 
 
-#pragma mark - Graph Dashboard Scroll
+#pragma mark - Graph Dashboard Scroll Delegate & All Scrolls
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     if (scrollView == self.collectionViewCurve) {
@@ -1209,7 +1343,7 @@
 }
 
 
-#pragma mark - Check Permissions Timer
+#pragma mark - Check Permissions Timer We Need LOCATION ALWAYS!!!
 
 - (void)mainCheckPermissions {
     
@@ -1471,7 +1605,7 @@
 }
 
 
-#pragma mark - Telematics SDK initialization on DASHBOARD
+#pragma mark - Telematics SDK initialization on DASHBOARD AFTER WIZARD!!!
 
 - (void)initPermissionsLocation {
     [TelematicsAppPrivacyRequestManager requestAuthorization:TelematicsAppPrivacyTypeLocationAlways handler:^(TelematicsAppAuthorizationStatus status) {
@@ -1554,39 +1688,6 @@
                 NSLog(@"MOTION INIT SUCCESS");
                 self->permissionPopup.disabledMotion = NO;
                 defaults_set_object(@"needMotionOn", @(YES));
-                
-//                NSString *xs = @"Btn tapped now";
-//
-//                switch ([CMMotionActivityManager authorizationStatus]) {
-//                    case CMAuthorizationStatusNotDetermined:
-//                    {
-//                        NSLog(@"NotDetermined");
-//                        xs = @"NotDetermined";
-//                        [TelematicsAppPrivacyRequestManager requestAuthorizationMotionImmediately];
-//                            //defaults_set_object(@"needMotionOn", @(YES));
-//                    }
-//                        break;
-//                    case CMAuthorizationStatusRestricted:
-//                    {
-//                        NSLog(@"Restricted");
-//                        xs = @"Restricted";
-//                        [TelematicsAppPrivacyRequestManager requestAuthorizationMotionImmediately];
-//                    }
-//                        break;
-//                    case CMAuthorizationStatusDenied:
-//                    {
-//                        NSLog(@"Denied");
-//                        xs = @"Denied";
-//                    }
-//                        break;
-//                    case CMAuthorizationStatusAuthorized:
-//                    {
-//                        NSLog(@"Authorized");
-//                        xs = @"Authorized";
-//                    }
-//                    default:
-//                        break;
-//                }
             } locationManagerResponce:^(CLAuthorizationStatus status) {
                 NSLog(@"LOCATION INIT SUCCESS");
             }];
@@ -1769,8 +1870,11 @@
     self.tipAdviceLbl.text = @"Driving style impacts on your expenses on fuel, tires and brakes. Improve your driving style and reduce expenses.";
 }
 
+
+//DEMO DASHBOARD FOR NEW USERS LOWER 10km
+
 - (void)setupEcoDemoBlock {
-    //DEMO DASHBOARD FOR NEW USERS LOWER 10km
+
     self.mapDemo_noTripsView.hidden = NO;
     self.mapDemo_snapshot.hidden = YES;
     self.mapDemo_pointsLbl.hidden = YES;
@@ -1862,7 +1966,7 @@
 }
 
 
-#pragma mark - ActivityTabBarView Datasource
+#pragma mark - ActivityTabBarView DataSource
 
 - (NSArray<NSString *> *)tabbarTitlesForTabbarView:(CMTabbarView *)activityTabBarView {
     return self.activityDates;
@@ -1889,7 +1993,7 @@
 }
 
 
-#pragma mark - Last Trip for Dashboard
+#pragma mark - Last Trip for Dashboard by HERE Maps http://developer.here.com
 
 - (void)loadOneEventForDashboardMap {
     [[RPEntry instance].api getTracksWithOffset:0 limit:1 startDate:nil endDate:nil completion:^(id response, NSError *error) {
@@ -2096,6 +2200,8 @@
     if (IS_IPHONE_5 || IS_IPHONE_4)
         imgW = @"700";
     
+    //USE YOUR HEREMAPS KEYS FOR REST API REQUEST TO GENERATE JPG PICTURE WITH USER TRIP FOR DASHBOARD
+    //YOU NEED GENERATE REST API KEY AT HTTP://DEVELOPER.HERE.COM AND PASTE IT IN CONFIGURATION.PLIST PLEASE! <mapsRestApiKey>
     NSString *resParams = [NSString stringWithFormat:@"?apiKey=%@&w=%@&h=%@&nocp=%@&ml=%@&mtxc=%@&lc=%@&mthm=%@&t=%@&ppi=%@&lw=%@&f=%@&mfc=%@&m=%@", [Configurator sharedInstance].mapsRestApiKey, imgW, @"360", @"1", @"eng", @"20", @"54C751", @"1", @"7", @"100", @"7", @"0", @"000000", specialMarkersPointsArrForHERE];
     NSString *finalURL = [NSString stringWithFormat:@"https://image.maps.ls.hereapi.com/mia/1.6/route%@", resParams];
     
@@ -2225,7 +2331,7 @@
 }
 
 
-#pragma mark - TabBar Titles
+#pragma mark - TabBar Titles Configuration for setting
 
 - (void)setupTabBarTitles {
     
@@ -2239,6 +2345,11 @@
     [tabBarItem1 setSelectedImage:[[UIImage imageNamed:@"feed_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [tabBarItem1 setTitle:localizeString(@"feed_title")];
     
+    UITabBarItem *tabBarItem2 = [self.tabBarController.tabBar.items objectAtIndex:[[Configurator sharedInstance].rewardsTabBarNumber intValue]];
+    [tabBarItem2 setImage:[[UIImage imageNamed:@"rewards_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem2 setSelectedImage:[[UIImage imageNamed:@"rewards_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem2 setTitle:localizeString(@"rewards_title")];
+    
     UITabBarItem *tabBarItem3 = [self.tabBarController.tabBar.items objectAtIndex:[[Configurator sharedInstance].profileTabBarNumber intValue]];
     [tabBarItem3 setImage:[[UIImage imageNamed:@"profile_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
     [tabBarItem3 setSelectedImage:[[UIImage imageNamed:@"profile_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -2246,7 +2357,7 @@
 }
 
 
-#pragma mark - Translation
+#pragma mark - Translation Welcome to Localizable.strings file
 
 - (void)setupTranslation {
     
@@ -2347,12 +2458,7 @@
 }
 
 
-#pragma mark - Actions
-
-- (IBAction)inviteMoreAction:(id)sender {
-    [HapticHelper generateFeedback:FeedbackTypeImpactMedium];
-    [self.tabBarController setSelectedIndex:1];
-}
+#pragma mark - Actions for avatar and Setting icon
 
 - (IBAction)avaTapDetect:(id)sender {
     ProfileViewController *profileVC = [[UIStoryboard storyboardWithName:@"Profile" bundle:nil] instantiateInitialViewController];
@@ -2372,7 +2478,7 @@
 }
 
 - (IBAction)chatOpenAction:(id)sender {
-    //
+    //TODO IF NEEDED
 }
 
 - (IBAction)openAppSystemSettings:(id)sender {
@@ -2385,6 +2491,8 @@
     [self presentViewController:svc animated:YES completion:nil];
 }
 
+
+//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDEED HELPERS FOR SOME ELEMENTS
 - (void)lowFontsForOldDevices {
     self.needDistanceLabel.font = [Font heavy21];
     

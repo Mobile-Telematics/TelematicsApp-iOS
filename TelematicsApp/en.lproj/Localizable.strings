@@ -10,6 +10,7 @@
 "TelematicsApp" = "TelematicsApp";
 "dashboard_title" = "Dashboard";
 "feed_title" = "Feed";
+"rewards_title" = "My Rewards";
 "profile_title" = "Profile";
 "settings_title" = "Settings";
 "trip_detailed_title" = "Trip Details";

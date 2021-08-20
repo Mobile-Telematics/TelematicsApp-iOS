@@ -10,6 +10,7 @@
 
 @interface ClaimsService: NSObject
 
+//EVERY CLAIM PARAMETERS
 @property (nonatomic, strong) NSArray<Optional>* AccidentTypes;
 @property (nonatomic, strong) NSString<Optional>* AccidentTypeKey;
 @property (nonatomic, strong) NSString<Optional>* AccidentTypeLabel;
@@ -48,6 +49,7 @@
 @property (nonatomic, strong) NSString* UpdatedAt;
 @property (nonatomic, strong) NSArray* Screens;
 
+//CARS SIDES
 @property (nonatomic, strong) NSString* Photo_Left_Wide;
 @property (nonatomic, strong) NSString* Photo_Left_Front_Wing;
 @property (nonatomic, strong) NSString* Photo_Left_Front_Door;
@@ -71,9 +73,11 @@
 @property (nonatomic, strong) NSString* Photo_Windshield_Wide;
 @property (nonatomic, strong) NSString* Photo_Dashboard_Wide;
 
+//DESTROY
 - (void)destroyClaimsService;
 - (void)destroyPhotosForClaimsService;
 
+//CLAIMS SHARED SERVICE
 + (instancetype)sharedService;
 
 @end

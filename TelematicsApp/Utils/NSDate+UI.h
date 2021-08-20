@@ -14,6 +14,8 @@
 - (NSString*)timeString;
 - (NSString*)yearString;
 - (NSString*)dateTimeStringShort;
+- (NSString*)dateStringShortYear;
+- (NSString*)dateStringShortYearInverse;
 - (NSString*)dateTimeStringSpecial;
 - (NSString*)dateTimeStringShortDdMm24;
 - (NSString*)dateTimeStringShortMmDd24;

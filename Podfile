@@ -1,11 +1,12 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
-platform :ios, '10.0'
+platform :ios, '11.0'
 inhibit_all_warnings!
 use_frameworks!
 
 def available_pods
-    pod 'RaxelPulse'
+  
+    pod 'RaxelPulse', '5.10' #OUR NEW SDK 5.10 RELEASE
     pod 'HEREMaps'
     pod 'Firebase/Core'
     pod ‘Firebase/Database’
@@ -34,6 +35,7 @@ def available_pods
     pod 'CircleTimer', '0.2.0'
     pod 'GoogleMaps', '3.9.0'
     pod 'GooglePlaces', '3.9.0'
+
 end
 
 

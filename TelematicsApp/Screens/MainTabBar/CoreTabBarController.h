@@ -8,6 +8,7 @@
 
 @import UIKit;
 
+//MAIN TABBAR CONTROLLER
 @interface CoreTabBarController: UITabBarController <UITabBarControllerDelegate>
 
 @end

@@ -48,6 +48,20 @@
     return [df stringFromDate:date];
 }
 
+- (NSString*)dateStringShortYear {
+    NSDate* date = self;
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"dd.MM.yy";
+    return [df stringFromDate:date];
+}
+
+- (NSString*)dateStringShortYearInverse {
+    NSDate* date = self;
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"yy.MM.dd";
+    return [df stringFromDate:date];
+}
+
 - (NSString*)dateTimeStringShortDdMm24 {
     NSDate* date = self;
     NSDateFormatter* df = [[NSDateFormatter alloc] init];

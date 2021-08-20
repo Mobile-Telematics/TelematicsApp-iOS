@@ -16,5 +16,13 @@
 @property (nonatomic, strong) NSNumber<Optional>* MaxSpeedMileh;
 @property (nonatomic, strong) NSNumber<Optional>* MileageKm;
 @property (nonatomic, strong) NSNumber<Optional>* MileageMile;
+@property (nonatomic, strong) NSNumber<Optional>* TripsCount;
+
+//ECO PERCENTS
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreFuel;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreTyres;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreBrakes;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreDepreciation;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScore;
 
 @end

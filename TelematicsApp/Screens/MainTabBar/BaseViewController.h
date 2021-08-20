@@ -12,6 +12,7 @@
 #import <GKImagePicker_robseward/GKImagePicker.h>
 #import <SafariServices/SafariServices.h>
 
+//BASE DEFAULT VIEWCONTROLLER FOR MANU CONTROLLERS HELPER
 @interface BaseViewController: UIViewController <GKImagePickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, SFSafariViewControllerDelegate>
 
 @property (nonatomic, strong, nullable) IBOutlet UIScrollView* keyboardAvoidingScrollView;

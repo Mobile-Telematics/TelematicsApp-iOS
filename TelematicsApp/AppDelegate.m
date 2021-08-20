@@ -211,6 +211,8 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
         [tabBar setSelectedIndex:[[Configurator sharedInstance].dashboardTabBarNumber intValue]];
     } else if ([[url absoluteString] isEqual:@"telematicsapp://feed"]) {
         [tabBar setSelectedIndex:[[Configurator sharedInstance].feedTabBarNumber intValue]];
+    } else if ([[url absoluteString] isEqual:@"telematicsapp://rewards"]) {
+        [tabBar setSelectedIndex:[[Configurator sharedInstance].rewardsTabBarNumber intValue]];
     } else if ([[url absoluteString] isEqual:@"telematicsapp://profile"]) {
         [tabBar setSelectedIndex:[[Configurator sharedInstance].profileTabBarNumber intValue]];
     }

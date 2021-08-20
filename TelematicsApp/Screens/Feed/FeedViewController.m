@@ -73,10 +73,10 @@ static NSString *tripCellIdentifier = @"TripCell";
     
     self.mainTitle.text = localizeString(@"feed_title");
     
-    UITabBarItem *tabBarItem0 = [self.tabBarController.tabBar.items objectAtIndex:[[Configurator sharedInstance].feedTabBarNumber intValue]];
-    [tabBarItem0 setImage:[[UIImage imageNamed:@"feed_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [tabBarItem0 setSelectedImage:[[UIImage imageNamed:@"feed_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
-    [tabBarItem0 setTitle:localizeString(@"feed_title")];
+    UITabBarItem *tabBarItem1 = [self.tabBarController.tabBar.items objectAtIndex:[[Configurator sharedInstance].feedTabBarNumber intValue]];
+    [tabBarItem1 setImage:[[UIImage imageNamed:@"feed_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem1 setSelectedImage:[[UIImage imageNamed:@"feed_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem1 setTitle:localizeString(@"feed_title")];
     
     UIGraphicsBeginImageContextWithOptions(self.view.bounds.size, self.view.opaque, 0.0);
     [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
@@ -341,8 +341,8 @@ static NSString *tripCellIdentifier = @"TripCell";
 }
 
 - (void)reloadSDKTrips {
-    UITabBarController *tb = (UITabBarController *)[AppDelegate appDelegate].window.rootViewController;
-    if (tb.selectedIndex != [[Configurator sharedInstance].feedTabBarNumber intValue])
+    UITabBarController *tmp = (UITabBarController *)[AppDelegate appDelegate].window.rootViewController;
+    if (tmp.selectedIndex != [[Configurator sharedInstance].feedTabBarNumber intValue])
         return;
     
     [self showPreloader];

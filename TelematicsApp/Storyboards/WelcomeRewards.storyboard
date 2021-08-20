@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="auc-hq-1Gy">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="lKi-1U-V18">
+            <objects>
+                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="auc-hq-1Gy" sceneMemberID="viewController">
+                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d0T-Og-4hu">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="INm-M7-BrZ" kind="relationship" relationship="rootViewController" id="nfc-7D-FzY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jA2-m5-EbJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="334" y="184"/>
+        </scene>
+        <!--Welcome Rewards-->
+        <scene sceneID="9MU-Yc-W7W">
+            <objects>
+                <viewController id="INm-M7-BrZ" customClass="WelcomeRewards" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="tD3-YK-yot">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money_rewards_big" translatesAutoresizingMaskIntoConstraints="NO" id="zr7-hL-9NB">
+                                <rect key="frame" x="58" y="49" width="259" height="169"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="zr7-hL-9NB" secondAttribute="height" multiplier="259:169" id="zel-be-FK6"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="POD-r9-eVh">
+                                <rect key="frame" x="94.5" y="364" width="186" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="fop-iL-O9V"/>
+                                    <constraint firstAttribute="width" constant="186" id="rp4-13-8oM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <state key="normal" title="START NOW">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismissWelcome:" destination="INm-M7-BrZ" eventType="touchUpInside" id="og6-cm-P9e"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5q-gH-Emr">
+                                <rect key="frame" x="58" y="258" width="259" height="78"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="78" id="mde-6l-62e"/>
+                                </constraints>
+                                <string key="text">You are about to earn 
+some DriveCoins!</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="textColor" red="0.27450980390000002" green="0.27450980390000002" blue="0.27450980390000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36E-CY-lxJ">
+                                <rect key="frame" x="58" y="440" width="259" height="207"/>
+                                <string key="text">Get rewarded for your good driving habits, save on fuel &amp; maintenance costs. Join driving challenges for drivecoins rewards and prove to be the best on the road.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sY1-c9-BaE">
+                                <rect key="frame" x="0.0" y="596" width="375" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="JrA-vP-AI0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="13"/>
+                                <state key="normal" title="Support">
+                                    <color key="titleColor" red="0.3294117647" green="0.70446275680000003" blue="0.2051048801" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="75K-mu-frZ"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="75K-mu-frZ" firstAttribute="bottom" secondItem="36E-CY-lxJ" secondAttribute="bottom" constant="20" id="1YK-Qe-vtR"/>
+                            <constraint firstItem="j5q-gH-Emr" firstAttribute="trailing" secondItem="36E-CY-lxJ" secondAttribute="trailing" id="2hv-vi-2HG"/>
+                            <constraint firstItem="zr7-hL-9NB" firstAttribute="trailing" secondItem="j5q-gH-Emr" secondAttribute="trailing" id="3Ep-6g-RYo"/>
+                            <constraint firstItem="zr7-hL-9NB" firstAttribute="leading" secondItem="75K-mu-frZ" secondAttribute="leading" constant="58" id="4EU-5F-5g1"/>
+                            <constraint firstItem="j5q-gH-Emr" firstAttribute="top" secondItem="zr7-hL-9NB" secondAttribute="bottom" constant="40" id="EAA-gO-8Cd"/>
+                            <constraint firstItem="36E-CY-lxJ" firstAttribute="top" secondItem="POD-r9-eVh" secondAttribute="bottom" constant="36" id="N8X-v8-vEH"/>
+                            <constraint firstItem="zr7-hL-9NB" firstAttribute="top" secondItem="75K-mu-frZ" secondAttribute="top" constant="49" id="W2H-25-V4w"/>
+                            <constraint firstItem="75K-mu-frZ" firstAttribute="bottom" secondItem="sY1-c9-BaE" secondAttribute="bottom" constant="54" id="XFv-Fz-Eu6"/>
+                            <constraint firstItem="sY1-c9-BaE" firstAttribute="leading" secondItem="tD3-YK-yot" secondAttribute="leading" id="cPx-zN-8y4"/>
+                            <constraint firstItem="j5q-gH-Emr" firstAttribute="leading" secondItem="36E-CY-lxJ" secondAttribute="leading" id="dSR-7D-oBX"/>
+                            <constraint firstItem="POD-r9-eVh" firstAttribute="top" secondItem="j5q-gH-Emr" secondAttribute="bottom" constant="28" id="eQc-L0-AXt"/>
+                            <constraint firstItem="j5q-gH-Emr" firstAttribute="centerX" secondItem="POD-r9-eVh" secondAttribute="centerX" id="hF5-lp-nI3"/>
+                            <constraint firstAttribute="trailing" secondItem="sY1-c9-BaE" secondAttribute="trailing" id="tfb-jt-NyL"/>
+                            <constraint firstItem="zr7-hL-9NB" firstAttribute="leading" secondItem="j5q-gH-Emr" secondAttribute="leading" id="uj7-9S-VRx"/>
+                            <constraint firstItem="36E-CY-lxJ" firstAttribute="centerX" secondItem="sY1-c9-BaE" secondAttribute="centerX" id="vRd-Rd-WPm"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ehC-Aa-5zH"/>
+                    <connections>
+                        <outlet property="additionalLbl" destination="36E-CY-lxJ" id="1sz-Mu-gts"/>
+                        <outlet property="mainLbl" destination="j5q-gH-Emr" id="WGU-yi-LyL"/>
+                        <outlet property="moneyImg" destination="zr7-hL-9NB" id="oIF-9N-xQL"/>
+                        <outlet property="startBtn" destination="POD-r9-eVh" id="iw2-vs-hRA"/>
+                        <outlet property="supportBtn" destination="sY1-c9-BaE" id="BH6-v4-fEz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tlN-SC-5ZW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1029.5999999999999" y="183.95802098950526"/>
+        </scene>
+    </scenes>
+    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+    <resources>
+        <image name="money_rewards_big" width="396" height="256.5"/>
+    </resources>
+</document>

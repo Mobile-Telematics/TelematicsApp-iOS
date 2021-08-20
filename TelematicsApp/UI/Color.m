@@ -74,6 +74,10 @@
     return RGB3(168, 168, 168);
 }
 
++ (UIColor*)darkGrayColor83 {
+    return RGB3(83, 83, 83);
+}
+
 + (UIColor *)darkGrayColor43 {
     return RGB3(43, 43, 43);
 }

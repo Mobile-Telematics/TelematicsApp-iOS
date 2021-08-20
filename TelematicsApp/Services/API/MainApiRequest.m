@@ -2,7 +2,7 @@
 //  MainApiRequest.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 20.01.19.
+//  Created by DATA MOTION PTE. LTD. on 20.01.20.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -14,9 +14,13 @@
 #import "RegResponse.h"
 #import "LoginResponse.h"
 #import "DashboardResponse.h"
+#import "CoinsResponse.h"
+#import "CoinsDetailsResponse.h"
+#import "StreaksResponse.h"
 #import "EcoResponse.h"
 #import "EcoIndividualResponse.h"
 #import "DrivingDetailsResponse.h"
+#import "IndicatorsResponse.h"
 #import "LeaderboardResponse.h"
 #import "GeneralService.h"
 #import "Helpers.h"
@@ -58,6 +62,14 @@
     return [Configurator sharedInstance].statisticServiceURL;
 }
 
++ (NSString *)indicatorsServiceURL {
+    return [Configurator sharedInstance].indicatorsServiceURL;
+}
+
++ (NSString *)driveCoinsServiceURL {
+    return [Configurator sharedInstance].driveCoinsServiceURL;
+}
+
 + (NSString *)leaderboardServiceURL {
     return [Configurator sharedInstance].leaderboardServiceURL;
 }
@@ -70,6 +82,7 @@
     return [Configurator sharedInstance].claimsServiceURL;
 }
 
+//YOUR OWN INSTANCE KEYS
 + (NSString *)instanceId {
     return [Configurator sharedInstance].instanceId;
 }
@@ -78,6 +91,7 @@
     return [Configurator sharedInstance].instanceKey;
 }
 
+//BASIC HEADER
 + (NSDictionary *)customRequestHeaders {
     NSMutableDictionary* headers = [[super customRequestHeaders] mutableCopy];
     if ([GeneralService sharedService].jwt_token_number) {
@@ -97,7 +111,7 @@
 }
 
 
-#pragma mark RefreshToken
+#pragma mark RefreshToken Main Operation for JWToken if 401 UNAUTHORIZED
 
 - (void)refreshJWToken:(RefreshTokenRequestData*)refreshData {
     NSDictionary* params = [refreshData paramsDictionary];
@@ -105,22 +119,7 @@
 }
 
 
-#pragma mark Phone/Email change
-
-- (void)checkEmailConfirmationCode:(CheckUserRequestData *)emailData {
-    NSDictionary* params = [emailData paramsDictionary];
-    NSString *fullPath = [NSString stringWithFormat:@"Management/users/CheckEmailConfirmationCode"];
-    [self performRequestWithPath:fullPath responseClass:[CheckResponse class] parameters:params method:POST];
-}
-
-- (void)checkPhoneConfirmationCode:(CheckUserRequestData *)phoneData {
-    NSDictionary* params = [phoneData paramsDictionary];
-    NSString *fullPath = [NSString stringWithFormat:@"Management/users/CheckPhoneConfirmationCode"];
-    [self performRequestWithPath:fullPath responseClass:[CheckResponse class] parameters:params method:POST];
-}
-
-
-#pragma mark Dashboard Statistics & Scorings
+#pragma mark Main Dashboard Statistics & Scorings
     
 - (void)getLatestDayStatisticsScoring {
     [self performRequestStatisticService:@"Statistics/individual/latestDates" responseClass:[LatestDayScoringResponse class] parameters:nil method:GET];
@@ -141,8 +140,24 @@
     [self performRequestStatisticService:@"Scorings/individual/daily" responseClass:[DrivingDetailsResponse class] parameters:params method:GET];
 }
 
+#pragma mark Indicators For Coins
 
-#pragma mark Scorings
+- (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestIndicatorsService:@"Statistics" responseClass:[IndicatorsResponse class] parameters:params method:GET];
+}
+
+- (void)getIndicatorsStreaks {
+    [self performRequestIndicatorsService:@"Streaks" responseClass:[StreaksResponse class] parameters:nil method:GET];
+}
+
+- (void)getIndicatorsEcoWithPercentForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestIndicatorsService:@"Scores/Eco" responseClass:[EcoResponse class] parameters:params method:GET];
+}
+
+
+#pragma mark Eco Scorings Dashboard
 
 - (void)getEcoDataAllTime {
     [self performRequestStatisticService:@"Scorings/individual/eco" responseClass:[EcoIndividualResponse class] parameters:nil method:GET];
@@ -151,6 +166,27 @@
 - (void)getEcoStatisticForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
     NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
     [self performRequestStatisticService:@"Statistics/individual" responseClass:[EcoResponse class] parameters:params method:GET];
+}
+
+#pragma mark My Rewards - Coins
+
+- (void)getCoinsDailyLimit {
+    [self performRequestCoinsService:@"DriveCoins/dailylimit" responseClass:[CoinsResponse class] parameters:nil method:GET];
+}
+
+- (void)getCoinsTotal:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestCoinsService:@"DriveCoins/total" responseClass:[CoinsResponse class] parameters:params method:GET];
+}
+
+- (void)getCoinsDaily:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestCoinsService:@"DriveCoins/daily" responseClass:[CoinsDetailsResponse class] parameters:params method:GET];
+}
+
+- (void)getCoinsDetailed:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestCoinsService:@"DriveCoins/detailed" responseClass:[CoinsDetailsResponse class] parameters:params method:GET];
 }
 
 
@@ -206,7 +242,7 @@
 
 
 
-#pragma mark DeleteTrack Status
+#pragma mark DeleteTrack From Feed Screen
 
 - (void)deleteTrackSendStatusForBackEnd:(NSString *)trackToken {
     NSString *URLStr = [NSString stringWithFormat:@"https://mobilesdk.raxeltelematic.com/mobilesdk/stage/track/%@/setdeleted/v1", trackToken];
@@ -220,7 +256,7 @@
 }
 
 
-#pragma mark Cornering
+#pragma mark Events Browse on Trip Details screen
 
 - (void)trackBrowseStart:(NSString *)trackToken {
     NSString *URLStr = [NSString stringWithFormat:@"https://mobilesdk.raxeltelematic.com/mobilesdk/stage/track/browsestart/v1/%@", trackToken];
@@ -269,7 +305,7 @@
 }
 
 
-#pragma mark Claims
+#pragma mark Claims Service Implementation Crash Request
 
 - (void)getTokenForClaims:(ClaimsTokenRequestData*)claimsData {
     NSDictionary* params = [claimsData paramsDictionary];
@@ -421,7 +457,7 @@
 }
 
 
-#pragma mark Claims Images Upload Helpers
+#pragma mark Claims Images Upload Helpers for Car seides
 
 - (NSData *)createBodyWithBoundary:(NSString *)boundary
                         parameters:(NSDictionary *)parameters
@@ -516,7 +552,7 @@
 }
 
 
-#pragma mark URLHelpers
+#pragma mark URLHelpers for us
 
 + (NSString *)contentTypePathToJson {
     return @"application/json; charset=utf-8";

@@ -2,7 +2,7 @@
 //  APIErrorHandler.h
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 20.01.19.
+//  Created by DATA MOTION PTE. LTD. on 20.01.20.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -15,6 +15,7 @@
 
 @property (nonatomic, weak) UIViewController* viewController;
 
+//HELPERS FOR URL REQUESTS/RESPONSE
 - (void)handleError:(NSError*)error response:(id)response;
 - (void)showErrorMessages:(NSArray<NSString *>*)errors;
 - (void)handleSuccess:(RootResponse*)response;

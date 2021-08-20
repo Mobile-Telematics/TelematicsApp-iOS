@@ -2,7 +2,7 @@
 //  APIRequest.h
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 20.01.19.
+//  Created by DATA MOTION PTE. LTD. on 20.01.20.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -39,17 +39,29 @@
 - (void)getEcoStatisticForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
 
 
-#pragma mark DeleteTrack Status
+#pragma mark DeleteTrack On Feed Screen
 
 - (void)deleteTrackSendStatusForBackEnd:(NSString *)trackToken;
 
 
-#pragma mark Browse Track Events
+#pragma mark Browse Track Events On Trip Details Screen
 
 - (void)trackBrowseStart:(NSString *)trackToken;
 - (void)reportWrongEventNoEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType date:(NSString *)date;
 - (void)reportWrongEventNewEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType newEventType:(NSString *)newEventType date:(NSString *)date;
 
+#pragma mark My Rewards - Coins
+
+- (void)getCoinsDailyLimit;
+- (void)getCoinsTotal:(NSString *)startDate endDate:(NSString*)endDate;
+- (void)getCoinsDetailed:(NSString *)startDate endDate:(NSString*)endDate;
+- (void)getCoinsDaily:(NSString *)startDate endDate:(NSString*)endDate;
+
+#pragma mark Indicators For My Rewards - Coins
+
+- (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
+- (void)getIndicatorsStreaks;
+- (void)getIndicatorsEcoWithPercentForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
 
 #pragma mark Leaderboard
 
@@ -67,7 +79,7 @@
 - (void)deleteVehicle:(VehicleRequestData *)vehicleData vehicle:(NSString *)vehicleToken;
 
 
-#pragma mark Claims
+#pragma mark ClaimsService
 
 - (void)getTokenForClaims:(ClaimsTokenRequestData*)claimsData;
 - (void)getUserClaims;

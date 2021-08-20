@@ -2,7 +2,7 @@
 //  APIRequest.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 20.01.19.
+//  Created by DATA MOTION PTE. LTD. on 20.01.20.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -60,6 +60,11 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     return nil;
 }
 
++ (NSString *)indicatorsServiceURL {
+    @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [indicatorsServiceURL] method to provide server URL" userInfo:nil];
+    return nil;
+}
+
 + (NSString *)leaderboardServiceURL {
     @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [leaderboardServiceURL] method to provide server URL" userInfo:nil];
     return nil;
@@ -72,6 +77,11 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 
 + (NSString *)claimsServiceURL {
     @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [claimsServiceURL] method to provide server URL" userInfo:nil];
+    return nil;
+}
+
++ (NSString *)driveCoinsServiceURL {
+    @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [driveCoinsServiceURL] method to provide server URL" userInfo:nil];
     return nil;
 }
 
@@ -162,26 +172,26 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-//#pragma mark - TelematicsApp Request V2
-//
-//- (void)performRequestWithPathV2:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
-//    self.responseClass = responseClass;
-//    if (![path hasPrefix:@"http"]) {
-//        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
-//    }
-//    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-//    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
-//    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
-//    NSError* error = nil;
-//    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-//    request.timeoutInterval = 120;
-//    NSLog(@"req %@", request.URL.absoluteString);
-//    NSDictionary* customHeaders = [[self class] customRequestHeaders];
-//    for (NSString* key in customHeaders.allKeys) {
-//        [request setValue:customHeaders[key] forHTTPHeaderField:key];
-//    }
-//    [self performRequest:request withResponseClass:responseClass];
-//}
+#pragma mark - Core Request V2
+
+- (void)performRequestWithPathV2:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
+    self.responseClass = responseClass;
+    if (![path hasPrefix:@"http"]) {
+        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
+    }
+    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
+    NSError* error = nil;
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
+    request.timeoutInterval = 120;
+    NSLog(@"req %@", request.URL.absoluteString);
+    NSDictionary* customHeaders = [[self class] customRequestHeaders];
+    for (NSString* key in customHeaders.allKeys) {
+        [request setValue:customHeaders[key] forHTTPHeaderField:key];
+    }
+    [self performRequest:request withResponseClass:responseClass];
+}
 
 
 #pragma mark - TelematicsApp Request with Body
@@ -207,7 +217,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - StatisticService
+#pragma mark - Statistic Service
 
 - (void)performRequestStatisticService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
     self.responseClass = responseClass;
@@ -228,7 +238,49 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - CarServive
+#pragma mark - Indicators Service
+
+- (void)performRequestIndicatorsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
+    self.responseClass = responseClass;
+    if (![path hasPrefix:@"http"]) {
+        path = [NSString stringWithFormat:@"%@/%@", [[self class] statisticServiceURL], path];
+    }
+    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
+    NSError* error = nil;
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
+    NSLog(@"req %@", request.URL.absoluteString);
+    NSDictionary* customHeaders = [[self class] customRequestHeaders];
+    for (NSString* key in customHeaders.allKeys) {
+        [request setValue:customHeaders[key] forHTTPHeaderField:key];
+    }
+    [self performRequest:request withResponseClass:responseClass];
+}
+
+
+#pragma mark - Coins/Rewarding Service
+
+- (void)performRequestCoinsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
+    self.responseClass = responseClass;
+    if (![path hasPrefix:@"http"]) {
+        path = [NSString stringWithFormat:@"%@/%@", [[self class] driveCoinsServiceURL], path];
+    }
+    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
+    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
+    NSError* error = nil;
+    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
+    NSLog(@"req %@", request.URL.absoluteString);
+    NSDictionary* customHeaders = [[self class] customRequestHeaders];
+    for (NSString* key in customHeaders.allKeys) {
+        [request setValue:customHeaders[key] forHTTPHeaderField:key];
+    }
+    [self performRequest:request withResponseClass:responseClass];
+}
+
+
+#pragma mark - Car Servive
 
 - (void)performRequestCarService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
     self.responseClass = responseClass;
@@ -249,7 +301,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - ClaimsServive
+#pragma mark - Claims Servive
 
 - (void)performRequestClaimsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
     self.responseClass = responseClass;
@@ -268,7 +320,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - LeaderboardService
+#pragma mark - Leaderboard Service
 
 - (void)performRequestLeaderboardService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
     self.responseClass = responseClass;
@@ -416,7 +468,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                                 return;
                             }
 
-                            NSLog(@"<<<<<<<<<<WE REFRESH MAIN AUTH TOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
+                            NSLog(@"<<<<<<<<<<WE REFRESH MAIN JWTOKEN TOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
                             [[GeneralService sharedService] refreshJWToken:response];
 
                         } else if (((RootResponse*)response).Status.intValue == 419) {
@@ -474,7 +526,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.completed = YES;
             
-            NSLog(@"********PARSEDRESULTBACKEND>>>>>>>>>> %@", parsedObject);
+            NSLog(@"********PARSED RESULT BACKEND>>>>>>>>>> %@", parsedObject);
             
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
                 self.responseHeaders = ((NSHTTPURLResponse *)response).allHeaderFields;
@@ -526,7 +578,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                                     return;
                                 }
 
-                                NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<TOKENONCE: RESPONSE %d", ((RootResponse*)response).Status.intValue);
+                                NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<JWT TOKEN ONCE: RESPONSE %d", ((RootResponse*)response).Status.intValue);
 
                                 [[GeneralService sharedService] refreshJWToken:response];
                                 

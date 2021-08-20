@@ -10,6 +10,7 @@
 
 @interface RefreshTokenRequestData: RequestData
 
+//JWTOKEN & REFRESH TOKEN AUTH MODEL
 @property (nonatomic, copy) NSString<Optional>* accessToken;
 @property (nonatomic, copy) NSString<Optional>* refreshToken;
 

@@ -42,6 +42,7 @@ alpha:1.0]
 + (UIColor*)grayColor;
 + (UIColor*)softGrayColor;
 + (UIColor*)buttonGrayTextColor;
++ (UIColor*)darkGrayColor83;
 + (UIColor*)darkGrayColor43;
 + (UIColor*)darkGrayColor;
 + (UIColor*)tabBarLightColor;

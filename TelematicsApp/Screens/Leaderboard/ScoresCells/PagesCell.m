@@ -2,7 +2,7 @@
 //  PagesCell.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 09.04.19.
+//  Created by DATA MOTION PTE. LTD. on 09.04.20.
 //  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 

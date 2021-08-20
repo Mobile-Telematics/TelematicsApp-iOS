@@ -128,11 +128,6 @@
     return completeText;
 }
 
-- (void)lowFontsForOldDevices {
-    if (IS_IPHONE_5 || IS_IPHONE_4)
-        self.mainLbl.font = [Font semibold15];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

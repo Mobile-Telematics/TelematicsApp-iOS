@@ -40,6 +40,7 @@
 		E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90088FB21D1BC0B00D33D85 /* SettingsNoIconCell.m */; };
 		E900890121D2C65100D33D85 /* UserImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E900890021D2C65100D33D85 /* UserImagePickerViewController.m */; };
 		E904B9D22670D2E7009CD77B /* CheckUserRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */; };
+		E90DF4AA26CF1CDD0003C2A1 /* WelcomeRewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90DF4A926CF1CDD0003C2A1 /* WelcomeRewards.storyboard */; };
 		E914DBA921598CF5002BB116 /* CheckResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBA521598CF5002BB116 /* CheckResponse.m */; };
 		E914DBAA21598CF5002BB116 /* CheckResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBA821598CF5002BB116 /* CheckResultResponse.m */; };
 		E914DBB72159A4BB002BB116 /* RegResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBB32159A4BB002BB116 /* RegResultResponse.m */; };
@@ -175,6 +176,22 @@
 		E99ACAF82200E1140083DD99 /* APSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF32200E1140083DD99 /* APSResponse.m */; };
 		E99ACAF92200E1140083DD99 /* ProfileResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF42200E1140083DD99 /* ProfileResultResponse.m */; };
 		E99ACAFA2200E1140083DD99 /* ProfileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF52200E1140083DD99 /* ProfileResponse.m */; };
+		E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A7FDEE26CEFB8F000F0C44 /* Rewards.storyboard */; };
+		E9A7FDFB26CEFBFB000F0C44 /* CoinsChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF226CEFBFA000F0C44 /* CoinsChart.m */; };
+		E9A7FDFC26CEFBFB000F0C44 /* DriveCoinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF426CEFBFA000F0C44 /* DriveCoinsViewController.m */; };
+		E9A7FDFD26CEFBFB000F0C44 /* WelcomeRewards.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF626CEFBFA000F0C44 /* WelcomeRewards.m */; };
+		E9A7FDFE26CEFBFB000F0C44 /* StreakCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF926CEFBFA000F0C44 /* StreakCell.m */; };
+		E9A7FE0E26CEFC9D000F0C44 /* StreaksResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0026CEFC9D000F0C44 /* StreaksResponse.m */; };
+		E9A7FE0F26CEFC9D000F0C44 /* StreaksResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0226CEFC9D000F0C44 /* StreaksResultResponse.m */; };
+		E9A7FE1026CEFC9D000F0C44 /* CoinsDetailsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0626CEFC9D000F0C44 /* CoinsDetailsObject.m */; };
+		E9A7FE1126CEFC9D000F0C44 /* CoinsDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0726CEFC9D000F0C44 /* CoinsDetailsResponse.m */; };
+		E9A7FE1226CEFC9D000F0C44 /* IndicatorsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0C26CEFC9D000F0C44 /* IndicatorsResponse.m */; };
+		E9A7FE1326CEFC9D000F0C44 /* IndicatorsResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0D26CEFC9D000F0C44 /* IndicatorsResultResponse.m */; };
+		E9A7FE1926CF082C000F0C44 /* CoinsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE1526CF082C000F0C44 /* CoinsResponse.m */; };
+		E9A7FE1A26CF082C000F0C44 /* CoinsResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE1826CF082C000F0C44 /* CoinsResultResponse.m */; };
+		E9A7FE1E26CF0BE9000F0C44 /* DriveCoinsSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE1C26CF0BE9000F0C44 /* DriveCoinsSegmentView.m */; };
+		E9A7FE2426CF0D1D000F0C44 /* DaysCoinsSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE2226CF0D1D000F0C44 /* DaysCoinsSegmentView.m */; };
+		E9A7FE2526CF0D1D000F0C44 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE2326CF0D1D000F0C44 /* UIView+Extension.m */; };
 		E9A842AE225244530090461E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A842AC225244530090461E /* BaseViewController.m */; };
 		E9B28DE423F59861004DE7CB /* ErrorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B28DE323F59861004DE7CB /* ErrorObject.m */; };
 		E9B6C9A826853680000B5B51 /* Claims.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9B6C9A726853680000B5B51 /* Claims.storyboard */; };
@@ -366,6 +383,7 @@
 		E904B96B2670C34B009CD77B /* LoginAuth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LoginAuth.xcframework; path = TelematicsApp/LoginAuth.xcframework; sourceTree = "<group>"; };
 		E904B9D02670D2E7009CD77B /* CheckUserRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckUserRequestData.h; sourceTree = "<group>"; };
 		E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckUserRequestData.m; sourceTree = "<group>"; };
+		E90DF4A926CF1CDD0003C2A1 /* WelcomeRewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeRewards.storyboard; sourceTree = "<group>"; };
 		E914DBA521598CF5002BB116 /* CheckResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckResponse.m; sourceTree = "<group>"; };
 		E914DBA621598CF5002BB116 /* CheckResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckResultResponse.h; sourceTree = "<group>"; };
 		E914DBA721598CF5002BB116 /* CheckResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckResponse.h; sourceTree = "<group>"; };
@@ -610,6 +628,37 @@
 		E99ACAF52200E1140083DD99 /* ProfileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileResponse.m; sourceTree = "<group>"; };
 		E99ACAF62200E1140083DD99 /* APSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSResponse.h; sourceTree = "<group>"; };
 		E99ACAF72200E1140083DD99 /* ProfileResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileResultResponse.h; sourceTree = "<group>"; };
+		E9A7FDEE26CEFB8F000F0C44 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
+		E9A7FDF226CEFBFA000F0C44 /* CoinsChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsChart.m; sourceTree = "<group>"; };
+		E9A7FDF326CEFBFA000F0C44 /* CoinsChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsChart.h; sourceTree = "<group>"; };
+		E9A7FDF426CEFBFA000F0C44 /* DriveCoinsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveCoinsViewController.m; sourceTree = "<group>"; };
+		E9A7FDF526CEFBFA000F0C44 /* WelcomeRewards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeRewards.h; sourceTree = "<group>"; };
+		E9A7FDF626CEFBFA000F0C44 /* WelcomeRewards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeRewards.m; sourceTree = "<group>"; };
+		E9A7FDF826CEFBFA000F0C44 /* StreakCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreakCell.h; sourceTree = "<group>"; };
+		E9A7FDF926CEFBFA000F0C44 /* StreakCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreakCell.m; sourceTree = "<group>"; };
+		E9A7FDFA26CEFBFA000F0C44 /* DriveCoinsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveCoinsViewController.h; sourceTree = "<group>"; };
+		E9A7FE0026CEFC9D000F0C44 /* StreaksResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreaksResponse.m; sourceTree = "<group>"; };
+		E9A7FE0126CEFC9D000F0C44 /* StreaksResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreaksResultResponse.h; sourceTree = "<group>"; };
+		E9A7FE0226CEFC9D000F0C44 /* StreaksResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreaksResultResponse.m; sourceTree = "<group>"; };
+		E9A7FE0326CEFC9D000F0C44 /* StreaksResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreaksResponse.h; sourceTree = "<group>"; };
+		E9A7FE0526CEFC9D000F0C44 /* CoinsDetailsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsDetailsResponse.h; sourceTree = "<group>"; };
+		E9A7FE0626CEFC9D000F0C44 /* CoinsDetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsDetailsObject.m; sourceTree = "<group>"; };
+		E9A7FE0726CEFC9D000F0C44 /* CoinsDetailsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsDetailsResponse.m; sourceTree = "<group>"; };
+		E9A7FE0826CEFC9D000F0C44 /* CoinsDetailsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsDetailsObject.h; sourceTree = "<group>"; };
+		E9A7FE0A26CEFC9D000F0C44 /* IndicatorsResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorsResultResponse.h; sourceTree = "<group>"; };
+		E9A7FE0B26CEFC9D000F0C44 /* IndicatorsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndicatorsResponse.h; sourceTree = "<group>"; };
+		E9A7FE0C26CEFC9D000F0C44 /* IndicatorsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorsResponse.m; sourceTree = "<group>"; };
+		E9A7FE0D26CEFC9D000F0C44 /* IndicatorsResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndicatorsResultResponse.m; sourceTree = "<group>"; };
+		E9A7FE1526CF082C000F0C44 /* CoinsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsResponse.m; sourceTree = "<group>"; };
+		E9A7FE1626CF082C000F0C44 /* CoinsResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsResultResponse.h; sourceTree = "<group>"; };
+		E9A7FE1726CF082C000F0C44 /* CoinsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsResponse.h; sourceTree = "<group>"; };
+		E9A7FE1826CF082C000F0C44 /* CoinsResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsResultResponse.m; sourceTree = "<group>"; };
+		E9A7FE1C26CF0BE9000F0C44 /* DriveCoinsSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveCoinsSegmentView.m; sourceTree = "<group>"; };
+		E9A7FE1D26CF0BE9000F0C44 /* DriveCoinsSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveCoinsSegmentView.h; sourceTree = "<group>"; };
+		E9A7FE2026CF0D1D000F0C44 /* DaysCoinsSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaysCoinsSegmentView.h; sourceTree = "<group>"; };
+		E9A7FE2126CF0D1D000F0C44 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		E9A7FE2226CF0D1D000F0C44 /* DaysCoinsSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaysCoinsSegmentView.m; sourceTree = "<group>"; };
+		E9A7FE2326CF0D1D000F0C44 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		E9A842AC225244530090461E /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		E9A842AD225244530090461E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E9B28DE223F59861004DE7CB /* ErrorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorObject.h; sourceTree = "<group>"; };
@@ -851,6 +900,8 @@
 				E9306C34231DCFB6003E98BB /* MapPopTipView */,
 				E9B6CA6526854778000B5B51 /* SpecialActionSheet */,
 				E9866184258AA5D90074BE6F /* TagsSwitch */,
+				E9A7FE1B26CF0BE9000F0C44 /* DriveCoinsSegment */,
+				E9A7FE1F26CF0D1D000F0C44 /* DaysCoinsSegmentView */,
 				170041781D749B500058C934 /* Color.h */,
 				170041791D749B500058C934 /* Color.m */,
 				17D13F641D9E940F00F731CC /* Font.h */,
@@ -862,10 +913,10 @@
 		171390371D819702007E4007 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				E904B9CF2670D2E7009CD77B /* Check */,
 				E954A9412595411C0033FA23 /* Auth */,
 				E96ABF4D2612818100C0AC24 /* Vehicle */,
 				E9B6CA0D26853C14000B5B51 /* Claims */,
+				E904B9CF2670D2E7009CD77B /* CheckUser */,
 				171390381D81974C007E4007 /* RequestData.h */,
 				171390391D81974C007E4007 /* RequestData.m */,
 			);
@@ -943,6 +994,8 @@
 				174D93971D79A215003F743F /* Auth.storyboard */,
 				E9F5496C22A94E1A00CCA5E5 /* DashboardMain.storyboard */,
 				E9C6464C2417D61200CDF337 /* Feed.storyboard */,
+				E90DF4A926CF1CDD0003C2A1 /* WelcomeRewards.storyboard */,
+				E9A7FDEE26CEFB8F000F0C44 /* Rewards.storyboard */,
 				E9866154258A9F2B0074BE6F /* Profile.storyboard */,
 				E990B15A215435E800F2EF11 /* Settings.storyboard */,
 				E96ABF5E261282C500C0AC24 /* Leaderboard.storyboard */,
@@ -1007,8 +1060,9 @@
 				E9D54B0A21F8BDEE006B49C9 /* AuthPhone */,
 				E930826A229EF83800E17C1D /* DashboardMain */,
 				E95242FF214ECD4900C70E95 /* Feed */,
-				E990B1562154350500F2EF11 /* Settings */,
+				E9A7FDF026CEFBFA000F0C44 /* Rewards */,
 				E9D260D121ADD30500632BAE /* Profile */,
+				E990B1562154350500F2EF11 /* Settings */,
 				E96ABE0E2611AB1600C0AC24 /* Leaderboard */,
 				E96ABEC72612229100C0AC24 /* ConnectOBD */,
 				E9BD8852227278CC0059FCA1 /* Security */,
@@ -1053,14 +1107,17 @@
 			isa = PBXGroup;
 			children = (
 				E978BAEA23D11CEF00A59A8F /* AccessToken */,
-				E914DBA421598CF5002BB116 /* CheckUser */,
 				1739736F1D6219FE00C9447E /* Auth */,
 				E914DBB22159A4BB002BB116 /* Registration */,
+				E914DBA421598CF5002BB116 /* CheckUser */,
 				17F88B9B1D903FC1001164F0 /* Dashboard */,
 				E98E20D5255096ED00BA30AF /* LatestDayScoring */,
 				E9249730230364E100FC099F /* DrivingDetails */,
 				E9C22D2E25534B230055644D /* EcoIndividual */,
 				E9C22D112552E21A0055644D /* Eco */,
+				E9A7FE1426CF082C000F0C44 /* Coins */,
+				E9A7FE0426CEFC9D000F0C44 /* CoinsDetails */,
+				E9A7FDFF26CEFC9D000F0C44 /* Streaks */,
 				E99ACAF12200E1140083DD99 /* Profile */,
 				E98661D0258AB80E0074BE6F /* ProfileUserFields */,
 				E96ABF52261281C700C0AC24 /* Vehicles */,
@@ -1070,6 +1127,7 @@
 				E9B6CA2326854028000B5B51 /* ClaimsUser */,
 				E9B6CA3B26854281000B5B51 /* ClaimsGallery */,
 				E96ABE572611AB6800C0AC24 /* Leaderboard */,
+				E9A7FE0926CEFC9D000F0C44 /* Indicators */,
 				1713904B1D81D68D007E4007 /* RootResponse.h */,
 				1713904C1D81D68D007E4007 /* RootResponse.m */,
 				1739739A1D6219FE00C9447E /* ResponseObject.h */,
@@ -1137,13 +1195,13 @@
 			path = UserAvatarImagePicker;
 			sourceTree = "<group>";
 		};
-		E904B9CF2670D2E7009CD77B /* Check */ = {
+		E904B9CF2670D2E7009CD77B /* CheckUser */ = {
 			isa = PBXGroup;
 			children = (
 				E904B9D02670D2E7009CD77B /* CheckUserRequestData.h */,
 				E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */,
 			);
-			path = Check;
+			path = CheckUser;
 			sourceTree = "<group>";
 		};
 		E914DBA421598CF5002BB116 /* CheckUser */ = {
@@ -1712,6 +1770,101 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		E9A7FDF026CEFBFA000F0C44 /* Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FDF126CEFBFA000F0C44 /* CoinsChart */,
+				E9A7FDF726CEFBFA000F0C44 /* StreaksCell */,
+				E9A7FDF526CEFBFA000F0C44 /* WelcomeRewards.h */,
+				E9A7FDF626CEFBFA000F0C44 /* WelcomeRewards.m */,
+				E9A7FDFA26CEFBFA000F0C44 /* DriveCoinsViewController.h */,
+				E9A7FDF426CEFBFA000F0C44 /* DriveCoinsViewController.m */,
+			);
+			path = Rewards;
+			sourceTree = "<group>";
+		};
+		E9A7FDF126CEFBFA000F0C44 /* CoinsChart */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FDF226CEFBFA000F0C44 /* CoinsChart.m */,
+				E9A7FDF326CEFBFA000F0C44 /* CoinsChart.h */,
+			);
+			path = CoinsChart;
+			sourceTree = "<group>";
+		};
+		E9A7FDF726CEFBFA000F0C44 /* StreaksCell */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FDF826CEFBFA000F0C44 /* StreakCell.h */,
+				E9A7FDF926CEFBFA000F0C44 /* StreakCell.m */,
+			);
+			path = StreaksCell;
+			sourceTree = "<group>";
+		};
+		E9A7FDFF26CEFC9D000F0C44 /* Streaks */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FE0326CEFC9D000F0C44 /* StreaksResponse.h */,
+				E9A7FE0026CEFC9D000F0C44 /* StreaksResponse.m */,
+				E9A7FE0126CEFC9D000F0C44 /* StreaksResultResponse.h */,
+				E9A7FE0226CEFC9D000F0C44 /* StreaksResultResponse.m */,
+			);
+			path = Streaks;
+			sourceTree = "<group>";
+		};
+		E9A7FE0426CEFC9D000F0C44 /* CoinsDetails */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FE0526CEFC9D000F0C44 /* CoinsDetailsResponse.h */,
+				E9A7FE0726CEFC9D000F0C44 /* CoinsDetailsResponse.m */,
+				E9A7FE0826CEFC9D000F0C44 /* CoinsDetailsObject.h */,
+				E9A7FE0626CEFC9D000F0C44 /* CoinsDetailsObject.m */,
+			);
+			path = CoinsDetails;
+			sourceTree = "<group>";
+		};
+		E9A7FE0926CEFC9D000F0C44 /* Indicators */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FE0B26CEFC9D000F0C44 /* IndicatorsResponse.h */,
+				E9A7FE0C26CEFC9D000F0C44 /* IndicatorsResponse.m */,
+				E9A7FE0A26CEFC9D000F0C44 /* IndicatorsResultResponse.h */,
+				E9A7FE0D26CEFC9D000F0C44 /* IndicatorsResultResponse.m */,
+			);
+			path = Indicators;
+			sourceTree = "<group>";
+		};
+		E9A7FE1426CF082C000F0C44 /* Coins */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FE1726CF082C000F0C44 /* CoinsResponse.h */,
+				E9A7FE1526CF082C000F0C44 /* CoinsResponse.m */,
+				E9A7FE1626CF082C000F0C44 /* CoinsResultResponse.h */,
+				E9A7FE1826CF082C000F0C44 /* CoinsResultResponse.m */,
+			);
+			path = Coins;
+			sourceTree = "<group>";
+		};
+		E9A7FE1B26CF0BE9000F0C44 /* DriveCoinsSegment */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FE1D26CF0BE9000F0C44 /* DriveCoinsSegmentView.h */,
+				E9A7FE1C26CF0BE9000F0C44 /* DriveCoinsSegmentView.m */,
+			);
+			path = DriveCoinsSegment;
+			sourceTree = "<group>";
+		};
+		E9A7FE1F26CF0D1D000F0C44 /* DaysCoinsSegmentView */ = {
+			isa = PBXGroup;
+			children = (
+				E9A7FE2026CF0D1D000F0C44 /* DaysCoinsSegmentView.h */,
+				E9A7FE2226CF0D1D000F0C44 /* DaysCoinsSegmentView.m */,
+				E9A7FE2126CF0D1D000F0C44 /* UIView+Extension.h */,
+				E9A7FE2326CF0D1D000F0C44 /* UIView+Extension.m */,
+			);
+			path = DaysCoinsSegmentView;
+			sourceTree = "<group>";
+		};
 		E9B6C9A9268536A0000B5B51 /* Claims */ = {
 			isa = PBXGroup;
 			children = (
@@ -2230,9 +2383,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				E970305121B5AFF8008CEA13 /* GeneralPopup.xib in Resources */,
+				E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */,
 				E9B6CA59268544A7000B5B51 /* GMImagePicker.strings in Resources */,
 				E9F5496D22A94E1A00CCA5E5 /* DashboardMain.storyboard in Resources */,
 				E9B6CA0C26853AD3000B5B51 /* CameraCar.storyboard in Resources */,
+				E90DF4AA26CF1CDD0003C2A1 /* WelcomeRewards.storyboard in Resources */,
 				174D93981D79A215003F743F /* Auth.storyboard in Resources */,
 				E9B6C9A826853680000B5B51 /* Claims.storyboard in Resources */,
 				E990B15B215435E800F2EF11 /* Settings.storyboard in Resources */,
@@ -2447,6 +2602,7 @@
 				E96ABE6D2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m in Sources */,
 				E96ABF5B261281C700C0AC24 /* VehicleResponse.m in Sources */,
 				E9D54B1421F8BDEE006B49C9 /* PhoneLoginViewCtrl.m in Sources */,
+				E9A7FDFC26CEFBFB000F0C44 /* DriveCoinsViewController.m in Sources */,
 				E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */,
 				E99ACAF82200E1140083DD99 /* APSResponse.m in Sources */,
 				E9D54B1121F8BDEE006B49C9 /* EmailLoginViewCtrl.m in Sources */,
@@ -2467,6 +2623,8 @@
 				E9E05D2B21B80E9800F6C76C /* TelematicsAppLocationAccessor.m in Sources */,
 				E9E05D2621B80E9800F6C76C /* TelematicsAppFaceIDAccessor.m in Sources */,
 				E919F73D21503A8500CCF3A6 /* FeedSlideMenuTableViewCell.m in Sources */,
+				E9A7FE2426CF0D1D000F0C44 /* DaysCoinsSegmentView.m in Sources */,
+				E9A7FE1926CF082C000F0C44 /* CoinsResponse.m in Sources */,
 				E98CFA5623D8D61700580144 /* PaginationDataSource.m in Sources */,
 				E9B6CA002685392D000B5B51 /* KSProgressLayer.m in Sources */,
 				E93FBF59240F066A001387C6 /* VisibleBuildConfig.m in Sources */,
@@ -2482,6 +2640,7 @@
 				E9F6E521204F600A003BFAD3 /* ISO8601Serialization.m in Sources */,
 				E96ABE502611AB1600C0AC24 /* ScoreAccVC.m in Sources */,
 				E9B6C9D5268536A0000B5B51 /* NewClaimCell.m in Sources */,
+				E9A7FE1226CEFC9D000F0C44 /* IndicatorsResponse.m in Sources */,
 				E96ABEE92612229100C0AC24 /* InternetErrorViewCtrl.swift in Sources */,
 				E98E20E1255096ED00BA30AF /* LatestDayScoringResultResponse.m in Sources */,
 				E96ABF502612818100C0AC24 /* VehicleRequestData.m in Sources */,
@@ -2493,6 +2652,7 @@
 				E9B6CA042685392D000B5B51 /* UIImage+KS.m in Sources */,
 				E9A842AE225244530090461E /* BaseViewController.m in Sources */,
 				E947D3B525348FAC003DB17A /* DriverSignaturePopupDelegate.m in Sources */,
+				E9A7FE1126CEFC9D000F0C44 /* CoinsDetailsResponse.m in Sources */,
 				E9B28DE423F59861004DE7CB /* ErrorObject.m in Sources */,
 				E9E21EA226417EFF00EE4FC9 /* CarCell.m in Sources */,
 				E9332F3822B0376900EC70B6 /* BottomSheetView.m in Sources */,
@@ -2508,6 +2668,7 @@
 				E9B6CA4226854281000B5B51 /* GalleryObject.m in Sources */,
 				E9B6CA60268544A7000B5B51 /* GMAlbumsViewController.m in Sources */,
 				E9B6CA0B26853AD3000B5B51 /* CameraCarViewController.swift in Sources */,
+				E9A7FE1026CEFC9D000F0C44 /* CoinsDetailsObject.m in Sources */,
 				E9DB0785259A776A0067080E /* LicenseCell.m in Sources */,
 				E9E21E782641753700EE4FC9 /* VehiclesDictionaryResultResponse.m in Sources */,
 				E93082B9229F384A00E17C1D /* LineChart.m in Sources */,
@@ -2515,6 +2676,8 @@
 				E9B6CA2026853DB1000B5B51 /* CommonFunctions.m in Sources */,
 				170041761D749B120058C934 /* UITableView+Preloader.m in Sources */,
 				E9B6CA3526854028000B5B51 /* ClaimsUserResponse.m in Sources */,
+				E9A7FE2526CF0D1D000F0C44 /* UIView+Extension.m in Sources */,
+				E9A7FDFD26CEFBFB000F0C44 /* WelcomeRewards.m in Sources */,
 				E9E05D2A21B80E9800F6C76C /* TelematicsAppPhotoLibraryAccessor.m in Sources */,
 				E970305221B5AFF8008CEA13 /* GeneralPopupDelegate.m in Sources */,
 				E9B6C9D8268536A0000B5B51 /* CarPhotoCell.m in Sources */,
@@ -2530,13 +2693,16 @@
 				E9F19D6021CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m in Sources */,
 				E97716A2258AC53700419EB0 /* ClaimAlertPopup.m in Sources */,
 				E96ABE682611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m in Sources */,
+				E9A7FDFB26CEFBFB000F0C44 /* CoinsChart.m in Sources */,
 				E9B6CA1F26853DB1000B5B51 /* ConfigGMaps.m in Sources */,
 				E96ABEE82612229100C0AC24 /* NotSupportErrorViewCtrl.swift in Sources */,
 				E9B6CA3926854028000B5B51 /* ClaimsAccidentResultResponse.m in Sources */,
 				E94C78CB25928E7100725A29 /* UIView+Extension.m in Sources */,
 				E96ABE5E2611AB6800C0AC24 /* LeaderboardResultResponse.m in Sources */,
+				E9A7FE1A26CF082C000F0C44 /* CoinsResultResponse.m in Sources */,
 				1739736B1D62199500C9447E /* APIErrorHandler.m in Sources */,
 				E9B6C9E626853859000B5B51 /* ClaimsService.m in Sources */,
+				E9A7FDFE26CEFBFB000F0C44 /* StreakCell.m in Sources */,
 				E954A94D2595411C0033FA23 /* RefreshTokenRequestData.m in Sources */,
 				173973311D620CDB00C9447E /* AppDelegate.m in Sources */,
 				E9B6C9FF2685392D000B5B51 /* KSYYImageManager.m in Sources */,
@@ -2602,13 +2768,16 @@
 				E96ABEE42612229100C0AC24 /* SuccessPairedViewCtrl.swift in Sources */,
 				E96ABE4D2611AB1600C0AC24 /* ScoreTripsVC.m in Sources */,
 				E9308278229F102E00E17C1D /* DashLiteGaugeView.m in Sources */,
+				E9A7FE1326CEFC9D000F0C44 /* IndicatorsResultResponse.m in Sources */,
 				E9745E54218B811D00EE8102 /* Model.xcdatamodeld in Sources */,
 				E96ABE4F2611AB1600C0AC24 /* ScoreSpeedVC.m in Sources */,
 				E914DBAA21598CF5002BB116 /* CheckResultResponse.m in Sources */,
+				E9A7FE1E26CF0BE9000F0C44 /* DriveCoinsSegmentView.m in Sources */,
 				1784632E1D8979D200B4FE32 /* NSArray+UITableViewAdditions.m in Sources */,
 				E9B6CA3626854028000B5B51 /* ClaimsUserResultResponse.m in Sources */,
 				E951AC212162A97900717D8C /* SettingsMenuCell.m in Sources */,
 				E9E05D2721B80E9800F6C76C /* TelematicsAppPushNotificationAccessor.m in Sources */,
+				E9A7FE0E26CEFC9D000F0C44 /* StreaksResponse.m in Sources */,
 				E9B6CA1226853C14000B5B51 /* ClaimsTokenRequestData.m in Sources */,
 				E9B6C9DA268536A0000B5B51 /* StepPhotoViewController.m in Sources */,
 				E9306C42231DCFB6003E98BB /* MapPopTip.m in Sources */,
@@ -2630,6 +2799,7 @@
 				E990B1592154350500F2EF11 /* SettingsViewController.m in Sources */,
 				E9B6C9E0268536A0000B5B51 /* TowingViewController.m in Sources */,
 				E9BFA2FE21FE467900D80C21 /* CountriesViewControllerDelegate.swift in Sources */,
+				E9A7FE0F26CEFC9D000F0C44 /* StreaksResultResponse.m in Sources */,
 				E99ACAFA2200E1140083DD99 /* ProfileResponse.m in Sources */,
 				E9249737230364E200FC099F /* DrivingDetailsResponse.m in Sources */,
 				E9B6C9D3268536A0000B5B51 /* ClaimDetailsViewCtrl.m in Sources */,
@@ -2742,7 +2912,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2791,7 +2961,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -2809,7 +2979,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MTK2QVQ5B8;
@@ -2821,7 +2991,7 @@
 				);
 				GCC_PREFIX_HEADER = TelematicsApp/TelematicsAppPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TelematicsApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2848,7 +3018,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 11;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = MTK2QVQ5B8;
 				ENABLE_BITCODE = NO;
@@ -2859,7 +3029,7 @@
 				);
 				GCC_PREFIX_HEADER = TelematicsApp/TelematicsAppPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TelematicsApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

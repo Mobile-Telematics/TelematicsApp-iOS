@@ -21,8 +21,9 @@
     
     self.delegate = self;
     
-    NSArray *unSelectedImgArray = [NSArray arrayWithObjects:@"dashboard_unselected", @"feed_unselected", @"profile_unselected", nil];
-    NSArray *selectedImgArray = [NSArray arrayWithObjects:@"dashboard_selected", @"feed_selected", @"profile_selected", nil];
+    //CODE IMPLEMENTATION. SEE STORRYBOARD TOO
+    NSArray *unSelectedImgArray = [NSArray arrayWithObjects:@"dashboard_unselected", @"feed_unselected", @"rewards_unselected", @"profile_unselected", nil];
+    NSArray *selectedImgArray = [NSArray arrayWithObjects:@"dashboard_selected", @"feed_selected", @"rewards_selected", @"profile_selected", nil];
     
     [CoreBarController setTabBar:self.tabBar andImages:unSelectedImgArray andSelectedImages:selectedImgArray];
     

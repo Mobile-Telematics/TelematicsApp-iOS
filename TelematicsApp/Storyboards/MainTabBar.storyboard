@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNp-aA-EJZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="oNp-aA-EJZ">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,6 +17,17 @@
             </objects>
             <point key="canvasLocation" x="-385" y="-1034"/>
         </scene>
+        <!--MyRewards-->
+        <scene sceneID="PZB-hI-Er2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Rewards" id="CnW-cB-tEW" userLabel="MyRewards" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="My Rewards" image="rewards_unselected" selectedImage="rewards_selected" id="fCi-Rz-F79" userLabel="MyRewards"/>
+                    <navigationItem key="navigationItem" id="dmg-Yh-5L4"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eZp-NW-4yH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-367" y="-655"/>
+        </scene>
         <!--Feed-->
         <scene sceneID="0ZT-QK-1jb">
             <objects>
@@ -25,7 +36,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ahv-Qx-vhy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-462" y="-747"/>
+            <point key="canvasLocation" x="-334" y="-856"/>
         </scene>
         <!--Profile-->
         <scene sceneID="oml-Gs-4U2">
@@ -35,7 +46,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wrX-gp-7hW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-429" y="-459"/>
+            <point key="canvasLocation" x="-430" y="-480"/>
         </scene>
         <!--CoreTabBar-->
         <scene sceneID="m1L-op-UxI">
@@ -52,7 +63,8 @@
                     <connections>
                         <segue destination="Xjl-Ko-PDo" kind="relationship" relationship="viewControllers" id="gyn-hx-mcr"/>
                         <segue destination="9cH-jE-4kc" kind="relationship" relationship="viewControllers" id="FdQ-3F-hDC"/>
-                        <segue destination="f3o-Rx-ufb" kind="relationship" relationship="viewControllers" id="Lim-oX-jco"/>
+                        <segue destination="CnW-cB-tEW" kind="relationship" relationship="viewControllers" id="B8E-em-xyM"/>
+                        <segue destination="f3o-Rx-ufb" kind="relationship" relationship="viewControllers" id="Jzq-xz-Bq6"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8x-L6-4cd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -67,5 +79,7 @@
         <image name="feed_unselected" width="37" height="37"/>
         <image name="profile_selected" width="37" height="37"/>
         <image name="profile_unselected" width="37" height="37"/>
+        <image name="rewards_selected" width="37" height="37"/>
+        <image name="rewards_unselected" width="37" height="37"/>
     </resources>
 </document>

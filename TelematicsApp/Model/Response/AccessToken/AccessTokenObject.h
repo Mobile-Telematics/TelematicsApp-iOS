@@ -12,6 +12,7 @@
 
 @interface AccessTokenObject: ResponseObject
 
+//RESPONSE JWTOKEN 7 EXPIRES SECONDS IF NEEDED
 @property (nonatomic, strong) NSString<Optional>* Token;
 @property (nonatomic, strong) NSString<Optional>* ExpiresIn;
 
