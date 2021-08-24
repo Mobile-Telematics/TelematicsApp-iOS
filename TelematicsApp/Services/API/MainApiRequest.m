@@ -54,14 +54,6 @@
     return [Configurator sharedInstance].userServiceRootURL;
 }
 
-+ (NSString *)userServiceRootURLv2 {
-    return [Configurator sharedInstance].userServiceRootURLv2;
-}
-
-+ (NSString *)statisticServiceURL {
-    return [Configurator sharedInstance].statisticServiceURL;
-}
-
 + (NSString *)indicatorsServiceURL {
     return [Configurator sharedInstance].indicatorsServiceURL;
 }
@@ -119,54 +111,58 @@
 }
 
 
-#pragma mark Main Dashboard Statistics & Scorings
+#pragma mark Indicators Service Statistics & Scorings
     
-- (void)getLatestDayStatisticsScoring {
-    [self performRequestStatisticService:@"Statistics/individual/latestDates" responseClass:[LatestDayScoringResponse class] parameters:nil method:GET];
+- (void)getLatestDayStatisticsScoringForUser {
+    [self performRequestIndicatorsService:@"Statistics/latestDates" responseClass:[LatestDayScoringResponse class] parameters:nil method:GET];
 }
 
 - (void)getStatisticsIndividualAllTime:(NSString *)startDate endDate:(NSString*)endDate {
     NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
-    [self performRequestStatisticService:@"Statistics/individual" responseClass:[DashboardResponse class] parameters:params method:GET];
+    [self performRequestIndicatorsService:@"Statistics" responseClass:[DashboardResponse class] parameters:params method:GET];
 }
 
 - (void)getScoringsIndividualCurrentDay:(NSString *)startDate endDate:(NSString*)endDate {
     NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
-    [self performRequestStatisticService:@"Scorings/individual" responseClass:[DashboardResponse class] parameters:params method:GET];
+    [self performRequestIndicatorsService:@"Scores/safety" responseClass:[DashboardResponse class] parameters:params method:GET];
 }
 
 - (void)getScoringsIndividual14daysDaily:(NSString *)startDate endDate:(NSString*)endDate {
     NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
-    [self performRequestStatisticService:@"Scorings/individual/daily" responseClass:[DrivingDetailsResponse class] parameters:params method:GET];
+    [self performRequestIndicatorsService:@"Scores/safety/daily" responseClass:[DrivingDetailsResponse class] parameters:params method:GET];
 }
 
-#pragma mark Indicators For Coins
 
-- (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
+#pragma mark Indicators Eco For Dashboard
+
+- (void)getEcoScoresForTimePeriod:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestIndicatorsService:@"Scores/eco" responseClass:[EcoIndividualResponse class] parameters:params method:GET];
+}
+
+
+#pragma mark Indicators For Coins For Dashboard Preloader
+
+- (void)getCoinsStatisticsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
     NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
     [self performRequestIndicatorsService:@"Statistics" responseClass:[IndicatorsResponse class] parameters:params method:GET];
 }
+
+
+#pragma mark Indicators For Coins For Eco Percents
+
+- (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestIndicatorsService:@"Statistics" responseClass:[EcoResponse class] parameters:params method:GET];
+}
+
+
+#pragma mark Indicators Streaks
 
 - (void)getIndicatorsStreaks {
     [self performRequestIndicatorsService:@"Streaks" responseClass:[StreaksResponse class] parameters:nil method:GET];
 }
 
-- (void)getIndicatorsEcoWithPercentForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
-    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
-    [self performRequestIndicatorsService:@"Scores/Eco" responseClass:[EcoResponse class] parameters:params method:GET];
-}
-
-
-#pragma mark Eco Scorings Dashboard
-
-- (void)getEcoDataAllTime {
-    [self performRequestStatisticService:@"Scorings/individual/eco" responseClass:[EcoIndividualResponse class] parameters:nil method:GET];
-}
-
-- (void)getEcoStatisticForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
-    NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
-    [self performRequestStatisticService:@"Statistics/individual" responseClass:[EcoResponse class] parameters:params method:GET];
-}
 
 #pragma mark My Rewards - Coins
 

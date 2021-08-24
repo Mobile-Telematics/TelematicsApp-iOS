@@ -12,12 +12,14 @@
 
 @interface DrivingDetailsObject: NSDictionary
 
-@property (nonatomic, strong) NSNumber<Optional>* OverallScore;
+@property (nonatomic, strong) NSNumber<Optional>* SafetyScore;
+
 @property (nonatomic, strong) NSNumber<Optional>* AccelerationScore;
 @property (nonatomic, strong) NSNumber<Optional>* BrakingScore;
 @property (nonatomic, strong) NSNumber<Optional>* SpeedingScore;
-@property (nonatomic, strong) NSNumber<Optional>* DistractedScore;
+@property (nonatomic, strong) NSNumber<Optional>* PhoneUsageScore;
 @property (nonatomic, strong) NSNumber<Optional>* CorneringScore;
+
 @property (nonatomic, strong) NSString<Optional>* CalcDate;
 
 @end

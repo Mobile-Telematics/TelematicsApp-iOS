@@ -47,7 +47,6 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 #pragma mark Configure
 
 + (NSString*)userServiceRootURL;
-+ (NSString*)statisticServiceURL;
 + (NSString*)indicatorsServiceURL;
 + (NSString*)leaderboardServiceURL;
 + (NSString*)carServiceURL;
@@ -72,38 +71,39 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 - (void)setProgressBlock:(void (^)(float))progress;
 
 
-#pragma mark Use V1/V2
+#pragma mark Use Request
 
 - (void)performRequestWithPath:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
-- (void)performRequestWithPathV2:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
-#pragma mark Use With Body Request
-
-- (void)performRequestWithPathBodyObject:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters bodyObject:(NSDictionary*)bodyObject method:(NSString*)httpMethod;
-
-#pragma mark Use For Statistic Service
-
-- (void)performRequestStatisticService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
 #pragma mark Use For Indicators Service
 
 - (void)performRequestIndicatorsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
+
 #pragma mark Use For Coins Service
 
 - (void)performRequestCoinsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
+
 
 #pragma mark Use For Leaderboard Service
 
 - (void)performRequestLeaderboardService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
+
 #pragma mark Use For Car Service
 
 - (void)performRequestCarService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
+
 #pragma mark Use For Claim Service
 
 - (void)performRequestClaimsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
+
+
+#pragma mark Use With Body Request
+
+- (void)performRequestWithPathBodyObject:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters bodyObject:(NSDictionary*)bodyObject method:(NSString*)httpMethod;
 
 #pragma mark Main
 

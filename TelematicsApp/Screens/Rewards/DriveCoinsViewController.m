@@ -339,7 +339,7 @@
         
         [self getCoinsAllFactorsDetails:dateMinusNeedOneDays endDate:currentDate];
         [self getIndicatorsForCoinsStatisticTime:dateMinusNeedOneDays endDate:currentDate];
-        [self getCoinsEcoPercentWithDetailsDetails:dateMinusNeedOneDays endDate:currentDate];
+        [self getCoinsForEcoPercentCalculateWithDetails:dateMinusNeedOneDays endDate:currentDate];
         
     } else if (index == 2) {
         NSString *currentMonthOut = defaults_object(@"userCoinsCountThisMonth") ? defaults_object(@"userCoinsCountThisMonth") : @"0";
@@ -354,7 +354,7 @@
         
         [self getCoinsAllFactorsDetails:firstDayOfCurrentMonthDate endDate:currentDate];
         [self getIndicatorsForCoinsStatisticTime:firstDayOfCurrentMonthDate endDate:currentDate];
-        [self getCoinsEcoPercentWithDetailsDetails:firstDayOfCurrentMonthDate endDate:currentDate];
+        [self getCoinsForEcoPercentCalculateWithDetails:firstDayOfCurrentMonthDate endDate:currentDate];
         
     } else if (index == 3) {
         NSString *currentLastMonthOut = defaults_object(@"userCoinsCountLastMonth") ? defaults_object(@"userCoinsCountLastMonth") : @"0";
@@ -375,7 +375,7 @@
         
         [self getCoinsAllFactorsDetails:firstDayOLastMonthDate endDate:firstDayOfCurrentMonthDate];
         [self getIndicatorsForCoinsStatisticTime:firstDayOLastMonthDate endDate:firstDayOfCurrentMonthDate];
-        [self getCoinsEcoPercentWithDetailsDetails:firstDayOLastMonthDate endDate:firstDayOfCurrentMonthDate];
+        [self getCoinsForEcoPercentCalculateWithDetails:firstDayOLastMonthDate endDate:firstDayOfCurrentMonthDate];
     }
 }
 
@@ -391,7 +391,7 @@
     
     [self getCoinsAllFactorsDetails:dateMinusNeedDays endDate:currentDate]; //1 FIRST
     [self getIndicatorsForCoinsStatisticTime:dateMinusNeedDays endDate:currentDate]; //2 SECOND
-    [self getCoinsEcoPercentWithDetailsDetails:dateMinusNeedDays endDate:currentDate]; //3 THIRD
+    [self getCoinsForEcoPercentCalculateWithDetails:dateMinusNeedDays endDate:currentDate]; //3 THIRD
 }
 
 //1
@@ -442,11 +442,6 @@
             self.factor_coinCorneringLbl.text = [coinsAllInfoDict valueForKey:@"CorneringCount"] ? [coinsAllInfoDict valueForKey:@"CorneringCount"] : @"0";
             self.factor_coinPhoneUsageLbl.text = [coinsAllInfoDict valueForKey:@"PhoneUsage"] ? [coinsAllInfoDict valueForKey:@"PhoneUsage"] : @"0";
             self.factor_coinSpeedingLbl.text = speedingSpecialCalculate.stringValue;
-            
-            if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-                float miles = convertKmToMiles(t_one.floatValue);
-                self.factor_coinMileageLbl.text = [NSString stringWithFormat:@"%.1f", miles];
-            }
             
             if (t_one.intValue < 0) { self.factor_coinMileageLbl.textColor = [Color officialRedColor]; } else if (t_one.intValue == 0) { self.factor_coinMileageLbl.textColor = [Color darkGrayColor83]; } else { self.factor_coinMileageLbl.textColor = [Color officialMainAppColor]; };
             if (t_two.intValue < 0) { self.factor_coinDurationLbl.textColor = [Color officialRedColor]; } else if (t_two.intValue == 0) { self.factor_coinDurationLbl.textColor = [Color darkGrayColor83]; } else { self.factor_coinDurationLbl.textColor = [Color officialMainAppColor]; };
@@ -513,6 +508,7 @@
 
 #pragma mark - Fetch detailed indicators
 
+//2
 - (void)getIndicatorsForCoinsStatisticTime:(NSDate *)startDate endDate:(NSDate *)endDate {
     
     NSString *sDate = [startDate dateTimeStringSpecial];
@@ -553,8 +549,12 @@
             }
             self.factor_valuePhoneUsageLbl.text = phoneUsageIndicator;
 
-            NSString *speedIndicator = [NSString stringWithFormat:@"%.0f", self.indicators.TotalSpeedingKm.floatValue];
+            NSString *speedIndicator = [NSString stringWithFormat:@"%.0f km", self.indicators.TotalSpeedingKm.floatValue];
             self.factor_valueSpeedingLbl.text = speedIndicator;
+            if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
+                float milesSpeeding = convertKmToMiles(self.indicators.TotalSpeedingKm.floatValue);
+                self.factor_valueSpeedingLbl.text = [NSString stringWithFormat:@"%.0f mi", milesSpeeding];
+            }
             
         } else {
             NSLog(@"%s %@ %@", __func__, response, error);
@@ -567,14 +567,14 @@
             self.factor_valuePhoneUsageLbl.text = @"";
             self.factor_valueSpeedingLbl.text = @"";
         }
-    }] getIndicatorsIndividualForPeriod:sDate endDate:eDate];
+    }] getCoinsStatisticsIndividualForPeriod:sDate endDate:eDate];
 }
 
 
 #pragma mark - EcoPercent Backend
 
 //3
-- (void)getCoinsEcoPercentWithDetailsDetails:(NSDate *)startDate endDate:(NSDate *)endDate {
+- (void)getCoinsForEcoPercentCalculateWithDetails:(NSDate *)startDate endDate:(NSDate *)endDate {
     if (startDate == nil) {
         startDate = [NSDate date];
     }
@@ -659,7 +659,7 @@
         self.coins_timerFuel = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(incrementCoinsTimerFuel:) userInfo:nil repeats:YES];
         self.coins_timerTyres = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(incrementCoinsTimerTyres:) userInfo:nil repeats:YES];
         self.coins_timerCost = [NSTimer scheduledTimerWithTimeInterval:0.02 target:self selector:@selector(incrementCoinsTimerCost:) userInfo:nil repeats:YES];
-    }] getIndicatorsEcoWithPercentForPeriod:sDate endDate:eDate];
+    }] getIndicatorsIndividualForPeriod:sDate endDate:eDate];
 }
 
 
@@ -768,11 +768,11 @@
         _coinsChartView.horizontalGridStep = 5;
     }
     
-    _coinsChartView.fillColor = [[Color officialMainAppColor] colorWithAlphaComponent:0.1];
+    _coinsChartView.fillColor = [[Color officialGreenColor] colorWithAlphaComponent:0.1];
     _coinsChartView.displayDataPoint = YES;
     _coinsChartView.lineWidth = 3;
-    _coinsChartView.dataPointColor = [Color officialMainAppColor];
-    _coinsChartView.dataPointBackgroundColor = [Color officialMainAppColor];
+    _coinsChartView.dataPointColor = [Color officialGreenColor];
+    _coinsChartView.dataPointBackgroundColor = [Color officialGreenColor];
     _coinsChartView.dataPointRadius = 0;
     _coinsChartView.color = [_coinsChartView.dataPointColor colorWithAlphaComponent:1.0];
     _coinsChartView.valueLabelPosition = ValueLabelLeftMirrored;

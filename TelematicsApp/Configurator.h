@@ -20,8 +20,7 @@
 
 //URL
 @property(nonatomic, strong) NSString       *userServiceRootURL;
-@property(nonatomic, strong) NSString       *userServiceRootURLv2;
-@property(nonatomic, strong) NSString       *statisticServiceURL;
+
 @property(nonatomic, strong) NSString       *indicatorsServiceURL;
 @property(nonatomic, strong) NSString       *leaderboardServiceURL;
 @property(nonatomic, strong) NSString       *carServiceURL;

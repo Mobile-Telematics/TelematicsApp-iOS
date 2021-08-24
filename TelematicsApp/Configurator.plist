@@ -7,10 +7,6 @@
 		<string>TelematicsApp_Configuration</string>
 		<key>userServiceRootURL</key>
 		<string>https://user.telematicssdk.com/v1</string>
-		<key>userServiceRootURLv2</key>
-		<string>https://user.telematicssdk.com/v2</string>
-		<key>statisticServiceURL</key>
-		<string>https://api.telematicssdk.com/Statistics/v1</string>
 		<key>indicatorsServiceURL</key>
 		<string>https://api.telematicssdk.com/indicators/v1</string>
 		<key>driveCoinsServiceURL</key>

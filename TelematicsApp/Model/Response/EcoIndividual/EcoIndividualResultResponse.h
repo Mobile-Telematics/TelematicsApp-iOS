@@ -10,10 +10,10 @@
 
 @interface EcoIndividualResultResponse: ResponseObject
 
-@property (nonatomic, strong) NSNumber<Optional>* EcoScoringFuel;
-@property (nonatomic, strong) NSNumber<Optional>* EcoScoringTyres;
-@property (nonatomic, strong) NSNumber<Optional>* EcoScoringBrakes;
-@property (nonatomic, strong) NSNumber<Optional>* EcoScoringDepreciation;
-@property (nonatomic, strong) NSNumber<Optional>* EcoScoring;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreFuel;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreTyres;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreBrakes;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScoreDepreciation;
+@property (nonatomic, strong) NSNumber<Optional>* EcoScore;
 
 @end

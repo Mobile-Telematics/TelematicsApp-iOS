@@ -14,9 +14,11 @@ This Telematics App is created by DATA MOTION PTE. LTD. and is distributed free 
 - [UserService Authentification](#app-authentication)
 - [Dashboard screen](#dashboard-features)
 - [Feed screen](#feed-screen-trips-loading)
+- [My Rewards](#my-rewards)
 - [Profile & Settings screens](#user-profile-screen)
 - [Leaderboard screen](#leaderboard-screen)
-- [Connect OBD device screen](#leaderboard-screen)
+- [Connect OBD device screen](#connect-obd-device)
+- [Claims screen](#claims-screen)
 - [Advanced Settings & Links](#advanced-settings)
 
 ## Basic concepts & credentials
@@ -71,6 +73,10 @@ Step 9: In the "Sign-in method" tab, click on the Provider's "Email/Password" on
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f09.png)
 
+In order for phone auth to work in your xCode project, you need to register Firebase URL Schemes in the Info section of your application.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f09u.png)
+
 Step 10: Switch to "Enable" and click "Save" button. Now your users can login to the app.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f10.png)
@@ -109,8 +115,11 @@ Settings Key  | Value
 configName | Default Your app configuration name. Not need to change, you can use any of your choice. By default `TelematicsApp_Configuration`
 instanceId | Unique ID code for the application to work. `Required!`
 instanceKey | Unique KEY code for the application to work. `Required!`
-statisticServiceURL | Basic https address to work with `Statistics` and `Scorings` APIs. By default, we provide you https-address of our `TEST` servers for debugging. Before the release your app, you can get the addresses to enter `PRODUCTION` environment
+indicatorsServiceURL | Basic https address to work with `Indicators` APIs. By default, we provide you https-address of our `TEST` servers for debugging. Before the release your app, you can get the addresses to enter `PRODUCTION` environment
+driveCoinsServiceURL | Basic https address to work with `DriveCoins` API. 
 leaderboardServiceRootURL | Basic https address to work with the user leaderboard and `Leaderboard API`.
+carServiceURL | Basic https address to work with `CarService` API. 
+claimsServiceURL | Basic https address to work with `ClaimsService` API. 
 mapsAppIdKey | App Id for `HEREmaps API`
 mapsAppCode | App Code for `HEREmaps API`
 mapsLicenseKey | License key for `HEREmaps API`
@@ -131,7 +140,7 @@ mainTabBarNumber | TabBar number, which will open first when the application sta
 dashboardTabBarNumber | TabBar number, where Dashboard will open. `By default 0`
 feedTabBarNumber | TabBar number, defining what the Feed screen will be in turn in the application. `By default 1`
 profileTabBarNumber | TabBar number, defining what the Profile screen will be in turn in the application. `By default 2`
-needDistanceForScoringKm  | The minimum distance required to display statistics and user scores. `By default 10 km`
+needDistanceForScoringKm  | The minimum distance required to display Indicators statistics and user scores. `By default 10 km`
 showTrackSignatureCustomButton | BOOL parameter, determines whether the Driver Signature button should be displayed on the Feed screen. `By default 1.` Cannot be used simultaneously with key `showTrackTagCustomButton` in 1 value!
 showTrackTagCustomButton | BOOL parameter, determines whether the Tag Switcher should be displayed on the Feed screen. `By default 0.` Cannot be used simultaneously with key `showTrackSignatureCustomButton` in 1 value!
 needTripsDeleting | BOOL parameter, determining if user can delete their trips
@@ -189,7 +198,7 @@ An important part to record a user's trips is to properly request permissions to
 
 ## LoginAuth Framework authentication for Telematics App
 
-We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required for statistics and user scorings. `AuthLogin Framework` is integrated into this Telematics App.
+We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required for Indicators statistics and user scorings. `AuthLogin Framework` is integrated into this Telematics App.
 
 You can find complete information about LoginAuth Framework in our repository https://github.com/Mobile-Telematics/LoginAuthFramework-iOS
 
@@ -197,7 +206,7 @@ You can find complete information about LoginAuth Framework in our repository ht
 
 `deviceToken` - is the main individual SDK user identifier for your app. This identifier is used as a key across all our services.
 
-`jwToken` - or JSON Web Token (JWT) is the main UserService API key, that allows you to get user individual statistics and user scorings by UserService APIs calls.
+`jwToken` - or JSON Web Token (JWT) is the main UserService API key, that allows you to get user individual Indicators statistics and user scorings by UserService APIs calls.
 
 `refreshToken` - is a secret key that allows you to refresh the jwToken when it expires.
 
@@ -207,12 +216,12 @@ In this Telematics App, we specifically showed an example of use, so that the `d
 
 If the user has deleted the app or wants to log in again - By owning ` deviceToken`  (stored at Firebase© Realtime Database side) ,  `instanceId`  &  `instanceKey` (received from us), you can always get a  `jwToken`  for further authorization of your user.
 
-` jwToken`  will allow you to request a user statistics and scorings, as we discussed and explained earlier.
+` jwToken`  will allow you to request a user Indicators statistics and scorings, as we discussed and explained earlier.
 
 ## Dashboard features
 
 Our goal is to provide your users with a user-friendly interface to get the best user experience.
-We suggest you use 2 (two) dashboards with Scoring and user Statistics data in your application. To get the first data, the user usually needs to drive a short distance. We set this parameter in the configuration file with the `needDistanceForScoringKm` key.
+We suggest you use 2 (two) dashboards with Scoring and user Statistics data in your app. To get the first data, the user usually needs to drive a short distance. We set this parameter in the configuration file with the `needDistanceForScoringKm` key.
 
 Until the user overcomes the minimum required distance, he will see a special `DemoDashboard`, which we created in order to show the user the main features of the application at an early stage. After overcoming the required minimum distance, the `MainDashboard` with its main statistics indicators and eco-scoring will be automatically available to the user.
 
@@ -307,6 +316,14 @@ On the detailed trip screen, we allow users to see the events that happened to t
 We detect major events:`Acceleration`,`Braking`,`Speeding`,`Cornering`,`PhoneUsage`.
 In the Telematics App, we offer you a clear interface that allows the user to change the event on the map if it is not correct or delete.
 
+## My Rewards
+
+Our telematics app allows you to work with DriveCoins and Streaks for each user:
+`DriveCoins` - the coins accrued to the user for the trips made;
+`Streaks` - the user's achievements in relation to his past trips.
+
+In detail, you can see the work with methods for rewards in the Telematics App source code in the DriveCoins section.
+
 ## Settings screen
 
 Settings screen gives you the opportunity to make specific settings for the entire application, provide links to instructions, as well as addresses of technical support for the application.
@@ -350,6 +367,13 @@ OBD adapter does not need to be disabled or configured. It is always in your car
 Detailed documentation and the basic principle of operation can be found in the development portal https://docs.telematicssdk.com/docs/bluetooth-obd
 To fully work with this functionality, you need additional equipment, which we can provide upon your request.
 
+## Claims screen
+
+We also allow you to work with our `ClaimService` API.
+You can report road accidents, any damage to your vehicle, attach photos and fill out all the basic information about the incident directly from your mobile device.
+The created Claim can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
+A detailed example of work is presented in our Telematics App in the `Claims` section.
+
 ## Other features
 
 We have tried to make for you convenient settings and easy entry for any part of the application. Having studied in more detail, you will see that you can customize any part of the Telematics App or Telematics SDK for your purposes, including fonts, official colors used in the application, and much more.
@@ -387,6 +411,8 @@ Happy coding!
 
 
 ###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+
+
 
 
 

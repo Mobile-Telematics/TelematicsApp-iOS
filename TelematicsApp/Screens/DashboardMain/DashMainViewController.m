@@ -251,7 +251,7 @@
         //IF NEED REPEAT FOR NEW USERS
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.disableCounting = YES;
-            [self getDashboardStatisticsData];
+            [self getDashboardIndicatorsStatisticsData];
             [self getDashboardEcoDataAllTime];
             [self getDashboardEcoDataWeek];
             [self getDashboardEcoDataMonth];
@@ -368,7 +368,7 @@
 - (void)startFetchStatisticData {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.disableCounting = YES;
-        [self getDashboardStatisticsData];
+        [self getDashboardIndicatorsStatisticsData];
         [self getDashboardEcoDataAllTime];
         [self getDashboardEcoDataWeek];
         [self getDashboardEcoDataMonth];
@@ -442,8 +442,8 @@
 
 #pragma mark - Statistics
 
-- (void)getDashboardStatisticsData {
-    
+- (void)getDashboardIndicatorsStatisticsData {
+    //GET LATEST DAY SCORING FOR USER
     [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
         NSLog(@"%s %@ %@", __func__, response, error);
         if (!error && [response isSuccesful]) {
@@ -459,7 +459,7 @@
             [self fetchUserScoringsAnyway];
             [self hidePreloader];
         }
-    }] getLatestDayStatisticsScoring];
+    }] getLatestDayStatisticsScoringForUser];
 }
 
 - (void)fetchUserScoringsAnyway {
@@ -492,7 +492,7 @@
     NSLog(@"14 days ago: %@", dateMinus14Days);
     
     //FETCH INDIVIDUAL
-    [self getDashboardStatisticsIndividualAllTime:dateMinusNeedYearsAllTime endDate:currentDate];
+    [self getDashboardIndicatorsStatisticsIndividualForPeriod:dateMinusNeedYearsAllTime endDate:currentDate];
     
     //COINS PRELOAD FOR MYREWARDS SCREEN
     [self getDashboardCoinsAllTime:dateMinusNeedYearsAllTime endDate:currentDate];
@@ -500,11 +500,12 @@
     [self getDashboardCoinsThisMonthTime:firstDayOfCurrentMonthDate endDate:currentDate];
     [self getDashboardCoinsLastMonthTime:firstDayOfLastMonthDate endDate:firstDayOfCurrentMonthDate];
     [self getCoinsLimitAllTimeNow];
+    
     //STREAKS
     [self startFetchStreaksForDashboard];
 }
 
-- (void)getDashboardStatisticsIndividualAllTime:(NSDate *)startDate endDate:(NSDate *)endDate {
+- (void)getDashboardIndicatorsStatisticsIndividualForPeriod:(NSDate *)startDate endDate:(NSDate *)endDate {
     
     NSString *sDate = [startDate dateTimeStringSpecial];
     NSString *eDate = [endDate dateTimeStringSpecial];
@@ -551,10 +552,10 @@
         if (!error && [response isSuccesful]) {
             self.dashboard = ((DashboardResponse *)response).Result;
             
-            self.appModel.detailsScoreOverall = self.dashboard.OverallScore;
+            self.appModel.detailsScoreOverall = self.dashboard.SafetyScore;
             self.appModel.detailsScoreAcceleration = self.dashboard.AccelerationScore;
             self.appModel.detailsScoreDeceleration = self.dashboard.BrakingScore;
-            self.appModel.detailsScorePhoneUsage = self.dashboard.DistractedScore;
+            self.appModel.detailsScorePhoneUsage = self.dashboard.PhoneUsageScore;
             self.appModel.detailsScoreSpeeding = self.dashboard.SpeedingScore;
             self.appModel.detailsScoreTurn = self.dashboard.CorneringScore;
             
@@ -632,19 +633,29 @@
 }
 
 
-#pragma mark - Eco Average Statistics
+#pragma mark - Indicators Eco Statistics
 
 - (void)getDashboardEcoDataAllTime {
+    
+    NSDate *nowDate = [NSDate date];
+    NSDateComponents *dateComponents = [[NSDateComponents alloc] init];
+    [dateComponents setYear:-20];
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSDate *twentyYears = [calendar dateByAddingComponents:dateComponents toDate:nowDate options:0];
+    
+    NSString *nowDateString = [nowDate dateTimeStringSpecial];
+    NSString *minus20years = [twentyYears dateTimeStringSpecial];
+    
     [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
         NSLog(@"%s %@ %@", __func__, response, error);
         if (!error && [response isSuccesful]) {
             self.ecoIndividual = ((EcoIndividualResponse *)response).Result;
-            self.appModel.statEcoScoringFuel = self.ecoIndividual.EcoScoringFuel;
-            self.appModel.statEcoScoringTyres = self.ecoIndividual.EcoScoringTyres;
-            self.appModel.statEcoScoringBrakes = self.ecoIndividual.EcoScoringBrakes;
-            self.appModel.statEcoScoringDepreciation = self.ecoIndividual.EcoScoringDepreciation;
-            self.appModel.statEco = self.ecoIndividual.EcoScoring;
-            self.appModel.statPreviousEcoScoring = self.ecoIndividual.EcoScoring;
+            self.appModel.statEcoScoringFuel = self.ecoIndividual.EcoScoreFuel;
+            self.appModel.statEcoScoringTyres = self.ecoIndividual.EcoScoreTyres;
+            self.appModel.statEcoScoringBrakes = self.ecoIndividual.EcoScoreBrakes;
+            self.appModel.statEcoScoringDepreciation = self.ecoIndividual.EcoScoreDepreciation;
+            self.appModel.statEco = self.ecoIndividual.EcoScore;
+            self.appModel.statPreviousEcoScoring = self.ecoIndividual.EcoScore;
         } else {
             self.appModel.statEcoScoringFuel = @90;
             self.appModel.statEcoScoringTyres = @90;
@@ -653,7 +664,7 @@
             self.appModel.statEco = @90;
             self.appModel.statPreviousEcoScoring = @90;
         }
-    }] getEcoDataAllTime];
+    }] getEcoScoresForTimePeriod:minus20years endDate:nowDateString];
 }
 
 - (void)getDashboardEcoDataWeek {
@@ -674,7 +685,7 @@
             self.appModel.statWeeklyAverageSpeed = self.eco.AverageSpeedKmh;
             self.appModel.statWeeklyTotalKm = self.eco.MileageKm;
         }
-    }] getEcoStatisticForPeriod:minus7DateString endDate:nowDateString];
+    }] getCoinsStatisticsIndividualForPeriod:minus7DateString endDate:nowDateString];
 }
 
 - (void)getDashboardEcoDataMonth {
@@ -696,7 +707,7 @@
             self.appModel.statMonthlyTotalKm = self.eco.MileageKm;
             
         }
-    }] getEcoStatisticForPeriod:minus30DateString endDate:nowDateString];
+    }] getCoinsStatisticsIndividualForPeriod:minus30DateString endDate:nowDateString];
 }
 
 - (void)getDashboardEcoDataYear {
@@ -717,7 +728,7 @@
             self.appModel.statYearlyTotalKm = self.eco.MileageKm;
             
         }
-    }] getEcoStatisticForPeriod:minus365DateString endDate:nowDateString];
+    }] getCoinsStatisticsIndividualForPeriod:minus365DateString endDate:nowDateString];
 }
 
 
@@ -791,7 +802,7 @@
 }
 
 
-#pragma mark - Streaks Backend
+#pragma mark - Streaks Backend Preload
 
 - (void)startFetchStreaksForDashboard {
     [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
@@ -900,19 +911,19 @@
             NSNumber *value;
             int count = +1;
             if (type == 0 && count == 1) {
-                value = ddObj[@"OverallScore"];
+                value = ddObj[@"SafetyScore"];
             } else if (type == 1) {
                 value = ddObj[@"AccelerationScore"];
             } else if (type == 2) {
                 value = ddObj[@"BrakingScore"];
             } else if (type == 3) {
-                value = ddObj[@"DistractedScore"];
+                value = ddObj[@"PhoneUsageScore"];
             } else if (type == 4) {
                 value = ddObj[@"SpeedingScore"];
             } else if (type == 5) {
                 value = ddObj[@"CorneringScore"];
             } else {
-                value = ddObj[@"OverallScore"];
+                value = ddObj[@"SafetyScore"];
             }
             chartData[i] = [NSNumber numberWithFloat:value.floatValue];
             if (self.appModel.detailsAllDrivingScores.count == 1) {
@@ -965,11 +976,11 @@
         _chartWithDates.horizontalGridStep = 5;
     }
     
-    _chartWithDates.fillColor = [[Color officialMainAppColor] colorWithAlphaComponent:0.1];
+    _chartWithDates.fillColor = [[Color officialGreenColor] colorWithAlphaComponent:0.1];
     _chartWithDates.displayDataPoint = YES;
     _chartWithDates.lineWidth = 3;
-    _chartWithDates.dataPointColor = [Color officialMainAppColor];
-    _chartWithDates.dataPointBackgroundColor = [Color officialMainAppColor];
+    _chartWithDates.dataPointColor = [Color officialGreenColor];
+    _chartWithDates.dataPointBackgroundColor = [Color officialGreenColor];
     _chartWithDates.dataPointRadius = 0;
     _chartWithDates.color = [_chartWithDates.dataPointColor colorWithAlphaComponent:1.0];
     _chartWithDates.valueLabelPosition = ValueLabelLeftMirrored;
@@ -1760,7 +1771,7 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [sender endRefreshing];
     });
-    [self getDashboardStatisticsData];
+    [self getDashboardIndicatorsStatisticsData];
     [self getDashboardEcoDataAllTime];
     [self getDashboardEcoDataWeek];
     [self getDashboardEcoDataMonth];

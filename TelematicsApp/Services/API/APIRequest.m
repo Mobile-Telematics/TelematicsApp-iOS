@@ -50,16 +50,6 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     return nil;
 }
 
-+ (NSString *)userServiceRootURLv2 {
-    @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [userServiceRootURLv2] method to provide server URL" userInfo:nil];
-    return nil;
-}
-
-+ (NSString *)statisticServiceURL {
-    @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [statisticServiceURL] method to provide server URL" userInfo:nil];
-    return nil;
-}
-
 + (NSString *)indicatorsServiceURL {
     @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [indicatorsServiceURL] method to provide server URL" userInfo:nil];
     return nil;
@@ -109,7 +99,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         _sharedInstance = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[self userServiceRootURL]]];
-        _sharedInstance = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[self statisticServiceURL]]];
+        _sharedInstance = [[AFHTTPSessionManager alloc] initWithBaseURL:[NSURL URLWithString:[self indicatorsServiceURL]]];
         ((AFHTTPSessionManager*)_sharedInstance).requestSerializer = [AFJSONRequestSerializer serializer];
         ((AFHTTPSessionManager*)_sharedInstance).responseSerializer = [AFJSONResponseSerializer serializer];
     });
@@ -172,78 +162,12 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - Core Request V2
-
-- (void)performRequestWithPathV2:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
-    self.responseClass = responseClass;
-    if (![path hasPrefix:@"http"]) {
-        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURLv2], path];
-    }
-    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
-    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
-    NSError* error = nil;
-    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-    request.timeoutInterval = 120;
-    NSLog(@"req %@", request.URL.absoluteString);
-    NSDictionary* customHeaders = [[self class] customRequestHeaders];
-    for (NSString* key in customHeaders.allKeys) {
-        [request setValue:customHeaders[key] forHTTPHeaderField:key];
-    }
-    [self performRequest:request withResponseClass:responseClass];
-}
-
-
-#pragma mark - TelematicsApp Request with Body
-
-- (void)performRequestWithPathBodyObject:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters bodyObject:(NSDictionary*)bodyObject method:(NSString*)httpMethod {
-    
-    self.responseClass = responseClass;
-    if (![path hasPrefix:@"http"]) {
-        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURL], path];
-    }
-    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    NSURL* URL = [NSURL URLWithString:path];
-    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
-    request.HTTPMethod = @"POST";
-    
-    [request addValue:[[self class] contentTypePathToJson] forHTTPHeaderField:@"Content-Type"];
-    [request addValue:[[self class] instanceId] forHTTPHeaderField:@"InstanceId"];
-    [request addValue:[[self class] instanceKey] forHTTPHeaderField:@"InstanceKey"];
-    
-    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
-    
-    [self performRequest:request withResponseClass:responseClass];
-}
-
-
-#pragma mark - Statistic Service
-
-- (void)performRequestStatisticService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
-    self.responseClass = responseClass;
-    if (![path hasPrefix:@"http"]) {
-        path = [NSString stringWithFormat:@"%@/%@", [[self class] statisticServiceURL], path];
-    }
-    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
-    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
-    NSError* error = nil;
-    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-    NSLog(@"req %@", request.URL.absoluteString);
-    NSDictionary* customHeaders = [[self class] customRequestHeaders];
-    for (NSString* key in customHeaders.allKeys) {
-        [request setValue:customHeaders[key] forHTTPHeaderField:key];
-    }
-    [self performRequest:request withResponseClass:responseClass];
-}
-
-
-#pragma mark - Indicators Service
+#pragma mark - Indicators Statistics Service
 
 - (void)performRequestIndicatorsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
     self.responseClass = responseClass;
     if (![path hasPrefix:@"http"]) {
-        path = [NSString stringWithFormat:@"%@/%@", [[self class] statisticServiceURL], path];
+        path = [NSString stringWithFormat:@"%@/%@", [[self class] indicatorsServiceURL], path];
     }
     path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
@@ -337,6 +261,29 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     for (NSString* key in customHeaders.allKeys) {
         [request setValue:customHeaders[key] forHTTPHeaderField:key];
     }
+    [self performRequest:request withResponseClass:responseClass];
+}
+
+
+#pragma mark - TelematicsApp Request with Body
+
+- (void)performRequestWithPathBodyObject:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters bodyObject:(NSDictionary*)bodyObject method:(NSString*)httpMethod {
+    
+    self.responseClass = responseClass;
+    if (![path hasPrefix:@"http"]) {
+        path = [NSString stringWithFormat:@"%@/%@", [[self class] userServiceRootURL], path];
+    }
+    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSURL* URL = [NSURL URLWithString:path];
+    NSMutableURLRequest* request = [NSMutableURLRequest requestWithURL:URL];
+    request.HTTPMethod = @"POST";
+    
+    [request addValue:[[self class] contentTypePathToJson] forHTTPHeaderField:@"Content-Type"];
+    [request addValue:[[self class] instanceId] forHTTPHeaderField:@"InstanceId"];
+    [request addValue:[[self class] instanceKey] forHTTPHeaderField:@"InstanceKey"];
+    
+    request.HTTPBody = [NSJSONSerialization dataWithJSONObject:bodyObject options:kNilOptions error:NULL];
+    
     [self performRequest:request withResponseClass:responseClass];
 }
 

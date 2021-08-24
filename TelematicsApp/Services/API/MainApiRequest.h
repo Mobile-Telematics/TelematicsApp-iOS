@@ -25,18 +25,46 @@
 - (void)refreshJWToken:(RefreshTokenRequestData*)refreshData;
 
 
-#pragma mark Dashboard Statistics & Scorings
+#pragma mark - Indicators Statistics Service
     
-- (void)getLatestDayStatisticsScoring;
+- (void)getLatestDayStatisticsScoringForUser;
 - (void)getStatisticsIndividualAllTime:(NSString *)startDate endDate:(NSString*)endDate;
 - (void)getScoringsIndividualCurrentDay:(NSString *)startDate endDate:(NSString*)endDate;
 - (void)getScoringsIndividual14daysDaily:(NSString *)startDate endDate:(NSString*)endDate;
 
 
-#pragma mark EcoScorings
+#pragma mark Indicators Eco For Dashboard
 
-- (void)getEcoDataAllTime;
-- (void)getEcoStatisticForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
+- (void)getEcoScoresForTimePeriod:(NSString *)startDate endDate:(NSString*)endDate;
+
+
+#pragma mark Indicators For Coins For Dashboard Preloader
+
+- (void)getCoinsStatisticsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
+
+
+#pragma mark Indicators For Coins For Eco Percents
+
+- (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
+
+
+#pragma mark Indicators Streaks
+
+- (void)getIndicatorsStreaks;
+
+
+#pragma mark My Rewards - Coins
+
+- (void)getCoinsDailyLimit;
+- (void)getCoinsTotal:(NSString *)startDate endDate:(NSString*)endDate;
+- (void)getCoinsDetailed:(NSString *)startDate endDate:(NSString*)endDate;
+- (void)getCoinsDaily:(NSString *)startDate endDate:(NSString*)endDate;
+
+
+#pragma mark Leaderboard
+
+- (void)getLeaderboardForUser;
+- (void)getLeaderboardScore:(NSUInteger)scoringRate;
 
 
 #pragma mark DeleteTrack On Feed Screen
@@ -49,24 +77,6 @@
 - (void)trackBrowseStart:(NSString *)trackToken;
 - (void)reportWrongEventNoEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType date:(NSString *)date;
 - (void)reportWrongEventNewEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType newEventType:(NSString *)newEventType date:(NSString *)date;
-
-#pragma mark My Rewards - Coins
-
-- (void)getCoinsDailyLimit;
-- (void)getCoinsTotal:(NSString *)startDate endDate:(NSString*)endDate;
-- (void)getCoinsDetailed:(NSString *)startDate endDate:(NSString*)endDate;
-- (void)getCoinsDaily:(NSString *)startDate endDate:(NSString*)endDate;
-
-#pragma mark Indicators For My Rewards - Coins
-
-- (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
-- (void)getIndicatorsStreaks;
-- (void)getIndicatorsEcoWithPercentForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
-
-#pragma mark Leaderboard
-
-- (void)getLeaderboardForUser;
-- (void)getLeaderboardScore:(NSUInteger)scoringRate;
 
 
 #pragma mark CarService
