@@ -153,7 +153,7 @@
 
 - (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate {
     NSDictionary *params = @{@"StartDate": startDate, @"EndDate": endDate};
-    [self performRequestIndicatorsService:@"Statistics" responseClass:[EcoResponse class] parameters:params method:GET];
+    [self performRequestIndicatorsService:@"Scores/eco" responseClass:[EcoIndividualResponse class] parameters:params method:GET];
 }
 
 
