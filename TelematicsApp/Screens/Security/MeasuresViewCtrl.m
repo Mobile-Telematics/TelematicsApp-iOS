@@ -182,6 +182,8 @@
 - (void)saveMeasuresParameters {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDashboardPage" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTripPage" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCoinsDashboardSection" object:self];
+    
     defaults_set_object(@"needUpdateViewForFeedScreen", @(YES));
 }
 

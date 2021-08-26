@@ -200,6 +200,8 @@
     self.rewardsScrollView.refreshControl.tintColor = [Color whiteSpinnerColor];
     [self.rewardsScrollView.refreshControl addTarget:self action:@selector(reloadCoins:) forControlEvents:UIControlEventValueChanged];
     [self.rewardsScrollView.refreshControl setFrame:CGRectMake(5, 0, 20, 20)];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startFetchCoinsFactorsFirstTime) name:@"reloadCoinsDashboardSection" object:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -522,7 +524,7 @@
             NSString *mileageKmIndicator = [NSString stringWithFormat:@"%.0f km", self.indicators.MileageKm.floatValue];
             if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
                 float konvertInMiles = convertKmToMiles(self.indicators.MileageKm.floatValue);
-                mileageKmIndicator = [NSString stringWithFormat:@"%.0f mi", konvertInMiles];
+                mileageKmIndicator = [NSString stringWithFormat:@"%.1f mi", konvertInMiles];
             }
             self.factor_valueMileageLbl.text = mileageKmIndicator;
             
@@ -553,7 +555,7 @@
             self.factor_valueSpeedingLbl.text = speedIndicator;
             if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
                 float milesSpeeding = convertKmToMiles(self.indicators.TotalSpeedingKm.floatValue);
-                self.factor_valueSpeedingLbl.text = [NSString stringWithFormat:@"%.0f mi", milesSpeeding];
+                self.factor_valueSpeedingLbl.text = [NSString stringWithFormat:@"%.1f mi", milesSpeeding];
             }
             
         } else {
@@ -578,6 +580,7 @@
     if (startDate == nil) {
         startDate = [NSDate date];
     }
+    
     if (endDate == nil) {
         endDate = [NSDate date];
     }
@@ -590,51 +593,51 @@
         if (!error && [response isSuccesful]) {
             self.ecoPercents = ((EcoResponse *)response).Result;
             
-            if (self.ecoPercents.EcoScore.floatValue > 80) {
+            if (self.ecoPercents.EcoScore.floatValue > 81) {
                 self.coins_progressBarEco.barFillColor = [Color officialGreenColor];
-            } else if (self.ecoPercents.EcoScore.floatValue > 60) {
+            } else if (self.ecoPercents.EcoScore.floatValue > 61) {
                 self.coins_progressBarEco.barFillColor = [Color officialYellowColor];
-            } else if (self.ecoPercents.EcoScore.floatValue > 40) {
+            } else if (self.ecoPercents.EcoScore.floatValue > 41) {
                 self.coins_progressBarEco.barFillColor = [Color officialOrangeColor];
             } else {
                 self.coins_progressBarEco.barFillColor = [Color officialDarkRedColor];
             }
             
-            if (self.ecoPercents.EcoScoreBrakes.floatValue > 80) {
+            if (self.ecoPercents.EcoScoreBrakes.floatValue > 81) {
                 self.coins_progressBarBrakes.barFillColor = [Color officialGreenColor];
-            } else if (self.ecoPercents.EcoScore.floatValue > 60) {
+            } else if (self.ecoPercents.EcoScore.floatValue > 61) {
                 self.coins_progressBarBrakes.barFillColor = [Color officialYellowColor];
-            } else if (self.ecoPercents.EcoScore.floatValue > 40) {
+            } else if (self.ecoPercents.EcoScore.floatValue > 41) {
                 self.coins_progressBarBrakes.barFillColor = [Color officialOrangeColor];
             } else {
                 self.coins_progressBarBrakes.barFillColor = [Color officialDarkRedColor];
             }
             
-            if (self.ecoPercents.EcoScoreTyres.floatValue > 80) {
+            if (self.ecoPercents.EcoScoreTyres.floatValue > 81) {
                 self.coins_progressBarTyres.barFillColor = [Color officialGreenColor];
-            } else if (self.ecoPercents.EcoScoreTyres.floatValue > 60) {
+            } else if (self.ecoPercents.EcoScoreTyres.floatValue > 61) {
                 self.coins_progressBarTyres.barFillColor = [Color officialYellowColor];
-            } else if (self.ecoPercents.EcoScoreTyres.floatValue > 40) {
+            } else if (self.ecoPercents.EcoScoreTyres.floatValue > 41) {
                 self.coins_progressBarTyres.barFillColor = [Color officialOrangeColor];
             } else {
                 self.coins_progressBarTyres.barFillColor = [Color officialDarkRedColor];
             }
             
-            if (self.ecoPercents.EcoScoreFuel.floatValue > 80) {
+            if (self.ecoPercents.EcoScoreFuel.floatValue > 81) {
                 self.coins_progressBarFuel.barFillColor = [Color officialGreenColor];
-            } else if (self.ecoPercents.EcoScoreFuel.floatValue > 60) {
+            } else if (self.ecoPercents.EcoScoreFuel.floatValue > 61) {
                 self.coins_progressBarFuel.barFillColor = [Color officialYellowColor];
-            } else if (self.ecoPercents.EcoScoreFuel.floatValue > 40) {
+            } else if (self.ecoPercents.EcoScoreFuel.floatValue > 41) {
                 self.coins_progressBarFuel.barFillColor = [Color officialOrangeColor];
             } else {
                 self.coins_progressBarFuel.barFillColor = [Color officialDarkRedColor];
             }
             
-            if (self.ecoPercents.EcoScoreDepreciation.floatValue > 80) {
+            if (self.ecoPercents.EcoScoreDepreciation.floatValue > 81) {
                 self.coins_progressBarCost.barFillColor = [Color officialGreenColor];
-            } else if (self.ecoPercents.EcoScoreDepreciation.floatValue > 60) {
+            } else if (self.ecoPercents.EcoScoreDepreciation.floatValue > 61) {
                 self.coins_progressBarCost.barFillColor = [Color officialYellowColor];
-            } else if (self.ecoPercents.EcoScoreDepreciation.floatValue > 40) {
+            } else if (self.ecoPercents.EcoScoreDepreciation.floatValue > 41) {
                 self.coins_progressBarCost.barFillColor = [Color officialOrangeColor];
             } else {
                 self.coins_progressBarCost.barFillColor = [Color officialDarkRedColor];
@@ -725,6 +728,7 @@
         }
     }
     
+    //SAMPLE DEMO DAYS IF NO DATA
     NSMutableArray* daysWeek = [NSMutableArray arrayWithObjects:
                                 localizeString(@"Monday"),
                                 localizeString(@"Tuesday"),
@@ -807,9 +811,6 @@
         //STREAK TITLE ACCELERATION
         streakCell.mainTitleLbl.text = @"Trips Without Harsh Acceleration";
         streakCell.mainStreakImg.image = [UIImage imageNamed:@"streak_up"];
-        
-        //You had a phone distraction on your last trip
-        //You haven’t had a best yet
         
         //FIRST SECTION
         float roundCurrentDistance = [self.streaks.StreakAccelerationCurrentDistanceKm floatValue];
@@ -1443,6 +1444,12 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [sender endRefreshing];
     });
+    
+    //RELOAD PAGE
+    self.additional1View.hidden = NO;
+    self.additional2View.hidden = YES;
+    self.additional3View.hidden = YES;
+    [self->_daysSegmentView setSelectedIndex:0];
     
     NSDate *currentDate = [NSDate date];
     NSDateComponents *dateComponents = [[NSDateComponents alloc] init];

@@ -33,7 +33,7 @@
 @property (nonatomic, copy, readwrite) NSString *stored_clientId;
 @property (nonatomic, copy, readwrite) NSString *stored_gender;
 @property (nonatomic, copy, readwrite) NSString *stored_maritalStatus;
-@property (nonatomic, copy, readwrite) NSString *stored_childrenCount;
+@property (nonatomic, copy, readwrite) NSNumber *stored_childrenCount;
 @property (nonatomic, copy, readwrite) NSString *stored_profilePictureLink;
 
 @property (nonatomic, strong) NSString* claimsToken; //TOKEN FOR CLAIMS

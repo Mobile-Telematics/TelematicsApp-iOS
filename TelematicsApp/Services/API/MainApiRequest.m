@@ -83,6 +83,7 @@
     return [Configurator sharedInstance].instanceKey;
 }
 
+
 //BASIC HEADER
 + (NSDictionary *)customRequestHeaders {
     NSMutableDictionary* headers = [[super customRequestHeaders] mutableCopy];
@@ -94,9 +95,7 @@
     headers[@"InstanceId"] = [self instanceId];
     headers[@"InstanceKey"] = [self instanceKey];
     headers[@"appversion"] = APP_VERSION;
-    
     headers[@"DeviceToken"] = [GeneralService sharedService].device_token_number;
-    
     
     NSLog(@"%@", headers);
     return headers;

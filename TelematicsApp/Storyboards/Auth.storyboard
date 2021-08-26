@@ -86,12 +86,14 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5P-bo-Tu1">
-                                <rect key="frame" x="124" y="660" width="166" height="32"/>
+                                <rect key="frame" x="45" y="650" width="324" height="65"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="p5t-Iq-LHC"/>
+                                    <constraint firstAttribute="height" constant="65" id="p5t-Iq-LHC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="14"/>
-                                <state key="normal" title="JOIN">
+                                <fontDescription key="fontDescription" name="SanFranciscoText-Medium" family="San Francisco Text" pointSize="16"/>
+                                <state key="normal">
+                                    <string key="title">Don’t have an account?
+Sign Up</string>
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -143,7 +145,7 @@
                             <constraint firstItem="2MQ-uj-EKB" firstAttribute="centerX" secondItem="pk4-EK-9aZ" secondAttribute="centerX" id="0Uz-xB-9M8"/>
                             <constraint firstItem="1V7-Lt-jzW" firstAttribute="height" secondItem="cYY-0z-GIw" secondAttribute="height" id="20w-41-DBM"/>
                             <constraint firstItem="2MQ-uj-EKB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="JEL-jv-uEJ" secondAttribute="bottom" constant="10" id="5H8-5a-np1"/>
-                            <constraint firstItem="T5P-bo-Tu1" firstAttribute="top" secondItem="icv-rO-FOf" secondAttribute="bottom" constant="13" id="5x8-m7-Yie"/>
+                            <constraint firstItem="T5P-bo-Tu1" firstAttribute="top" secondItem="icv-rO-FOf" secondAttribute="bottom" constant="3" id="5x8-m7-Yie"/>
                             <constraint firstItem="icv-rO-FOf" firstAttribute="top" secondItem="pk4-EK-9aZ" secondAttribute="bottom" constant="65" id="6vb-Fk-t3g"/>
                             <constraint firstItem="JEL-jv-uEJ" firstAttribute="top" secondItem="TZd-Ui-XZP" secondAttribute="bottom" constant="41" id="7ap-8M-kAZ"/>
                             <constraint firstItem="wWD-cc-jih" firstAttribute="top" secondItem="cYY-0z-GIw" secondAttribute="bottom" constant="20" id="9fX-De-op2"/>
@@ -156,13 +158,13 @@
                             <constraint firstItem="1V7-Lt-jzW" firstAttribute="width" secondItem="cYY-0z-GIw" secondAttribute="width" id="M4I-gO-6OJ"/>
                             <constraint firstItem="2MQ-uj-EKB" firstAttribute="leading" secondItem="N1W-nY-Khg" secondAttribute="leading" id="O48-hy-OUs"/>
                             <constraint firstItem="wWD-cc-jih" firstAttribute="top" secondItem="icv-rO-FOf" secondAttribute="bottom" constant="128" id="Ocy-2Z-fiN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="T5P-bo-Tu1" secondAttribute="trailing" constant="104" id="RKt-bN-Sei"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="T5P-bo-Tu1" secondAttribute="trailing" constant="25" id="RKt-bN-Sei"/>
                             <constraint firstAttribute="bottom" secondItem="wWD-cc-jih" secondAttribute="bottom" constant="89" id="Wjq-Vp-oNh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="UJu-sx-37K" secondAttribute="trailing" constant="25" id="cbK-F7-v1i"/>
                             <constraint firstItem="N1W-nY-Khg" firstAttribute="leading" secondItem="BJR-YG-8eP" secondAttribute="leadingMargin" constant="-20" id="eLT-Ot-5QR"/>
                             <constraint firstItem="JEL-jv-uEJ" firstAttribute="centerX" secondItem="BJR-YG-8eP" secondAttribute="centerX" id="en1-0U-xXP"/>
                             <constraint firstItem="cYY-0z-GIw" firstAttribute="top" secondItem="MaL-tg-l3v" secondAttribute="bottom" constant="18" id="foh-O0-gBU"/>
-                            <constraint firstItem="T5P-bo-Tu1" firstAttribute="leading" secondItem="BJR-YG-8eP" secondAttribute="leadingMargin" constant="104" id="huo-kV-5Y7"/>
+                            <constraint firstItem="T5P-bo-Tu1" firstAttribute="leading" secondItem="BJR-YG-8eP" secondAttribute="leadingMargin" constant="25" id="huo-kV-5Y7"/>
                             <constraint firstItem="1V7-Lt-jzW" firstAttribute="leading" secondItem="cYY-0z-GIw" secondAttribute="trailing" constant="-260" id="j3v-sw-5o6"/>
                             <constraint firstItem="pk4-EK-9aZ" firstAttribute="centerX" secondItem="wWD-cc-jih" secondAttribute="centerX" id="jtb-Qy-YAQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="icv-rO-FOf" secondAttribute="trailing" constant="104" id="kXN-Zy-8RF"/>

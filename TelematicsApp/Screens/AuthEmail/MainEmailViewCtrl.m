@@ -49,7 +49,10 @@
     [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference];
     
     self.mainLogoImg.image = [UIImage imageNamed:[Configurator sharedInstance].mainLogoColor];
+    
     self.welcomeLbl.text = localizeString(@"Sign In\n");
+    self.welcomeLbl.textColor = [Color officialGreenColor];
+    self.welcomeLbl.font = [Font semibold22];
     
     [self.emailField makeFormFieldZero];
     [self.emailField setBackgroundColor:[Color lightSeparatorColor]];
@@ -84,20 +87,20 @@
     [loginText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [loginText length])];
     [self.joinBtn setAttributedTitle:loginText forState:UIControlStateNormal];
 
-    [self.signInBtn setTintColor:[Color officialWhiteColor]];
-    [self.signInBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
-    [self.signInBtn setBackgroundColor:[Color officialOrangeColor]];
+    [self.signInBtn setTintColor:[Color darkGrayColor83]];
+    [self.signInBtn setTitleColor:[Color darkGrayColor83] forState:UIControlStateNormal];
+    [self.signInBtn setBackgroundColor:[Color officialWhiteColor]];
     [self.signInBtn.layer setMasksToBounds:YES];
     [self.signInBtn.layer setCornerRadius:16.0f];
-    [self.signInBtn.layer setBorderColor:[[Color officialOrangeColor] CGColor]];
+    [self.signInBtn.layer setBorderColor:[[Color officialWhiteColor] CGColor]];
     [self.signInBtn.layer setBorderWidth:0.4];
-    NSMutableAttributedString *signUpText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"SIGN UP")];
-    [signUpText addAttribute:NSFontAttributeName value:[Font medium13] range:NSMakeRange(0, [signUpText length])];
+    NSMutableAttributedString *signUpText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Don’t have an account? Sign Up")];
+    [signUpText addAttribute:NSFontAttributeName value:[Font medium15] range:NSMakeRange(0, [signUpText length])];
     [signUpText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleNone] range:NSMakeRange(0, [signUpText length])];
-    [signUpText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [signUpText length])];
+    [signUpText addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor83] range:NSMakeRange(0, [signUpText length])];
     [self.signInBtn setAttributedTitle:signUpText forState:UIControlStateNormal];
     
-    self.justUsingLbl.attributedText = [self createJoinLabelImgCentered:localizeString(@"Join via   ") phoneText:localizeString(@"Phone Number")];
+    self.justUsingLbl.attributedText = [self createJoinLabelImgCentered:localizeString(@"Login via   ") phoneText:localizeString(@"Phone Number")];
     
     [self.privacyBtn setTintColor:[UIColor lightGrayColor]];
     NSMutableAttributedString *privacyText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"menuitem_privacy")];
@@ -136,9 +139,12 @@
     if (errors) {
         self.welcomeLbl.text = localizeString(@"validation_invalid_email"); //BAD EMAIL
         self.welcomeLbl.textColor = [Color officialDarkRedColor];
+        self.welcomeLbl.font = [Font regular19];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.welcomeLbl.text = localizeString(@"Sign In\n");
-            self.welcomeLbl.textColor = [Color darkGrayColor];
+            self.welcomeLbl.textColor = [Color officialGreenColor];
+            self.welcomeLbl.font = [Font semibold22];
         });
         return;
     }
@@ -146,9 +152,12 @@
     if (![self isValidPassword:self.passwordField.text]) {
         self.welcomeLbl.text = localizeString(@"validation_enter_symbols_six"); //PASSWORD 6 SYMBOLS
         self.welcomeLbl.textColor = [Color officialDarkRedColor];
+        self.welcomeLbl.font = [Font regular19];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.welcomeLbl.text = localizeString(@"Sign In\n");
-            self.welcomeLbl.textColor = [Color darkGrayColor];
+            self.welcomeLbl.textColor = [Color officialGreenColor];
+            self.welcomeLbl.font = [Font semibold22];
         });
         return;
     }
@@ -339,7 +348,7 @@
         NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
         NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
         NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
-        NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+        NSNumber *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @0;
         NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
         NSString *profileImg = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
 
@@ -405,21 +414,26 @@
         [loginText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [loginText length])];
         [self.joinBtn setAttributedTitle:loginText forState:UIControlStateNormal];
         
-        [self.signInBtn setTintColor:[Color officialWhiteColor]];
-        [self.signInBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
-        [self.signInBtn setBackgroundColor:[Color officialGreenColor]];
+        [self.signInBtn setTintColor:[Color darkGrayColor83]];
+        [self.signInBtn setTitleColor:[Color darkGrayColor83] forState:UIControlStateNormal];
+        [self.signInBtn setBackgroundColor:[Color officialWhiteColor]];
         [self.signInBtn.layer setMasksToBounds:YES];
         [self.signInBtn.layer setCornerRadius:16.0f];
-        [self.signInBtn.layer setBorderColor:[[Color officialGreenColor] CGColor]];
+        [self.signInBtn.layer setBorderColor:[[Color officialWhiteColor] CGColor]];
         [self.signInBtn.layer setBorderWidth:0.4];
-        NSMutableAttributedString *signInText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"SIGN IN")];
-        [signInText addAttribute:NSFontAttributeName value:[Font medium13] range:NSMakeRange(0, [signInText length])];
+        NSMutableAttributedString *signInText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Already have an account? Sign In")];
+        [signInText addAttribute:NSFontAttributeName value:[Font medium15] range:NSMakeRange(0, [signInText length])];
         [signInText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleNone] range:NSMakeRange(0, [signInText length])];
-        [signInText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [signInText length])];
+        [signInText addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor83] range:NSMakeRange(0, [signInText length])];
         [self.signInBtn setAttributedTitle:signInText forState:UIControlStateNormal];
         
         self.welcomeLbl.text = localizeString(@"Sign Up\n");
+        self.welcomeLbl.textColor = [Color officialGreenColor];
+        self.welcomeLbl.font = [Font semibold22];
+        
         self.passwordField.placeholder = localizeString(@"create password");
+        
+        self.justUsingLbl.attributedText = [self createJoinLabelImgCentered:localizeString(@"Sign Up via   ") phoneText:localizeString(@"Phone Number")];
         
         self.isSignUpButtonPressed = YES;
         
@@ -438,21 +452,26 @@
         [loginText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [loginText length])];
         [self.joinBtn setAttributedTitle:loginText forState:UIControlStateNormal];
         
-        [self.signInBtn setTintColor:[Color officialWhiteColor]];
-        [self.signInBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
-        [self.signInBtn setBackgroundColor:[Color officialOrangeColor]];
+        [self.signInBtn setTintColor:[Color darkGrayColor83]];
+        [self.signInBtn setTitleColor:[Color darkGrayColor83] forState:UIControlStateNormal];
+        [self.signInBtn setBackgroundColor:[Color officialWhiteColor]];
         [self.signInBtn.layer setMasksToBounds:YES];
         [self.signInBtn.layer setCornerRadius:16.0f];
-        [self.signInBtn.layer setBorderColor:[[Color officialOrangeColor] CGColor]];
+        [self.signInBtn.layer setBorderColor:[[Color officialWhiteColor] CGColor]];
         [self.signInBtn.layer setBorderWidth:0.4];
-        NSMutableAttributedString *signInText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"SIGN UP")];
-        [signInText addAttribute:NSFontAttributeName value:[Font medium13] range:NSMakeRange(0, [signInText length])];
+        NSMutableAttributedString *signInText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Don’t have an account? Sign Up")];
+        [signInText addAttribute:NSFontAttributeName value:[Font medium15] range:NSMakeRange(0, [signInText length])];
         [signInText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleNone] range:NSMakeRange(0, [signInText length])];
-        [signInText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [signInText length])];
+        [signInText addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor83] range:NSMakeRange(0, [signInText length])];
         [self.signInBtn setAttributedTitle:signInText forState:UIControlStateNormal];
         
         self.welcomeLbl.text = localizeString(@"Sign In\n");
+        self.welcomeLbl.textColor = [Color officialGreenColor];
+        self.welcomeLbl.font = [Font semibold22];
+        
         self.passwordField.placeholder = localizeString(@"enter password");
+        
+        self.justUsingLbl.attributedText = [self createJoinLabelImgCentered:localizeString(@"Login via   ") phoneText:localizeString(@"Phone Number")];
         
         self.isSignUpButtonPressed = NO;
         

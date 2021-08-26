@@ -53,7 +53,7 @@
     
     self.moneyImg.image = [UIImage imageNamed:@"money_rewards_big"];
     
-    self.additionalLbl.text = localizeString(@"Get rewarded for your good driving habits, save on fuel & maintenance costs. Join driving challenges for drivecoins rewards and prove to be the best on the road.");
+    self.additionalLbl.text = localizeString(@"Get rewarded for your good driving habits, save on fuel & maintenance costs.");
 }
 
 - (void)viewWillAppear:(BOOL)animated

@@ -131,7 +131,7 @@
                 [GeneralService sharedService].stored_address = allUsersData[@"address"];
                 [GeneralService sharedService].stored_gender = allUsersData[@"gender"];
                 [GeneralService sharedService].stored_maritalStatus = allUsersData[@"maritalStatus"];
-                [GeneralService sharedService].stored_childrenCount = allUsersData[@"childrenCount"];
+                [GeneralService sharedService].stored_childrenCount = allUsersData[@"childrenCount"] ? allUsersData[@"childrenCount"] : @0;
                 [GeneralService sharedService].stored_clientId = allUsersData[@"clientId"];
                 [GeneralService sharedService].stored_profilePictureLink = allUsersData[@"profilePictureLink"];
                 
@@ -168,10 +168,15 @@
     self.appModel.userAddress = [GeneralService sharedService].stored_address;
     self.appModel.userGender = [GeneralService sharedService].stored_gender;
     self.appModel.userMaritalStatus = [GeneralService sharedService].stored_maritalStatus;
-    self.appModel.userChildrenCount = [GeneralService sharedService].stored_childrenCount;
     self.appModel.userClientId = [GeneralService sharedService].stored_clientId;
     self.appModel.userProfilePictureLink = [GeneralService sharedService].stored_profilePictureLink;
     self.appModel.userFullName = [NSString stringWithFormat:@"%@ %@", [GeneralService sharedService].stored_firstName, [GeneralService sharedService].stored_lastName];
+    
+    if ([[GeneralService sharedService].stored_childrenCount isEqual:@""]) {
+        self.appModel.userChildrenCount = @0;
+    } else {
+        self.appModel.userChildrenCount = [GeneralService sharedService].stored_childrenCount;
+    }
     
     if (self.isLoggedOn) {
         [self saveCredentials];

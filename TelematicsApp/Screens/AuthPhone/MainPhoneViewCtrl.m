@@ -61,6 +61,8 @@
     self.phoneField.placeholder = localizeString(@"enter phone");
     
     self.usePhoneLbl.text = localizeString(@"Use your phone number");
+    self.usePhoneLbl.textColor = [Color officialGreenColor];
+    self.usePhoneLbl.font = [Font semibold22];
     
     [self.countryButton.layer setMasksToBounds:YES];
     [self.countryButton.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
@@ -79,7 +81,7 @@
     [loginText addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:NSMakeRange(0, [loginText length])];
     [self.loginBtn setAttributedTitle:loginText forState:UIControlStateNormal];
     
-    self.justUsingLbl.attributedText = [self createJoinLabelImgCentered:localizeString(@"Join via   ") phoneText:localizeString(@"Email Address")];
+    self.justUsingLbl.attributedText = [self createJoinLabelImgCentered:localizeString(@"Login via   ") phoneText:localizeString(@"Email Address")];
     
     [self.privacyBtn setTintColor:[UIColor lightGrayColor]];
     NSMutableAttributedString *privacyText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"menuitem_privacy")];
@@ -171,9 +173,12 @@
     if (![phoneUtil isValidNumber:checkNumber]) {
         self.usePhoneLbl.text = localizeString(@"validation_invalid_phone");
         self.usePhoneLbl.textColor = [Color officialDarkRedColor];
+        self.usePhoneLbl.font = [Font regular19];
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.usePhoneLbl.text = localizeString(@"Use your phone number");
-            self.usePhoneLbl.textColor = [Color darkGrayColor];
+            self.usePhoneLbl.textColor = [Color officialGreenColor];
+            self.usePhoneLbl.font = [Font semibold22];
         });
         return;
     }
@@ -202,10 +207,13 @@
         if (error) {
             [self dismissKeyboard];
             self.usePhoneLbl.text = localizeString(@"Temporarily unavailable. Try again in a few minutes");
+            self.usePhoneLbl.font = [Font regular19];
+            
             self.usePhoneLbl.textColor = [Color officialDarkRedColor];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                self.usePhoneLbl.text = localizeString(@"Use your email address");
-                self.usePhoneLbl.textColor = [Color darkGrayColor];
+                self.usePhoneLbl.text = localizeString(@"Use your phone number");
+                self.usePhoneLbl.textColor = [Color officialGreenColor];
+                self.usePhoneLbl.font = [Font semibold22];
             });
             return;
         }

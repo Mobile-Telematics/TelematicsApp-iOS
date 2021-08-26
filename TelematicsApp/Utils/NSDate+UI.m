@@ -44,7 +44,7 @@
     NSDate* date = self;
     NSDateFormatter* df = [[NSDateFormatter alloc] init];
     df.dateFormat = @"yyyy-MM-dd";
-    df.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0];
+    //df.timeZone = [NSTimeZone timeZoneForSecondsFromGMT:0]; //GMT0
     return [df stringFromDate:date];
 }
 
