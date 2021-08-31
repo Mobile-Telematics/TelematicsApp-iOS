@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 07.02.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "EditProfileCtrl.h"
@@ -203,6 +203,7 @@
 
 - (IBAction)saveBtnClick:(id)sender {
     
+    //OUR PROFILE FIELDS, NOT NIL
     NSString *email = _emailField.text ? _emailField.text : @"";
     NSString *phone = _phoneField.text ? _phoneField.text : @"";
     NSString *firstName = _firstNameField.text ? _firstNameField.text : @"";
@@ -211,10 +212,12 @@
     NSString *address = _addressField.text ? _addressField.text : @"";
     NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
     NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
-    NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+    NSNumber *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @0;
     NSString *clientId = _clientIdField.text ? _clientIdField.text : @"";
     NSString *profilePictureLink = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
     
+    
+    //STORE IN FIREBASE DATABASE
     [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
                                child:[GeneralService sharedService].firebase_user_id] setValue:@{@"deviceToken": [GeneralService sharedService].device_token_number,
                                                                                                   @"userId": [GeneralService sharedService].firebase_user_id,
@@ -229,9 +232,27 @@
                                                                                                   @"childrenCount": children,
                                                                                                   @"clientId": clientId,
                                                                                                   @"profilePictureLink": profilePictureLink
-                               }
-     ];
+    }];
     
+    
+    //STORE IN OUR USERSERVICE API FOR DATAHUB WEB INTERFACE
+    [[LoginAuthCore sharedManager] updateUserProfileWithParametersAndInstanceId:[Configurator sharedInstance].instanceId
+                                                                    instanceKey:[Configurator sharedInstance].instanceKey
+                                                                        jwToken:[GeneralService sharedService].jwt_token_number
+                                                                          email:email
+                                                                          phone:phone
+                                                                      firstName:firstName
+                                                                       lastName:lastName
+                                                                        address:address
+                                                                       birthday:birthday
+                                                                         gender:gender
+                                                                  maritalStatus:marital
+                                                                  childrenCount:children
+                                                                       clientId:clientId result:^(NSString *result) {
+        NSLog(@"Success Updated Profile in User Service API");
+    }];
+    
+    //STORE IN OUR APP SHAREDSERVICE
     [GeneralService sharedService].stored_userEmail = email;
     [GeneralService sharedService].stored_userPhone = phone;
     [GeneralService sharedService].stored_firstName = firstName;
@@ -244,6 +265,7 @@
     [GeneralService sharedService].stored_clientId = clientId;
     [GeneralService sharedService].stored_profilePictureLink = profilePictureLink;
     
+    //NSLOG FOR YOU
     NSLog(@"deviceToken %@", [GeneralService sharedService].device_token_number);
     NSLog(@"firebaseUserId %@", [GeneralService sharedService].firebase_user_id);
     NSLog(@"email %@", email);
@@ -261,37 +283,9 @@
     //UPDATE PROFILE
     [[GeneralService sharedService] loadProfile];
     
+    //CLOSE PROFILE
     [self quitAndUpdate];
     
-}
-
-
-#pragma mark - Cached & Text's
-
-- (void)setUserCacheDataEditProfile {
-    if (self.appModel.userFirstName != nil && ![self.appModel.userFirstName isEqual:@""]) {
-        _firstNameField.text = self.appModel.userFirstName;
-    }
-    if (self.appModel.userLastName != nil) {
-        _lastNameField.text = self.appModel.userLastName;
-    }
-    if (self.appModel.userEmail != nil) {
-        _emailField.text = self.appModel.userEmail;
-    }
-    if (self.appModel.userPhone != nil) {
-        _phoneField.text = self.appModel.userPhone;
-    }
-    if (self.appModel.userBirthday != nil) {
-        NSDate *date = [NSDate dateWithISO8601String:self.appModel.userBirthday];
-        _birthField.text = [date dateTimeStringShortSimple];
-        _birthdaySelect = [NSDate dateFromISO8601:date];
-    }
-    if (self.appModel.userAddress != nil) {
-        _addressField.text = self.appModel.userAddress;
-    }
-    if (self.appModel.userClientId != nil) {
-        _clientIdField.text = self.appModel.userClientId;
-    }
 }
 
 
@@ -392,6 +386,35 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsZero;
     self.scrollView.contentInset = contentInsets;
     self.scrollView.scrollIndicatorInsets = contentInsets;
+}
+
+
+#pragma mark - Cached & Text's
+
+- (void)setUserCacheDataEditProfile {
+    if (self.appModel.userFirstName != nil && ![self.appModel.userFirstName isEqual:@""]) {
+        _firstNameField.text = self.appModel.userFirstName;
+    }
+    if (self.appModel.userLastName != nil) {
+        _lastNameField.text = self.appModel.userLastName;
+    }
+    if (self.appModel.userEmail != nil) {
+        _emailField.text = self.appModel.userEmail;
+    }
+    if (self.appModel.userPhone != nil) {
+        _phoneField.text = self.appModel.userPhone;
+    }
+    if (self.appModel.userBirthday != nil) {
+        NSDate *date = [NSDate dateWithISO8601String:self.appModel.userBirthday];
+        _birthField.text = [date dateTimeStringShortSimple];
+        _birthdaySelect = [NSDate dateFromISO8601:date];
+    }
+    if (self.appModel.userAddress != nil) {
+        _addressField.text = self.appModel.userAddress;
+    }
+    if (self.appModel.userClientId != nil) {
+        _clientIdField.text = self.appModel.userClientId;
+    }
 }
 
 

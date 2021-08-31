@@ -140,7 +140,6 @@ PODS:
     - SCSiriWaveformView
   - JSONModel (1.8.0)
   - KDLoadingView (1.0.5)
-  - KVNProgress (2.3.5)
   - leveldb-library (1.22.1)
   - libPhoneNumber-iOS (0.9.15)
   - MagicalRecord (2.4.0):
@@ -153,7 +152,7 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PPTopMostController (0.0.1)
   - PromisesObjC (1.2.12)
-  - RaxelPulse (5.9.17)
+  - RaxelPulse (5.10)
   - RMessage (2.3.4):
     - HexColors (~> 4.0)
     - PPTopMostController
@@ -192,10 +191,9 @@ DEPENDENCIES:
   - IQMediaPickerController
   - JSONModel
   - KDLoadingView
-  - KVNProgress
   - libPhoneNumber-iOS (~> 0.8)
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord`)
-  - RaxelPulse
+  - RaxelPulse (= 5.10)
   - RMessage
   - SDWebImage (= 5.9.0)
   - SHSPhoneComponent
@@ -234,7 +232,6 @@ SPEC REPOS:
     - IQMediaPickerController
     - JSONModel
     - KDLoadingView
-    - KVNProgress
     - leveldb-library
     - libPhoneNumber-iOS
     - nanopb
@@ -290,14 +287,13 @@ SPEC CHECKSUMS:
   IQMediaPickerController: d8c88f955bcc67e8c2703538f63cc670c56b82a2
   JSONModel: 02ab723958366a3fd27da57ea2af2113658762e9
   KDLoadingView: 2b99197b41b098b220a79e505121ab34c48c4fca
-  KVNProgress: d7046cce142f1aeb740db39dc3cacfe910fac354
   leveldb-library: 50c7b45cbd7bf543c81a468fe557a16ae3db8729
   libPhoneNumber-iOS: 0a32a9525cf8744fe02c5206eb30d571e38f7d75
   MagicalRecord: 1f22a766156474d9f46a9b1e1ce59ca9e37830fc
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PPTopMostController: 4e6f1e5f8c645bdcc74cd837a20f607ff262c048
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
-  RaxelPulse: 685d171a6cbb417d16bb7fbc2a9759cc09189908
+  RaxelPulse: 7fbbed8ec0d4f01d5e0c22526572ef150ef9782f
   RMessage: c53d90b788d64387f68bce3725b309e377b6bf15
   SCSiriWaveformView: 15b9dd6f94c7536e2032b34a35c6ff74d38c7411
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
@@ -310,6 +306,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: fda1e5523d16c2d8b5397786bb2911b62c663581
+PODFILE CHECKSUM: 4b2508603378b54ab31ffe347632b732dcac3389
 
 COCOAPODS: 1.10.1

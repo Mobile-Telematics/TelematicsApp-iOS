@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 20.01.20.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "MainApiRequest.h"
@@ -82,7 +82,6 @@
 + (NSString *)instanceKey {
     return [Configurator sharedInstance].instanceKey;
 }
-
 
 //BASIC HEADER
 + (NSDictionary *)customRequestHeaders {
@@ -234,7 +233,6 @@
     NSString *tokenPath = [NSString stringWithFormat:@"Vehicles/%@", vehicleToken];
     [self performRequestCarService:tokenPath responseClass:[ResponseObject class] parameters:[vehicleData paramsDictionary] method:DELETE];
 }
-
 
 
 #pragma mark DeleteTrack From Feed Screen
@@ -452,7 +450,7 @@
 }
 
 
-#pragma mark Claims Images Upload Helpers for Car seides
+#pragma mark Claims Images Upload Helpers for Car sides
 
 - (NSData *)createBodyWithBoundary:(NSString *)boundary
                         parameters:(NSDictionary *)parameters

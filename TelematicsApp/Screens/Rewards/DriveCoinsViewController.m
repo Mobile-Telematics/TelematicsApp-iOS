@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 17.08.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "DriveCoinsViewController.h"
@@ -113,6 +113,7 @@
 {
     [super viewDidLoad];
     
+    //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     self.streaksTableView.dataSource = self;
@@ -1424,7 +1425,7 @@
     NSLog(@"skipped");
 }
 
-//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDEED HELPERS FOR SOME ELEMENTS
+//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDED HELPERS FOR SOME ELEMENTS
 - (void)lowFontsForOldDevices {
     self.name_travellingLbl.font = [Font medium13];
     self.name_safetyLbl.font = [Font medium13];

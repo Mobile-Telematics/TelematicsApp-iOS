@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 25.12.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 @import Photos;
@@ -38,6 +38,7 @@
 @property (nonatomic, strong) NSMutableArray *assets;
 
 @end
+
 
 @implementation UserImagePickerViewController
 
@@ -344,7 +345,7 @@
 }
 
 
-#pragma mark - private methods
+#pragma mark - Private methods
 
 - (void)cameraChanged:(NSNotification *)notification
 {
@@ -362,7 +363,7 @@
 }
 
 
-#pragma mark - Show
+#pragma mark - Show Picker
 
 - (void)showImagePickerInController:(UIViewController *)controller {
     [self showImagePickerInController:controller animated:YES];
@@ -406,7 +407,7 @@
 }
 
 
-#pragma mark - Dismiss
+#pragma mark - Dismiss Picker
 
 - (void)dismiss {
     [self dismissAnimated:YES];

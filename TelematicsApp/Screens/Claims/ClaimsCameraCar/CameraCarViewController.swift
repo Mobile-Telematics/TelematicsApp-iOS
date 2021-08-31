@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.04.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 import UIKit
@@ -253,9 +253,25 @@ extension UIImageView {
         lblSelectFromGallery.textAlignment = .center
         lblSelectFromGallery.text = sideText + "\n\nSelect from Photo Gallery"
         lblSelectFromGallery.textColor = .white
-        lblSelectFromGallery.font = UIFont.systemFont(ofSize: 14)
+        lblSelectFromGallery.font = UIFont.boldSystemFont(ofSize: 16)
         lblSelectFromGallery.numberOfLines = 0
         lblSelectFromGallery.lineBreakMode = .byWordWrapping
+        
+        if Global.DeviceType.IS_IPHONE_4_OR_LESS || Global.DeviceType.IS_IPHONE_5 {
+            lblSelectFromGallery.font = UIFont.systemFont(ofSize: 14)
+        }
+        
+//        lblSelectFromGallery = UILabel(frame: CGRect(x: 10, y: self.view.frame.height/2+210, width: self.view.frame.width - 20, height: 100))
+//        lblSelectFromGallery.textAlignment = .center
+//        lblSelectFromGallery.text = sideText + "\n\nor\n\nSelect from Photo Gallery"
+//        lblSelectFromGallery.textColor = .white
+//        lblSelectFromGallery.font = UIFont.boldSystemFont(ofSize: 16)
+//        lblSelectFromGallery.numberOfLines = 0
+//        lblSelectFromGallery.lineBreakMode = .byWordWrapping
+//        lblSelectFromGallery.layer.masksToBounds = true
+//        lblSelectFromGallery.layer.borderColor = UIColor.white.cgColor
+//        lblSelectFromGallery.layer.borderWidth = 1.0
+//        lblSelectFromGallery.layer.cornerRadius = 8.0
         
         let galleryGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CameraCarViewController.actionSelectFromGallery(_:)))
         lblSelectFromGallery.addGestureRecognizer(galleryGestureRecognizer)

@@ -13,7 +13,7 @@ typedef void (^CompleteCreateDeviceToken)(NSString *deviceToken, NSString *jwTok
 typedef void (^CompleteRefreshJWToken)(NSString* jwToken, NSString* refreshToken);
 typedef void (^CompleteNewJWTokenByDeviceToken)(NSString* jwToken, NSString* refreshToken);
 
-typedef void (^CompleteGetUserProfile)(NSString* email, NSString* phone, NSString* firstName, NSString* lastName, NSString* address, NSString* birthday, NSString* gender, NSString* maritalStatus, NSString* childrenCount, NSString* clientId);
+typedef void (^CompleteGetUserProfile)(NSString* email, NSString* phone, NSString* firstName, NSString* lastName, NSString* address, NSString* birthday, NSString* gender, NSString* maritalStatus, NSNumber* childrenCount, NSString* clientId);
 typedef void (^CompleteUpdateUserProfile)(NSString *success);
 
 
@@ -79,7 +79,7 @@ typedef void (^CompleteUpdateUserProfile)(NSString *success);
                                                    birthday:(NSString *)birthday
                                                      gender:(NSString *)gender              //   String Male/Female
                                               maritalStatus:(NSString *)maritalStatus       //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
-                                              childrenCount:(NSString *)childrenCount       //   String count 1-10
+                                              childrenCount:(NSNumber *)childrenCount       //   Number count 1-10
                                                    clientId:(NSString *)clientId
                                                      result:(void (^)(NSString* deviceToken,
                                                                       NSString* jwToken,
@@ -103,7 +103,7 @@ typedef void (^CompleteUpdateUserProfile)(NSString *success);
                                                NSString* birthday,
                                                NSString* gender,
                                                NSString* maritalStatus,
-                                               NSString* childrenCount,
+                                               NSNumber* childrenCount,
                                                NSString* clientId
                                                ))completion;
 
@@ -123,7 +123,7 @@ typedef void (^CompleteUpdateUserProfile)(NSString *success);
                                             birthday:(NSString *)birthday
                                               gender:(NSString *)gender             //   String Male/Female
                                        maritalStatus:(NSString *)maritalStatus      //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
-                                       childrenCount:(NSString *)childrenCount      //   String count 1-10
+                                       childrenCount:(NSNumber *)childrenCount      //   Number count 1-10
                                             clientId:(NSString *)clientId
                                               result:(void (^)(NSString *))completion;
 

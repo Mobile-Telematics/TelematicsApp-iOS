@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 20.01.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "GeneralService.h"
@@ -172,7 +172,7 @@
     self.appModel.userProfilePictureLink = [GeneralService sharedService].stored_profilePictureLink;
     self.appModel.userFullName = [NSString stringWithFormat:@"%@ %@", [GeneralService sharedService].stored_firstName, [GeneralService sharedService].stored_lastName];
     
-    if ([[GeneralService sharedService].stored_childrenCount isEqual:@""]) {
+    if ([[GeneralService sharedService].stored_childrenCount isEqual:@""]) { //CHECK IF IT'S STRING IN DATABASE
         self.appModel.userChildrenCount = @0;
     } else {
         self.appModel.userChildrenCount = [GeneralService sharedService].stored_childrenCount;

@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 07.02.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "EditVehicleCtrl.h"
@@ -16,7 +16,6 @@
 #import "VehicleResponse.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
-#import <KVNProgress/KVNProgress.h>
 #import "UIImage+FixOrientation.h"
 
 @interface EditVehicleCtrl () <UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CarPickerDelegate> {
@@ -68,6 +67,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     [self.saveBtn setTitle:localizeString(@"Save") forState:UIControlStateNormal];
     
@@ -307,6 +307,12 @@
         [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
             NSLog(@"%s %@ %@", __func__, response, error);
             [self hidePreloader];
+            
+            if (((RootResponse*)response).Status.intValue != 200) {
+                [self.errorHandler showErrorNow:[[((RootResponse*)response).Errors valueForKey:@"Message"] objectAtIndex:0]];
+                return;
+            }
+            
             if (!error && [response isSuccesful]) {
                 completionSaveVehicle();
                 [[GeneralService sharedService] loadProfile];
@@ -329,6 +335,12 @@
         [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
             NSLog(@"%s %@ %@", __func__, response, error);
             [self hidePreloader];
+            
+            if (((RootResponse*)response).Status.intValue != 200) {
+                [self.errorHandler showErrorNow:[[((RootResponse*)response).Errors valueForKey:@"Message"] objectAtIndex:0]];
+                return;
+            }
+            
             if ([response isSuccesful]) {
                 if (!self.newVehicle) {
                     completionSaveVehicle();
@@ -352,7 +364,6 @@
 }
 
 - (IBAction)deleteVehicleAction {
-    
     UIAlertController *alertDel = [UIAlertController alertControllerWithTitle:localizeString(@"Are you sure?") message:[NSString stringWithFormat:@"Deleting a vehicle cannot be undone!"] preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction *actionCancel = [UIAlertAction actionWithTitle:localizeString(@"Cancel") style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         //

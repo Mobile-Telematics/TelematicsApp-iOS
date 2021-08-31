@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.04.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "RetypeVehicleCtrl.h"
@@ -20,7 +20,6 @@
 #import "GalleryCarViewController.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
-#import <KVNProgress/KVNProgress.h>
 #import "UIImage+FixOrientation.h"
 
 @interface RetypeVehicleCtrl () <UIScrollViewDelegate, UITextFieldDelegate, UIImagePickerControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate, CarPickerDelegate> {
@@ -83,7 +82,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    
     [self.saveBtn setTitle:localizeString(@"Save") forState:UIControlStateNormal];
     
     _licensePlateField.colorNormal = [UIColor groupTableViewBackgroundColor];

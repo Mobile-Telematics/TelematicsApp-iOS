@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.04.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "Step1ViewController.h"
@@ -57,6 +57,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     self.counterLocationPicker = 0;
     
@@ -422,13 +423,13 @@
     } else {
         if ([[NMAPositioningManager sharedPositioningManager] startPositioning]) {
             [[NSNotificationCenter defaultCenter] addObserver:self
-                                                     selector:@selector(didUpdatePosition) name:NMAPositioningManagerDidUpdatePositionNotification
+                                                     selector:@selector(didUpdatePositionForClaims) name:NMAPositioningManagerDidUpdatePositionNotification
                                                        object:[NMAPositioningManager sharedPositioningManager]];
         }
     }
 }
 
-- (void)didUpdatePosition {
+- (void)didUpdatePositionForClaims {
     NMAGeoPosition *position = [[NMAPositioningManager sharedPositioningManager] currentPosition];
     _lastKnownCoordinate = position.coordinates;
     
@@ -491,13 +492,14 @@
         return;
         
     } else if ([_locationField.text isEqualToString:@""]) {
-        [_locationField setBackgroundColor:[Color curveRedColorAlpha]];
-        [_locationField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [self->_locationField setBackgroundColor:[Color lightSeparatorColor]];
-            [self->_locationField.layer setBorderColor:[[Color grayColor] CGColor]];
-        });
-        return;
+//        //IF NEEDED LOCATION REQUIRED
+//        [_locationField setBackgroundColor:[Color curveRedColorAlpha]];
+//        [_locationField.layer setBorderColor:[[Color officialRedColor] CGColor]];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self->_locationField setBackgroundColor:[Color lightSeparatorColor]];
+//            [self->_locationField.layer setBorderColor:[[Color grayColor] CGColor]];
+//        });
+//        return;
         
     } else if ([_detailsField.text isEqualToString:@""] || [_detailsField.text isEqualToString:@"Specify accident details including exact location and what happened"]) {
         [_detailsField setBackgroundColor:[Color curveRedColorAlpha]];
@@ -550,7 +552,7 @@
     });
 }
 
-//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDEED HELPERS FOR SOME ELEMENTS
+//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDED HELPERS FOR SOME ELEMENTS
 - (void)lowFontsForOldDevices {
     if (IS_IPHONE_5 || IS_IPHONE_4_OR_LESS) {
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/1.7, 0.0);

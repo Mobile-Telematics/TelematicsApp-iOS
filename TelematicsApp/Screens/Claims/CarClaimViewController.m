@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.04.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "CarClaimViewController.h"
@@ -21,7 +21,7 @@
 @property (weak, nonatomic) IBOutlet UITableView            *tableView;
 @property (weak, nonatomic) IBOutlet UILabel                *tablePlaceholderLbl;
 @property (weak, nonatomic) IBOutlet UIButton               *plusBtn;
-@property (strong, nonatomic) TelematicsAppModel                   *appModel;
+@property (strong, nonatomic) TelematicsAppModel            *appModel;
 @property (nonatomic) NSInteger                             loadSelectedByUserCar;
 
 @end
@@ -33,6 +33,8 @@
     [super viewDidLoad];
     
     [ClaimsService sharedService].CarToken = nil;
+    
+    //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     if (self.appModel.vehicleShortData.count == 0) {
@@ -53,6 +55,12 @@
 
 - (void)reloadTableData {
     [self.tableView reloadData];
+    
+    if (self.appModel.vehicleShortData.count == 0) {
+        self.tablePlaceholderLbl.hidden = NO;
+    } else {
+        self.tablePlaceholderLbl.hidden = YES;
+    }
 }
 
 

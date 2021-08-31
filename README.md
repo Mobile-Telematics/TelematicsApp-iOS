@@ -218,6 +218,39 @@ If the user has deleted the app or wants to log in again - By owning ` deviceTok
 
 ` jwToken`  will allow you to request a user Indicators statistics and scorings, as we discussed and explained earlier.
 
+#### Registration with LoginAuth Framework
+
+By default, we recommend creating a user's deviceToken and get the necessary keys (jwTtoken, refreshToken) with additional parameters in our `UserService API`. This will simplify your further work with `DataHub` and will allow you to distinguish between users in our system.
+Do not forget, you also duplicate this data in your Firebase Database.
+In the future, we can provide you with a `DataHub` web interface with detailed user journeys, statistics and ratings, which will simplify the integration and expand your capabilities.
+
+    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithParametersAndInstanceId:@"instanceId"
+                                                                       instanceKey:@"instanceKey"
+                                                                             email:@"mail@mail.mail"
+                                                                             phone:@"+10000000000"
+                                                                         firstName:@"TELEMATICS_USERNAME"
+                                                                          lastName:@"TELEMATICS_LASTNAME"
+                                                                           address:@"CITY"
+                                                                          birthday:@"2020-04-23T'23:59:59-0400"     // @"yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                                                                            gender:@"Male"    // String Male/Female
+                                                                     maritalStatus:@"1"       // String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
+                                                                     childrenCount:@0       // Number 1-10
+                                                                          clientId:@"idOptional" result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                NSLog(@"UserServiceResponce deviceToken %@", deviceToken);
+                NSLog(@"UserServiceResponce jwToken %@", jwToken);
+                NSLog(@"UserServiceResponce refreshToken %@", refreshToken);
+    }];
+
+You can disable the transfer of the user profile to our UserService API using a simplified registration method (presented in the Telematics App source code):
+
+    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:@"instanceId"
+                                                           instanceKey:@"instanceKey"
+                                                                result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                NSLog(@"LoginAuthResponce deviceToken %@", deviceToken);
+                NSLog(@"LoginAuthResponce jwToken %@", jwToken);
+                NSLog(@"LoginAuthResponce refreshToken %@", refreshToken);
+    }];
+
 ## Dashboard features
 
 Our goal is to provide your users with a user-friendly interface to get the best user experience.
@@ -411,22 +444,4 @@ Happy coding!
 
 
 ###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

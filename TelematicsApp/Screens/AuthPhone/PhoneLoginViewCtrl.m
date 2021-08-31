@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 14.06.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "PhoneLoginViewCtrl.h"
@@ -37,7 +37,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference];
+    [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference]; //GET FIREBASE DATABASE IN CACHE
     
     self.loggedNameLbl.textColor = [Color officialMainAppColor];
     
@@ -93,11 +93,6 @@
     });
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-    [super touchesBegan:touches withEvent:event];
-    [self.view endEditing:YES];
-}
-
 
 #pragma mark Actions
 
@@ -130,10 +125,25 @@
             if (userProfileSnapshot.value == [NSNull null]) {
                 
                 NSLog(@"No user data in Firebase Database! Create this if deleted NEW USER!");
+                
+                //LOGINAUTH FRAMEWORK
                 //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
-                [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
-                                                                          instanceKey:[Configurator sharedInstance].instanceKey
-                                                                               result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                
+                NSString *finishedPhoneNumber = self.enteredPhone ? self.enteredPhone : @"";
+                
+                [[LoginAuthCore sharedManager] createDeviceTokenForUserWithParametersAndInstanceId:[Configurator sharedInstance].instanceId
+                                                                instanceKey:[Configurator sharedInstance].instanceKey
+                                                                      email:@""
+                                                                      phone:finishedPhoneNumber
+                                                                  firstName:@""
+                                                                   lastName:@""
+                                                                    address:@""
+                                                                   birthday:@""
+                                                                     gender:@""                 //   String Male/Female
+                                                              maritalStatus:@""                 //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
+                                                              childrenCount:@0                  //   count 1-10
+                                                                   clientId:@""
+                                                                     result:^(NSString* deviceToken, NSString* jwToken, NSString* refreshToken) {
 
                     //STORE IN SHAREDSERVICE
                     [GeneralService sharedService].device_token_number = deviceToken;
@@ -149,7 +159,7 @@
 
                     //CHECK ALL AT NIL
                     //FIREBASE DATABASE DID'T WORK WITH NIL
-                    NSString *finishedPhoneNumber = self.enteredPhone ? self.enteredPhone : @"";
+                    //NSString *finishedPhoneNumber = self.enteredPhone ? self.enteredPhone : @"";
                     [GeneralService sharedService].stored_userPhone = finishedPhoneNumber;
 
                     // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
@@ -181,7 +191,7 @@
                     [GeneralService sharedService].stored_address = @"";
                     [GeneralService sharedService].stored_gender = @"";
                     [GeneralService sharedService].stored_maritalStatus = @"";
-                    [GeneralService sharedService].stored_childrenCount = @"";
+                    [GeneralService sharedService].stored_childrenCount = @0;
                     [GeneralService sharedService].stored_clientId = @"";
 
                     //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST AFTER STORE SNAPSHOT IN FIREBASE
@@ -223,12 +233,25 @@
                 //
                 if (allUsersData[@"deviceToken"] == nil || [allUsersData[@"deviceToken"] isEqual:@""]) {
                     
-                    //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST
-                    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
-                                                                              instanceKey:[Configurator sharedInstance].instanceKey
-                                                                                   result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                    NSString *phoneSelected = self.enteredPhone ? self.enteredPhone : @"";
+                    
+                    //LOGINAUTH FRAMEWORK
+                    //DATABASE ERROR - GET NEW DEVICETOKEN FOR USER - CREATING USER AGAIN IF LOST!
+                    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithParametersAndInstanceId:[Configurator sharedInstance].instanceId
+                                                                    instanceKey:[Configurator sharedInstance].instanceKey
+                                                                          email:@""
+                                                                          phone:phoneSelected
+                                                                      firstName:@""
+                                                                       lastName:@""
+                                                                        address:@""
+                                                                       birthday:@""
+                                                                         gender:@""                 //   String Male/Female
+                                                                  maritalStatus:@""                 //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
+                                                                  childrenCount:@0                  //   count 1-10
+                                                                       clientId:@""
+                                                                         result:^(NSString* deviceToken, NSString* jwToken, NSString* refreshToken) {
 
-                        //STORE IN SHAREDSERVICE
+                        //STORE IN OUR SHAREDSERVICE MAIN USER TOKENS
                         [GeneralService sharedService].device_token_number = deviceToken;
                         [GeneralService sharedService].jwt_token_number = jwToken;
                         [GeneralService sharedService].refresh_token_number = refreshToken;
@@ -236,7 +259,6 @@
 
                         //CHECK ALL AT NIL
                         //FIREBASE DATABASE DID'T WORK WITH NIL
-                        NSString *phoneSelected = self.enteredPhone ? self.enteredPhone : @"";
                         [GeneralService sharedService].stored_userPhone = phoneSelected;
 
                         NSString *email = [GeneralService sharedService].stored_userEmail ? [GeneralService sharedService].stored_userEmail : @"";
@@ -246,7 +268,7 @@
                         NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
                         NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
                         NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
-                        NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+                        NSNumber *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @0;
                         NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
                         NSString *profileImg = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
 
@@ -279,8 +301,9 @@
                         
                 } else {
                     
+                    //LOGINAUTH FRAMEWORK
                     //ELSE GET JWTOKEN & REFRESHTOKEN FOR EXIST USER BY DEVICETOKEN SAVED FROM FIREBASE DATABASE
-                    //LOGIN EXIST USER IN YOUR APP
+                    //LOGIN EXIST USER IN YOUR APP AGAIN
                     
                     [[LoginAuthCore sharedManager] getJWTokenForUserWithDeviceToken:[GeneralService sharedService].device_token_number
                                                                          instanceId:[Configurator sharedInstance].instanceId
@@ -309,24 +332,8 @@
     }];
 }
 
-- (void)errorPhoneLoginFunction {
-    if (IS_IPHONE_5 || IS_IPHONE_4)
-        self.enterPassLbl.font = [Font medium10];
-    
-    self.enterPassLbl.text = localizeString(@"validation_invalid_password");
-    self.enterPassLbl.textColor = [Color officialRedColor];
-    [self.loginBtn setTitle:localizeString(@"TRY AGAIN") forState:UIControlStateNormal];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        if (IS_IPHONE_5 || IS_IPHONE_4)
-            self.enterPassLbl.font = [Font regular12];
-        
-        self.enterPassLbl.text = localizeString(@"Enter your password from sms");
-        self.enterPassLbl.textColor = [Color darkGrayColor];
-    });
-}
-
 - (IBAction)getNewPassword:(id)sender {
-    //TODO FIREBASE RESTORE
+    //TODO FIREBASE RESTORE IF NEEDED
 }
 
 - (void)runPasswordAlert {
@@ -362,7 +369,7 @@
     [self.errorHandler dismissActiveNotifNow];
 
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        //ANIMATION VALUE
+        //ANIMATION VALUE FOR LOGO
         double coefPhoto = 0.38;
         float coefLbl = 170.0f;
         if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
@@ -405,6 +412,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)codeField {
     
+    //ANIMATION VALUE FOR END EDITING
     float coefLbl = 320.0f;
     if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
         coefLbl = 463.0f;
@@ -444,6 +452,11 @@
     [self.passField resignFirstResponder];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [super touchesBegan:touches withEvent:event];
+    [self.view endEditing:YES];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     if (textField == self.passField) {
         [self.view endEditing:YES];
@@ -455,6 +468,26 @@
     }
     return YES;
 }
+
+
+//DEPRECATED
+//- (void)errorPhoneLoginFunction {
+//    if (IS_IPHONE_5 || IS_IPHONE_4)
+//        self.enterPassLbl.font = [Font medium10];
+//
+//    self.enterPassLbl.text = localizeString(@"validation_invalid_password");
+//    self.enterPassLbl.textColor = [Color officialRedColor];
+//    [self.loginBtn setTitle:localizeString(@"TRY AGAIN") forState:UIControlStateNormal];
+//
+//    //UPDATE ERROR LABEL AFTER 4 SECONDS
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        if (IS_IPHONE_5 || IS_IPHONE_4)
+//            self.enterPassLbl.font = [Font regular12];
+//
+//        self.enterPassLbl.text = localizeString(@"Enter your password from sms");
+//        self.enterPassLbl.textColor = [Color darkGrayColor];
+//    });
+//}
 
 
 @end

@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.04.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "Step3ViewController.h"
@@ -311,7 +311,7 @@
     });
 }
 
-//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDEED HELPERS FOR SOME ELEMENTS
+//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDED HELPERS FOR SOME ELEMENTS
 - (void)lowFontsForOldDevices {
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2, 0.0);

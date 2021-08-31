@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 28.05.20.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "AFNetworking.h"
@@ -239,10 +239,12 @@
     
     if (!self.appModel.notFirstRunApp) {
         [self showPreloader];
+        
         [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
         self.appModel = [TelematicsAppModel MR_createEntity];
         self.appModel.current_user = @1;
         self.appModel.notFirstRunApp = YES;
+        //CREATE USER COREDATA MODEL
         self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
         
         self.disableCounting = YES;
@@ -2503,7 +2505,7 @@
 }
 
 
-//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDEED HELPERS FOR SOME ELEMENTS
+//iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDED HELPERS FOR SOME ELEMENTS
 - (void)lowFontsForOldDevices {
     self.needDistanceLabel.font = [Font heavy21];
     

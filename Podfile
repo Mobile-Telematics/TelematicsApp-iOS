@@ -6,7 +6,7 @@ use_frameworks!
 
 def available_pods
   
-    pod 'RaxelPulse', '5.10' #OUR NEW SDK 5.10 RELEASE
+    pod 'RaxelPulse', '5.10' #TELEMATICS SDK 5.10 NEW RELEASE
     pod 'HEREMaps'
     pod 'Firebase/Core'
     pod ‘Firebase/Database’
@@ -17,21 +17,20 @@ def available_pods
     pod 'CocoaLumberjack/Swift'
     pod 'SDWebImage', '5.9.0'
     pod 'GKImagePicker@robseward'
+    pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord'
     pod 'SystemServices'
-    pod 'KVNProgress'
+    pod 'CMTabbarView', '0.2.0'
+    pod 'SHSPhoneComponent'
+    pod 'libPhoneNumber-iOS', '~> 0.8'
+    pod "IQDropDownTextField"
+    pod "RMessage"
+    pod "IQMediaPickerController"
+    pod 'KDLoadingView'
+    pod 'ImagePicker'
+    pod 'YYWebImage'
     pod 'UICountingLabel'
     pod 'UIActionSheet+Blocks'
     pod 'UIAlertView+Blocks'
-    pod 'CMTabbarView', '0.2.0'
-    pod 'YYWebImage'
-    pod 'SHSPhoneComponent'
-    pod "IQDropDownTextField"
-    pod "RMessage"
-    pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord'
-    pod "IQMediaPickerController"
-    pod 'libPhoneNumber-iOS', '~> 0.8'
-    pod 'KDLoadingView'
-    pod 'ImagePicker'
     pod 'CircleTimer', '0.2.0'
     pod 'GoogleMaps', '3.9.0'
     pod 'GooglePlaces', '3.9.0'

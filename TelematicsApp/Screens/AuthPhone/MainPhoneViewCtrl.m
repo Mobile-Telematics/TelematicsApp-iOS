@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 14.11.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "MainPhoneViewCtrl.h"
@@ -18,7 +18,6 @@
 #import "TelematicsAppRegPopup.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
-#import <KVNProgress/KVNProgress.h>
 #import "libPhoneNumber_iOS/NBPhoneNumberUtil.h"
 #import "libPhoneNumber_iOS/NBPhoneNumber.h"
 #import "Helpers.h"
@@ -175,6 +174,7 @@
         self.usePhoneLbl.textColor = [Color officialDarkRedColor];
         self.usePhoneLbl.font = [Font regular19];
         
+        //UPDATE ERROR LABEL AFTER 4 SECONDS
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.usePhoneLbl.text = localizeString(@"Use your phone number");
             self.usePhoneLbl.textColor = [Color officialGreenColor];
@@ -205,11 +205,14 @@
                                             completion:^(NSString * _Nullable verificationID, NSError * _Nullable error) {
      
         if (error) {
+            NSLog(@"Firebase Error: %@", error);
+            
             [self dismissKeyboard];
             self.usePhoneLbl.text = localizeString(@"Temporarily unavailable. Try again in a few minutes");
             self.usePhoneLbl.font = [Font regular19];
-            
             self.usePhoneLbl.textColor = [Color officialDarkRedColor];
+            
+            //UPDATE ERROR LABEL AFTER 4 SECONDS
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 self.usePhoneLbl.text = localizeString(@"Use your phone number");
                 self.usePhoneLbl.textColor = [Color officialGreenColor];
@@ -220,8 +223,10 @@
         
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         [defaults setObject:verificationID forKey:@"authVerificationID"];
-        //'NSString *verificationIDrestore = [defaults stringForKey:@"authVerificationID"]; //IF NEEDED FOR NEXT FIREBASE AUTH ALL AROUND
         
+        //NSString *verificationIDrestore = [defaults stringForKey:@"authVerificationID"]; //IF NEEDED FOR NEXT FIREBASE AUTH ALL AROUND SERVICES
+        
+        //GO TO PHONE LOGIN
         PhoneLoginViewCtrl* logIn = [self.storyboard instantiateViewControllerWithIdentifier:@"PhoneLoginViewCtrl"];
         logIn.enteredPhone = checkData.Phone;
         logIn.savedVerificationId = verificationID;

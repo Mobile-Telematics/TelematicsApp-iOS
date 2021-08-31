@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 09.06.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "AppDelegate.h"
@@ -56,6 +56,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     //SETUP APP GENERAL CONFIGURATOR.PLIST
     [Configurator setMainAppConfigurationFromPlist];
     
+    //CREATE COREDATA MODEL
     [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
     if (![defaults_object(@"TelematicsAppShouldMigrateCoreDataV10") boolValue]) {
         [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
@@ -93,6 +94,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
         }
     } else {
         
+        //FIRST RUN
         NSLog(@"%@", [GeneralService sharedService].device_token_number);
         [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number; //REQUIRED
         

@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 17.08.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import <QuartzCore/QuartzCore.h>
@@ -609,6 +609,12 @@
             } else {
                 m.x = (p.x - previousPoint.x) / 2;
                 m.y = (p.y - previousPoint.y) / 2;
+            }
+            
+            //SPECIAL NOT VELOCITY ON GRAPH IF 3 RESULTS IN DATA
+            if (_data.count == 3) {
+                m.x = (nextPoint.x - previousPoint.x) / 14;
+                m.y = (nextPoint.y - previousPoint.y) / 14;
             }
             
             controlPoint[1].x = p.x - m.x * _bezierSmoothingTension;

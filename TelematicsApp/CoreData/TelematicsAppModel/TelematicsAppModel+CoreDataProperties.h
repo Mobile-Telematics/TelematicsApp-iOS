@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 28.10.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "TelematicsAppModel.h"
@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *userAddress;
 @property (nullable, nonatomic, retain) NSString *userGender;
 @property (nullable, nonatomic, retain) NSString *userMaritalStatus;
-@property (nullable, nonatomic, retain) NSString *userChildrenCount;
+@property (nullable, nonatomic, retain) NSNumber *userChildrenCount;
 @property (nullable, nonatomic, retain) NSString *userClientId;
 @property (nullable, nonatomic, retain) NSString *userProfilePictureLink;
 @property (nullable, nonatomic, retain) NSData *userPhotoData;

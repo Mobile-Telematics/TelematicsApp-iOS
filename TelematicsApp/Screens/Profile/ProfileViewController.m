@@ -3,14 +3,13 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 26.11.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "ProfileViewController.h"
 #import "UserImagePickerViewController.h"
 #import "SettingsViewController.h"
 #import "ProfilePopupDelegate.h"
-#import "ProfileLicensePopup.h"
 #import "LicenseCell.h"
 #import "CarCell.h"
 #import "VehicleObject.h"
@@ -24,7 +23,6 @@
 #import "Helpers.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
-#import "KVNProgress.h"
 
 
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, UserImagePickerViewControllerDelegate>
@@ -192,6 +190,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0) {
+        
+        //PROFILE OR LICENSE CELL
         LicenseCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LicenseCell"];
         
         if (!cell) {
@@ -217,7 +217,10 @@
         }
         
         return cell;
+        
     } else {
+        
+        //CAR CELL
         CarCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CarCell"];
         if (!cell) {
             cell = [[CarCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CarCell"];
@@ -382,8 +385,10 @@
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.avatarImg.image = image;
         
-        //USER PROFILE PICTURE TO NSDATA
+        //USER PROFILE PICTURE TO NSDATA CONVERT
         NSData *imageData = [UIImage scaleImageForAvatar:self.avatarImg.image];
+        
+        //STORE IN OUR COREDATA
         self.appModel.userPhotoData = imageData;
         [CoreDataCoordinator saveCoreDataCoordinatorContext];
         
@@ -395,6 +400,7 @@
         // Create a storage reference from our storage service
         FIRStorageReference *storageRef = [storage reference];
         
+        //Store at filename = firebase_user_id for sample
         NSString *fileName = [NSString stringWithFormat:@"profile_images/%@.png", [GeneralService sharedService].firebase_user_id];
 
         // Create a reference to the file you want to upload
@@ -406,7 +412,9 @@
                                                    completion:^(FIRStorageMetadata *metadata,
                                                                 NSError *error) {
           if (error != nil) {
-            // Uh-oh, an error occurred!
+              // Uh-oh, an error occurred!
+              NSLog(@"UPLOAD NOT WORKING FROM SIMULATOR, %@", error);
+              [self hidePreloader];
           } else {
               // You can also access to download URL after upload.
               [riversRef downloadURLWithCompletion:^(NSURL * _Nullable URL, NSError * _Nullable error) {
@@ -418,7 +426,6 @@
                       
                       NSLog(@"STORE FINAL PROFILE PICTURE URL%@", downloadURL.absoluteString);
                       
-                      
                       NSString *email = [GeneralService sharedService].stored_userEmail ? [GeneralService sharedService].stored_userEmail : @"";
                       NSString *phone = [GeneralService sharedService].stored_userPhone ? [GeneralService sharedService].stored_userPhone : @"";
                       NSString *firstName = [GeneralService sharedService].stored_firstName ? [GeneralService sharedService].stored_firstName : @"";
@@ -427,10 +434,10 @@
                       NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
                       NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
                       NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
-                      NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+                      NSNumber *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @0;
                       NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
-                      //NSString *profilePictureLink = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
                       
+                      //STORE PROFILE PICTURE LINK
                       [GeneralService sharedService].stored_profilePictureLink = downloadURL.absoluteString;
                       NSLog(@"profilePictureLink %@", [GeneralService sharedService].stored_profilePictureLink);
                       
@@ -453,6 +460,7 @@
                       
                       [uploadTask cancel];
                       
+                      //LOAD UPDATED USER PROFILE
                       [[GeneralService sharedService] loadProfile];
                       [self setMainUserAccount];
                       
@@ -480,6 +488,7 @@
 }
 
 - (IBAction)settingsBtnAction:(id)sender {
+    //OPEN SETTINGS
     SettingsViewController *settingsVC = [[UIStoryboard storyboardWithName:@"Settings" bundle:nil] instantiateInitialViewController];
     [self presentViewController:settingsVC animated:YES completion:nil];
 }

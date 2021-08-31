@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 14.06.21.
-//  Copyright © 2019-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "EmailLoginViewCtrl.h"
@@ -28,7 +28,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference];
+    [GeneralService sharedService].realtimeDatabase = [[FIRDatabase database] reference]; //GET FIREBASE DATABASE IN CACHE
     
     self.loggedNameLbl.textColor = [Color officialMainAppColor];
     
@@ -149,8 +149,9 @@
                                                     
                                             } else {
                                                 
+                                                //LOGINAUTH FRAMEWORK
                                                 //ELSE GET JWTOKEN & REFRESHTOKEN FOR EXIST USER BY DEVICETOKEN SAVED FROM FIREBASE DATABASE
-                                                //LOGIN EXIST USER IN YOUR APP
+                                                //LOGIN EXIST USER IN YOUR APP IF NO ERRORS
                                                 
                                                 [[LoginAuthCore sharedManager] getJWTokenForUserWithDeviceToken:[GeneralService sharedService].device_token_number
                                                                                                      instanceId:[Configurator sharedInstance].instanceId
@@ -180,7 +181,7 @@
         
     } else {
         
-        //CREATE NEW USER IN APP
+        //CREATE NEW USER IN APP WITH FIREBASE SERVICE
         [[FIRAuth auth] createUserWithEmail:self.enteredEmail password:self.passField.text completion:^(FIRAuthDataResult * _Nullable authResult, NSError * _Nullable error) {
             if (error) {
                 [GeneralService alert:error.localizedDescription title:@"Message"];
@@ -188,10 +189,27 @@
                 return;
             } else {
 
-                //REGISTRATION - CREATE NEW DEVICETOKEN FOR USER
-                [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
-                                                                          instanceKey:[Configurator sharedInstance].instanceKey
-                                                                               result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
+                //LOGINAUTH FRAMEWORK
+                //REGISTRATION - CREATE NEW DEVICETOKEN, JWTOKEN, REFRESHTOKEN FOR USER FOR CALLING INDICATORS SERVICE & OTHER API
+                
+                [[LoginAuthCore sharedManager] createDeviceTokenForUserWithParametersAndInstanceId:[Configurator sharedInstance].instanceId
+                                                                instanceKey:[Configurator sharedInstance].instanceKey
+                                                                      email:self.enteredEmail
+                                                                      phone:@""
+                                                                  firstName:@""
+                                                                   lastName:@""
+                                                                    address:@""
+                                                                   birthday:@""
+                                                                     gender:@""                 //   String Male/Female
+                                                              maritalStatus:@""                 //   String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
+                                                              childrenCount:@0                  //   count 1-10
+                                                                   clientId:@""
+                                                                     result:^(NSString* deviceToken, NSString* jwToken, NSString* refreshToken) {
+                    
+                //LOGINAUTH FRAMEWORK - SIMPLE WAY IF NEEDED
+                //[[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
+                //                                                          instanceKey:[Configurator sharedInstance].instanceKey
+                //                                                               result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
                     
                     //STORE IN SHAREDSERVICE
                     [GeneralService sharedService].device_token_number = deviceToken;
@@ -208,7 +226,7 @@
                         }
                         
                         // DO NOT STORE JWTOKEN & REFRESHTOKEN IN FIREBASE DATABASE! IT IS NOT SAFE!
-                        // STORE OTHER USER INFO IN DATABASE
+                        // STORE OTHER USER INFO IN FIREBASE DATABASE
                         [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
                                                    child:authResult.user.uid] setValue:@{@"deviceToken": [GeneralService sharedService].device_token_number,
                                                                                          @"userId": authResult.user.uid,
@@ -237,7 +255,7 @@
                         [GeneralService sharedService].stored_address = @"";
                         [GeneralService sharedService].stored_gender = @"";
                         [GeneralService sharedService].stored_maritalStatus = @"";
-                        [GeneralService sharedService].stored_childrenCount = @"";
+                        [GeneralService sharedService].stored_childrenCount = @0;
                         [GeneralService sharedService].stored_clientId = @"";
                         
                         //LOGIN USER IN APP
@@ -258,11 +276,13 @@
 
 - (void)createUserIfFirebaseDatabaseError:(FIRAuthDataResult *)existUser {
     
+    //LOGINAUTH FRAMEWORK
+    //REGISTRATION - CREATE NEW DEVICETOKEN, JWTOKEN, REFRESHTOKEN FOR USER FOR CALLING INDICATORS SERVICE & OTHER API
     [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:[Configurator sharedInstance].instanceId
                                                               instanceKey:[Configurator sharedInstance].instanceKey
                                                                    result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
 
-        //STORE IN SHAREDSERVICE
+        //STORE IN OUR SHAREDSERVICE MAIN USER TOKENS
         [GeneralService sharedService].device_token_number = deviceToken;
         [GeneralService sharedService].jwt_token_number = jwToken;
         [GeneralService sharedService].refresh_token_number = refreshToken;
@@ -280,10 +300,11 @@
         NSString *address = [GeneralService sharedService].stored_address ? [GeneralService sharedService].stored_address : @"";
         NSString *gender = [GeneralService sharedService].stored_gender ? [GeneralService sharedService].stored_gender : @"";
         NSString *marital = [GeneralService sharedService].stored_maritalStatus ? [GeneralService sharedService].stored_maritalStatus : @"";
-        NSString *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @"";
+        NSNumber *children = [GeneralService sharedService].stored_childrenCount ? [GeneralService sharedService].stored_childrenCount : @0;
         NSString *clientId = [GeneralService sharedService].stored_clientId ? [GeneralService sharedService].stored_clientId : @"";
         NSString *profileImg = [GeneralService sharedService].stored_profilePictureLink ? [GeneralService sharedService].stored_profilePictureLink : @"";
 
+        //STORE IN FIREBASE DATANASE
         [[[[GeneralService sharedService].realtimeDatabase child:@"users"]
                                    child:existUser.user.uid] setValue:@{@"deviceToken": deviceToken,
                                                                         @"userId": existUser.user.uid,
@@ -326,6 +347,8 @@
     self.enterPassLbl.text = localizeString(@"validation_invalid_email_password");
     self.enterPassLbl.textColor = [Color officialRedColor];
     [self.loginBtn setTitle:localizeString(@"TRY AGAIN") forState:UIControlStateNormal];
+    
+    //UPDATE ERROR LABEL AFTER 4 SECONDS
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         if (IS_IPHONE_5 || IS_IPHONE_4)
             self.enterPassLbl.font = [Font regular12];
