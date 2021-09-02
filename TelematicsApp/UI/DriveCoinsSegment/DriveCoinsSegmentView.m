@@ -61,7 +61,6 @@
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:17];
             }
             btn.tag = DCS_SEG_BTN_TAG + i;
-            //btn.frame = CGRectMake(i *width, 1, width, frame.size.height - 2);
             btn.frame = CGRectMake(i *width, -5, width, frame.size.height - 2);
             
             if (i == _selectIndex) {

@@ -611,12 +611,6 @@
                 m.y = (p.y - previousPoint.y) / 2;
             }
             
-            //SPECIAL NOT VELOCITY ON GRAPH IF 3 RESULTS IN DATA
-            if (_data.count == 3) {
-                m.x = (nextPoint.x - previousPoint.x) / 14;
-                m.y = (nextPoint.y - previousPoint.y) / 14;
-            }
-            
             controlPoint[1].x = p.x - m.x * _bezierSmoothingTension;
             controlPoint[1].y = p.y - m.y * _bezierSmoothingTension;
             

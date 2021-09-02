@@ -59,7 +59,7 @@
             if (IS_IPHONE_5 || IS_IPHONE_4) {
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:11];
             } else if (IS_IPHONE_8 || IS_IPHONE_11 || IS_IPHONE_12_PRO) {
-                btn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
+                btn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
             } else {
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
             }
@@ -78,12 +78,6 @@
             
             [btn addTarget:self action:@selector(chooseIndex:) forControlEvents:UIControlEventTouchUpInside];
             [_scrollView addSubview:btn];
-            
-//            if (i > 0 && i<items.count) {
-//                UILabel *middleLine  = [[UILabel alloc] initWithFrame:CGRectMake(width * i - 0.25, 8, 0.5, _scrollView.height - 8*2)];
-//                middleLine.backgroundColor = UIColorFromHex(0xe6e6e6);
-//                [_scrollView addSubview:middleLine];
-//            }
         }
     }
     return self;
@@ -152,7 +146,7 @@
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:10];
                 if (IS_IPHONE_5 || IS_IPHONE_4) {
                     btn.titleLabel.font = [UIFont boldSystemFontOfSize:11];
-                } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+                } else if (IS_IPHONE_11) {
                     btn.titleLabel.font = [UIFont boldSystemFontOfSize:13];
                 } else {
                     btn.titleLabel.font = [UIFont boldSystemFontOfSize:14];

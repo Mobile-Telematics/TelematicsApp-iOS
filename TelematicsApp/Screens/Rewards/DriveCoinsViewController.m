@@ -729,6 +729,17 @@
         }
     }
     
+    if (chartData.count == 2) {
+        int firstValue = [[chartData objectAtIndex:0] intValue];
+        int secondValue = [[chartData objectAtIndex:1] intValue];
+        int fakeValueAverage = firstValue + secondValue / 2;
+        int fakeValueAdditional = firstValue + secondValue / 6;
+        
+        int finValue = fakeValueAverage + fakeValueAdditional;
+        NSNumber *needNumber = [NSNumber numberWithInteger:finValue];
+        [chartData insertObject:needNumber atIndex:1];
+    }
+    
     //SAMPLE DEMO DAYS IF NO DATA
     NSMutableArray* daysWeek = [NSMutableArray arrayWithObjects:
                                 localizeString(@"Monday"),
@@ -742,6 +753,7 @@
         daysWeek = [NSMutableArray arrayWithObjects:localizeString(@"Monday"), localizeString(@"Tuesday"), localizeString(@"Wednesday"), localizeString(@"Thursday"), localizeString(@"Friday"), localizeString(@"Saturday"), @"", nil];
     } else {
         daysWeek = [NSMutableArray arrayWithCapacity:self.coinsDailyDetails.Result.count];
+        
         for (int i=0; i < self.coinsDailyDetails.Result.count; i++) {
             
             CoinsDetailsObject *ccObj = self.coinsDailyDetails.Result[i];
@@ -762,6 +774,10 @@
                 daysWeek[i] = dateStartFormat;
             }
         }
+    }
+    
+    if (daysWeek.count == 2) {
+        [daysWeek insertObject:@"" atIndex:1];
     }
     
     _coinsChartView.verticalGridStep = 1;
