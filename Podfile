@@ -8,7 +8,7 @@ def available_pods
   
     pod 'RaxelPulse', '5.10' #TELEMATICS SDK 5.10 NEW RELEASE
     pod 'HEREMaps'
-    pod 'Firebase/Core'
+    pod 'Firebase/Core', '8.6.1'
     pod ‘Firebase/Database’
     pod 'Firebase/Auth'
     pod 'Firebase/Storage'
@@ -23,7 +23,6 @@ def available_pods
     pod 'SHSPhoneComponent'
     pod 'libPhoneNumber-iOS', '~> 0.8'
     pod "IQDropDownTextField"
-    pod "RMessage"
     pod "IQMediaPickerController"
     pod 'KDLoadingView'
     pod 'ImagePicker'
@@ -31,6 +30,7 @@ def available_pods
     pod 'UICountingLabel'
     pod 'UIActionSheet+Blocks'
     pod 'UIAlertView+Blocks'
+    pod "RMessage", '2.3.4'
     pod 'CircleTimer', '0.2.0'
     pod 'GoogleMaps', '3.9.0'
     pod 'GooglePlaces', '3.9.0'

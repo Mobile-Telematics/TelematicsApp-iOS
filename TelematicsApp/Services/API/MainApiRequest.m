@@ -251,7 +251,7 @@
 
 #pragma mark Events Browse on Trip Details screen
 
-- (void)trackBrowseStart:(NSString *)trackToken {
+- (void)trackEventsStartBrowse:(NSString *)trackToken {
     NSString *URLStr = [NSString stringWithFormat:@"https://mobilesdk.raxeltelematic.com/mobilesdk/stage/track/browsestart/v1/%@", trackToken];
     NSError *error;
     NSMutableURLRequest *request = [self.sessionManager.requestSerializer requestWithMethod:POST URLString:URLStr parameters:nil error:&error];

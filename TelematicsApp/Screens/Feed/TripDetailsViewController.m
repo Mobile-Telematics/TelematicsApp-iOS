@@ -118,7 +118,7 @@
     __weak typeof(claimPopup) weakClaimPopup = claimPopup;
     typeof(self) __weak weakSelf = self;
     self.popTip.wrongEventTapHandler = ^{
-        [weakSelf startTrackBrowsing];
+        [weakSelf startEventsTrackBrowsing];
         __strong typeof(weakClaimPopup) strongWeakPopup = weakClaimPopup;
         [strongWeakPopup showClaimAlertPopup:weakSelf.selectedEventTypeMarker];
     };
@@ -141,10 +141,6 @@
     self.mapView.hidden = YES;
     
     [self loadMap];
-    
-    if ([Configurator sharedInstance].needEventsReviewButton) {
-        [self startTrackBrowsing];
-    }
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -907,14 +903,14 @@
 
 #pragma mark - Track Browsing
 
-- (void)startTrackBrowsing {
+- (void)startEventsTrackBrowsing {
     [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
         if (!error && [response isSuccesful]) {
-            //OK
+            NSLog(@"Success track events browsing");
         } else {
-            //Error
+            NSLog(@"Error track events browsing");
         }
-    }] trackBrowseStart:self.trackToken];
+    }] trackEventsStartBrowse:self.trackToken];
 }
 
 - (void)wrongEventBrowsingNoEvent {

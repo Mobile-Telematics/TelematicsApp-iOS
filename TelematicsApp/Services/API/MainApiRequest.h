@@ -74,7 +74,7 @@
 
 #pragma mark Browse Track Events On Trip Details Screen
 
-- (void)trackBrowseStart:(NSString *)trackToken;
+- (void)trackEventsStartBrowse:(NSString *)trackToken;
 - (void)reportWrongEventNoEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType date:(NSString *)date;
 - (void)reportWrongEventNewEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType newEventType:(NSString *)newEventType date:(NSString *)date;
 

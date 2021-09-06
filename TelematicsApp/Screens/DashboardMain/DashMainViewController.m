@@ -75,7 +75,7 @@
 @property (weak, nonatomic) IBOutlet UIView                     *mainDashboardView;
 @property (weak, nonatomic) IBOutlet UIImageView                *mainBackgroundView;
 
-@property (weak, nonatomic) IBOutlet UIView                     *needDistanceView;
+@property (weak, nonatomic) IBOutlet UIView                     *demoDashboardView;
 @property (weak, nonatomic) IBOutlet UIImageView                *needDistanceDemoImgView;
 @property (weak, nonatomic) IBOutlet UIView                     *needDistanceAverageStatView;
 @property (weak, nonatomic) IBOutlet UILabel                    *needDistanceLabel;
@@ -401,15 +401,15 @@
         }
         if (userRealDistance < requiredDistance) {
             self.mainDashboardView.hidden = YES;
-            self.needDistanceView.hidden = NO;
+            self.demoDashboardView.hidden = NO;
         } else {
             self.mainDashboardView.hidden = NO;
-            self.needDistanceView.hidden = YES;
+            self.demoDashboardView.hidden = YES;
         }
     } else {
         if (![defaults_object(@"userLogOuted") boolValue]) {
             self.mainDashboardView.hidden = NO;
-            self.needDistanceView.hidden = YES;
+            self.demoDashboardView.hidden = YES;
         } else {
             BOOL isMotionEnabled = [[WiFiGPSChecker sharedChecker] motionAvailable];
             BOOL isGPSAuthorized = ([CLLocationManager locationServicesEnabled]
@@ -417,10 +417,10 @@
                                         == kCLAuthorizationStatusAuthorizedAlways));
             if (isGPSAuthorized || isMotionEnabled) {
                 self.mainDashboardView.hidden = YES;
-                self.needDistanceView.hidden = NO;
+                self.demoDashboardView.hidden = NO;
             } else {
                 self.mainDashboardView.hidden = NO;
-                self.needDistanceView.hidden = YES;
+                self.demoDashboardView.hidden = YES;
             }
         }
     }
@@ -1383,7 +1383,7 @@
         
         if (permissionPopup.disabledGPS || permissionPopup.disabledMotion || permissionPopup.disabledPush) {
             self.mainDashboardView.hidden = NO;
-            self.needDistanceView.hidden = YES;
+            self.demoDashboardView.hidden = YES;
             
             if ([defaults_object(@"userDoneWizard") boolValue]) {
                 float requiredDistance = self.appModel.statDistanceForScoring.floatValue;
@@ -1394,13 +1394,15 @@
                 
                 if (userRealDistance < requiredDistance) {
                     self.mainDashboardView.hidden = YES;
-                    self.needDistanceView.hidden = NO;
+                    self.demoDashboardView.hidden = NO;
                     [self updateMainConstraints];
                 } else {
                     self.mainDashboardView.hidden = NO;
-                    self.needDistanceView.hidden = YES;
+                    self.demoDashboardView.hidden = YES;
                     [self updateMainConstraints];
                 }
+                
+                //SHOW PERMISSION POPUP ONLY ONCE
                 [permissionPopup showPopup];
                 defaults_set_object(@"permissionPopupShowing", @(YES));
             } else {
@@ -1417,6 +1419,8 @@
                         } else {
                             self->permissionPopup.disabledMotion = YES;
                         }
+                        
+                        //SHOW PERMISSION POPUP ONLY ONCE
                         [permissionPopup showPopup];
                         defaults_set_object(@"permissionPopupShowing", @(YES));
                     }
@@ -1433,10 +1437,10 @@
             
             if (userRealDistance < requiredDistance) {
                 self.mainDashboardView.hidden = YES;
-                self.needDistanceView.hidden = NO;
+                self.demoDashboardView.hidden = NO;
             } else {
                 self.mainDashboardView.hidden = NO;
-                self.needDistanceView.hidden = YES;
+                self.demoDashboardView.hidden = YES;
                 [self updateMainConstraints];
             }
         }
@@ -1444,7 +1448,9 @@
         if ([defaults_object(@"userDidNotNeedTrackingOnRequired") boolValue]) {
             if (permissionPopup.disabledGPS || permissionPopup.disabledMotion || permissionPopup.disabledPush) {
                 self.mainDashboardView.hidden = NO;
-                self.needDistanceView.hidden = YES;
+                self.demoDashboardView.hidden = YES;
+                
+                //SHOW PERMISSION POPUP ONLY ONCE
                 [permissionPopup showPopup];
                 defaults_set_object(@"permissionPopupShowing", @(YES));
             }
@@ -1453,7 +1459,7 @@
                 defaults_set_object(@"userDidNotNeedTrackingOnRequired", @(YES));
                 
                 self.mainDashboardView.hidden = NO;
-                self.needDistanceView.hidden = YES;
+                self.demoDashboardView.hidden = YES;
             }
         }
     }
@@ -1488,7 +1494,7 @@
     if (!isGPSAuthorized || !isMotionEnabled) {
         
         self.mainDashboardView.hidden = NO;
-        self.needDistanceView.hidden = YES;
+        self.demoDashboardView.hidden = YES;
         
         if ([defaults_object(@"userDoneWizard") boolValue]) {
             float requiredDistance = self.appModel.statDistanceForScoring.floatValue;
@@ -1499,11 +1505,11 @@
             
             if (userRealDistance < requiredDistance) {
                 self.mainDashboardView.hidden = YES;
-                self.needDistanceView.hidden = NO;
+                self.demoDashboardView.hidden = NO;
                 [self updateMainConstraints];
             } else {
                 self.mainDashboardView.hidden = NO;
-                self.needDistanceView.hidden = YES;
+                self.demoDashboardView.hidden = YES;
                 [self updateMainConstraints];
             }
             
@@ -1526,6 +1532,8 @@
                     } else {
                         self->permissionPopup.disabledMotion = YES;
                     }
+                    
+                    //SHOW PERMISSION POPUP ONLY ONCE
                     [permissionPopup showPopup];
                     defaults_set_object(@"permissionPopupShowing", @(YES));
                 }
@@ -1545,6 +1553,7 @@
                         self->permissionPopup.disabledMotion = YES;
                     }
                     
+                    //SHOW PERMISSION POPUP ONLY ONCE
                     [permissionPopup showPopup];
                     defaults_set_object(@"permissionPopupShowing", @(YES));
                 }
@@ -1558,10 +1567,10 @@
                 
             if (userRealDistance < requiredDistance) {
                 self.mainDashboardView.hidden = YES;
-                self.needDistanceView.hidden = NO;
+                self.demoDashboardView.hidden = NO;
             } else {
                 self.mainDashboardView.hidden = NO;
-                self.needDistanceView.hidden = YES;
+                self.demoDashboardView.hidden = YES;
             }
             [self updateMainConstraints];
         }
@@ -1575,15 +1584,23 @@
         }
         if (userRealDistance < requiredDistance) {
             self.mainDashboardView.hidden = YES;
-            self.needDistanceView.hidden = NO;
+            self.demoDashboardView.hidden = NO;
             self->permissionPopup.disabledGPS = NO;
-            [self updateMainConstraints];
-        } else {
-            self.mainDashboardView.hidden = NO;
-            self.needDistanceView.hidden = YES;
+            self->permissionPopup.disabledMotion = NO;
             [self updateMainConstraints];
             
             if ([defaults_object(@"permissionPopupShowing") boolValue]) {
+                //HIDE PERMISSION POPUP ONLY ONCE
+                [permissionPopup hidePopup];
+                defaults_set_object(@"permissionPopupShowing", @(NO));
+            }
+        } else {
+            self.mainDashboardView.hidden = NO;
+            self.demoDashboardView.hidden = YES;
+            [self updateMainConstraints];
+            
+            if ([defaults_object(@"permissionPopupShowing") boolValue]) {
+                //HIDE PERMISSION POPUP ONLY ONCE
                 [permissionPopup hidePopup];
                 defaults_set_object(@"permissionPopupShowing", @(NO));
             }
@@ -1610,6 +1627,7 @@
     if (![defaults_object(@"needShowCongratulations") boolValue]) {
         if (!permissionPopup.disabledGPS && !permissionPopup.disabledMotion && !permissionPopup.disabledPush) {
             [self->permissionPopup hidePopup];
+            //HIDE PERMISSION POPUP ONLY ONCE
             defaults_set_object(@"permissionPopupShowing", @(NO));
             [self->congratulationsPopup showCongratulationsPopup];
             defaults_set_object(@"needShowCongratulations", @(YES));
@@ -1658,6 +1676,7 @@
 
 - (IBAction)startTelematicsBtnClick:(id)sender {
     if ([defaults_object(@"userDoneWizard") boolValue]) {
+        //SHOW PERMISSION POPUP ONLY ONCE
         [permissionPopup showPopup];
         defaults_set_object(@"permissionPopupShowing", @(YES));
         defaults_set_object(@"userWorkingWithPermissionsWizardNow", @(NO));
@@ -1706,9 +1725,12 @@
             }];
             
         } else {
+            //IOS 12 AND LOWER
             if (![defaults_object(@"permissionPopupShowing") boolValue]) {
+                //SHOW PERMISSION POPUP ONLY ONCE
                 [permissionPopup showPopup];
                 defaults_set_object(@"permissionPopupShowing", @(YES));
+                defaults_set_object(@"userDoneWizard", @(YES)); //?
                 defaults_set_object(@"userWorkingWithPermissionsWizardNow", @(NO));
             }
         }
@@ -1717,7 +1739,7 @@
 
 - (void)gpsButtonAction:(GeneralPopup *)popupView button:(UIButton *)button {
     if ([defaults_object(@"needTrackingOnRequired") boolValue]) {
-        [TelematicsAppPrivacyRequestManager gotoApplicationSetting];
+        [TelematicsAppPrivacyRequestManager gotoApplicationSystemSettings];
     } else {
         if ([CLLocationManager locationServicesEnabled]) {
             if (![defaults_object(@"userDoneWizard") boolValue]) {
@@ -1726,7 +1748,7 @@
                 [self initPermissionsLocation];
             }
         } else {
-            [TelematicsAppPrivacyRequestManager gotoApplicationSetting];
+            [TelematicsAppPrivacyRequestManager gotoApplicationSystemSettings];
         }
     }
 }
@@ -1747,7 +1769,7 @@
             break;
         case CMAuthorizationStatusDenied:
         {
-            [TelematicsAppPrivacyRequestManager gotoApplicationSetting];
+            [TelematicsAppPrivacyRequestManager gotoApplicationSystemSettings];
             defaults_set_object(@"needMotionOn", @(NO));
         }
             break;
@@ -1761,9 +1783,10 @@
 }
 
 - (void)pushButtonAction:(GeneralPopup *)popupView button:(UIButton *)button {
+    //HIDE PERMISSION POPUP ONLY ONCE
     [permissionPopup hidePopup];
     defaults_set_object(@"permissionPopupShowing", @(NO));
-    [TelematicsAppPrivacyRequestManager gotoApplicationSetting];
+    [TelematicsAppPrivacyRequestManager gotoApplicationSystemSettings];
 }
 
 
@@ -2288,11 +2311,11 @@
     self.mainSuperView.layer.shadowRadius = 2;
     self.mainSuperView.layer.shadowOpacity = 0.1;
     
-    self.needDistanceView.layer.cornerRadius = 16;
-    self.needDistanceView.layer.masksToBounds = NO;
-    self.needDistanceView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.needDistanceView.layer.shadowRadius = 2;
-    self.needDistanceView.layer.shadowOpacity = 0.1;
+    self.demoDashboardView.layer.cornerRadius = 16;
+    self.demoDashboardView.layer.masksToBounds = NO;
+    self.demoDashboardView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.demoDashboardView.layer.shadowRadius = 2;
+    self.demoDashboardView.layer.shadowOpacity = 0.1;
     
     self.mainDashboardView.layer.cornerRadius = 16;
     self.mainDashboardView.layer.masksToBounds = NO;
