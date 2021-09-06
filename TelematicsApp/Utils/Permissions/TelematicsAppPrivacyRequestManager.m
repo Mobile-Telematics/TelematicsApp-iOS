@@ -74,7 +74,7 @@ NSString * const TelematicsAppCoreMotionAuthorizationStatusKey = @"com.privacyPe
     
 }
 
-+ (void)gotoApplicationSetting {
++ (void)gotoApplicationSystemSettings {
     UIApplication *application = [UIApplication sharedApplication];
     NSURL *settingURL = [NSURL URLWithString:UIApplicationOpenSettingsURLString];
     if ([application canOpenURL:settingURL]) {

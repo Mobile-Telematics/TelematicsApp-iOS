@@ -72,6 +72,7 @@ FOUNDATION_EXTERN NSString * const TelematicsAppHomeKitAuthorizationStatusKey;
 @end
 
 @interface TelematicsAppPrivacyRequestManager : NSObject
+
 + (TelematicsAppAuthorizationStatus)authorizationStatusForPrivacyType:(TelematicsAppPrivacyType)privacyType;
 + (void)requestAuthorization:(TelematicsAppPrivacyType)privacyType
                      handler:(TelematicsAppRequestAuthorizationHandler)handler;
@@ -80,5 +81,6 @@ FOUNDATION_EXTERN NSString * const TelematicsAppHomeKitAuthorizationStatusKey;
                                    handler:(TelematicsAppRequestAuthorizationHandler)handler API_AVAILABLE(ios(10.0));
 
 + (void)requestAuthorizationMotionImmediately;
-+ (void)gotoApplicationSetting;
++ (void)gotoApplicationSystemSettings;
+
 @end
