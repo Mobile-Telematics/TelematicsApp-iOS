@@ -104,7 +104,6 @@ Build & Run!
 ## Setup Telematics App Configuration.plist file
 
 Open our Telematics App source code by tapping TelematicsApp.xcworkspace file. 
-
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f15.png)
 
 For your convenience, we have created a standard iOS file with parameters named `Configuration.plist`, where you can specify the basic settings for your future app.
@@ -152,7 +151,8 @@ needEventsReviewButton | BOOL parameter, allowing to mark events on the map
 
 We use CocoaPods dependency libraries in our applications.
 The Telematics SDK is installed by default in the Telematics app using the `pod 'RaxelPulse'` command in the application Podfile.
-Run your application by opening the `TelematicsApp.xcworkspace` file in the source code folder.
+After the first download of this app, you need to enter the command  `pod install` in the macOS Terminal. This will install the required dependency libraries for the app to work correctly.
+Run Your new application by opening the `TelematicsApp.xcworkspace` file in the source code folder after.
 Below we present the basic methods for AppDelegate that allow you to initialize the Telematics SDK in a few steps.
 
     - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
@@ -220,9 +220,9 @@ If the user has deleted the app or wants to log in again - By owning ` deviceTok
 
 #### Registration with LoginAuth Framework
 
-By default, we recommend creating a user's deviceToken and get the necessary keys (jwToken, refreshToken) with additional parameters in our `UserService API`. This will simplify your further work with `DataHub` and will allow you to distinguish between users in our system.
+By default, we recommend creating a user's deviceToken and get the necessary keys (jwToken, refreshToken) with additional parameters in our `UserService API`. This will simplify your further work with DataHub and will allow you to identify users or any user in our system.
 Do not forget, you also duplicate this data in your Firebase Database.
-In the future, we can provide you with a `DataHub` web interface with detailed user journeys, statistics and ratings, which will simplify the integration and expand your capabilities.
+In the future, we can provide you with a `DataHub` web interface with detailed user trips, statistics and ratings, which will simplify the integration and expand your capabilities.
 
     [[LoginAuthCore sharedManager] createDeviceTokenForUserWithParametersAndInstanceId:@"instanceId"
                                                                        instanceKey:@"instanceKey"
@@ -383,7 +383,7 @@ All types are presented in the Telematics App and you can understand which of th
 
 ## User Log Out
 
-In the Telematics App source code, we show you an option to clear user data after logging out. Do not forget - to stop tracking and record user journeys, you need to explicitly delete `VIRTUAL_DEVICE_TOKEN`.
+In the Telematics App source code, we show you an option to clear user data after logging out. Do not forget - to stop tracking and record user trips, you need to explicitly delete `VIRTUAL_DEVICE_TOKEN`.
 This can be done using Telematics SDK method:
 
     [[RPEntry instance] removeVirtualDeviceToken];
@@ -395,7 +395,9 @@ Telematics App provides you with the functionality with which you can connect to
 OBD adapter is a small device that plugs into the CAN-port of your car. Usually the CAN-port is located under the steering wheel.
 
 Telematics App created by DATA MOTION PTE. LTD, has a full range of functionality that allows you to read almost any information and indicators from your car, and add it to trips recorded by the Telematics App on iOS/Android.
-OBD adapter does not need to be disabled or configured. It is always in your car, the Telematics App works with the OBD adapter only when you are traveling. Connecting and disconnecting to your iOS device happens automatically.
+OBD adapter does not need to be disabled or configured. It is always in your car, the Telematics App works with the OBD adapter only when you are traveling. Connecting and disconnecting to your iOS device happens automatically. OBD adapter can detect accidents.
+
+DATA MOTION PTE. LTD is the first company in the world to invent the technology of working with OBD devices via Bluetooth® technology.
 
 Detailed documentation and the basic principle of operation can be found in the development portal https://docs.telematicssdk.com/docs/bluetooth-obd
 To fully work with this functionality, you need additional equipment, which we can provide upon your request.
@@ -404,8 +406,9 @@ To fully work with this functionality, you need additional equipment, which we c
 
 We also allow you to work with our `ClaimService` API.
 You can report road accidents, any damage to your vehicle, attach photos and fill out all the basic information about the incident directly from your mobile device.
+Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents. A unique technology is available right now for you.
 The created Claim can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
-A detailed example of work is presented in our Telematics App in the `Claims` section.
+A detailed example of work is presented in our Telematics App in the `Claims` source-code section.
 
 ## Other features
 
