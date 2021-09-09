@@ -220,7 +220,7 @@ If the user has deleted the app or wants to log in again - By owning ` deviceTok
 
 #### Registration with LoginAuth Framework
 
-By default, we recommend creating a user's deviceToken and get the necessary keys (jwTtoken, refreshToken) with additional parameters in our `UserService API`. This will simplify your further work with `DataHub` and will allow you to distinguish between users in our system.
+By default, we recommend creating a user's deviceToken and get the necessary keys (jwToken, refreshToken) with additional parameters in our `UserService API`. This will simplify your further work with `DataHub` and will allow you to distinguish between users in our system.
 Do not forget, you also duplicate this data in your Firebase Database.
 In the future, we can provide you with a `DataHub` web interface with detailed user journeys, statistics and ratings, which will simplify the integration and expand your capabilities.
 
