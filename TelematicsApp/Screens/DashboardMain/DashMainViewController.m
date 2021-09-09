@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 28.05.20.
-//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "AFNetworking.h"
@@ -817,7 +817,7 @@
         } else {
             NSLog(@"%s %@ %@", __func__, response, error);
         }
-    }] getIndicatorsStreaks];
+    }] getIndicatorsStreaksSection];
 }
 
 

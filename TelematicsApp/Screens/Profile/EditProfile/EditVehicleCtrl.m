@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 07.02.21.
-//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "EditVehicleCtrl.h"
@@ -563,7 +563,7 @@
         } else {
             //[self.errorHandler handleError:error response:response];
         }
-    }] getAllCarsManufacturers];
+    }] getAllVehiclesManufacturers];
 }
 
 - (void)getBrandModels:(NSString *)brandId {
@@ -574,7 +574,7 @@
         } else {
             //[self.errorHandler handleError:error response:response];
         }
-    }] getAllBrandModels:brandId];
+    }] getAllVehiclesBrandModels:brandId];
 }
 
 - (void)getBrandModelsByIdsIfNeeded {

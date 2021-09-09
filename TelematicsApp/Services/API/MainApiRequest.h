@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 20.01.20.
-//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "APIRequest.h"
@@ -50,7 +50,7 @@
 
 #pragma mark Indicators Streaks
 
-- (void)getIndicatorsStreaks;
+- (void)getIndicatorsStreaksSection;
 
 
 #pragma mark My Rewards - Coins
@@ -79,10 +79,15 @@
 - (void)reportWrongEventNewEvent:(NSString *)trackToken lat:(NSString *)lat lon:(NSString *)lon eventType:(NSString *)eventType newEventType:(NSString *)newEventType date:(NSString *)date;
 
 
+#pragma mark Join a Company
+
+- (void)joinCompanyIdRefresh:(NSString *)invitationCode;
+
+
 #pragma mark CarService
 
-- (void)getAllCarsManufacturers;
-- (void)getAllBrandModels:(NSString*)brandId;
+- (void)getAllVehiclesManufacturers;
+- (void)getAllVehiclesBrandModels:(NSString*)brandId;
 - (void)getUserAllVehicles;
 - (void)updateVehicle:(VehicleRequestData *)vehicleData;
 - (void)putVehicle:(VehicleRequestData *)vehicleData vehicle:(NSString *)vehicleToken;

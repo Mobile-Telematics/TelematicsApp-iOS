@@ -40,6 +40,9 @@
 		E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E90088FB21D1BC0B00D33D85 /* SettingsNoIconCell.m */; };
 		E900890121D2C65100D33D85 /* UserImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E900890021D2C65100D33D85 /* UserImagePickerViewController.m */; };
 		E904B9D22670D2E7009CD77B /* CheckUserRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */; };
+		E90D0B8F26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E90D0B8D26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.m */; };
+		E90D0B9526EA173200F1AC8A /* JoinCompanyResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E90D0B9126EA173200F1AC8A /* JoinCompanyResultResponse.m */; };
+		E90D0B9626EA173200F1AC8A /* JoinCompanyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E90D0B9226EA173200F1AC8A /* JoinCompanyResponse.m */; };
 		E90DF4AA26CF1CDD0003C2A1 /* WelcomeRewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90DF4A926CF1CDD0003C2A1 /* WelcomeRewards.storyboard */; };
 		E914DBA921598CF5002BB116 /* CheckResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBA521598CF5002BB116 /* CheckResponse.m */; };
 		E914DBAA21598CF5002BB116 /* CheckResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E914DBA821598CF5002BB116 /* CheckResultResponse.m */; };
@@ -172,7 +175,6 @@
 		E990B15B215435E800F2EF11 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E990B15A215435E800F2EF11 /* Settings.storyboard */; };
 		E991E560220B946300533BD0 /* EditProfileCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E991E55F220B946200533BD0 /* EditProfileCtrl.m */; };
 		E998CB7221D42466007FA428 /* TelematicsAppTextFieldFloat.m in Sources */ = {isa = PBXBuildFile; fileRef = E998CB7121D42466007FA428 /* TelematicsAppTextFieldFloat.m */; };
-		E99ACAF82200E1140083DD99 /* APSResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF32200E1140083DD99 /* APSResponse.m */; };
 		E99ACAF92200E1140083DD99 /* ProfileResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF42200E1140083DD99 /* ProfileResultResponse.m */; };
 		E99ACAFA2200E1140083DD99 /* ProfileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E99ACAF52200E1140083DD99 /* ProfileResponse.m */; };
 		E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A7FDEE26CEFB8F000F0C44 /* Rewards.storyboard */; };
@@ -383,6 +385,12 @@
 		E904B96B2670C34B009CD77B /* LoginAuth.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = LoginAuth.xcframework; path = TelematicsApp/LoginAuth.xcframework; sourceTree = "<group>"; };
 		E904B9D02670D2E7009CD77B /* CheckUserRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckUserRequestData.h; sourceTree = "<group>"; };
 		E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckUserRequestData.m; sourceTree = "<group>"; };
+		E90D0B8D26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChangeCompanyIdViewCtrl.m; sourceTree = "<group>"; };
+		E90D0B8E26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChangeCompanyIdViewCtrl.h; sourceTree = "<group>"; };
+		E90D0B9126EA173200F1AC8A /* JoinCompanyResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinCompanyResultResponse.m; sourceTree = "<group>"; };
+		E90D0B9226EA173200F1AC8A /* JoinCompanyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JoinCompanyResponse.m; sourceTree = "<group>"; };
+		E90D0B9326EA173200F1AC8A /* JoinCompanyResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinCompanyResultResponse.h; sourceTree = "<group>"; };
+		E90D0B9426EA173200F1AC8A /* JoinCompanyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JoinCompanyResponse.h; sourceTree = "<group>"; };
 		E90DF4A926CF1CDD0003C2A1 /* WelcomeRewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeRewards.storyboard; sourceTree = "<group>"; };
 		E914DBA521598CF5002BB116 /* CheckResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckResponse.m; sourceTree = "<group>"; };
 		E914DBA621598CF5002BB116 /* CheckResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckResultResponse.h; sourceTree = "<group>"; };
@@ -621,10 +629,8 @@
 		E998CB7021D42466007FA428 /* TelematicsAppTextFieldFloat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppTextFieldFloat.h; sourceTree = "<group>"; };
 		E998CB7121D42466007FA428 /* TelematicsAppTextFieldFloat.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppTextFieldFloat.m; sourceTree = "<group>"; };
 		E99ACAF22200E1140083DD99 /* ProfileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileResponse.h; sourceTree = "<group>"; };
-		E99ACAF32200E1140083DD99 /* APSResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APSResponse.m; sourceTree = "<group>"; };
 		E99ACAF42200E1140083DD99 /* ProfileResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileResultResponse.m; sourceTree = "<group>"; };
 		E99ACAF52200E1140083DD99 /* ProfileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileResponse.m; sourceTree = "<group>"; };
-		E99ACAF62200E1140083DD99 /* APSResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APSResponse.h; sourceTree = "<group>"; };
 		E99ACAF72200E1140083DD99 /* ProfileResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileResultResponse.h; sourceTree = "<group>"; };
 		E9A7FDEE26CEFB8F000F0C44 /* Rewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Rewards.storyboard; sourceTree = "<group>"; };
 		E9A7FDF226CEFBFA000F0C44 /* CoinsChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsChart.m; sourceTree = "<group>"; };
@@ -1063,6 +1069,7 @@
 				E9A7FDF026CEFBFA000F0C44 /* Rewards */,
 				E9D260D121ADD30500632BAE /* Profile */,
 				E990B1562154350500F2EF11 /* Settings */,
+				E90D0B8C26EA166400F1AC8A /* JoinCompany */,
 				E96ABE0E2611AB1600C0AC24 /* Leaderboard */,
 				E96ABEC72612229100C0AC24 /* ConnectOBD */,
 				E9BD8852227278CC0059FCA1 /* Security */,
@@ -1120,6 +1127,7 @@
 				E9A7FDFF26CEFC9D000F0C44 /* Streaks */,
 				E99ACAF12200E1140083DD99 /* Profile */,
 				E98661D0258AB80E0074BE6F /* ProfileUserFields */,
+				E90D0B9026EA173200F1AC8A /* JoinCompany */,
 				E96ABF52261281C700C0AC24 /* Vehicles */,
 				E9E21E732641753700EE4FC9 /* VehiclesDictionary */,
 				E9B6CA2F26854028000B5B51 /* ClaimsAccident */,
@@ -1202,6 +1210,26 @@
 				E904B9D12670D2E7009CD77B /* CheckUserRequestData.m */,
 			);
 			path = CheckUser;
+			sourceTree = "<group>";
+		};
+		E90D0B8C26EA166400F1AC8A /* JoinCompany */ = {
+			isa = PBXGroup;
+			children = (
+				E90D0B8E26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.h */,
+				E90D0B8D26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.m */,
+			);
+			path = JoinCompany;
+			sourceTree = "<group>";
+		};
+		E90D0B9026EA173200F1AC8A /* JoinCompany */ = {
+			isa = PBXGroup;
+			children = (
+				E90D0B9426EA173200F1AC8A /* JoinCompanyResponse.h */,
+				E90D0B9226EA173200F1AC8A /* JoinCompanyResponse.m */,
+				E90D0B9326EA173200F1AC8A /* JoinCompanyResultResponse.h */,
+				E90D0B9126EA173200F1AC8A /* JoinCompanyResultResponse.m */,
+			);
+			path = JoinCompany;
 			sourceTree = "<group>";
 		};
 		E914DBA421598CF5002BB116 /* CheckUser */ = {
@@ -1758,8 +1786,6 @@
 		E99ACAF12200E1140083DD99 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				E99ACAF62200E1140083DD99 /* APSResponse.h */,
-				E99ACAF32200E1140083DD99 /* APSResponse.m */,
 				E99ACAF22200E1140083DD99 /* ProfileResponse.h */,
 				E99ACAF52200E1140083DD99 /* ProfileResponse.m */,
 				E99ACAF72200E1140083DD99 /* ProfileResultResponse.h */,
@@ -2600,7 +2626,6 @@
 				E9D54B1421F8BDEE006B49C9 /* PhoneLoginViewCtrl.m in Sources */,
 				E9A7FDFC26CEFBFB000F0C44 /* DriveCoinsViewController.m in Sources */,
 				E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */,
-				E99ACAF82200E1140083DD99 /* APSResponse.m in Sources */,
 				E9D54B1121F8BDEE006B49C9 /* EmailLoginViewCtrl.m in Sources */,
 				E9B6C9D1268536A0000B5B51 /* CarClaimViewController.m in Sources */,
 				E9B6CA3A26854028000B5B51 /* ClaimsAccidentResponse.m in Sources */,
@@ -2652,6 +2677,7 @@
 				E9B28DE423F59861004DE7CB /* ErrorObject.m in Sources */,
 				E9E21EA226417EFF00EE4FC9 /* CarCell.m in Sources */,
 				E9332F3822B0376900EC70B6 /* BottomSheetView.m in Sources */,
+				E90D0B8F26EA166400F1AC8A /* ChangeCompanyIdViewCtrl.m in Sources */,
 				E96ABF59261281C700C0AC24 /* VehicleObject.m in Sources */,
 				171390501D81D726007E4007 /* LoginResultResponse.m in Sources */,
 				E9B6CA64268544A7000B5B51 /* GMGridViewCell.m in Sources */,
@@ -2664,6 +2690,8 @@
 				E9B6CA4226854281000B5B51 /* GalleryObject.m in Sources */,
 				E9B6CA60268544A7000B5B51 /* GMAlbumsViewController.m in Sources */,
 				E9B6CA0B26853AD3000B5B51 /* CameraCarViewController.swift in Sources */,
+				E90D0B9526EA173200F1AC8A /* JoinCompanyResultResponse.m in Sources */,
+				E90D0B9626EA173200F1AC8A /* JoinCompanyResponse.m in Sources */,
 				E9A7FE1026CEFC9D000F0C44 /* CoinsDetailsObject.m in Sources */,
 				E9DB0785259A776A0067080E /* LicenseCell.m in Sources */,
 				E9E21E782641753700EE4FC9 /* VehiclesDictionaryResultResponse.m in Sources */,

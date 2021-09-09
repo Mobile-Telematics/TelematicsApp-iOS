@@ -231,7 +231,7 @@ In the future, we can provide you with a `DataHub` web interface with detailed u
                                                                          firstName:@"TELEMATICS_USERNAME"
                                                                           lastName:@"TELEMATICS_LASTNAME"
                                                                            address:@"CITY"
-                                                                          birthday:@"2020-04-23T'23:59:59-0400"     // @"yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                                                                          birthday:@"2021-04-23T'23:59:59-0400"     // @"yyyy-MM-dd'T'HH:mm:ssZZZZZ"
                                                                             gender:@"Male"    // String Male/Female
                                                                      maritalStatus:@"1"       // String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
                                                                      childrenCount:@0       // Number 1-10
@@ -443,5 +443,5 @@ Happy coding!
 [Official ZenRoad app for Huawei](https://appgallery.huawei.com/#/app/C104163115)
 
 
-###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+###### Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 

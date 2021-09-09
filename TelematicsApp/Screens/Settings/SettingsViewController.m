@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 20.09.21.
-//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "SettingsViewController.h"
@@ -12,6 +12,7 @@
 #import "ProfileViewController.h"
 #import "LeaderboardViewCtrl.h"
 #import "MeasuresViewCtrl.h"
+#import "ChangeCompanyIdViewCtrl.h"
 #import <MessageUI/MessageUI.h>
 #import "MainClaimViewController.h"
 #import "ClaimsTokenRequestData.h"
@@ -60,7 +61,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 6;
+        return 7;
     } if (section == 1) {
         return 2;
     } if (section == 2) {
@@ -100,6 +101,9 @@
         } else if (indexPath.row == 5) {
             cell.titleLbl.text = localizeString(@"menuitem_measures");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_meas"]];
+        } else if (indexPath.row == 6) {
+            cell.titleLbl.text = localizeString(@"menuitem_companyId");
+            [cell.iconImg setImage:[UIImage imageNamed:@"ic_add_dealer"]];
         }
         return cell;
         
@@ -186,6 +190,8 @@
             [self openConnectOBDDevice];
         } else if (indexPath.row == 5) {
             [self openMeasuresSettings];
+        } else if (indexPath.row == 6) {
+            [self openJoinCompany];
         }
 	} else if (indexPath.section == 1) {
 		if (indexPath.row == 1) {
@@ -243,6 +249,11 @@
 - (void)openMeasuresSettings {
     MeasuresViewCtrl *meas = [self.storyboard instantiateViewControllerWithIdentifier:@"MeasuresViewCtrl"];
     [self.navigationController pushViewController:meas animated:YES];
+}
+
+- (void)openJoinCompany {
+    ChangeCompanyIdViewCtrl *cEdit = [self.storyboard instantiateViewControllerWithIdentifier:@"ChangeCompanyIdViewCtrl"];
+    [self.navigationController pushViewController:cEdit animated:YES];
 }
 
 - (void)openChat {
@@ -348,7 +359,7 @@
 }
 
 
-#pragma mark - Get Claims Token
+#pragma mark - Claims Service Get Token Preload
 
 - (void)getTokenForClaims {
     
@@ -359,11 +370,11 @@
         NSLog(@"%s %@ %@", __func__, response, error);
         if (!error && [response isSuccesful]) {
             [GeneralService sharedService].claimsToken = ((ClaimsTokenResponse*)response).Result.Token;
-            NSLog(@"CLAIMS TOKEN: %@", [GeneralService sharedService].claimsToken);
+            NSLog(@"CLAIMS TOKEN SUCCESS: %@", [GeneralService sharedService].claimsToken);
             [self getUserClaims];
             [self getAccidentTypes];
         } else {
-            NSLog(@"ErrorClaimsToken");
+            NSLog(@"ErrorGetClaimsToken");
         }
     }] getTokenForClaims:requestToken];
 }
@@ -419,13 +430,11 @@
     }
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return 0.1f;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     return 0.1f;
 }
 

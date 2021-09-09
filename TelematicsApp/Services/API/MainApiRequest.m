@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 20.01.20.
-//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "MainApiRequest.h"
@@ -26,6 +26,7 @@
 #import "Helpers.h"
 #import "AFNetworking.h"
 #import "ProfileResponse.h"
+#import "JoinCompanyResponse.h"
 #import "VehicleRequestData.h"
 #import "VehicleResponse.h"
 #import "VehiclesDictionaryResponse.h"
@@ -157,7 +158,7 @@
 
 #pragma mark Indicators Streaks
 
-- (void)getIndicatorsStreaks {
+- (void)getIndicatorsStreaksSection {
     [self performRequestIndicatorsService:@"Streaks" responseClass:[StreaksResponse class] parameters:nil method:GET];
 }
 
@@ -207,11 +208,11 @@
 
 #pragma mark CarService
 
-- (void)getAllCarsManufacturers {
+- (void)getAllVehiclesManufacturers {
     [self performRequestCarService:@"Directories/Manufacturers" responseClass:[VehiclesDictionaryResponse class] parameters:nil method:GET];
 }
 
-- (void)getAllBrandModels:(NSString*)brandId {
+- (void)getAllVehiclesBrandModels:(NSString*)brandId {
     NSString *fullPath = [NSString stringWithFormat:@"Directories/Models?manufacturerId=%@", brandId];
     [self performRequestCarService:fullPath responseClass:[VehiclesDictionaryResponse class] parameters:nil method:GET];
 }
@@ -235,7 +236,7 @@
 }
 
 
-#pragma mark DeleteTrack From Feed Screen
+#pragma mark Delete Track From Feed Screen
 
 - (void)deleteTrackSendStatusForBackEnd:(NSString *)trackToken {
     NSString *URLStr = [NSString stringWithFormat:@"https://mobilesdk.raxeltelematic.com/mobilesdk/stage/track/%@/setdeleted/v1", trackToken];
@@ -246,6 +247,21 @@
         [request setValue:customHeaders[key] forHTTPHeaderField:key];
     }
     [self performRequest:request withResponseClass:[ResponseObject class]];
+}
+
+
+#pragma mark Join a Company
+
+- (void)joinCompanyIdRefresh:(NSString *)invitationCode {
+    NSString *encodedСode = [invitationCode stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    NSString *URLStr = [NSString stringWithFormat:@"https://user.telematicssdk.com/v1/Management/users/instances/change/%@", encodedСode];
+    NSError *error;
+    NSMutableURLRequest *request = [self.sessionManager.requestSerializer requestWithMethod:POST URLString:URLStr parameters:nil error:&error];
+    NSDictionary* customHeaders = [[self class] customRequestHeaders];
+    for (NSString* key in customHeaders.allKeys) {
+        [request setValue:customHeaders[key] forHTTPHeaderField:key];
+    }
+    [self performRequest:request withResponseClass:[JoinCompanyResponse class]];
 }
 
 

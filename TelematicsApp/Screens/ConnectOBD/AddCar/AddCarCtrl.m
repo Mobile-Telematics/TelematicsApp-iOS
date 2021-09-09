@@ -411,7 +411,7 @@
         } else {
             [self.errorHandler handleError:error response:response];
         }
-    }] getAllCarsManufacturers];
+    }] getAllVehiclesManufacturers];
 }
 
 - (void)getBrandModels:(NSString *)brandId {
@@ -422,7 +422,7 @@
         } else {
             [self.errorHandler handleError:error response:response];
         }
-    }] getAllBrandModels:brandId];
+    }] getAllVehiclesBrandModels:brandId];
 }
 
 - (void)getBrandModelsByIdsIfNeeded {

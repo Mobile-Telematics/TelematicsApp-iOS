@@ -3,7 +3,7 @@
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 20.01.20.
-//  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+//  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
 #import "APIRequest.h"
@@ -140,7 +140,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - TelematicsApp Request V1
+#pragma mark - TelematicsApp Request
 
 - (void)performRequestWithPath:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
     self.responseClass = responseClass;
@@ -265,7 +265,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - TelematicsApp Request with Body
+#pragma mark - Request with Body
 
 - (void)performRequestWithPathBodyObject:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters bodyObject:(NSDictionary*)bodyObject method:(NSString*)httpMethod {
     
@@ -304,6 +304,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             
             NSLog(@"%@ %ld", error.localizedDescription, (long)error.code);
             if (error.code == 405 || [error.localizedDescription isEqualToString:@"Request failed: method not allowed (405)"]) {
+                //EXTERNAL ERROR CHECK
                 NSLog(@"FULL STOP 405");
                 if (self.completionBlock) {
                     self.completionBlock(nil, error);
@@ -311,6 +312,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                 return;
             }
             
+            //DIDN'T WORK WITH CLAIMS SERVICE REQUIRED!
             NSString *clUrl = [NSString stringWithFormat:@"%@", arequest.URL];
             if ([clUrl isEqualToString:@"https://insp.telematicssdk.com/api/v1/profiles/login"]) {
                 if (self.completionBlock) {
@@ -321,8 +323,10 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.completed = YES;
+            
             DDLogError(@"%s %@ ERROR %@ JSON: %@", __func__, arequest.URL.absoluteString, error, parsedObject);
             
+            //NOT AUTHORIZED!!!
             if (((NSHTTPURLResponse*)response).statusCode == 401) {
                 
                 self.savedRequest = arequest;
@@ -366,7 +370,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                                     return;
                                 }
 
-                                NSLog(@"<<<<<<<<<<WE REFRESH MAIN AUTH TOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
+                                NSLog(@"<<<<<<<<<<WE REFRESH MAIN AUTH JWTOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
                                 [[GeneralService sharedService] refreshJWToken:response];
 
                                 NSMutableURLRequest *request = self.savedRequest;
@@ -415,7 +419,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                                 return;
                             }
 
-                            NSLog(@"<<<<<<<<<<WE REFRESH MAIN JWTOKEN TOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
+                            NSLog(@"<<<<<<<<<<WE REFRESH MAIN AUTH JWTOKEN ONCE: RESPONSE CODE %d", ((RootResponse*)response).Status.intValue);
                             [[GeneralService sharedService] refreshJWToken:response];
 
                         } else if (((RootResponse*)response).Status.intValue == 419) {
@@ -473,6 +477,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
             self.completed = YES;
             
+            //SUCCESS
             NSLog(@"********PARSED RESULT BACKEND>>>>>>>>>> %@", parsedObject);
             
             if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
@@ -488,6 +493,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                 responseObject = respDict;
             }
             
+            //NOT AUTHORIZED!!! NEED REFRESH JWTOKEN
             if ([responseObject isKindOfClass:[RootResponse class]]) {
                 if (((RootResponse*)responseObject).Status.intValue == 401) {
 
@@ -525,10 +531,12 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                                     return;
                                 }
 
-                                NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<JWT TOKEN ONCE: RESPONSE %d", ((RootResponse*)response).Status.intValue);
+                                NSLog(@"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<JWTOKEN REFRESH ONCE: RESPONSE %d", ((RootResponse*)response).Status.intValue);
 
+                                //SAVE SHARED SERVICE
                                 [[GeneralService sharedService] refreshJWToken:response];
                                 
+                                //SAVE ALL
                                 self.counter = 0;
                                 self.extraMainResetCounter = 0;
                                 [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.counter] forKey:@"counterRefreshKey"];
@@ -555,7 +563,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.extraMainResetCounter] forKey:@"counterMainReset"];
                     }
                     if (self.extraMainResetCounter >= 5) {
-                        NSLog(@"LogOut?");
+                        NSLog(@"<<<<<<<<<<<LogOut?<<<<<<<<<<<");
                         [[NSOperationQueue mainQueue] cancelAllOperations];
                         [self.currentOperation cancel];
                         [[AppDelegate appDelegate] logoutOn401];
