@@ -69,7 +69,8 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     [RPEntry instance].lowPowerModeDelegate = self;
     [RPEntry instance].accuracyAuthorizationDelegate = self;
     
-    //WE NEED START PERMISSION WIZARD FOR USER AFTER LOGIN! - TEMPORARY STOP BY USER DEFAULTS
+    //WE NEED START SDK PERMISSION WIZARD LOCSTION ALWAYS FOR USER AFTER LOGIN! - TEMPORARY STOP BY USER DEFAULTS IN CACHE
+    //
     if ([defaults_object(@"needTrackingOnRequired") boolValue]) {
         
         NSLog(@"%@", [GeneralService sharedService].device_token_number);
@@ -113,7 +114,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
                             appCode:[Configurator sharedInstance].mapsAppCode
                          licenseKey:[Configurator sharedInstance].mapsLicenseKey];
     
-    //YOUR OWN GOOGLE MAPS KEYS FOR CLAIMS SECTION REQUIRED!
+    //YOUR OWN GOOGLE MAPS KEYS FOR CLAIMS SECTION REQUIRED FOR MAPS
     [GMSServices provideAPIKey:[Configurator sharedInstance].googleApiKey];
     [GMSPlacesClient provideAPIKey:[Configurator sharedInstance].googleApiKey];
     
@@ -169,6 +170,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 }
 
 - (void)updateRootController {
+    //RUN ROOT STORYBOARD
     UIViewController* rootVc = nil;
     BOOL loggedIn = [GeneralService sharedService].isLoggedOn;
     if (loggedIn) {
@@ -191,12 +193,14 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 }
 
 - (void)logoutOn401 {
+    //LOGOUT OR REFRESHTOKEN
     if ([GeneralService sharedService].isLoggedOn) {
         [[GeneralService sharedService] logout];
     }
 }
 
 - (void)logoutOn419 {
+    //LOGOUT
     if ([GeneralService sharedService].isLoggedOn) {
         [[GeneralService sharedService] logout];
     }
@@ -206,7 +210,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
             openURL:(NSURL *)url
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
     
-    //DEEP LINKS
+    //DEEP LINKS USE CASES
     UITabBarController *tabBar = (UITabBarController *)[AppDelegate appDelegate].window.rootViewController;
     if ([[url absoluteString] isEqual:@"telematicsapp://dashboard"]) {
         [tabBar setSelectedIndex:[[Configurator sharedInstance].dashboardTabBarNumber intValue]];
@@ -225,6 +229,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 #pragma mark - Accuracy and Low power Telematics SDK
 
 - (void)wrongAccuracyAuthorization {
+    //SDK NEEDED LOCATION ALWAYS
     UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
     content.title = localizeString(@"Precise Location is off");
     content.body = [NSString stringWithFormat:@"%@", localizeString(@"Your trips may be not recorded. Please, follow to App Settings=>Location=>Precise Location")];
@@ -236,6 +241,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 }
 
 - (void)lowPowerMode:(Boolean)state {
+    //SDK NEEDED NOT LOWER POWER MODE ON IOS FOR BEST TRIPS
     if (state) {
         UNMutableNotificationContent *content = [[UNMutableNotificationContent alloc] init];
         content.title = localizeString(@"Low Power Mode");
@@ -251,10 +257,11 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 #pragma mark - Push
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    //
+    //PUSH SECTION IMPLEMENTED MANUALLY
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(nonnull NSDictionary *)userInfo fetchCompletionHandler:(nonnull void (^)(UIBackgroundFetchResult))completionHandler {
+    //PUSH RESPONSE SERVICE
     [self pushReceived:userInfo openImmediately:NO handled:^{
         BOOL state = [UIApplication sharedApplication].applicationState;
         BOOL openNow = (state == UIApplicationStateInactive);
