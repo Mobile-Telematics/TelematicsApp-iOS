@@ -198,7 +198,7 @@ An important part to record a user's trips is to properly request permissions to
 
 ## LoginAuth Framework authentication for Telematics App
 
-We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required for Indicators statistics and user scorings. `AuthLogin Framework` is integrated into this Telematics App.
+We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required for Indicators statistics and user scorings. `LoginAuth Framework` is integrated into this Telematics App.
 
 You can find complete information about LoginAuth Framework in our repository https://github.com/Mobile-Telematics/LoginAuthFramework-iOS
 
