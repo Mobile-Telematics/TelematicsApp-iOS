@@ -13,16 +13,15 @@ Telematics:
 - Telematics SDK — mobile telematics engine.
 - UserService Authentification — connection with Damoov telematics platform.
 
-Screens:
-- Dashboard
-- Feed
-- Trip Details
-- Leaderboard
-- My Rewards
-- Profile & Settings
-- Connect OBD device
-- Claims
-- Advanced Settings & Links
+- [Dashboard](#dashboard-features)
+- [Feed](#feed-screen-trips-loading)
+- [Trip Details](#trip-details-screen)
+- [Leaderboard](#leaderboard-screen)
+- [My Rewards](#my-rewards)
+- [Profile & Settings](#user-profile-screen)
+- [Connect OBD device](#connect-obd-device)
+- [Claims](#claims-screen)
+- [Advanced Settings & Links](#advanced-settings)
 
 ## Basic concepts & credentials
 
