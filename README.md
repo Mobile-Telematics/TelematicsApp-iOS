@@ -218,7 +218,7 @@ To get the first data, user usually needs to drive a short distance. We set this
 
 Until the user overcomes the minimum required distance, he will see a special `DemoDashboard`, which we created in order to show user the main features of the application at an early stage. After overcoming the required minimum distance, the `MainDashboard` will be automatically available.
 
-## Feed Trips loading
+## Feed Trips
 
 The Trips screen displays the trips users have made.
 To get rides, we use the method in the Telematics SDK library methods:
@@ -302,7 +302,7 @@ Having received a list of the user's trips, you can refer to your array of trips
 Our Telematics App provides you with its own version of displaying and drawing trips.
 Study this view's' carefully and figure out what functionality you want to leave in your future application.
 
-## Trip Details Trip events
+## Trip Details events
 
 We allow users to see the events that happened to them during the trip.
 We detect major events:`Acceleration`,`Braking`,`Speeding`,`Cornering`,`PhoneUsage`.
