@@ -22,6 +22,7 @@ Telematics:
 - [Profile & Settings](#settings)
 - [Connect OBD device](#connect-obd-device)
 - [Claims](#claims)
+- [Join a Company](#join-a-company)
 - [Advanced Settings & Links](#advanced-settings)
 
 ## Basic concepts and credentials
@@ -361,6 +362,11 @@ To fully work with this functionality, you need additional equipment, which we c
 You can create Inspections, report road accidents, any damage to your vehicle, attach photos and fill out all the basic information directly from your mobile device.
 Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents.
 The created Inspection can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
+
+## Join а Company
+
+If you have a Company invitation code, enter it in the Join a Company section in Settings. 
+We have made an additional possibility that now your users can join any company upon request, if required.
 
 # Other features
 
