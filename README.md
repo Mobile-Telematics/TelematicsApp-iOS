@@ -13,22 +13,22 @@ Telematics:
 - Telematics SDK — mobile telematics engine.
 - UserService Authentification — connection with Damoov telematics platform.
 
-- [Dashboard](#dashboard-features)
-- [Feed](#feed-screen-trips-loading)
-- [Trip Details](#trip-details-screen)
-- [Leaderboard](#leaderboard-screen)
+- [Dashboard](#dashboard)
+- [Feed](#feed-trips-loading)
+- [Trip Details](#trip-type-of-transport)
+- [Leaderboard](#leaderboard)
 - [My Rewards](#my-rewards)
-- [Profile & Settings](#user-profile-screen)
+- [Profile & Settings](#user-profile)
 - [Connect OBD device](#connect-obd-device)
-- [Claims](#claims-screen)
+- [Claims](#claims)
 - [Advanced Settings & Links](#advanced-settings)
 
 ## Basic concepts & credentials
 
-1. Create an account https://app.damoov.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with the telematics SDK & APIs.
+Create an account https://app.damoov.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with the telematics SDK & APIs.
 How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/datahub#user-group-credentials
 
-2. Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
+Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
 All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills.
 
 ## Setup Firebase© Project
@@ -218,7 +218,7 @@ To get the first data, user usually needs to drive a short distance. We set this
 
 Until the user overcomes the minimum required distance, he will see a special `DemoDashboard`, which we created in order to show user the main features of the application at an early stage. After overcoming the required minimum distance, the `MainDashboard` will be automatically available.
 
-## Feed | Trips loading
+## Feed Trips loading
 
 The Trips screen displays the trips users have made.
 To get rides, we use the method in the Telematics SDK library methods:
@@ -238,7 +238,7 @@ To get rides, we use the method in the Telematics SDK library methods:
 
 Using the example of the Telematics App, you can see how you can implement a page with trips, as well as use swiping with pagination and alternate loading.
 
-## Feed | Type of Transport
+## Feed Type of Transport
 
 The Telematics SDK allows users to change their role for any trip.
 Remember that to display the button for switching Type of Transport, you must set the value `showTrackSignatureCustomButton` in Configuration file.
@@ -261,7 +261,7 @@ Remember that to display the button for switching Type of Transport, you must se
 - Other
 
 
-## Feed | Tags
+## Feed Tags
 Depending on your product use cases, you can also use our Tags feature. You can learn more about it here: https://docs.telematicssdk.com/docs/tags
 We also offer you a convenient interface for switching certain tags for each trip. If you specify in the configuration file `true` for `showTrackTagCustomButton` key, the Feed screen will allow to quickly switch between tags for each trip.
 >NOTE! Keys `showTrackTagCustomButton` and `showTrackSignatureCustomButton` must be used separately!
@@ -302,7 +302,7 @@ Having received a list of the user's trips, you can refer to your array of trips
 Our Telematics App provides you with its own version of displaying and drawing trips.
 Study this view's' carefully and figure out what functionality you want to leave in your future application.
 
-## Trip Details | Trip events
+## Trip Details Trip events
 
 We allow users to see the events that happened to them during the trip.
 We detect major events:`Acceleration`,`Braking`,`Speeding`,`Cornering`,`PhoneUsage`.
