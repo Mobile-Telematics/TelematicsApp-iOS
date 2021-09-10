@@ -15,10 +15,10 @@ Telematics:
 
 - [Dashboard](#dashboard)
 - [Feed](#feed-trips-loading)
-- [Trip Details](#trip-type-of-transport)
+- [Trip Details](#trip-details)
 - [Leaderboard](#leaderboard)
 - [My Rewards](#my-rewards)
-- [Profile & Settings](#user-profile)
+- [Profile & Settings](#settings)
 - [Connect OBD device](#connect-obd-device)
 - [Claims](#claims)
 - [Advanced Settings & Links](#advanced-settings)
