@@ -10,22 +10,23 @@ This Telematics App is developed by Damoov and is distributed free of charge. Th
 
 ## Ready Features
 Telematics:
-- [Telematics SDK setup](#telematics-sdk-setup) - telematics engine.
-- [UserService Authentification](#app-authentication) - connection with Damoov telematics platform.
+- Telematics SDK — mobile telematics engine.
+- UserService Authentification — connection with Damoov telematics platform.
+
 Screens:
-- [Dashboard](#dashboard-features)
-- [Feed](#feed-screen-trips-loading)
-- [Trip Details](#trip-details-screen)
-- [Leaderboard](#leaderboard-screen)
-- [My Rewards](#my-rewards)
-- [Profile & Settings](#user-profile-screen)
-- [Connect OBD device](#connect-obd-device)
-- [Claims](#claims-screen)
-- [Advanced Settings & Links](#advanced-settings)
+- Dashboard
+- Feed
+- Trip Details
+- Leaderboard
+- My Rewards
+- Profile & Settings
+- Connect OBD device
+- Claims
+- Advanced Settings & Links
 
 ## Basic concepts & credentials
 
-1. You need to create an account https://app.damoov.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with the telematics SDK & APIs.
+1. Create an account https://app.damoov.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with the telematics SDK & APIs.
 How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/datahub#user-group-credentials
 
 2. Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
