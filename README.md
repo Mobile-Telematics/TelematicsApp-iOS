@@ -429,15 +429,16 @@ Telematics App for iOS works together with HERE maps to display the user's trips
 
 Happy coding!
 
+
 ## Links
 
-[Official product Web-page](https://telematicssdk.com/)
+[Official product Web-page](https://app.damoov.com/)
 
-[Official API services web-page](https://www.telematicssdk.com/api-services/)
+[Official API services web-page](https://www.damoov.com/telematics-api/)
 
-[Official SDK and API references](https://www.telematicssdk.com/api-services/)
+[Official API references](https://docs.telematicssdk.com/reference)
 
-[Official ZenRoad web-page](https://www.telematicssdk.com/telematics-app/)
+[Official ZenRoad web-page](https://www.damoov.com/telematics-app/)
 
 [Official ZenRoad app for iOS](https://apps.apple.com/jo/app/zenroad/id1563218393)
 
@@ -445,6 +446,5 @@ Happy coding!
 
 [Official ZenRoad app for Huawei](https://appgallery.huawei.com/#/app/C104163115)
 
-
-###### Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
+###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 
