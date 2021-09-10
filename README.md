@@ -6,28 +6,30 @@
 
 ## Description
 
-This Telematics App is created by DATA MOTION PTE. LTD. and is distributed free of charge to all customers & users and can be used to create your own app for iOS in few steps with the help of Firebase© services.
+This Telematics App is developed by Damoov and is distributed free of charge. This app can be used to create your own telematics app for iOS in few steps.
 
 ## Ready Features
-
-- [Telematics SDK setup](#telematics-sdk-setup)
-- [UserService Authentification](#app-authentication)
-- [Dashboard screen](#dashboard-features)
-- [Feed screen](#feed-screen-trips-loading)
+Telematics:
+- [Telematics SDK setup](#telematics-sdk-setup) - telematics engine.
+- [UserService Authentification](#app-authentication) - connection with Damoov telematics platform.
+Screens:
+- [Dashboard](#dashboard-features)
+- [Feed](#feed-screen-trips-loading)
+- [Trip Details](#trip-details-screen)
+- [Leaderboard](#leaderboard-screen)
 - [My Rewards](#my-rewards)
-- [Profile & Settings screens](#user-profile-screen)
-- [Leaderboard screen](#leaderboard-screen)
-- [Connect OBD device screen](#connect-obd-device)
-- [Claims screen](#claims-screen)
+- [Profile & Settings](#user-profile-screen)
+- [Connect OBD device](#connect-obd-device)
+- [Claims](#claims-screen)
 - [Advanced Settings & Links](#advanced-settings)
 
 ## Basic concepts & credentials
 
-For commercial use, you need to create sandbox account https://userdatahub.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with our API.
+1. You need to create an account https://app.damoov.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with the telematics SDK & APIs.
+How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/datahub#user-group-credentials
 
-Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
-
-All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills in a few minutes.
+2. Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
+All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills.
 
 ## Setup Firebase© Project
 
@@ -147,9 +149,9 @@ needDistanceInMiles | BOOL parameter, determining use the default distance trave
 needAmPmTime | BOOL parameter, determining use AM/PM time format in the entire application
 needEventsReviewButton | BOOL parameter, allowing to mark events on the map
 
-## Telematics SDK setup
+## Telematics SDK | Setup
 
-We use CocoaPods dependency libraries in our applications.
+We use CocoaPods dependency libraries.
 The Telematics SDK is installed by default in the Telematics app using the `pod 'RaxelPulse'` command in the application Podfile.
 After the first download of this app, you need to enter the command  `pod install` in the macOS Terminal. This will install the required dependency libraries for the app to work correctly.
 Run Your new application by opening the `TelematicsApp.xcworkspace` file in the source code folder after.
@@ -175,9 +177,12 @@ Below we present the basic methods for AppDelegate that allow you to initialize 
         return YES;
     }
 
-## Telematics SDK Permission Wizard for Telematics App
+## Telematics SDK | Permission Wizard
 
-An important part to record a user's trips is to properly request permissions to use the user's Location and Motion & Fitness activity. Telematics SDK includes a specially designed `Wizard` that helps the user explain why the application needs it and make the right choice. Below is an example of initialization with the launch of the step-by-step`Wizard`
+An important part to record user's trips is to properly request permissions to use the user's Location and Motion & Fitness activity. Telematics SDK includes a specially designed `Wizard` that helps the user explain why the application needs it and make the right choice.
+Note: this wizard is fully cutomizable, you can find the documentation here: https://docs.telematicssdk.com/docs/ios-sdk-asset-customisation
+
+Below is an example of initialization with the launch of the step-by-step`Wizard`
 
     [[RPCSettings returnInstance] setWizardNextButtonBgColor:[UIColor blackColor]];
     [[RPCSettings returnInstance] setAppName:@"TelematicsApp"];
@@ -196,69 +201,24 @@ An important part to record a user's trips is to properly request permissions to
         NSLog(@"LOCATION INIT SUCCESS");
     }];
 
-## LoginAuth Framework authentication for Telematics App
+## LoginAuth Framework | Authentication
 
-We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required for Indicators statistics and user scorings. `LoginAuth Framework` is integrated into this Telematics App.
+We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required to make calls to our APIs.
+
+`LoginAuth Framework` is already integrated into this Telematics App.
 
 You can find complete information about LoginAuth Framework in our repository https://github.com/Mobile-Telematics/LoginAuthFramework-iOS
 
-#### Basic concepts of LoginAuth Framework
+# Screens 
 
-`deviceToken` - is the main individual SDK user identifier for your app. This identifier is used as a key across all our services.
-
-`jwToken` - or JSON Web Token (JWT) is the main UserService API key, that allows you to get user individual Indicators statistics and user scorings by UserService APIs calls.
-
-`refreshToken` - is a secret key that allows you to refresh the jwToken when it expires.
-
-First of all, when you creating a new user, you need to get a ` deviceToken`  from our service. ` deviceToken`  cannot be recovered if lost! Remember this.
-
-In this Telematics App, we specifically showed an example of use, so that the `deviceToken`  is stored on the Firebase© Realtime Database side, created by you.
-
-If the user has deleted the app or wants to log in again - By owning ` deviceToken`  (stored at Firebase© Realtime Database side) ,  `instanceId`  &  `instanceKey` (received from us), you can always get a  `jwToken`  for further authorization of your user.
-
-` jwToken`  will allow you to request a user Indicators statistics and scorings, as we discussed and explained earlier.
-
-#### Registration with LoginAuth Framework
-
-By default, we recommend creating a user's deviceToken and get the necessary keys (jwToken, refreshToken) with additional parameters in our `UserService API`. This will simplify your further work with DataHub and will allow you to identify users or any user in our system.
-Do not forget, you also duplicate this data in your Firebase Database.
-In the future, we can provide you with a `DataHub` web interface with detailed user trips, statistics and ratings, which will simplify the integration and expand your capabilities.
-
-    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithParametersAndInstanceId:@"instanceId"
-                                                                       instanceKey:@"instanceKey"
-                                                                             email:@"mail@mail.mail"
-                                                                             phone:@"+10000000000"
-                                                                         firstName:@"TELEMATICS_USERNAME"
-                                                                          lastName:@"TELEMATICS_LASTNAME"
-                                                                           address:@"CITY"
-                                                                          birthday:@"2021-04-23T'23:59:59-0400"     // @"yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-                                                                            gender:@"Male"    // String Male/Female
-                                                                     maritalStatus:@"1"       // String 1/2/3/4 = "Married"/"Widowed"/"Divorced"/"Single"
-                                                                     childrenCount:@0       // Number 1-10
-                                                                          clientId:@"idOptional" result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
-                NSLog(@"UserServiceResponce deviceToken %@", deviceToken);
-                NSLog(@"UserServiceResponce jwToken %@", jwToken);
-                NSLog(@"UserServiceResponce refreshToken %@", refreshToken);
-    }];
-
-You can disable the transfer of the user profile to our UserService API using a simplified registration method (presented in the Telematics App source code):
-
-    [[LoginAuthCore sharedManager] createDeviceTokenForUserWithInstanceId:@"instanceId"
-                                                           instanceKey:@"instanceKey"
-                                                                result:^(NSString *deviceToken, NSString *jwToken, NSString *refreshToken) {
-                NSLog(@"LoginAuthResponce deviceToken %@", deviceToken);
-                NSLog(@"LoginAuthResponce jwToken %@", jwToken);
-                NSLog(@"LoginAuthResponce refreshToken %@", refreshToken);
-    }];
-
-## Dashboard features
+## Dashboard
 
 Our goal is to provide your users with a user-friendly interface to get the best user experience.
-We suggest you use 2 (two) dashboards with Scoring and user Statistics data in your app. To get the first data, the user usually needs to drive a short distance. We set this parameter in the configuration file with the `needDistanceForScoringKm` key.
+To get the first data, user usually needs to drive a short distance. We set this parameter in the configuration file with the `needDistanceForScoringKm` key.
 
-Until the user overcomes the minimum required distance, he will see a special `DemoDashboard`, which we created in order to show the user the main features of the application at an early stage. After overcoming the required minimum distance, the `MainDashboard` with its main statistics indicators and eco-scoring will be automatically available to the user.
+Until the user overcomes the minimum required distance, he will see a special `DemoDashboard`, which we created in order to show user the main features of the application at an early stage. After overcoming the required minimum distance, the `MainDashboard` will be automatically available.
 
-## Feed screen trips loading
+## Feed | Trips loading
 
 The Trips screen displays the trips users have made.
 To get rides, we use the method in the Telematics SDK library methods:
@@ -278,10 +238,10 @@ To get rides, we use the method in the Telematics SDK library methods:
 
 Using the example of the Telematics App, you can see how you can implement a page with trips, as well as use swiping with pagination and alternate loading.
 
-## Feed screen Driver Signature role
+## Feed | Type of Transport
 
-The Telematics SDK allows the user to change their role for any trip. Use this method below and passing the parameter of the user's role, you can go to the calculation of the user's rating, depending on each trip.
-Remember that to display the button for switching Driving Signature, you must set the value `showTrackSignatureCustomButton` in Configuration file.
+The Telematics SDK allows users to change their role for any trip.
+Remember that to display the button for switching Type of Transport, you must set the value `showTrackSignatureCustomButton` in Configuration file.
 
     [[RPEntry instance].api changeTrackOrigin:'USER_DRIVER_SIGNATURE_ROLE' forTrackToken:'SELECTED_TRACK_TOKEN' completion:^(id response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -290,7 +250,6 @@ Remember that to display the button for switching Driving Signature, you must se
     }];
 
 `USER_DRIVER_SIGNATURE_ROLE` can only take the following string values below!
-By default, each trip has the very first role -`OriginalDriver`
                     
 - OriginalDriver
 - Passenger
@@ -301,13 +260,14 @@ By default, each trip has the very first role -`OriginalDriver`
 - Bicycle
 - Other
 
-In some situations, we also offer you a convenient interface and switching certain tags for each trip by switching the switcher on the trip screen. If you specify in the configuration file `true` for `showTrackTagCustomButton` key, you can see, that the Feed screen now allows you to quickly switch between tags for each trip.
->Remember! Keys `showTrackTagCustomButton` and `showTrackSignatureCustomButton` separately to display the interface correctly!
 
-## Feed screen tags & trip deleting
+## Feed | Tags
+Depending on your product use cases, you can also use our Tags feature. You can learn more about it here: https://docs.telematicssdk.com/docs/tags
+We also offer you a convenient interface for switching certain tags for each trip. If you specify in the configuration file `true` for `showTrackTagCustomButton` key, the Feed screen will allow to quickly switch between tags for each trip.
+>NOTE! Keys `showTrackTagCustomButton` and `showTrackSignatureCustomButton` must be used separately!
 
 The Telematics SDK allows users to add specific unique`tags` to any ride for ease of use.
-For example, by adding tag options to any trip, you will be able to mark specific trips for Business/Personal & other options:
+For example, by adding tag options to any trip, you will be able to mark specific trips for Business/Personal or other options:
 
     RPTag *tag = [[RPTag alloc] init];
     tag.tag = @"Business"; // Your custom tag
@@ -327,14 +287,13 @@ You can also remove back any tag previously set:
         });
     }];
 
-In RaxelPukse SDK, we prohibit use`DEL` tag, except when the user wants to delete trips.
-If the any trip has a`DEL`tag, it should not be shown to the user on the Feed screen.
+NOTE: you can use `DEL` tag and hide the trips marked by it in the app. These trips will be shown in DataHub on List of Trips page with a special mark that these trips were hidden in the app.
 
-## Trip Details screen
+## Trip Details
 
 >Telematics App for iOS uses HERE Maps to display the user's trips on a map. Before you use this screen for `PRODUCTION` environment, you need to get access API keys to the HERE Maps to view the details of user trips. In the app we provide you with a key for `TEST` environment. If you would like to use `PRODUCTION` environment with your app Bunble Identifier for `HEREMaps API`, visit https://developer.here.com
 
-Having received a list of the user's trips, you can refer to your array of trips and get even more detailed information, as well as a set of points to be displayed on the HEREmaps API.
+Having received a list of the user's trips, you can refer to your array of trips and get even more detailed information, as well as a set of waypoints to be displayed on the HEREmaps API.
 
     [[RPEntry instance].api getTrackWithTrackToken:`SELECTED_TRACK_TOKEN` completion:^(id response, NSError *error) {
         RPTrackProcessed * track = response; // Detailed track information with points
@@ -343,43 +302,36 @@ Having received a list of the user's trips, you can refer to your array of trips
 Our Telematics App provides you with its own version of displaying and drawing trips.
 Study this view's' carefully and figure out what functionality you want to leave in your future application.
 
-## Trip Details events
+## Trip Details | Trip events
 
-On the detailed trip screen, we allow users to see the events that happened to them during the trip.
+We allow users to see the events that happened to them during the trip.
 We detect major events:`Acceleration`,`Braking`,`Speeding`,`Cornering`,`PhoneUsage`.
-In the Telematics App, we offer you a clear interface that allows the user to change the event on the map if it is not correct or delete.
+In the Telematics App, we offer you a clear interface that allows the user to change any event on the map if it's not correct or delete this event.
+Also this feature allows us to make our AI-models much clever.
+
+## Leaderboard screen
+
+You can learn more about these services by following to our docs:
+https://docs.telematicssdk.com/docs/leaderboards
+
+All 9 types of Leaderboard are presented in the Telematics App and you can figure out which of these options you actually need.
+
+>Note! Only users who have trips during latest 14 days participate in Leaderboard. Use placeholders for new and lost users.
 
 ## My Rewards
 
 Our telematics app allows you to work with DriveCoins and Streaks for each user:
-`DriveCoins` - the coins accrued to the user for the trips made;
-`Streaks` - the user's achievements in relation to his past trips.
+
+You can learn more about these services by following to our docs:
+DriveCoins - https://docs.telematicssdk.com/docs/drivecoins
+Streaks - https://docs.telematicssdk.com/docs/streaks-1
 
 In detail, you can see the work with methods for rewards in the Telematics App source code in the DriveCoins section.
 
 ## Settings screen
 
-Settings screen gives you the opportunity to make specific settings for the entire application, provide links to instructions, as well as addresses of technical support for the application.
->Use the values in the Configuration.plist file for easy linking for Privacy Policy, Email address or Rate you app link. This will help you easily customize the Settings screen.
-
-## Leaderboard screen
-
-We provide you with the ability to create user ratings based on their trips. All this is displayed and relied on in the Leaderboard section of our Telematics App.
-There are 9 different leaderboards in total:
-
-- Acceleration = 1
-- Deceleration = 2
-- Distraction = 3
-- Speeding = 4
-- Turn = 5
-- RateOverall = 6
-- Distance = 7
-- Trips = 8
-- Duration = 9
-
-All types are presented in the Telematics App and you can understand which of these options for user ratings you need.
-
->Remember! It takes a little time to create a Leaderboard rating in our Leaderboard API. A user who does not have a sufficient number of trips cannot see the Leaderboard data. Use placeholders for new users with an offer to make a trip, who just signed up.
+Settings screen gives you the opportunity to make specific settings for the entire application, provide links to any guides, as well as addresses of technical support etc.
+>Use the values in the Configuration.plist file for easy linking for Privacy Policy, Email address or Rate you app links. This will help you easily customize the Settings screen.
 
 ## User Log Out
 
@@ -388,29 +340,28 @@ This can be done using Telematics SDK method:
 
     [[RPEntry instance] removeVirtualDeviceToken];
     [[FIRAuth auth] signOut:nil];
+    
+You can also disable SDK with the trips uploading to prevent already recorded and stored on the device trips been not uploaded to Damoov platform.
+Learn more about available SDK methods here: https://docs.telematicssdk.com/docs/methods-for-ios-app
 
 ## Connect OBD device
 
-Telematics App provides you with the functionality with which you can connect to the OBD adapter in your car using Bluetooth® technology.
-OBD adapter is a small device that plugs into the CAN-port of your car. Usually the CAN-port is located under the steering wheel.
+Telematics App provides you with the optional functionality to connect the app with an OBD vehicle adapter using Bluetooth® technology.
+OBD adapter is a small device that plugs into the CAN-port of your car.
 
-Telematics App created by DATA MOTION PTE. LTD, has a full range of functionality that allows you to read almost any information and indicators from your car, and add it to trips recorded by the Telematics App on iOS/Android.
-OBD adapter does not need to be disabled or configured. It is always in your car, the Telematics App works with the OBD adapter only when you are traveling. Connecting and disconnecting to your iOS device happens automatically. OBD adapter can detect accidents.
+Telematics App created by Damoov, has a full range of functionality that allows you to read almost any information and indicators from your vehicle, and add it to trips recorded by the Telematics App on iOS/Android.
+Connecting and disconnecting to your iOS device happens automatically. OBD adapter can detect accidents.
 
-DATA MOTION PTE. LTD is the first company in the world to invent the technology of working with OBD devices via Bluetooth® technology.
-
-Detailed documentation and the basic principle of operation can be found in the development portal https://docs.telematicssdk.com/docs/bluetooth-obd
+Detailed documentation and the basic principles of operation can be found in the development portal https://docs.telematicssdk.com/docs/bluetooth-obd
 To fully work with this functionality, you need additional equipment, which we can provide upon your request.
 
-## Claims screen
+## Claims
 
-We also allow you to work with our `ClaimService` API.
-You can report road accidents, any damage to your vehicle, attach photos and fill out all the basic information about the incident directly from your mobile device.
-Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents. A unique technology is available right now for you.
-The created Claim can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
-A detailed example of work is presented in our Telematics App in the `Claims` source-code section.
+You can create Inspections, report road accidents, any damage to your vehicle, attach photos and fill out all the basic information directly from your mobile device.
+Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents.
+The created Inspection can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
 
-## Other features
+# Other features
 
 We have tried to make for you convenient settings and easy entry for any part of the application. Having studied in more detail, you will see that you can customize any part of the Telematics App or Telematics SDK for your purposes, including fonts, official colors used in the application, and much more.
 
