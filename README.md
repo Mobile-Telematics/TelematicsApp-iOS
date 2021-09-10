@@ -14,9 +14,9 @@ Telematics:
 - UserService Authentification — connection with Damoov telematics platform.
 
 
-- [Telematics SDK — mobile telematics engine](#basic-concepts-credentials)
+- [Telematics SDK — mobile telematics engine](#setup-firebase-project)
 - [Telematics SDK Setup](#telematics-sdk-setup)
-- [LoginAuthFramework Authentication](#login-auth-framework-authentication)
+- [LoginAuthFramework Authentication](#loginauthframework-authentication)
 - [Dashboard](#dashboard)
 - [Feed](#feed-trips-loading)
 - [Trip Details](#trip-details)
