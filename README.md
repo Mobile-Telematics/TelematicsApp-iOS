@@ -363,10 +363,11 @@ You can create Inspections, report road accidents, any damage to your vehicle, a
 Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents.
 The created Inspection can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
 
-## Join а Company
+## Join a Company
 
-If you have a Company invitation code, enter it in the Join a Company section in Settings. 
+If you have a Company invitation code, enter it in the Join a Company section in Settings of our Telematics App. 
 We have made an additional possibility that now your users can join any company upon request, if required.
+
 
 # Other features
 
