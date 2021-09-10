@@ -13,6 +13,10 @@ Telematics:
 - Telematics SDK — mobile telematics engine.
 - UserService Authentification — connection with Damoov telematics platform.
 
+
+- [Telematics SDK — mobile telematics engine](#basic-concepts-credentials)
+- [Telematics SDK Setup](#telematics-sdk-setup)
+- [LoginAuthFramework Authentication](#login-auth-framework-authentication)
 - [Dashboard](#dashboard)
 - [Feed](#feed-trips-loading)
 - [Trip Details](#trip-details)
@@ -149,7 +153,7 @@ needDistanceInMiles | BOOL parameter, determining use the default distance trave
 needAmPmTime | BOOL parameter, determining use AM/PM time format in the entire application
 needEventsReviewButton | BOOL parameter, allowing to mark events on the map
 
-## Telematics SDK | Setup
+## Telematics SDK Setup
 
 We use CocoaPods dependency libraries.
 The Telematics SDK is installed by default in the Telematics app using the `pod 'RaxelPulse'` command in the application Podfile.
@@ -201,7 +205,7 @@ Below is an example of initialization with the launch of the step-by-step`Wizard
         NSLog(@"LOCATION INIT SUCCESS");
     }];
 
-## LoginAuth Framework | Authentication
+## LoginAuthFramework Authentication
 
 We have created a special Framework that allows you to receive `deviceToken`, `jwToken` & `refreshToken` for full integration with our services. These keys are required to make calls to our APIs.
 
