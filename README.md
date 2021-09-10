@@ -309,7 +309,7 @@ We detect major events:`Acceleration`,`Braking`,`Speeding`,`Cornering`,`PhoneUsa
 In the Telematics App, we offer you a clear interface that allows the user to change any event on the map if it's not correct or delete this event.
 Also this feature allows us to make our AI-models much clever.
 
-## Leaderboard screen
+## Leaderboard
 
 You can learn more about these services by following to our docs:
 https://docs.telematicssdk.com/docs/leaderboards
@@ -328,7 +328,7 @@ Streaks - https://docs.telematicssdk.com/docs/streaks-1
 
 In detail, you can see the work with methods for rewards in the Telematics App source code in the DriveCoins section.
 
-## Settings screen
+## Settings
 
 Settings screen gives you the opportunity to make specific settings for the entire application, provide links to any guides, as well as addresses of technical support etc.
 >Use the values in the Configuration.plist file for easy linking for Privacy Policy, Email address or Rate you app links. This will help you easily customize the Settings screen.
