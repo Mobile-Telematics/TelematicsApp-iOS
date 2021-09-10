@@ -11,7 +11,7 @@ This Telematics App is developed by Damoov and is distributed free of charge. Th
 ## Ready Features
 Telematics:
 - [Telematics SDK — mobile telematics engine](#basic-concepts-and-credentials)
-- [Setup Firebase project](#setup-firebase-project)
+- [Setup Firebase© project](#setup-firebase-project)
 - [Telematics SDK Setup](#telematics-sdk-setup)
 - [LoginAuthFramework Authentication](#loginauthframework-authentication)
 - [Dashboard](#dashboard)
