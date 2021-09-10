@@ -10,7 +10,7 @@ This Telematics App is developed by Damoov and is distributed free of charge. Th
 
 ## Ready Features
 Telematics:
-- [Telematics SDK — mobile telematics engine](#basic-concepts-credentials)
+- [Telematics SDK — mobile telematics engine](#basic-concepts-and-credentials)
 - [Setup Firebase project](#setup-firebase-project)
 - [Telematics SDK Setup](#telematics-sdk-setup)
 - [LoginAuthFramework Authentication](#loginauthframework-authentication)
@@ -24,7 +24,7 @@ Telematics:
 - [Claims](#claims)
 - [Advanced Settings & Links](#advanced-settings)
 
-## Basic concepts & credentials
+## Basic concepts and credentials
 
 Create an account https://app.damoov.com/user/registration and get `InstanceId` and`InstanceKey` auth keys to work with the telematics SDK & APIs.
 How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/datahub#user-group-credentials
