@@ -33,9 +33,6 @@ How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/dat
 Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
 All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills.
 
-# Setting Up
-Here you can find a short video guide, how to launch iOS Open-Source Telematics app: https://youtu.be/fMarGCaGbs0
-
 ## Setup Firebase© Project
 
 In the next few simple steps, we'll show you how easy it is to create and configure an app in the Firebase© console.
@@ -100,7 +97,7 @@ Step 13: Select "Start a locked mode" and click the "Enable" button.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f13.png)
 
-Step 14: Now you need to change rules for your Realtime Database. You need to go to “Realtime Database” section on the left side of the menu. In the “Rules” tab change read and write fields to “auth.uid != null”.
+Step 14: Now you need to change rules for your Realtime Database. You need to go to “Realtime Database” section on the left side of the menu. In the “Rules” tab change read and write fields to ".read": true & ".write": true.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f14.png)
 
@@ -409,4 +406,5 @@ Happy coding!
 [Official ZenRoad app for Huawei](https://appgallery.huawei.com/#/app/C104163115)
 
 ###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+
 
