@@ -37,7 +37,7 @@ class NotSupportErrorViewCtrl: UIViewController {
         colorAttribute.addAttribute(NSAttributedString.Key.foregroundColor, value:UIColor(rgb: 0x50c75d), range:range)
         mainTextLbl.attributedText = colorAttribute
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(NotSupportErrorViewCtrl.callToRaxel))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(NotSupportErrorViewCtrl.callToCompany))
         mainTextLbl.isUserInteractionEnabled = true
         mainTextLbl.addGestureRecognizer(tap)
     }
@@ -46,7 +46,7 @@ class NotSupportErrorViewCtrl: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
-    @objc func callToRaxel() {
+    @objc func callToCompany() {
         let url: NSURL = URL(string: "TEL://1300824227")! as NSURL
         UIApplication.shared.open(url as URL, options: [:], completionHandler: nil)
     }
