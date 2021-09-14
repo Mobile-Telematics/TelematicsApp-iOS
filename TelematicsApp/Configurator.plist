@@ -12,7 +12,7 @@
 		<key>driveCoinsServiceURL</key>
 		<string>https://mobilesdk.telematicssdk.com/api/rewarding/v2</string>
 		<key>leaderboardServiceURL</key>
-		<string>https://mobilesdk.raxeltelematic.com/api/leaderboardservice/v1</string>
+		<string>https://leaderboard.telematicssdk.com/v1</string>
 		<key>carServiceURL</key>
 		<string>https://services.telematicssdk.com/api/carservice/v1</string>
 		<key>claimsServiceURL</key>

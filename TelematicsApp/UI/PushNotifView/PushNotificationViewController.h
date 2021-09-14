@@ -1,8 +1,8 @@
 //
 //  PushNotificationViewController.h
-//  DemoApp
+//  TelematicsApp
 //
-//  Created by Pavel pavel.popov@raxeltelematics.com on 03.06.19.
+//  Created by DATA MOTION PTE. LTD. on 20.01.20.
 //  Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
