@@ -363,6 +363,17 @@ You can create Inspections, report road accidents, any damage to your vehicle, a
 Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents.
 The created Inspection can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
 
+## Measures
+
+In Settings, you can work with units of measurement.
+By default, there are 2 parameters in the Configuration.plist project file.
+BOOL `needDistanceInMiles`:
+By default "0" - need distance in km's. If you set "1" - need distance in miles in the whole app.
+BOOL `needAmPmTime`:
+By default "0" - need 24-hour time format. If you set "1" - need 12-hour AM/PM format in the whole app.
+
+The user can additionally choose the format of the units of measurement, regardless of your preset values. In the Measures section of the app source-code you will find the parameters for the "Distance", "Date format", "Time format" switches.
+
 ## Join a Company
 
 If you have a Company invitation code, enter it in the Join a Company section in Settings of our Telematics App. 
