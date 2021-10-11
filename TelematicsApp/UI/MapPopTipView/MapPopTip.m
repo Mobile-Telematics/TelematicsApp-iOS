@@ -15,22 +15,22 @@
 
 @interface MapPopTip()
 
-@property (nonatomic, strong) NSString *text;
-@property (nonatomic, strong) NSAttributedString *attributedText;
-@property (nonatomic, strong) NSMutableParagraphStyle *paragraphStyle;
-@property (nonatomic, strong) UITapGestureRecognizer *gestureRecognizer;
-@property (nonatomic, strong) UITapGestureRecognizer *tapRemoveGesture;
-@property (nonatomic, strong) UISwipeGestureRecognizer *swipeRemoveGesture;
-@property (nonatomic, strong) NSTimer *dismissTimer;
-@property (nonatomic, weak, readwrite) UIView *containerView;
-@property (nonatomic, assign, readwrite) MapPopTipDirection direction;
-@property (nonatomic, assign, readwrite) CGPoint arrowPosition;
-@property (nonatomic, assign, readwrite) BOOL isVisible;
-@property (nonatomic, assign, readwrite) BOOL isAnimating;
-@property (nonatomic, assign) CGRect textBounds;
-@property (nonatomic, assign) CGFloat maxWidth;
-@property (nonatomic, strong) UIView *customView;
-@property (nonatomic, strong, readwrite) UIView *backgroundMask;
+@property (nonatomic, strong) NSString                          *text;
+@property (nonatomic, strong) NSAttributedString                *attributedText;
+@property (nonatomic, strong) NSMutableParagraphStyle           *paragraphStyle;
+@property (nonatomic, strong) UITapGestureRecognizer            *gestureRecognizer;
+@property (nonatomic, strong) UITapGestureRecognizer            *tapRemoveGesture;
+@property (nonatomic, strong) UISwipeGestureRecognizer          *swipeRemoveGesture;
+@property (nonatomic, strong) NSTimer                           *dismissTimer;
+@property (nonatomic, weak, readwrite) UIView                   *containerView;
+@property (nonatomic, assign, readwrite) MapPopTipDirection     direction;
+@property (nonatomic, assign, readwrite) CGPoint                arrowPosition;
+@property (nonatomic, assign, readwrite) BOOL                   isVisible;
+@property (nonatomic, assign, readwrite) BOOL                   isAnimating;
+@property (nonatomic, assign) CGRect                            textBounds;
+@property (nonatomic, assign) CGFloat                           maxWidth;
+@property (nonatomic, strong) UIView                            *customView;
+@property (nonatomic, strong, readwrite) UIView                 *backgroundMask;
 
 @end
 

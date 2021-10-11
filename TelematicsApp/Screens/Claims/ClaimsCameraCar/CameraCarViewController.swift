@@ -261,18 +261,6 @@ extension UIImageView {
             lblSelectFromGallery.font = UIFont.systemFont(ofSize: 14)
         }
         
-//        lblSelectFromGallery = UILabel(frame: CGRect(x: 10, y: self.view.frame.height/2+210, width: self.view.frame.width - 20, height: 100))
-//        lblSelectFromGallery.textAlignment = .center
-//        lblSelectFromGallery.text = sideText + "\n\nor\n\nSelect from Photo Gallery"
-//        lblSelectFromGallery.textColor = .white
-//        lblSelectFromGallery.font = UIFont.boldSystemFont(ofSize: 16)
-//        lblSelectFromGallery.numberOfLines = 0
-//        lblSelectFromGallery.lineBreakMode = .byWordWrapping
-//        lblSelectFromGallery.layer.masksToBounds = true
-//        lblSelectFromGallery.layer.borderColor = UIColor.white.cgColor
-//        lblSelectFromGallery.layer.borderWidth = 1.0
-//        lblSelectFromGallery.layer.cornerRadius = 8.0
-        
         let galleryGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(CameraCarViewController.actionSelectFromGallery(_:)))
         lblSelectFromGallery.addGestureRecognizer(galleryGestureRecognizer)
         lblSelectFromGallery.isUserInteractionEnabled = true

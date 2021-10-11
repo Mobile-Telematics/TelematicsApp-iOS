@@ -25,10 +25,10 @@
 @property (weak, nonatomic) IBOutlet UILabel        *timeChangeLabel;
 @property (weak, nonatomic) IBOutlet UIButton       *backBtn;
 
-@property (strong, nonatomic) TelematicsAppModel           *appModel;
-@property (strong, nonatomic) TagsSwitch          *distanceSwitcher;
-@property (strong, nonatomic) TagsSwitch          *dateSwitcher;
-@property (strong, nonatomic) TagsSwitch          *timeSwitcher;
+@property (strong, nonatomic) TelematicsAppModel    *appModel;
+@property (strong, nonatomic) TagsSwitch            *distanceSwitcher;
+@property (strong, nonatomic) TagsSwitch            *dateSwitcher;
+@property (strong, nonatomic) TagsSwitch            *timeSwitcher;
 
 @end
 

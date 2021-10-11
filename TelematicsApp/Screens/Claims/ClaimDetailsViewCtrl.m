@@ -15,7 +15,7 @@
 
 @interface ClaimDetailsViewCtrl () <UIScrollViewDelegate>
 
-@property (strong, nonatomic) TelematicsAppModel                   *appModel;
+@property (strong, nonatomic) TelematicsAppModel            *appModel;
 @property (weak, nonatomic) IBOutlet UILabel                *mainLbl;
 @property (weak, nonatomic) IBOutlet UIButton               *processingBtn;
 @property (weak, nonatomic) IBOutlet UILabel                *dateLbl;

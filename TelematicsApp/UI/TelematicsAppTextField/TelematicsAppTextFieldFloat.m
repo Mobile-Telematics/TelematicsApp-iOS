@@ -366,6 +366,7 @@
     [self floatTheLabel];
 }
 
+
 #pragma mark - Float & Resign
 
 - (void)floatTheLabel{

@@ -10,8 +10,6 @@
 
 @interface WelcomeRewards () <UIScrollViewDelegate>
 
-@property (strong, nonatomic) TelematicsAppModel *appModel;
-
 @property (weak, nonatomic) IBOutlet UILabel            *mainLbl;
 @property (weak, nonatomic) IBOutlet UIButton           *startBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *supportBtn;
@@ -26,9 +24,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    //INITIALIZE USER APP MODEL
-    self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     UIFont *supportFont = [Font semibold13];
     NSMutableAttributedString *supportText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Support")];

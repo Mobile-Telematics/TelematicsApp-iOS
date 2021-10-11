@@ -259,7 +259,7 @@ class OBDSlideCarouselDelegate: UIView {
             pageControl.sizeToFit()
             pageControl.currentPage = 0
             
-            if Global.DeviceType.IS_IPHONE_X || Global.DeviceType.IS_IPHONE_12_PRO || Global.DeviceType.IS_IPHONE_XS_MAX || Global.DeviceType.IS_IPHONE_12_PROMAX {
+            if Global.DeviceType.IS_IPHONE_X || Global.DeviceType.IS_IPHONE_13_PRO || Global.DeviceType.IS_IPHONE_XS_MAX || Global.DeviceType.IS_IPHONE_13_PROMAX {
                 pageControl.center = CGPoint(x: self.center.x, y: bounds.height - pageControl.bounds.height/2 - 80)
             } else if Global.DeviceType.IS_IPHONE_8 || Global.DeviceType.IS_IPHONE_8P {
                 pageControl.center = CGPoint(x: self.center.x, y: bounds.height - pageControl.bounds.height/2 - 72)

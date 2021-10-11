@@ -13,6 +13,7 @@
 
 @implementation APIErrorHandler
 
+//ERROR VIEW FROM TOP
 - (void)handleError:(NSError *)error response:(id)response {
     if ([response isKindOfClass:[RootResponse class]]) {
         

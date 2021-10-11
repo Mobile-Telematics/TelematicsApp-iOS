@@ -52,7 +52,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     FIRDatabaseReference *usersDatabase = [[FIRDatabase database] referenceWithPath:@"users"];
     [usersDatabase keepSynced:YES];
     
-    //SETUP APP GENERAL CONFIGURATOR.PLIST
+    //SETUP APP GENERAL CONFIGURATOR.PLIST WITH SETTINGS
     [Configurator setMainAppConfigurationFromPlist];
     
     //CREATE COREDATA MODEL

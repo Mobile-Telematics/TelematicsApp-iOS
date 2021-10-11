@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *claimPlusBtn;
 
 @property (nonatomic, strong) UIRefreshControl          *refreshController;
-@property (strong, nonatomic) TelematicsAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel        *appModel;
 
 @end
 

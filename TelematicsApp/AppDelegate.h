@@ -11,8 +11,8 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UNUserNotificationCenterDelegate>
 
-@property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UIWindow *pushNotificationWindow;
+@property (strong, nonatomic) UIWindow      *window;
+@property (strong, nonatomic) UIWindow      *pushNotificationWindow;
 
 + (AppDelegate*)appDelegate;
 - (void)updateRootController;

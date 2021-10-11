@@ -176,9 +176,9 @@
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 150)) animated:NO];
         } else if (IS_IPHONE_8P) {
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 150)) animated:NO];
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 150)) animated:NO];
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 250)) animated:NO];
         }
     }
@@ -208,9 +208,9 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2, 0.0);
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2.6, 0.0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/8, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/5, 0.0);
     } else if (IS_IPHONE_8P) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/3.2, 0.0);
@@ -235,9 +235,9 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 100, 0.0);
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 170, 0.0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 50, 0.0);
     } else if (IS_IPHONE_8P) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0);

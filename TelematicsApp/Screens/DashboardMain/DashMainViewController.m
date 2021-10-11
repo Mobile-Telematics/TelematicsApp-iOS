@@ -2348,9 +2348,9 @@
             heightConstraint.constant = 740;
         } else if (IS_IPHONE_8P) {
             heightConstraint.constant = 700;
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             heightConstraint.constant = 680;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             heightConstraint.constant = 580;
         }
     } else if (userRealDistance < requiredDistance) {
@@ -2358,9 +2358,9 @@
             heightConstraint.constant = 940;
         } else if (IS_IPHONE_8 || IS_IPHONE_8P) {
             heightConstraint.constant = 860;
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             heightConstraint.constant = 770;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             heightConstraint.constant = 700;
         }
     }
@@ -2519,7 +2519,7 @@
 
 - (IBAction)openAppSystemSettings:(id)sender {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [Configurator sharedInstance].telematicsSettingsOS13]];
-    if IS_OS_13_OR_OLD
+    if IS_OS_12_OR_OLD
         URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [Configurator sharedInstance].telematicsSettingsOS12]];
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:URL];
     svc.delegate = self;

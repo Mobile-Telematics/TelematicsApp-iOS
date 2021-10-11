@@ -16,9 +16,9 @@ static const NSTimeInterval ChevronDefaultAnimationDuration = 0.3;
 IB_DESIGNABLE
 @interface ChevronView (Inspectable)
 
-@property (nonatomic, assign) IBInspectable NSInteger chevronState;
-@property (nonatomic, strong, null_resettable) IBInspectable UIColor * color;
-@property (nonatomic, assign) IBInspectable CGFloat width;
+@property (nonatomic, assign) IBInspectable NSInteger                   chevronState;
+@property (nonatomic, strong, null_resettable) IBInspectable UIColor *  color;
+@property (nonatomic, assign) IBInspectable CGFloat                     width;
 
 @end
 

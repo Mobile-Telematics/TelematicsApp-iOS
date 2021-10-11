@@ -205,9 +205,6 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self getAllCarsDict];
-//    if (!_newVehicle) {
-//        [self getUploadedVehicleDocuments];
-//    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated {

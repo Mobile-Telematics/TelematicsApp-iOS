@@ -10,8 +10,8 @@
 
 @interface CarPhotoCell: UICollectionViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *sideLbl;
-@property (weak, nonatomic) IBOutlet UIImageView *mainPhoto;
-@property (weak, nonatomic) IBOutlet UIButton *cameraBtn;
+@property (weak, nonatomic) IBOutlet UILabel        *sideLbl;
+@property (weak, nonatomic) IBOutlet UIImageView    *mainPhoto;
+@property (weak, nonatomic) IBOutlet UIButton       *cameraBtn;
 
 @end

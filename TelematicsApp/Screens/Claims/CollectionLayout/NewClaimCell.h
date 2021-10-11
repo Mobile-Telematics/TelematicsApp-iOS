@@ -16,10 +16,10 @@
 
 @interface NewClaimCell: UICollectionViewCell
 
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *accLabel;
-@property (nonatomic, assign, readwrite) IBOutlet UIImageView *accImg;
-@property (nonatomic, assign, readwrite) IBOutlet UIButton *accBtn;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel       *accLabel;
+@property (nonatomic, assign, readwrite) IBOutlet UIImageView   *accImg;
+@property (nonatomic, assign, readwrite) IBOutlet UIButton      *accBtn;
 
-@property (nonatomic, weak) id <NewClaimCellDelegate> delegate;
+@property (nonatomic, weak) id <NewClaimCellDelegate>           delegate;
 
 @end

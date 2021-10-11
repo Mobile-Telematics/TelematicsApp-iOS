@@ -42,7 +42,7 @@
 
 @property (nonatomic, strong) NSString                  *selectedDriverSignatureRole;
 
-@property (strong, nonatomic) TelematicsAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel        *appModel;
 @property (strong, nonatomic) BottomSheetPresenter      *bottomSheetPresenter;
 @property (nonatomic, strong) MapPopTip                 *popTip;
 @property (weak, nonatomic) IBOutlet UILabel            *mainTitle;
@@ -98,7 +98,7 @@
     self.popTip.font = [UIFont fontWithName:@"Avenir-Medium" size:12];
     self.popTip.edgeMargin = 5;
     self.popTip.offset = 7;
-    if (IS_IPHONE_11 || IS_IPHONE_12_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
+    if (IS_IPHONE_11 || IS_IPHONE_13_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
         self.popTip.offset = 2;
     }
     self.popTip.edgeInsets = UIEdgeInsetsMake(0, 10, 0, 10);
@@ -360,7 +360,7 @@
         switch (trackPoint.alertType) {
             case RPAlertTypeAcceleration: {
                 UIImage *accelIcon = [UIImage imageNamed:@"cl_white_acc_big"];
-                if (IS_IPHONE_11 || IS_IPHONE_12_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
+                if (IS_IPHONE_11 || IS_IPHONE_13_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
                     accelIcon = [UIImage imageWithImageHelper:accelIcon scale:0.8];
                 }
                 
@@ -387,7 +387,7 @@
             case RPAlertTypeDeceleration: {
 
                 UIImage *decelIcon = [UIImage imageNamed:@"cl_white_brake_big"];
-                if (IS_IPHONE_11 || IS_IPHONE_12_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
+                if (IS_IPHONE_11 || IS_IPHONE_13_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
                     decelIcon = [UIImage imageWithImageHelper:decelIcon scale:0.8];
                 }
                 
@@ -417,7 +417,7 @@
         
         if (trackPoint.cornering == YES) {
             UIImage *cornerIcon = [UIImage imageNamed:@"cl_white_turn_big"];
-            if (IS_IPHONE_11 || IS_IPHONE_12_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
+            if (IS_IPHONE_11 || IS_IPHONE_13_PRO || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4) {
                 cornerIcon = [UIImage imageWithImageHelper:cornerIcon scale:0.8];
             }
             
@@ -991,7 +991,7 @@
             NSString *typeName = @"Acceleration";
             NSString *iconName = @"cl_red_acc_big";
             UIImage *cornerIcon = [UIImage imageNamed:@"cl_red_acc"];
-            if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+            if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                 cornerIcon = [UIImage imageNamed:@"cl_red_acc_big"];
             }
             
@@ -999,21 +999,21 @@
                 typeName = @"Braking";
                 iconName = @"cl_red_brake_big";
                 cornerIcon = [UIImage imageNamed:@"cl_red_brake"];
-                if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+                if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                     cornerIcon = [UIImage imageNamed:@"cl_red_brake_big"];
                 }
             } else if ([self.selectedEventTypeMarker isEqualToString:@"Cornering"]) {
                 typeName = @"Cornering";
                 iconName = @"cl_red_turn_big";
                 cornerIcon = [UIImage imageNamed:@"cl_red_turn"];
-                if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+                if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                     cornerIcon = [UIImage imageNamed:@"cl_red_turn_big"];
                 }
             } else if ([self.selectedEventTypeMarker isEqualToString:@"Phone Usage"]) {
                 typeName = @"Phone Usage";
                 iconName = @"cl_red_phone_big";
                 cornerIcon = [UIImage imageNamed:@"cl_red_phone"];
-                if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+                if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                     cornerIcon = [UIImage imageNamed:@"cl_red_phone_big"];
                 }
             }
@@ -1059,7 +1059,7 @@
             NSString *typeName = @"Acceleration";
             NSString *iconName = @"cl_orange_acc_big";
             UIImage *cornerIcon = [UIImage imageNamed:@"cl_orange_acc"];
-            if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+            if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                 cornerIcon = [UIImage imageNamed:@"cl_orange_acc_big"];
             }
             
@@ -1067,21 +1067,21 @@
                 typeName = @"Braking";
                 iconName = @"cl_orange_brake_big";
                 cornerIcon = [UIImage imageNamed:@"cl_orange_brake"];
-                if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+                if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                     cornerIcon = [UIImage imageNamed:@"cl_orange_brake_big"];
                 }
             } else if ([self.selectedNewEventTypeMarker isEqualToString:@"Cornering"]) {
                 typeName = @"Cornering";
                 iconName = @"cl_orange_turn_big";
                 cornerIcon = [UIImage imageNamed:@"cl_orange_turn"];
-                if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+                if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                     cornerIcon = [UIImage imageNamed:@"cl_orange_turn_big"];
                 }
             } else if ([self.selectedNewEventTypeMarker isEqualToString:@"PhoneUsage"]) {
                 typeName = @"Phone Usage";
                 iconName = @"cl_orange_phone_big";
                 cornerIcon = [UIImage imageNamed:@"cl_orange_phone"];
-                if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+                if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
                     cornerIcon = [UIImage imageNamed:@"cl_orange_phone_big"];
                 }
             }

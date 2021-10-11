@@ -21,7 +21,7 @@
     
     self.delegate = self;
     
-    //CODE IMPLEMENTATION. SEE STORRYBOARD TOO
+    //CODE IMPLEMENTATION. SEE STORYBOARD
     NSArray *unSelectedImgArray = [NSArray arrayWithObjects:@"dashboard_unselected", @"feed_unselected", @"rewards_unselected", @"profile_unselected", nil];
     NSArray *selectedImgArray = [NSArray arrayWithObjects:@"dashboard_selected", @"feed_selected", @"rewards_selected", @"profile_selected", nil];
     
@@ -30,13 +30,13 @@
     UITabBar *tabBar = self.tabBar;
     
     CGSize imgSize = CGSizeMake(tabBar.frame.size.width/tabBar.items.count +1, tabBar.frame.size.height);
-    if (IS_IPHONE_11 || IS_IPHONE_12_PRO || IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    if (IS_IPHONE_11 || IS_IPHONE_13_PRO || IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         imgSize = CGSizeMake(tabBar.frame.size.width/tabBar.items.count +1, tabBar.frame.size.height +33);
     }
     
     UIGraphicsBeginImageContextWithOptions(imgSize, NO, 0);
     UIBezierPath* p = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, imgSize.width, imgSize.height)];
-    [[Color tabBarLightColor] setFill];
+    [[Color tabBarDarkColor] setFill];
     [p fill];
     UIImage* finalImg = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
@@ -54,7 +54,7 @@
         CGSize imgSize = CGSizeMake(tabBar.frame.size.width/tabBar.items.count, tabBar.frame.size.height);
         UIGraphicsBeginImageContextWithOptions(imgSize, NO, 0);
         UIBezierPath* p = [UIBezierPath bezierPathWithRect:CGRectMake(0, 0, imgSize.width, imgSize.height)];
-        [[Color tabBarLightColor] setFill];
+        [[Color tabBarDarkColor] setFill];
         [p fill];
         UIImage* finalImg = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();

@@ -9,6 +9,7 @@
 #import "TripCell.h"
 
 @interface TripCell ()
+
 @end
 
 @implementation TripCell

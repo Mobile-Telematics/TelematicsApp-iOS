@@ -60,7 +60,7 @@
   
     self.haveCamera = [UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera];
     CGFloat localImagePickerHeight = imagePickerHeight;
-    if (IS_IPHONE_11 || IS_IPHONE_12_PRO || IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    if (IS_IPHONE_11 || IS_IPHONE_13_PRO || IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         localImagePickerHeight = imagePickerHeightX;
     }
     

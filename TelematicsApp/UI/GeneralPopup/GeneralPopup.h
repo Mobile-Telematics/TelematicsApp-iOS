@@ -11,12 +11,12 @@
 
 @interface GeneralPopup: UIView
 
-@property (strong, nonatomic) IBOutlet UIImageView *iconView;
-@property (strong, nonatomic) IBOutlet UIImageView *imgView;
-@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
-@property (strong, nonatomic) IBOutlet UILabel *messageLabel;
-@property (strong, nonatomic) IBOutlet GeneralButton *gpsButton;
-@property (strong, nonatomic) IBOutlet GeneralButton *motionButton;
-@property (strong, nonatomic) IBOutlet GeneralButton *pushButton;
+@property (strong, nonatomic) IBOutlet UIImageView      *iconView;
+@property (strong, nonatomic) IBOutlet UIImageView      *imgView;
+@property (strong, nonatomic) IBOutlet UILabel          *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel          *messageLabel;
+@property (strong, nonatomic) IBOutlet GeneralButton    *gpsButton;
+@property (strong, nonatomic) IBOutlet GeneralButton    *motionButton;
+@property (strong, nonatomic) IBOutlet GeneralButton    *pushButton;
 
 @end

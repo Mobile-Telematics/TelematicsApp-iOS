@@ -10,13 +10,13 @@
 
 @interface EmailLoginViewCtrl: BaseViewController
 
-@property (nonatomic, assign) BOOL isUserExist;
+@property (nonatomic, assign) BOOL          isUserExist;
 
-@property (strong, nonatomic) NSString *welcomeText;
-@property (strong, nonatomic) NSString *signInBtnText;
+@property (strong, nonatomic) NSString      *welcomeText;
+@property (strong, nonatomic) NSString      *signInBtnText;
 
-@property (strong, nonatomic) NSString *enteredEmail;
-@property (strong, nonatomic) NSString *userName;
-@property (strong, nonatomic) NSString *userPhotoUrl;
+@property (strong, nonatomic) NSString      *enteredEmail;
+@property (strong, nonatomic) NSString      *userName;
+@property (strong, nonatomic) NSString      *userPhotoUrl;
 
 @end

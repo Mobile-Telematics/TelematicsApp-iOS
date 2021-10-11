@@ -58,7 +58,7 @@
             UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
             if (IS_IPHONE_5 || IS_IPHONE_4) {
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:11];
-            } else if (IS_IPHONE_8 || IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+            } else if (IS_IPHONE_8 || IS_IPHONE_11 || IS_IPHONE_13_PRO) {
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:12];
             } else {
                 btn.titleLabel.font = [UIFont boldSystemFontOfSize:14];
@@ -166,10 +166,6 @@
                     [[btn imageView] setContentMode: UIViewContentModeScaleAspectFit];
                     [btn setImageEdgeInsets:UIEdgeInsetsMake(5, 0, 5, 0)];
                     [btn setImage:[UIImage imageNamed:items[i]] forState:UIControlStateNormal];
-                    
-//                    [btn imageView].image = [[btn imageView].image imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-//                    [[btn imageView] setTintColor:[Color officialWhiteColor]];
-//                    [btn setImage:[UIImage imageNamed:items[i]] forState:UIControlStateNormal];
                 }
                 
                 [btn addTarget:self action:@selector(chooseIndexWithImages:) forControlEvents:UIControlEventTouchUpInside];

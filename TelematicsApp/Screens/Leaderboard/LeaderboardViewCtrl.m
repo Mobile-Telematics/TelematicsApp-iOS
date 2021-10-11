@@ -30,26 +30,26 @@
 
 @interface LeaderboardViewCtrl () <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UILabel        *mainTitle;
-@property (weak, nonatomic) IBOutlet UITableView    *tableView;
-@property (weak, nonatomic) IBOutlet UIView         *mainBackground;
-@property (weak, nonatomic) IBOutlet UIImageView    *avatarImg;
-@property (weak, nonatomic) IBOutlet UIButton       *backButton;
-@property (weak, nonatomic) IBOutlet UILabel        *userNameLbl;
-@property (nonatomic, strong) UIRefreshControl      *refreshController;
-@property (weak, nonatomic) IBOutlet UIView         *placeholderMainView;
-@property (weak, nonatomic) IBOutlet UIImageView    *placeholderMainImg;
-@property (weak, nonatomic) IBOutlet UIButton       *settingsBtn;
-@property (weak, nonatomic) IBOutlet UIButton       *chatBtn;
+@property (weak, nonatomic) IBOutlet UILabel                *mainTitle;
+@property (weak, nonatomic) IBOutlet UITableView            *tableView;
+@property (weak, nonatomic) IBOutlet UIView                 *mainBackground;
+@property (weak, nonatomic) IBOutlet UIImageView            *avatarImg;
+@property (weak, nonatomic) IBOutlet UIButton               *backButton;
+@property (weak, nonatomic) IBOutlet UILabel                *userNameLbl;
+@property (nonatomic, strong) UIRefreshControl              *refreshController;
+@property (weak, nonatomic) IBOutlet UIView                 *placeholderMainView;
+@property (weak, nonatomic) IBOutlet UIImageView            *placeholderMainImg;
+@property (weak, nonatomic) IBOutlet UIButton               *settingsBtn;
+@property (weak, nonatomic) IBOutlet UIButton               *chatBtn;
 
-@property (strong, nonatomic) TelematicsAppModel           *appModel;
-@property (strong, nonatomic) TelematicsLeaderboardModel   *leaderboardModel;
+@property (strong, nonatomic) TelematicsAppModel            *appModel;
+@property (strong, nonatomic) TelematicsLeaderboardModel    *leaderboardModel;
 
-@property (nonatomic, strong) NSArray<NSArray *>    *sections;
-@property (strong, nonatomic) LeaderboardResponse   *leaderboard;
+@property (nonatomic, strong) NSArray<NSArray *>            *sections;
+@property (strong, nonatomic) LeaderboardResponse           *leaderboard;
 
-@property (weak, nonatomic) IBOutlet UIView         *noUsersInLeaderboardView;
-@property (weak, nonatomic) IBOutlet UILabel        *noUsersInLeaderboardLbl;
+@property (weak, nonatomic) IBOutlet UIView                 *noUsersInLeaderboardView;
+@property (weak, nonatomic) IBOutlet UILabel                *noUsersInLeaderboardLbl;
 
 @end
 

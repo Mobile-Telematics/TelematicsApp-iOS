@@ -10,11 +10,11 @@
 
 @interface DelegateCollectionViewFillLayout ()
 
-@property (readonly, nonatomic) NSInteger numberOfItemsInCollectionView;
-@property (assign, nonatomic) CGSize contentSize;
-@property (copy, nonatomic) NSIndexSet *extraIndexes;
-@property (copy, nonatomic) NSArray *itemAttributes;
-@property (readonly, weak, nonatomic) NSNotificationCenter *notificationCenter;
+@property (readonly, nonatomic) NSInteger                       numberOfItemsInCollectionView;
+@property (assign, nonatomic) CGSize                            contentSize;
+@property (copy, nonatomic) NSIndexSet                          *extraIndexes;
+@property (copy, nonatomic) NSArray                             *itemAttributes;
+@property (readonly, weak, nonatomic) NSNotificationCenter      *notificationCenter;
 
 - (void)setup;
 - (void)setupDefaults;

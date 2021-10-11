@@ -86,7 +86,7 @@ class OBDSlideCarouselViewCtrl: UIViewController, UIImagePickerControllerDelegat
 
         if imagePickerController == nil {
 
-            let configuration = Configuration()
+            let configuration = ImagePickerConfiguration()
             configuration.recordLocation = false
             //configuration.savePhotosToCameraRoll = false
             imagePickerController = ImagePickerController(configuration: configuration)

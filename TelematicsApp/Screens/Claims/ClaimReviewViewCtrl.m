@@ -476,9 +476,9 @@
 
 - (void)exequeScrollViewHeigh {
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2, 0.0);
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/4.7, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/1.2, 0.0);
     } else if (IS_IPHONE_8P) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2.6, 0.0);
@@ -502,11 +502,6 @@
     KSPhotoCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PhotoCell" forIndexPath:indexPath];
     
     if (self.hideBottomButtons) {
-//        NSData *imageData = [NSData dataWithContentsOfURL:[NSURL URLWithString:_urlsFull[indexPath.row]]];
-//        UIImage* sourceImage = [UIImage imageWithData:imageData];
-//        UIImage* flippedImage = [UIImage imageWithCGImage:sourceImage.CGImage scale:sourceImage.scale  orientation:UIImageOrientationUp];
-//        cell.imageView.image = flippedImage;
-        
         [cell.imageView sd_setImageWithURL:[NSURL URLWithString:_urlsFull[indexPath.row]] placeholderImage:[UIImage imageNamed:@"net_photo"]];
     } else {
         NSData *imageData = [NSData dataWithContentsOfFile:_urlsFull[indexPath.row]];

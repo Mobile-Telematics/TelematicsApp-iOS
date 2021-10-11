@@ -105,7 +105,8 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 
 - (void)performRequestWithPathBodyObject:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters bodyObject:(NSDictionary*)bodyObject method:(NSString*)httpMethod;
 
-#pragma mark Main
+
+#pragma mark Main Request
 
 - (void)performRequest:(NSMutableURLRequest*)arequest withResponseClass:(Class)responseClass;
 - (void)cancel;

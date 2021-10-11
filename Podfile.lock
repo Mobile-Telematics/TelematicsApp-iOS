@@ -61,7 +61,7 @@ PODS:
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
-  - FirebaseCoreDiagnostics (8.6.0):
+  - FirebaseCoreDiagnostics (8.8.0):
     - GoogleDataTransport (~> 9.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/Logger (~> 7.4)
@@ -69,7 +69,7 @@ PODS:
   - FirebaseDatabase (8.6.0):
     - FirebaseCore (~> 8.0)
     - leveldb-library (~> 1.22)
-  - FirebaseInstallations (8.6.0):
+  - FirebaseInstallations (8.8.0):
     - FirebaseCore (~> 8.0)
     - GoogleUtilities/Environment (~> 7.4)
     - GoogleUtilities/UserDefaults (~> 7.4)
@@ -177,7 +177,7 @@ DEPENDENCIES:
   - GoogleMaps (= 3.9.0)
   - GooglePlaces (= 3.9.0)
   - HEREMaps
-  - ImagePicker
+  - ImagePicker (from `https://github.com/hyperoslo/ImagePicker.git`)
   - IQDropDownTextField
   - IQMediaPickerController
   - JSONModel
@@ -218,7 +218,6 @@ SPEC REPOS:
     - GTMSessionFetcher
     - HEREMaps
     - HexColors
-    - ImagePicker
     - IQDropDownTextField
     - IQMediaPickerController
     - JSONModel
@@ -242,10 +241,15 @@ SPEC REPOS:
     - YYWebImage
 
 EXTERNAL SOURCES:
+  ImagePicker:
+    :git: https://github.com/hyperoslo/ImagePicker.git
   MagicalRecord:
     :git: https://github.com/magicalpanda/MagicalRecord
 
 CHECKOUT OPTIONS:
+  ImagePicker:
+    :commit: d8a8f840380b9a28230c8fcad277adb458706d0a
+    :git: https://github.com/hyperoslo/ImagePicker.git
   MagicalRecord:
     :commit: 6031f608b79c1d6802007aaed6efd100e11f59ba
     :git: https://github.com/magicalpanda/MagicalRecord
@@ -260,9 +264,9 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 8f32ae54ad42754f503354782575c4ddfc1425c3
   FirebaseAuth: 223adeeb2262b417532e89bf06a960e3a0a1e9e4
   FirebaseCore: a753c231801f04f5ccd10cc92119ad1b12a61165
-  FirebaseCoreDiagnostics: 3721920bde3a9a6d5aa093c1d25e9d3e47f694af
+  FirebaseCoreDiagnostics: fe77f42da6329d6d83d21fd9d621a6b704413bfc
   FirebaseDatabase: 917fbeed577a68eb1ba0eb48c52a3aa10ac13f92
-  FirebaseInstallations: 0ede6ffcd215b8f93c19d9b06c1c54e2d4107e98
+  FirebaseInstallations: 2563cb18a723ef9c6ef18318a49519b75dce613c
   FirebaseStorage: 2765944230981e63f8bd2938d9d5819158b7c34c
   "GKImagePicker@robseward": 98b9ead2141843574736cef51a2b4813ecefa62c
   GoogleAppMeasurement: 2c0c6e2a7ab3fe730ade6379f732bdefb46f50b0
@@ -297,6 +301,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: f0a45b41503c194dbc06ecf00c49e30c8a5b55a9
+PODFILE CHECKSUM: 21cbb33c135c4bcb418ad20fb24ed4803860d92b
 
 COCOAPODS: 1.10.1

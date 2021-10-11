@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sCS-GK-DNO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sCS-GK-DNO">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -64,13 +64,13 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="SVw-6d-Zuz">
-                                    <rect key="frame" x="0.0" y="601" width="414" height="143"/>
+                                    <rect key="frame" x="0.0" y="612" width="414" height="143"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="LicenseCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LicenseCell" rowHeight="168" id="PMx-P1-LT1" userLabel="LicenseCell" customClass="LicenseCell">
-                                        <rect key="frame" x="0.0" y="305" width="414" height="168"/>
+                                        <rect key="frame" x="0.0" y="321.5" width="414" height="168"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PMx-P1-LT1" id="eUi-YH-ZSI">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="168"/>
@@ -154,7 +154,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="CarCell" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarCell" rowHeight="100" id="se8-Ig-Cdz" userLabel="CarCell" customClass="CarCell">
-                                        <rect key="frame" x="0.0" y="473" width="414" height="100"/>
+                                        <rect key="frame" x="0.0" y="489.5" width="414" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="se8-Ig-Cdz" id="11r-0W-484">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
@@ -278,7 +278,7 @@
                     <connections>
                         <outlet property="avatarImg" destination="WON-ni-CHp" id="n0R-IW-YFH"/>
                         <outlet property="backButton" destination="FaW-fP-Oj8" id="0bW-7g-2pb"/>
-                        <outlet property="mainView" destination="mMf-5F-zg7" id="XJ2-Eo-4lG"/>
+                        <outlet property="bottomAdditionalView" destination="mMf-5F-zg7" id="sWG-Ye-oic"/>
                         <outlet property="settingsButton" destination="WC4-MG-xwP" id="uDT-a6-5ia"/>
                         <outlet property="tableView" destination="AgD-l7-kVJ" id="X9K-m5-1ge"/>
                         <outlet property="userNameLbl" destination="Ubr-NA-d67" id="WgS-Fa-T14"/>
@@ -826,7 +826,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="CarCell" id="z9K-Tf-N1D">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="z9K-Tf-N1D" id="NL3-aB-ofb">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>

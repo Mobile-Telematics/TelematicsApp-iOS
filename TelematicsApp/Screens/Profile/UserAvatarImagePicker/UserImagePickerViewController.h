@@ -14,6 +14,7 @@
 - (void)imagePicker:(UserImagePickerViewController *)imagePicker didSelectImage:(UIImage *)image;
 
 @optional
+
 - (void)imagePickerDidOpen;
 - (void)imagePickerWillOpen;
 

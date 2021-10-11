@@ -52,9 +52,9 @@
     if (!self.topMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             self.topMargin = self.view.frame.size.height/10;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             self.topMargin = self.view.frame.size.height/3.5;
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             self.topMargin = self.view.frame.size.height/3.6;
         } else if (IS_IPHONE_8) {
             self.topMargin = self.view.frame.size.height/4.2;
@@ -65,9 +65,9 @@
     if (!self.bottomMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             self.bottomMargin = self.view.frame.size.height/54;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             self.bottomMargin = self.view.frame.size.height/6;
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             self.bottomMargin = self.view.frame.size.height/8.2;
         } else if (IS_IPHONE_8) {
             self.bottomMargin = self.view.frame.size.height/54;

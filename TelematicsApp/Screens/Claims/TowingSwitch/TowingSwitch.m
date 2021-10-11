@@ -10,17 +10,17 @@
 
 @interface TowingSwitch ()
 
-@property (strong, nonatomic) NSMutableArray *labels;
-@property (strong, nonatomic) NSMutableArray *onTopLabels;
-@property (strong, nonatomic) NSArray *strings;
+@property (strong, nonatomic) NSMutableArray            *labels;
+@property (strong, nonatomic) NSMutableArray            *onTopLabels;
+@property (strong, nonatomic) NSArray                   *strings;
 
 @property (strong, nonatomic) void (^handlerBlock)(NSUInteger index);
 @property (strong, nonatomic) void (^willBePressedHandlerBlock)(NSUInteger index);
 
-@property (strong, nonatomic) UIView *backgroundView;
-@property (strong, nonatomic) UIView *sliderView;
+@property (strong, nonatomic) UIView                    *backgroundView;
+@property (strong, nonatomic) UIView                    *sliderView;
 
-@property (nonatomic) NSInteger selectedIndex;
+@property (nonatomic) NSInteger                         selectedIndex;
 
 @end
 

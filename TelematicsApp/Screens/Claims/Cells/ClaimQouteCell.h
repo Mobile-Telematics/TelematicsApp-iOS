@@ -10,9 +10,9 @@
 
 @interface ClaimQouteCell: UITableViewCell
 
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *claimName;
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *claimDate;
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *claimId;
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *claimStatus;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel   *claimName;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel   *claimDate;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel   *claimId;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel   *claimStatus;
 
 @end

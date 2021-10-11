@@ -372,10 +372,10 @@
         //ANIMATION VALUE FOR LOGO
         double coefPhoto = 0.38;
         float coefLbl = 170.0f;
-        if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             coefPhoto = 0.55;
             coefLbl = 76.0f;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             coefPhoto = 0.55;
             coefLbl = 50.0f;
         } else if (IS_IPHONE_5 || IS_IPHONE_4) {
@@ -414,9 +414,9 @@
     
     //ANIMATION VALUE FOR END EDITING
     float coefLbl = 320.0f;
-    if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         coefLbl = 463.0f;
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         coefLbl = 483.0f;
     } else if (IS_IPHONE_5 || IS_IPHONE_4)
         coefLbl = 274.0f;

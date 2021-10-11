@@ -28,10 +28,10 @@
 #define IS_IPHONE_8P (IS_IPHONE && SCREEN_MAX_LENGTH == 736.0)
 #define IS_IPHONE_11 (IS_IPHONE && SCREEN_MAX_LENGTH == 812.0)
 #define IS_IPHONE_11_PROMAX (IS_IPHONE && SCREEN_MAX_LENGTH == 896.0)
-#define IS_IPHONE_12_PRO (IS_IPHONE && SCREEN_MAX_LENGTH == 844.0)
-#define IS_IPHONE_12_PROMAX (IS_IPHONE && SCREEN_MAX_LENGTH == 926.0)
+#define IS_IPHONE_13_PRO (IS_IPHONE && SCREEN_MAX_LENGTH == 844.0)
+#define IS_IPHONE_13_PROMAX (IS_IPHONE && SCREEN_MAX_LENGTH == 926.0)
 
-#define IS_OS_13_OR_OLD ([[[UIDevice currentDevice] systemVersion] floatValue] < 13.0)
+#define IS_OS_12_OR_OLD ([[[UIDevice currentDevice] systemVersion] floatValue] < 13.0)
 #define IS_OS_13_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 13.0)
 
 #define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? @0 : obj; })

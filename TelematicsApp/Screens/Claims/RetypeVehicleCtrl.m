@@ -27,7 +27,7 @@
     NSArray *arrayPaintingTypes;
 }
 
-@property (strong, nonatomic) TelematicsAppModel                           *appModel;
+@property (strong, nonatomic) TelematicsAppModel                    *appModel;
 @property (nonatomic, strong) VehicleResultResponse                 *vehicle;
 @property (nonatomic, strong) NSDictionary                          *allCarsManufacturers;
 @property (nonatomic, strong) NSDictionary                          *allCarsModels;

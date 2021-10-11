@@ -19,9 +19,7 @@
 
 @interface EditProfileCtrl () <UIScrollViewDelegate, UITextFieldDelegate, UIPickerViewDelegate>
 
-@property (strong, nonatomic) TelematicsAppModel                                       *appModel;
-
-//@property(strong, nonatomic) FIRDatabaseReference *realtimeDatabase;
+@property (strong, nonatomic) TelematicsAppModel                                *appModel;
 
 @property (weak, nonatomic) IBOutlet UIScrollView                               *scrollView;
 @property (weak, nonatomic) IBOutlet UIImageView                                *mainHeaderImg;

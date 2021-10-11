@@ -26,12 +26,12 @@
 
 @interface CongratulationsPopupDelegate()
 
-@property (strong, nonatomic) CongratulationsPopup *customView;
-@property (strong, nonatomic) UIView *view;
-@property (strong, nonatomic) UIView *dimBG;
-@property (strong, nonatomic) UIVisualEffectView *blurBG;
+@property (strong, nonatomic) CongratulationsPopup          *customView;
+@property (strong, nonatomic) UIView                        *view;
+@property (strong, nonatomic) UIView                        *dimBG;
+@property (strong, nonatomic) UIVisualEffectView            *blurBG;
 
-@property (strong, nonatomic) TelematicsAppModel *appModel;
+@property (strong, nonatomic) TelematicsAppModel            *appModel;
 
 @end
 
@@ -55,9 +55,9 @@
     if (!self.topMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             self.topMargin = self.view.frame.size.height/5;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             self.topMargin = self.view.frame.size.height/3.5;
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             self.topMargin = self.view.frame.size.height/3.6;
         } else if (IS_IPHONE_8) {
             self.topMargin = self.view.frame.size.height/4.2;
@@ -68,9 +68,9 @@
     if (!self.bottomMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             self.bottomMargin = self.view.frame.size.height/6;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             self.bottomMargin = self.view.frame.size.height/3.5;
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             self.bottomMargin = self.view.frame.size.height/3.6;
         } else if (IS_IPHONE_8) {
             self.bottomMargin = self.view.frame.size.height/4.4;
@@ -189,7 +189,7 @@
     imageAttachment.image = [UIImage imageNamed:@"net_ok"];
     
     CGFloat imageOffsetY = -4.0;
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         imageAttachment.bounds = CGRectMake(35, imageOffsetY, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
     } else {
         imageAttachment.bounds = CGRectMake(15, imageOffsetY, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
@@ -199,7 +199,7 @@
     NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
     [completeText appendAttributedString:attachmentString];
     NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:localizeString(@"      Grow your Safe Driving Score")];
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         textAfterIcon = [[NSMutableAttributedString alloc] initWithString:localizeString(@"             Grow your Safe Driving Score")];
     }
     
@@ -217,7 +217,7 @@
     imageAttachment.image = [UIImage imageNamed:@"net_ok"];
     
     CGFloat imageOffsetY = -4.0;
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         imageAttachment.bounds = CGRectMake(35, imageOffsetY, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
     } else {
         imageAttachment.bounds = CGRectMake(15, imageOffsetY, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
@@ -227,7 +227,7 @@
     NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
     [completeText appendAttributedString:attachmentString];
     NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:localizeString(@"      Complete with your Friends")];
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         textAfterIcon = [[NSMutableAttributedString alloc] initWithString:localizeString(@"             Complete with your Friends")];
     }
     
@@ -245,7 +245,7 @@
     imageAttachment.image = [UIImage imageNamed:@"net_ok"];
     
     CGFloat imageOffsetY = -4.0;
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         imageAttachment.bounds = CGRectMake(35, imageOffsetY, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
     } else {
         imageAttachment.bounds = CGRectMake(15, imageOffsetY, imageAttachment.image.size.width/1.5, imageAttachment.image.size.height/1.5);
@@ -255,7 +255,7 @@
     NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
     [completeText appendAttributedString:attachmentString];
     NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:localizeString(@"      Complete Challenges & Gain Coins")];
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         textAfterIcon = [[NSMutableAttributedString alloc] initWithString:localizeString(@"             Complete Challenges & Gain Coins")];
     }
     

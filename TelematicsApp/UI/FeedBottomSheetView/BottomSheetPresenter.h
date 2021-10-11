@@ -23,11 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BottomSheetPresenter: NSObject
 
-@property (nonatomic) UIView * superView;
-@property (nonatomic) BOOL isBottomSheetHidden;
-@property (nonatomic) RPTag* tags;
+@property (nonatomic) UIView                            *superView;
+@property (nonatomic) BOOL                              isBottomSheetHidden;
+@property (nonatomic) RPTag*                            tags;
 
-@property (nonatomic) id<BottomSheetPresenterDelegate> delegate;
+@property (nonatomic) id<BottomSheetPresenterDelegate>  delegate;
 
 - (instancetype)initWith:(UIView *)superView andDelegate:(id<BottomSheetPresenterDelegate>)delegate;
 

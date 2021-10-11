@@ -51,35 +51,42 @@
     return req;
 }
 
+//USERSERVICE URL FROM CONFIGURATION.PLIST
 + (NSString *)userServiceRootURL {
     return [Configurator sharedInstance].userServiceRootURL;
 }
 
+//INDICATORS SERVICE URL FROM CONFIGURATION.PLIST
 + (NSString *)indicatorsServiceURL {
     return [Configurator sharedInstance].indicatorsServiceURL;
 }
 
+//REWARDS DRIVECOINS URL FROM CONFIGURATION.PLIST
 + (NSString *)driveCoinsServiceURL {
     return [Configurator sharedInstance].driveCoinsServiceURL;
 }
 
+//LEADERBOARD URL FROM CONFIGURATION.PLIST
 + (NSString *)leaderboardServiceURL {
     return [Configurator sharedInstance].leaderboardServiceURL;
 }
 
+//CAR SERVICE URL FROM CONFIGURATION.PLIST
 + (NSString *)carServiceURL {
     return [Configurator sharedInstance].carServiceURL;
 }
 
+//CLAIMS SERVICE URL FROM CONFIGURATION.PLIST
 + (NSString *)claimsServiceURL {
     return [Configurator sharedInstance].claimsServiceURL;
 }
 
-//YOUR OWN INSTANCE KEYS
+//YOUR OWN INSTANCE ID KEY
 + (NSString *)instanceId {
     return [Configurator sharedInstance].instanceId;
 }
 
+//YOUR OWN INSTANCE ID KEY
 + (NSString *)instanceKey {
     return [Configurator sharedInstance].instanceKey;
 }
@@ -186,6 +193,12 @@
 
 
 #pragma mark Leaderboard
+
+- (void)getLeaderboardForUser {
+    [self performRequestLeaderboardService:@"Leaderboard/user" responseClass:[LeaderboardResponse class] parameters:nil method:GET];
+}
+
+//SCORINGRATE
 //Acceleration = 1
 //Deceleration = 2
 //Distraction = 3
@@ -195,11 +208,6 @@
 //Distance = 7
 //Trips = 8
 //Duration = 9
-
-- (void)getLeaderboardForUser {
-    [self performRequestLeaderboardService:@"Leaderboard/user" responseClass:[LeaderboardResponse class] parameters:nil method:GET];
-}
-
 - (void)getLeaderboardScore:(NSUInteger)scoringRate {
     NSString *finalLeadersUrl = [NSString stringWithFormat:@"Leaderboard?usersCount=10&roundUsersCount=3&ScoringRate=%lu", (unsigned long)scoringRate];
     [self performRequestLeaderboardService:finalLeadersUrl responseClass:[LeaderboardResponse class] parameters:nil method:GET];
@@ -466,7 +474,7 @@
 }
 
 
-#pragma mark Claims Images Upload Helpers for Car sides
+#pragma mark Claims Images Upload Helpers for each Car sides
 
 - (NSData *)createBodyWithBoundary:(NSString *)boundary
                         parameters:(NSDictionary *)parameters
@@ -558,32 +566,6 @@
 
 - (NSString *)generateBoundaryString {
     return [NSString stringWithFormat:@"Boundary-%@", [[NSUUID UUID] UUIDString]];
-}
-
-
-#pragma mark URLHelpers for us
-
-+ (NSString *)contentTypePathToJson {
-    return @"application/json; charset=utf-8";
-}
-
-static NSString* NSStringFromQueryParameters(NSDictionary* queryParameters) {
-    NSMutableArray* parts = [NSMutableArray array];
-    [queryParameters enumerateKeysAndObjectsUsingBlock:^(id key, id value, BOOL *stop) {
-        NSString *part = [NSString stringWithFormat: @"%@=%@",
-                          [key stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]],
-                          [value stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]
-                          ];
-        [parts addObject:part];
-    }];
-    return [parts componentsJoinedByString: @"&"];
-}
-
-static NSURL* NSURLByAppendingQueryParameters(NSURL* URL, NSDictionary* queryParameters) {
-    NSString* URLString = [NSString stringWithFormat:@"%@?%@",
-                           [URL absoluteString],
-                           NSStringFromQueryParameters(queryParameters)];
-    return [NSURL URLWithString:URLString];
 }
 
 @end

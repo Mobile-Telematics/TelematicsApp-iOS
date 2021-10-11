@@ -27,7 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton           *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *nextBtn;
 
-@property (strong, nonatomic) TelematicsAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel        *appModel;
 
 @end
 
@@ -127,9 +127,9 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2, 0.0);
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2.8, 0.0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/6, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/3.5, 0.0);
     } else if (IS_IPHONE_8P) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/3, 0.0);
@@ -157,9 +157,9 @@
 {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 15, 0.0);
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 300, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 100, 0.0);
     } else if (IS_IPHONE_8P) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 100, 0.0);

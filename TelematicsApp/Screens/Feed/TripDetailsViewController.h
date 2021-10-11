@@ -13,16 +13,16 @@
 
 @interface TripDetailsViewController: BaseViewController <NMAMapGestureDelegate>
 
-@property (nonatomic) RPTrackProcessed *track;
+@property (nonatomic) RPTrackProcessed          *track;
 
-@property (nonatomic) NSString *trackToken;
-@property (nonatomic) NSInteger trackTag;
+@property (nonatomic) NSString                  *trackToken;
+@property (nonatomic) NSInteger                 trackTag;
 
-@property (nonatomic) NSString *trackDistanceSummary;
-@property (nonatomic) NSString *trackPointsSummary;
-@property (nonatomic) NSString *simpleStartTime;
-@property (nonatomic) NSString *simpleEndTime;
+@property (nonatomic) NSString                  *trackDistanceSummary;
+@property (nonatomic) NSString                  *trackPointsSummary;
+@property (nonatomic) NSString                  *simpleStartTime;
+@property (nonatomic) NSString                  *simpleEndTime;
 
-@property (nonatomic) NSMutableArray *sortedOnlyTrips;
+@property (nonatomic) NSMutableArray            *sortedOnlyTrips;
 
 @end

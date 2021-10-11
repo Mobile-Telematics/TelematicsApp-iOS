@@ -14,10 +14,10 @@
 
 @interface LicenseCell: UITableViewCell
 
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *licPlaceholder;
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *userNameLbl;
-@property (nonatomic, assign, readwrite) IBOutlet UILabel *userLicNumLbl;
-@property (nonatomic, assign, readwrite) IBOutlet UIImageView *arrow;
-@property (nonatomic, assign, readwrite) IBOutlet UIImageView *addCellBackground;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel       *licPlaceholder;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel       *userNameLbl;
+@property (nonatomic, assign, readwrite) IBOutlet UILabel       *userLicNumLbl;
+@property (nonatomic, assign, readwrite) IBOutlet UIImageView   *arrow;
+@property (nonatomic, assign, readwrite) IBOutlet UIImageView   *addCellBackground;
 
 @end

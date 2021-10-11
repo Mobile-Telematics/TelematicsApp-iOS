@@ -16,8 +16,8 @@
 
 @interface TowingViewController ()
 
-@property (weak, nonatomic) IBOutlet UIButton *backBtn;
-@property (weak, nonatomic) IBOutlet UIButton *nextBtn;
+@property (weak, nonatomic) IBOutlet UIButton   *backBtn;
+@property (weak, nonatomic) IBOutlet UIButton   *nextBtn;
 
 @end
 
@@ -25,9 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    //[ClaimsService sharedService].CarDrivable = @"true";
-    //[ClaimsService sharedService].CarTowing = @"false";
     
     [self.nextBtn setTintColor:[Color officialWhiteColor]];
     [self.nextBtn setBackgroundColor:[Color officialMainAppColor]];

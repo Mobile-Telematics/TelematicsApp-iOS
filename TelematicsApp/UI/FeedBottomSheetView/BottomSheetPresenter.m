@@ -12,9 +12,9 @@
 
 @interface BottomSheetPresenter()
 
-@property (nonatomic) BottomSheetView * bottomSheetView;
-@property (nonatomic) NSLayoutConstraint * bottomSheetBottomConstaint;
-@property (nonatomic) CGFloat initialBottomConststraintValue;
+@property (nonatomic) BottomSheetView *         bottomSheetView;
+@property (nonatomic) NSLayoutConstraint *      bottomSheetBottomConstaint;
+@property (nonatomic) CGFloat                   initialBottomConststraintValue;
 
 @end
 

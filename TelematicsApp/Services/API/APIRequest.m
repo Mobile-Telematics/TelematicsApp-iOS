@@ -579,6 +579,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             }
         }
     }];
+    
     if (!self.isColdRequest) {
         [self.currentOperation resume];
     }

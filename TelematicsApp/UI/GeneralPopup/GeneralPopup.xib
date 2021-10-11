@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,17 +16,17 @@
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-Kw-Ulg" customClass="GeneralButton">
                     <rect key="frame" x="25" y="212" width="325" height="45"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="Www-nE-vvK"/>
                         <constraint firstAttribute="height" constant="45" id="yJM-XY-cg1"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <state key="normal" title="Enable Motions">
-                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="titleColor" systemColor="viewFlipsideBackgroundColor"/>
                     </state>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Turn On Telematics Data" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-EE-NvH">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Permission status" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-EE-NvH">
                     <rect key="frame" x="25" y="14" width="325" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="hse-qo-bus"/>
@@ -45,28 +43,29 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-Lh-VRM" customClass="GeneralButton">
                     <rect key="frame" x="25" y="160" width="325" height="45"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="mWo-6L-iJA"/>
                         <constraint firstAttribute="height" constant="45" id="yTY-fV-wCT"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <state key="normal" title="Enable GPS always">
-                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="titleColor" systemColor="viewFlipsideBackgroundColor"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="95E-3a-dIe" customClass="GeneralButton">
                     <rect key="frame" x="25" y="265" width="325" height="45"/>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="45" id="P2m-A6-smO"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                     <state key="normal" title="Enable Push-notifications">
-                        <color key="titleColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                        <color key="titleColor" systemColor="viewFlipsideBackgroundColor"/>
                     </state>
                 </button>
             </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="95E-3a-dIe" secondAttribute="bottom" constant="20" id="1l2-E2-H82"/>
@@ -87,7 +86,6 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="95E-3a-dIe" secondAttribute="trailing" constant="25" id="vTM-tW-5Aa"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="gpsButton" destination="UNv-Lh-VRM" id="7bg-Df-y1S"/>
                 <outlet property="messageLabel" destination="Uef-Zy-KQC" id="cLf-kq-tNU"/>
@@ -98,4 +96,23 @@
             <point key="canvasLocation" x="23.199999999999999" y="19.790104947526238"/>
         </view>
     </objects>
+    <designables>
+        <designable name="95E-3a-dIe">
+            <size key="intrinsicContentSize" width="174" height="29"/>
+        </designable>
+        <designable name="Rdp-Kw-Ulg">
+            <size key="intrinsicContentSize" width="104" height="29"/>
+        </designable>
+        <designable name="UNv-Lh-VRM">
+            <size key="intrinsicContentSize" width="127" height="29"/>
+        </designable>
+    </designables>
+    <resources>
+        <systemColor name="groupTableViewBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="viewFlipsideBackgroundColor">
+            <color red="0.1215686274509804" green="0.12941176470588239" blue="0.14117647058823529" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

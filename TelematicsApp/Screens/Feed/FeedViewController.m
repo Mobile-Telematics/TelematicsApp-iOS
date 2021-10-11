@@ -1020,7 +1020,7 @@ static NSString *tripCellIdentifier = @"TripCell";
 
 - (IBAction)openAppSystemSettings:(id)sender {
     NSURL *URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [Configurator sharedInstance].telematicsSettingsOS13]];
-    if IS_OS_13_OR_OLD
+    if IS_OS_12_OR_OLD
         URL = [NSURL URLWithString:[NSString stringWithFormat:@"%@", [Configurator sharedInstance].telematicsSettingsOS12]];
     SFSafariViewController *svc = [[SFSafariViewController alloc] initWithURL:URL];
     svc.delegate = self;

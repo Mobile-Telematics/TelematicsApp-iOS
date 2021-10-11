@@ -64,7 +64,9 @@ import CoreData
         self.navigationItem.title = allowMultipleSelection ? "Select Countries" : "Select Country"
         self.navigationController?.navigationBar.barTintColor  = .white
         self.navigationController!.navigationBar.isTranslucent = false
+        
         navigationController?.navigationBar.tintColor = Color.officialMainAppColor()
+        navigationController?.view.backgroundColor = .white
         
         cancelButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.cancel, target: self, action: #selector(CountriesViewController.cancel))
         self.navigationItem.leftBarButtonItem = cancelButton
@@ -75,13 +77,13 @@ import CoreData
             self.navigationItem.rightBarButtonItem?.isEnabled = selectedCountries.count > 0
         }
         
-        tableView.sectionIndexTrackingBackgroundColor = UIColor.clear
-        tableView.sectionIndexBackgroundColor = UIColor.clear
-        tableView.keyboardDismissMode = .onDrag
-        
         searchBar.delegate = self
         tableView.dataSource = self
         tableView.delegate = self
+        
+        tableView.sectionIndexTrackingBackgroundColor = UIColor.clear
+        tableView.sectionIndexBackgroundColor = UIColor.clear
+        tableView.keyboardDismissMode = .onDrag
         
         self.view.addSubview(stackView)
         

@@ -28,7 +28,7 @@
 @interface ProfileViewController () <UITableViewDelegate, UITableViewDataSource, UserImagePickerViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView        *tableView;
-@property (weak, nonatomic) IBOutlet UIView             *mainView;
+@property (weak, nonatomic) IBOutlet UIView             *bottomAdditionalView;
 @property (weak, nonatomic) IBOutlet UIView             *verifiedProfileView;
 @property (weak, nonatomic) IBOutlet UILabel            *verifiedGreenLabel;
 @property (weak, nonatomic) IBOutlet UILabel            *userNameLbl;
@@ -49,7 +49,7 @@
 @property (weak, nonatomic) NSString                    *paintingString;
 @property (strong, nonatomic) NSArray                   *sectionsArr;
 
-@property (strong, nonatomic) TelematicsAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel        *appModel;
 @property (nonatomic, strong) ProfileResultResponse     *profile;
 
 @end
@@ -74,11 +74,11 @@
     UIGraphicsEndImageContext();
     self.view.backgroundColor = [UIColor colorWithPatternImage:img];
     
-    self.mainView.layer.cornerRadius = 16;
-    self.mainView.layer.masksToBounds = NO;
-    self.mainView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.mainView.layer.shadowRadius = 2;
-    self.mainView.layer.shadowOpacity = 0.1;
+    self.bottomAdditionalView.layer.cornerRadius = 16;
+    self.bottomAdditionalView.layer.masksToBounds = NO;
+    self.bottomAdditionalView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.bottomAdditionalView.layer.shadowRadius = 2;
+    self.bottomAdditionalView.layer.shadowOpacity = 0.1;
     
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:self.tableView.tableFooterView.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerBottomRight) cornerRadii:CGSizeMake(16.0, 16.0)];
     CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
@@ -107,7 +107,7 @@
     self.avatarImg.userInteractionEnabled = YES;
     [self.avatarImg addGestureRecognizer:bigAvaTap];
     
-    self.verifiedGreenLabel.attributedText = [self createVerifedLabelImgBefore:localizeString(@"Verified Account")];
+    self.verifiedGreenLabel.attributedText = [self createVerifedLabelImgBefore:localizeString(@" Verified Account")];
     self.verifiedGreenLabel.textColor = [Color officialGreenColor];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(showCompletePopupNow) name:@"showCompletePopupNow" object:nil];
@@ -164,10 +164,10 @@
     }
     
     if (![userEmail isEqualToString:@""] && userEmail != nil && ![userPhone isEqualToString:@""] && userPhone != nil) {
-        self.verifiedGreenLabel.attributedText = [self createVerifedLabelImgBefore:localizeString(@"Verified Account")];
+        self.verifiedGreenLabel.attributedText = [self createVerifedLabelImgBefore:localizeString(@" Verified Account")];
         self.verifiedGreenLabel.textColor = [Color officialGreenColor];
     } else {
-        self.verifiedGreenLabel.attributedText = [self createNotVerifedLabelImgBefore:localizeString(@"Verified Account")];
+        self.verifiedGreenLabel.attributedText = [self createNotVerifedLabelImgBefore:localizeString(@" Verified Account")];
         self.verifiedGreenLabel.textColor = [Color lightGrayColor];
     }
     
@@ -237,7 +237,7 @@
             if (obj.Manufacturer == nil || ([obj.Manufacturer isEqual:@""])) {
                 cell.vehicleNameLbl.text = carModel;
             } else {
-                cell.vehicleNameLbl.text = carModel; //[self createVerifedLabelImgAfter:carModel];
+                cell.vehicleNameLbl.text = carModel;
             }
 
             NSString *vinCode = obj.Vin ? obj.Vin : localizeString(@"Not specified");
@@ -349,11 +349,16 @@
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    
     if (scrollView == self.tableView) {
         CGFloat y =  - scrollView.contentOffset.y - scrollView.contentInset.top;
         if (scrollView.contentOffset.y < 20 && scrollView.contentOffset.y > -90) {
             self.avatarImg.frame = CGRectMake(SCREEN_WIDTH/2-AVATAR_RADIUS-y/2, AVATAR_ORIGIN_Y - y, AVATAR_RADIUS * 2 + y, AVATAR_RADIUS * 2 + y);
             self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width/2;
+        }
+        
+        if (scrollView.contentOffset.y > 100) {
+            self.bottomAdditionalView.frame = CGRectMake(self.bottomAdditionalView.frame.origin.x, SCREEN_HEIGHT - SCREEN_HEIGHT/4 - scrollView.contentOffset.y, self.bottomAdditionalView.frame.size.width, SCREEN_HEIGHT/4 + scrollView.contentOffset.y);
         }
         
         if (scrollView.contentOffset.y >= 0) {
@@ -363,7 +368,7 @@
                 self.settingsButton.userInteractionEnabled = NO;
             else
                 self.settingsButton.userInteractionEnabled = YES;
-        } else if (scrollView.contentOffset.y < 90.0) {
+        } else if (scrollView.contentOffset.y < 90.0){
             self.settingsButton.alpha = 1;
             self.settingsButton.userInteractionEnabled = YES;
         }
@@ -371,7 +376,7 @@
 }
 
 
-#pragma mark - UserPikcerViewControllerDelegate
+#pragma mark - User Profile Picture upload to Firebase Cloud Storage
 
 - (IBAction)showPickerBtnWasPressed:(id)sender {
     UserImagePickerViewController *imagePicker = [[UserImagePickerViewController alloc] init];
@@ -379,6 +384,7 @@
     [imagePicker showImagePickerInController:self animated:YES];
 }
 
+//UPLOAD USER PROFILE PICTURE
 - (void)imagePicker:(UserImagePickerViewController *)imagePicker didSelectImage:(UIImage *)image {
     [self showPreloader];
     
@@ -508,16 +514,6 @@
     return completeText;
 }
 
-- (NSMutableAttributedString*)createVerifedLabelImgAfter:(NSString*)text {
-    NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
-    imageAttachment.image = [UIImage imageNamed:@"profile_verifed"];
-    imageAttachment.bounds = CGRectMake(5, -1, imageAttachment.image.size.width/1.7, imageAttachment.image.size.height/1.7);
-    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
-    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:text];
-    [completeText appendAttributedString:attachmentString];
-    return completeText;
-}
-
 - (NSMutableAttributedString*)createVerifedLabelImgBefore:(NSString*)text {
     NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
     imageAttachment.image = [UIImage imageNamed:@"profile_verifed"];
@@ -555,11 +551,6 @@
 }
 
 - (void)updateProfileTableDataWait {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self setMainUserAccount];
-        [self.tableView reloadData];
-    });
-    
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self setMainUserAccount];
         [self.tableView reloadData];

@@ -17,7 +17,6 @@ def available_pods
     pod 'CocoaLumberjack/Swift'
     pod 'SDWebImage', '5.9.0'
     pod 'GKImagePicker@robseward'
-    pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord'
     pod 'SystemServices'
     pod 'CMTabbarView', '0.2.0'
     pod 'SHSPhoneComponent'
@@ -25,7 +24,6 @@ def available_pods
     pod "IQDropDownTextField"
     pod "IQMediaPickerController"
     pod 'KDLoadingView'
-    pod 'ImagePicker'
     pod 'YYWebImage'
     pod 'UICountingLabel'
     pod 'UIActionSheet+Blocks'
@@ -34,6 +32,8 @@ def available_pods
     pod 'CircleTimer', '0.2.0'
     pod 'GoogleMaps', '3.9.0'
     pod 'GooglePlaces', '3.9.0'
+    pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord'
+    pod 'ImagePicker', :git => 'https://github.com/hyperoslo/ImagePicker.git'
 
 end
 

@@ -15,13 +15,13 @@
 
 @interface ScoreDecVC () <UITableViewDelegate, UITableViewDataSource>
 
-@property (weak, nonatomic) IBOutlet UITableView        *tableView;
-@property (weak, nonatomic) IBOutlet UILabel            *scoreTitle;
-@property (weak, nonatomic) IBOutlet UIView             *backViewTitle;
-@property (weak, nonatomic) IBOutlet UIView             *placeholderView;
-@property (weak, nonatomic) IBOutlet UIImageView        *placeholderImg;
-@property (strong, nonatomic) TelematicsLeaderboardModel       *leaderboardModel;
-@property (strong, nonatomic) LeaderboardResponse       *leaderboard;
+@property (weak, nonatomic) IBOutlet UITableView                *tableView;
+@property (weak, nonatomic) IBOutlet UILabel                    *scoreTitle;
+@property (weak, nonatomic) IBOutlet UIView                     *backViewTitle;
+@property (weak, nonatomic) IBOutlet UIView                     *placeholderView;
+@property (weak, nonatomic) IBOutlet UIImageView                *placeholderImg;
+@property (strong, nonatomic) TelematicsLeaderboardModel        *leaderboardModel;
+@property (strong, nonatomic) LeaderboardResponse               *leaderboard;
 
 @end
 

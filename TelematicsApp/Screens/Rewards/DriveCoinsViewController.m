@@ -174,7 +174,7 @@
     self.avatarImg.userInteractionEnabled = YES;
     [self.avatarImg addGestureRecognizer:avaTap];
     
-    if (IS_IPHONE_12_PROMAX) {
+    if (IS_IPHONE_13_PROMAX) {
         NSLayoutConstraint *heightConstraint;
         for (NSLayoutConstraint *constraint in self.whiteBackView.constraints) {
             if (constraint.firstAttribute == NSLayoutAttributeHeight) {
@@ -1085,7 +1085,7 @@
         
         //SECOND SECTION ATTRIBUTED STRING BEST
         NSString *bestStreakCounter = self.streaks.StreakCorneringBest.stringValue ? self.streaks.StreakCorneringBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips"); //if ([bestStreakCounter isEqualToString:@""]) { bestStreakItem = @""; };
+        NSString *bestStreakItem = localizeString(@"trips");
         NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
         
         NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
@@ -1190,7 +1190,7 @@
         
         //SECOND SECTION ATTRIBUTED STRING BEST
         NSString *bestStreakCounter = self.streaks.StreakOverSpeedBest.stringValue ? self.streaks.StreakOverSpeedBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips"); //if ([bestStreakCounter isEqualToString:@""]) { bestStreakItem = @""; };
+        NSString *bestStreakItem = localizeString(@"trips");
         NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
         
         NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
@@ -1278,7 +1278,7 @@
         
         //SECOND SECTION ATTRIBUTED STRING CURRENT
         NSString *currentStreakCounter = self.streaks.StreakPhoneUsageCurrentStreak.stringValue ? self.streaks.StreakPhoneUsageCurrentStreak.stringValue : @"0";
-        NSString *currentStreakItem = localizeString(@"trips"); //if ([currentStreakCounter isEqualToString:@""]) { currentStreakItem = @""; };
+        NSString *currentStreakItem = localizeString(@"trips");
         NSString *currentStreakString = [NSString stringWithFormat:@"%@ %@", currentStreakCounter, currentStreakItem];
         
         NSMutableAttributedString *currentStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:currentStreakString];
@@ -1295,7 +1295,7 @@
         
         //SECOND SECTION ATTRIBUTED STRING BEST
         NSString *bestStreakCounter = self.streaks.StreakPhoneUsageBest.stringValue ? self.streaks.StreakPhoneUsageBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips"); //if ([bestStreakCounter isEqualToString:@""]) { bestStreakItem = @""; };
+        NSString *bestStreakItem = localizeString(@"trips");
         NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
         
         NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];

@@ -36,7 +36,7 @@
 @property (weak, nonatomic) IBOutlet UIButton           *backBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *nextBtn;
 
-@property (strong, nonatomic) TelematicsAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel        *appModel;
 @property int                                           counterLocationPicker;
 
 @property (nonatomic, strong) NSString                  *dateSelectedByUser;
@@ -201,9 +201,9 @@
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/4, 0.0);
     if (IS_IPHONE_5 || IS_IPHONE_4_OR_LESS) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/2.7, 0.0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/6, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, self.view.frame.size.height/7, 0.0);
     }
     self.scrollView.contentInset = contentInsets;
@@ -296,9 +296,9 @@
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 170)) animated:NO];
         } else if (IS_IPHONE_8P) {
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 250)) animated:NO];
-        } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 200)) animated:NO];
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             [self.scrollView setContentOffset:CGPointMake(0, (textView.superview.frame.origin.y + (textView.frame.origin.y) - 250)) animated:NO];
         }
     }
@@ -373,9 +373,9 @@
 {
     CGSize keyboardSize = [[[notification userInfo] objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
     UIEdgeInsets contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 110, 0.0);
-    if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+    if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 200, 0.0);
-    } else if (IS_IPHONE_11 || IS_IPHONE_12_PRO) {
+    } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height - 100, 0.0);
     } else if (IS_IPHONE_8P) {
         contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height + 70, 0.0);
@@ -407,6 +407,11 @@
 //    [ClaimsService sharedService].PlaceCreateLng = lngString;
 }
 
+- (void)onNewEvents:(NSMutableArray *)events {
+    //TELEMATICS SDK EVENTS LISTENER IF NEEDED FOR GOOGLEMAPS
+}
+
+
 - (void)initGeoLocation {
     
     BOOL isMotionEnabled = [[WiFiGPSChecker sharedChecker] motionAvailable];
@@ -415,11 +420,11 @@
                                 ([CLLocationManager authorizationStatus] == kCLAuthorizationStatusAuthorizedWhenInUse)));
     
     if (!isGPSAuthorized) {
-//        self->permissionWizardPopup.disabledGPS = YES;
-//        if (!isMotionEnabled){
-//            permissionWizardPopup.disabledMotion = YES;
-//        }
-//        [permissionWizardPopup showPopup];
+        //        self->permissionWizardPopup.disabledGPS = YES;
+        //        if (!isMotionEnabled){
+        //            permissionWizardPopup.disabledMotion = YES;
+        //        }
+        //        [permissionWizardPopup showPopup];
     } else {
         if ([[NMAPositioningManager sharedPositioningManager] startPositioning]) {
             [[NSNotificationCenter defaultCenter] addObserver:self
@@ -492,14 +497,14 @@
         return;
         
     } else if ([_locationField.text isEqualToString:@""]) {
-//        //IF NEEDED LOCATION REQUIRED
-//        [_locationField setBackgroundColor:[Color curveRedColorAlpha]];
-//        [_locationField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self->_locationField setBackgroundColor:[Color lightSeparatorColor]];
-//            [self->_locationField.layer setBorderColor:[[Color grayColor] CGColor]];
-//        });
-//        return;
+        //        //IF NEEDED LOCATION REQUIRED
+        //        [_locationField setBackgroundColor:[Color curveRedColorAlpha]];
+        //        [_locationField.layer setBorderColor:[[Color officialRedColor] CGColor]];
+        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //            [self->_locationField setBackgroundColor:[Color lightSeparatorColor]];
+        //            [self->_locationField.layer setBorderColor:[[Color grayColor] CGColor]];
+        //        });
+        //        return;
         
     } else if ([_detailsField.text isEqualToString:@""] || [_detailsField.text isEqualToString:@"Specify accident details including exact location and what happened"]) {
         [_detailsField setBackgroundColor:[Color curveRedColorAlpha]];
@@ -565,5 +570,6 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 
 @end

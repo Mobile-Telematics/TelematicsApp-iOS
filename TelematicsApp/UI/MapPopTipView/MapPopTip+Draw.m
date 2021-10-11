@@ -8,8 +8,6 @@
 
 #import "MapPopTip+Draw.h"
 
-#define DEGREES_TO_RADIANS(degrees)  ((3.14159265359 * degrees)/ 180)
-
 @implementation MapPopTip (Draw)
 
 - (UIBezierPath *)pathWithRect:(CGRect)rect direction:(MapPopTipDirection)direction {

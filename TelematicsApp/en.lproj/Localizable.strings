@@ -207,7 +207,7 @@
 "             Driver Info" = "             Driver Info";
 "      Vehicle Info" = "      Vehicle Info";
 "             Vehicle Info" = "             Vehicle Info";
-"Verified Account" = "Verified Account";
+" Verified Account" = " Verified Account";
 
 
 /* contacts */
@@ -253,7 +253,7 @@
 "Friday" = "Friday";
 "Saturday" = "Saturday";
 "Sunday" = "Sunday";
-"Turn On Telematics Data" = "Turn On Telematics Data";
+"Permission status" = "Permission status";
 "To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp app, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits." = "To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp app, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits.";
 "To collect accurate data and complete app operation, you need to resolve access to the following functions:" = "To collect accurate data and complete app operation, you need to resolve access to the following functions:";
 "Enable GPS always" = "Enable GPS always";

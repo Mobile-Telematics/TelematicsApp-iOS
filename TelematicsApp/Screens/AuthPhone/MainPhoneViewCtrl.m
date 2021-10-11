@@ -293,18 +293,18 @@
     
     //ANIMATION VALUE
     double coef = 0.18;
-    if (IS_IPHONE_11 || IS_IPHONE_12_PRO)
+    if (IS_IPHONE_11 || IS_IPHONE_13_PRO)
         coef = 0.35;
-    else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX)
+    else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX)
         coef = 0.35;
     else if (IS_IPHONE_5 || IS_IPHONE_4)
         coef = 0.30;
     
     CGAffineTransform translate = CGAffineTransformMakeTranslation(0, self.mainLogoImg.frame.origin.y + self.view.bounds.size.height * coef);
     CGAffineTransform scale = CGAffineTransformMakeScale(0.5, 0.5);
-    if (IS_IPHONE_11 || IS_IPHONE_12_PRO)
+    if (IS_IPHONE_11 || IS_IPHONE_13_PRO)
         scale = CGAffineTransformMakeScale(0.65, 0.65);
-    else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX)
+    else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX)
         scale = CGAffineTransformMakeScale(0.7, 0.7);
     else if (IS_IPHONE_5 || IS_IPHONE_4)
         scale = CGAffineTransformMakeScale(0.3, 0.3);

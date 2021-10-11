@@ -11,7 +11,7 @@
 #import "GeneralButton.h"
 #import "Helpers.h"
 
-#define DefaultTitle localizeString(@"Turn On Telematics Data")
+#define DefaultTitle localizeString(@"Permission status")
 #define DefaultMessage localizeString(@"To collect accurate data and complete app operation, you need to resolve access to the following functions:")
 #define DefaultGPSTitle localizeString(@"Enable GPS always")
 #define DefaultMotionTitle localizeString(@"Enable Motions")
@@ -28,10 +28,10 @@
 
 @interface GeneralPopupDelegate()
 
-@property (strong, nonatomic) GeneralPopup *customView;
-@property (strong, nonatomic) UIView *view;
-@property (strong, nonatomic) UIView *dimBG;
-@property (strong, nonatomic) UIVisualEffectView *blurBG;
+@property (strong, nonatomic) GeneralPopup              *customView;
+@property (strong, nonatomic) UIView                    *view;
+@property (strong, nonatomic) UIView                    *dimBG;
+@property (strong, nonatomic) UIVisualEffectView        *blurBG;
 
 @end
 
@@ -55,7 +55,7 @@
     if (!self.topMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             self.topMargin = self.view.frame.size.height/5;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             self.topMargin = self.view.frame.size.height/4;
         } else {
             self.topMargin = self.view.frame.size.height/4;
@@ -64,7 +64,7 @@
     if (!self.bottomMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             self.bottomMargin = self.view.frame.size.height/6;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX) {
+        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
             self.bottomMargin = self.view.frame.size.height/3;
         } else {
             self.bottomMargin = self.view.frame.size.height/4;
@@ -205,7 +205,7 @@
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         self.customView.gpsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
         self.customView.gpsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 51, 0, 0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         self.customView.gpsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.gpsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 121, 0, 0);
     } else {
@@ -231,7 +231,7 @@
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         self.customView.motionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
         self.customView.motionButton.imageEdgeInsets = UIEdgeInsetsMake(0, 74.5, 0, 0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         self.customView.motionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.motionButton.imageEdgeInsets = UIEdgeInsetsMake(0, 145, 0, 0);
     } else {
@@ -257,7 +257,7 @@
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         self.customView.pushButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
         self.customView.pushButton.imageEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_12_PROMAX || IS_IPHONE_8P) {
+    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
         self.customView.pushButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.pushButton.imageEdgeInsets = UIEdgeInsetsMake(0, 75, 0, 0);
     } else {

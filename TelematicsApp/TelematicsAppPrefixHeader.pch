@@ -6,6 +6,7 @@
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
+#import <RaxelPulse/RaxelPulse.h>
 #import <Foundation/Foundation.h>
 #import "Configurator.h"
 #import "MainApiRequest.h"
@@ -17,7 +18,6 @@
 #import "GeneralService.h"
 #import "ClaimsService.h"
 #import "BaseViewController.h"
-#import <RaxelPulse/RaxelPulse.h>
 #import "MagicalRecord/MagicalRecord.h"
 #import "NSUserDefaults-helper.h"
 #import "MainEmailViewCtrl.h"

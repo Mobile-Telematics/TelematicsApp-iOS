@@ -19,8 +19,8 @@
 @interface GeneralService ()
 
 @property (strong, nonatomic) TelematicsAppModel                    *appModel;
-@property (nonatomic, assign) BOOL                                  isLoggedOn;
 @property (nonatomic, strong) VehicleResultResponse                 *vehicles;
+@property (nonatomic, assign) BOOL                                  isLoggedOn;
 
 @end
 

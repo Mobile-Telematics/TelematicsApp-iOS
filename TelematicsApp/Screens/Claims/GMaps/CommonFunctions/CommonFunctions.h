@@ -13,9 +13,6 @@
 #import "ifaddrs.h"
 #import "net/if.h"
 
-/**
- Used to create common methods used in application
- */
 @interface CommonFunctions : NSObject
 
 

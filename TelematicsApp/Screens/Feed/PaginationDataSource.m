@@ -39,13 +39,16 @@
         NSLog(@"%s: already loading", __func__);
         return;
     }
+    
     if (self.endOfData) {
         if (completion) {
             completion(@[]);
         }
         return;
     }
+    
     self.isLoading = YES;
+    
     __weak typeof(self) weakSelf = self;
     self.nextPageBlock(self.offset, ^(NSArray* result) {
         __typeof__(self) strongSelf = weakSelf;
@@ -64,7 +67,7 @@
         if (result.count) {
             NSMutableArray* mutableData = [strongSelf mutableArrayValueForKeyPath:@"data"];
             [mutableData addObjectsFromArray:result];
-            strongSelf.offset = strongSelf.unfilteredData.count / 10;
+            strongSelf.offset = strongSelf.unfilteredData.count / 10; //10
             if (strongSelf.onePage) {
                 strongSelf.endOfData = YES;
             }
@@ -83,6 +86,7 @@
     self.isLoading = NO;
     self.endOfData = NO;
     self.offset = 0;
+    
     [self loadNextPage:^(NSArray *loadedItems) {
         if (completion) {
             completion();
