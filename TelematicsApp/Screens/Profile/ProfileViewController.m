@@ -357,8 +357,17 @@
             self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width/2;
         }
         
+        //FIX SWIPE WHITE BACKGROUND
         if (scrollView.contentOffset.y > 100) {
-            self.bottomAdditionalView.frame = CGRectMake(self.bottomAdditionalView.frame.origin.x, SCREEN_HEIGHT - SCREEN_HEIGHT/4 - scrollView.contentOffset.y, self.bottomAdditionalView.frame.size.width, SCREEN_HEIGHT/4 + scrollView.contentOffset.y);
+            if (IS_IPHONE_13_PROMAX || IS_IPHONE_13_PRO) {
+                self.bottomAdditionalView.frame = CGRectMake(self.bottomAdditionalView.frame.origin.x, SCREEN_HEIGHT - SCREEN_HEIGHT/2 - scrollView.contentOffset.y, self.bottomAdditionalView.frame.size.width, SCREEN_HEIGHT/2 + scrollView.contentOffset.y);
+            } else if (IS_IPHONE_11_PROMAX) {
+                self.bottomAdditionalView.frame = CGRectMake(self.bottomAdditionalView.frame.origin.x, SCREEN_HEIGHT - SCREEN_HEIGHT/2.3 - scrollView.contentOffset.y, self.bottomAdditionalView.frame.size.width, SCREEN_HEIGHT/2.3 + scrollView.contentOffset.y);
+            } else if (IS_IPHONE_11) {
+                self.bottomAdditionalView.frame = CGRectMake(self.bottomAdditionalView.frame.origin.x, SCREEN_HEIGHT - SCREEN_HEIGHT/2.5 - scrollView.contentOffset.y, self.bottomAdditionalView.frame.size.width, SCREEN_HEIGHT/2.5 + scrollView.contentOffset.y);
+            } else {
+                self.bottomAdditionalView.frame = CGRectMake(self.bottomAdditionalView.frame.origin.x, SCREEN_HEIGHT - SCREEN_HEIGHT/4 - scrollView.contentOffset.y, self.bottomAdditionalView.frame.size.width, SCREEN_HEIGHT/4 + scrollView.contentOffset.y);
+            }
         }
         
         if (scrollView.contentOffset.y >= 0) {
