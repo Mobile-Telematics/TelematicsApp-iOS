@@ -22,7 +22,7 @@
 
 @interface ClaimReviewViewCtrl () <UIScrollViewDelegate, KSPhotoBrowserDelegate, UICollectionViewDelegate, UICollectionViewDataSource>
 
-@property (strong, nonatomic) TelematicsAppModel               *appModel;
+@property (strong, nonatomic) TelematicsAppModel        *appModel;
 @property (weak, nonatomic) IBOutlet UIScrollView       *scrollView;
 @property (weak, nonatomic) IBOutlet UILabel            *mainLbl;
 
@@ -402,6 +402,13 @@
     _urlsFull = [[NSMutableArray alloc] init];
     
     if (self.selectedClaim.count != 0) {
+        NSArray *checkScreens = [self.selectedClaim valueForKey:@"Screens"];
+        if (checkScreens.count == 0) {
+            _claimPhotosCountLbl.hidden = NO;
+            _claimPhotosCountLbl.text = @"Photos have not been attached";
+            return;
+        }
+        
         NSDictionary *screens = [[self.selectedClaim valueForKey:@"Screens"] objectAtIndex:0];
         
         if (screens != nil) {
