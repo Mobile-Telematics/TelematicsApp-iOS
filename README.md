@@ -33,6 +33,10 @@ How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/dat
 Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
 All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills.
 
+Here you can find a short video guide, how to add launch iOS Open-Source Telematics App:
+
+[![Watch the video](https://github.com/Mobile-Telematics/TelematicsApp-iOS/blob/master/iOS%20Open-Source%20App.png)](https://youtu.be/fMarGCaGbs0)
+
 ## Setup Firebase© Project
 
 In the next few simple steps, we'll show you how easy it is to create and configure an app in the Firebase© console.
