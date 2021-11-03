@@ -256,7 +256,6 @@
 		E9B6CA63268544A7000B5B51 /* GMSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B6CA57268544A7000B5B51 /* GMSelected.png */; };
 		E9B6CA64268544A7000B5B51 /* GMGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA58268544A7000B5B51 /* GMGridViewCell.m */; };
 		E9B6CA6826854778000B5B51 /* SpecialActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA6626854778000B5B51 /* SpecialActionSheet.m */; };
-		E9BBA0F9270F190B007D578D /* BaseDashboardController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9BBA0F8270F190B007D578D /* BaseDashboardController.m */; };
 		E9BFA2FB21FE467900D80C21 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BFA2F721FE467900D80C21 /* Countries.swift */; };
 		E9BFA2FC21FE467900D80C21 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BFA2F821FE467900D80C21 /* CountriesViewController.swift */; };
 		E9BFA2FD21FE467900D80C21 /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9BFA2F921FE467900D80C21 /* Country.swift */; };
@@ -782,8 +781,6 @@
 		E9B6CA58268544A7000B5B51 /* GMGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GMGridViewCell.m; sourceTree = "<group>"; };
 		E9B6CA6626854778000B5B51 /* SpecialActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpecialActionSheet.m; sourceTree = "<group>"; };
 		E9B6CA6726854778000B5B51 /* SpecialActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpecialActionSheet.h; sourceTree = "<group>"; };
-		E9BBA0F7270F190B007D578D /* BaseDashboardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseDashboardController.h; sourceTree = "<group>"; };
-		E9BBA0F8270F190B007D578D /* BaseDashboardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseDashboardController.m; sourceTree = "<group>"; };
 		E9BC556726814677004312AB /* LogSetup.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LogSetup.h; sourceTree = "<group>"; };
 		E9BFA2F621FE467900D80C21 /* CountriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountriesViewController.h; sourceTree = "<group>"; };
 		E9BFA2F721FE467900D80C21 /* Countries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
@@ -1336,8 +1333,6 @@
 				E930826E229F098A00E17C1D /* Cells */,
 				E9308275229F102E00E17C1D /* GaugeView */,
 				E93082B6229F384A00E17C1D /* LineChart */,
-				E9BBA0F7270F190B007D578D /* BaseDashboardController.h */,
-				E9BBA0F8270F190B007D578D /* BaseDashboardController.m */,
 				E930826C229EF83800E17C1D /* DashMainViewController.h */,
 				E930826B229EF83800E17C1D /* DashMainViewController.m */,
 			);
@@ -2814,7 +2809,6 @@
 				E919F73C21503A8500CCF3A6 /* UITableView+VisibleMenuCell.m in Sources */,
 				17F88BA11D90407F001164F0 /* DashboardResultResponse.m in Sources */,
 				E9B6CA4326854281000B5B51 /* GalleryResponse.m in Sources */,
-				E9BBA0F9270F190B007D578D /* BaseDashboardController.m in Sources */,
 				E9306C48231DCFB6003E98BB /* MapPopTip+Exit.m in Sources */,
 				1700417A1D749B500058C934 /* Color.m in Sources */,
 				E9BFA2FD21FE467900D80C21 /* Country.swift in Sources */,
