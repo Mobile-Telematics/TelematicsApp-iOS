@@ -1,5 +1,4 @@
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://pavelpuerto:EqLC62SVCpkZ6XuAexTv@bitbucket.org/datamotionpteltd/sdk-ios-podspecs.git'
 
 platform :ios, '11.0'
 inhibit_all_warnings!
