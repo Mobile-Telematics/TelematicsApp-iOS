@@ -121,7 +121,7 @@
 #pragma mark Indicators Service Statistics & Scorings
     
 - (void)getLatestDayStatisticsScoringForUser {
-    [self performRequestIndicatorsService:@"Statistics/latestDates" responseClass:[LatestDayScoringResponse class] parameters:nil method:GET];
+    [self performRequestIndicatorsService:@"Statistics/dates" responseClass:[LatestDayScoringResponse class] parameters:nil method:GET];
 }
 
 - (void)getStatisticsIndividualAllTime:(NSString *)startDate endDate:(NSString*)endDate {
