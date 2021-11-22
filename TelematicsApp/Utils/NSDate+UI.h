@@ -31,4 +31,9 @@
 - (NSString*)dayDateShort;
 + (NSString*)remainingTimeStringForTimeInterval:(NSTimeInterval)seconds;
 
+- (NSString*)dateTimeStringShort_OnDemand;
+- (NSString*)dateTimeStringShortMmDd24_OnDemand;
+- (NSString*)dateTimeStringShortDdMmAmPm_OnDemand;
+- (NSString*)dateTimeStringShortMmDdAmPm_OnDemand;
+
 @end

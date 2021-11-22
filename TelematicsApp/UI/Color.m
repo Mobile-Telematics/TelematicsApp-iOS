@@ -62,6 +62,10 @@
     return RGB3(224, 224, 224);
 }
 
++ (UIColor*)separatorLightGrayColorAlpha {
+    return RGB3A(224, 224, 224, 0.7);
+}
+
 + (UIColor*)buttonGrayTextColor {
     return RGB3(175, 175, 175);
 }

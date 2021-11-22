@@ -34,18 +34,24 @@
 #define IS_OS_12_OR_OLD ([[[UIDevice currentDevice] systemVersion] floatValue] < 13.0)
 #define IS_OS_13_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 13.0)
 
-#define NULL_TO_NIL(obj) ({ __typeof__ (obj) __obj = (obj); __obj == [NSNull null] ? @0 : obj; })
-#define NSStringFromBOOL(aBOOL)    ((aBOOL) ? @"YES" : @"NO")
-
 #define AVATAR_RADIUS 50
 #define AVATAR_ORIGIN_Y 56
 
 #define AVATAR_RADIUS2 150
 #define AVATAR_ORIGIN_Y2 156
 
-#define DefaultAnimationDuration 0.3
-#define DefaultInAnimation 1
-#define DefaultOutAnimation 2
+#define DELAY_IMMEDIATELY_03_SEC 0.3
+#define DELAY_IMMEDIATELY_04_SEC 0.4
+#define DELAY_IMMEDIATELY_05_SEC 0.5
+#define DELAY_IMMEDIATELY_06_SEC 0.6
+#define DELAY_IMMEDIATELY_07_SEC 0.7
+#define DELAY_IMMEDIATELY_08_SEC 0.8
+#define DELAY_IMMEDIATELY_09_SEC 0.9
+#define DELAY_IMMEDIATELY_1_SEC 1
+#define DELAY_IMMEDIATELY_2_SEC 2
+#define DELAY_IMMEDIATELY_3_SEC 3
+#define DELAY_IMMEDIATELY_4_SEC 4
+#define DELAY_IMMEDIATELY_5_SEC 5
 
 #define DEGREES_TO_RADIANS(degrees)((M_PI * degrees)/180)
 

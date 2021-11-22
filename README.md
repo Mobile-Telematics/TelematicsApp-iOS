@@ -33,10 +33,6 @@ How to obtain InsanceId & InstanceKey => https://docs.telematicssdk.com/docs/dat
 Additionally, to authenticate users in your app and store users data, you need to create a firebase account: https://firebase.google.com
 All user data will be stored in the Firebase© Realtime Database, which will allow you to create an app users database without programming skills.
 
-Here you can find a short video guide, how to add launch iOS Open-Source Telematics App:
-
-[![Watch the video](https://github.com/Mobile-Telematics/TelematicsApp-iOS/blob/master/iOS%20Open-Source%20App.png)](https://youtu.be/fMarGCaGbs0)
-
 ## Setup Firebase© Project
 
 In the next few simple steps, we'll show you how easy it is to create and configure an app in the Firebase© console.
@@ -131,7 +127,8 @@ mapsAppIdKey | App Id for `HEREmaps API`
 mapsAppCode | App Code for `HEREmaps API`
 mapsLicenseKey | License key for `HEREmaps API`
 mapsRestApiKey | Rest API key for `HEREmaps API`
-enableHF | BOOL parameter, that activates High Frequency data in Telematics SDK. By defaults `true`
+sdkEnableHighFrequency | BOOL parameter, that activates High Frequency data in Telematics SDK. By defaults `true`
+sdkEnableELM | BOOL parameter, that activates connection to ELM OBD Bluetooth devices in Telematics SDK. By defaults `true`
 linkPrivacyPolicy | Link for Privacy Policy
 linkTermsOfUse | Link for Terms Of Use
 linkHowItWorks | Link for How It Works
@@ -147,9 +144,7 @@ mainTabBarNumber | TabBar number, which will open first when the application sta
 dashboardTabBarNumber | TabBar number, where Dashboard will open. `By default 0`
 feedTabBarNumber | TabBar number, defining what the Feed screen will be in turn in the application. `By default 1`
 profileTabBarNumber | TabBar number, defining what the Profile screen will be in turn in the application. `By default 2`
-needDistanceForScoringKm  | The minimum distance required to display Indicators statistics and user scores. `By default 10 km`
-showTrackSignatureCustomButton | BOOL parameter, determines whether the Driver Signature button should be displayed on the Feed screen. `By default 1.` Cannot be used simultaneously with key `showTrackTagCustomButton` in 1 value!
-showTrackTagCustomButton | BOOL parameter, determines whether the Tag Switcher should be displayed on the Feed screen. `By default 0.` Cannot be used simultaneously with key `showTrackSignatureCustomButton` in 1 value!
+needUserDriveDistanceForScoringKm  | The minimum distance required to display Indicators statistics and user scores. `By default 10 km`
 needTripsDeleting | BOOL parameter, determining if user can delete their trips
 needDistanceInMiles | BOOL parameter, determining use the default distance traveled in the entire application in km/miles
 needAmPmTime | BOOL parameter, determining use AM/PM time format in the entire application
@@ -167,7 +162,7 @@ Below we present the basic methods for AppDelegate that allow you to initialize 
         [RPEntry initializeWithRequestingPermissions:NO];
         [RPEntry instance].lowPowerModeDelegate = self;
         [RPEntry instance].accuracyAuthorizationDelegate = self;
-        [RPEntry sdkEnableHF:YES];
+        [RPEntry sdkEnableHighFrequency:YES];
 
         [RPEntry instance].virtualDeviceToken = `VIRTUAL_DEVICE_TOKEN`; // Unique user device token
         if ([RPEntry instance].virtualDeviceToken.length > 0) {
@@ -220,7 +215,7 @@ You can find complete information about LoginAuth Framework in our repository ht
 ## Dashboard
 
 Our goal is to provide your users with a user-friendly interface to get the best user experience.
-To get the first data, user usually needs to drive a short distance. We set this parameter in the configuration file with the `needDistanceForScoringKm` key.
+To get the first data, user usually needs to drive a short distance. We set this parameter in the configuration file with the `needUserDriveDistanceForScoringKm` key.
 
 Until the user overcomes the minimum required distance, he will see a special `DemoDashboard`, which we created in order to show user the main features of the application at an early stage. After overcoming the required minimum distance, the `MainDashboard` will be automatically available.
 
@@ -246,8 +241,7 @@ Using the example of the Telematics App, you can see how you can implement a pag
 
 ## Feed Type of Transport
 
-The Telematics SDK allows users to change their role for any trip.
-Remember that to display the button for switching Type of Transport, you must set the value `showTrackSignatureCustomButton` in Configuration file.
+The Telematics SDK allows users to change their Driver Signature role for any trip.
 
     [[RPEntry instance].api changeTrackOrigin:'USER_DRIVER_SIGNATURE_ROLE' forTrackToken:'SELECTED_TRACK_TOKEN' completion:^(id response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -269,8 +263,7 @@ Remember that to display the button for switching Type of Transport, you must se
 
 ## Feed Tags
 Depending on your product use cases, you can also use our Tags feature. You can learn more about it here: https://docs.telematicssdk.com/docs/tags
-We also offer you a convenient interface for switching certain tags for each trip. If you specify in the configuration file `true` for `showTrackTagCustomButton` key, the Feed screen will allow to quickly switch between tags for each trip.
->NOTE! Keys `showTrackTagCustomButton` and `showTrackSignatureCustomButton` must be used separately!
+We also offer you a convenient interface for switching certain tags for each trip. Feed screen will allow to quickly switch between tags for each trip.
 
 The Telematics SDK allows users to add specific unique`tags` to any ride for ease of use.
 For example, by adding tag options to any trip, you will be able to mark specific trips for Business/Personal or other options:
@@ -366,17 +359,6 @@ To fully work with this functionality, you need additional equipment, which we c
 You can create Inspections, report road accidents, any damage to your vehicle, attach photos and fill out all the basic information directly from your mobile device.
 Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents.
 The created Inspection can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
-
-## Measures
-
-In Settings, you can work with units of measurement.
-By default, there are 2 parameters in the Configuration.plist project file.
-BOOL `needDistanceInMiles`:
-By default "0" - need distance in km's. If you set "1" - need distance in miles in the whole app.
-BOOL `needAmPmTime`:
-By default "0" - need 24-hour time format. If you set "1" - need 12-hour AM/PM format in the whole app.
-
-The user can additionally choose the format of the units of measurement, regardless of your preset values. In the Measures section of the app source-code you will find the parameters for the "Distance", "Date format", "Time format" switches.
 
 ## Join a Company
 

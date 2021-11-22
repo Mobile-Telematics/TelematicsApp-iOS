@@ -22,6 +22,10 @@
     return [UIFont fontWithName:@"HelveticaNeue" size:12];
 }
 
++ (UIFont*)regular13Helvetica {
+    return [UIFont fontWithName:@"HelveticaNeue" size:13];
+}
+
 + (UIFont*)medium12Helvetica {
     return [UIFont fontWithName:@"HelveticaNeue-Medium" size:12];
 }
@@ -60,6 +64,10 @@
 
 + (UIFont*)light13 {
     return [UIFont systemFontOfSize:13.0f weight:UIFontWeightLight];
+}
+
++ (UIFont*)regular9 {
+    return [UIFont systemFontOfSize:11.0f weight:UIFontWeightRegular];
 }
 
 + (UIFont*)regular11 {
@@ -163,6 +171,10 @@
 }
 
 + (UIFont*)bold12 {
+    return [UIFont systemFontOfSize:12.0f weight:UIFontWeightBold];
+}
+
++ (UIFont*)bold13 {
     return [UIFont systemFontOfSize:12.0f weight:UIFontWeightBold];
 }
 

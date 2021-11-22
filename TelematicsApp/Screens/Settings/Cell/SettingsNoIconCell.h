@@ -10,7 +10,8 @@
 
 @interface SettingsNoIconCell: UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *titleLbl;
-@property (weak, nonatomic) IBOutlet UIImageView* arrow;
+@property (weak, nonatomic) IBOutlet UILabel        *titleLbl;
+@property (weak, nonatomic) IBOutlet UILabel        *statusLbl;
+@property (weak, nonatomic) IBOutlet UIImageView*   arrow;
 
 @end

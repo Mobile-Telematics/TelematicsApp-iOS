@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel            *endAreaLabel;
 @property (weak, nonatomic) IBOutlet UILabel            *distanceGPSLabel;
 @property (weak, nonatomic) IBOutlet UILabel            *ecoScoringLabel;
-@property (weak, nonatomic) IBOutlet UIImageView        *sampleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView        *taxiLabel;
 @property (weak, nonatomic) IBOutlet UIButton           *driverBtn;
 @property (weak, nonatomic) IBOutlet UIImageView        *dotAImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *dotBImg;
@@ -27,11 +27,18 @@
 @property (weak, nonatomic) IBOutlet UILabel            *kmLabel;
 @property (weak, nonatomic) IBOutlet UILabel            *pointsLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton           *userTripNameBtn;
+@property (weak, nonatomic) IBOutlet UIButton           *tripGreenBubble;
 @property (weak, nonatomic) IBOutlet UILabel            *userTripAdditionalLbl;
+@property (weak, nonatomic) IBOutlet UIImageView        *userSharedTripInfoImg;
+@property (weak, nonatomic) IBOutlet UIImageView        *userSharedTripAvatarImg;
+@property (weak, nonatomic) IBOutlet UIImageView        *userSharedTripArrowImg;
 
 @property (weak, nonatomic) IBOutlet UIImageView        *demoCenterImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *demoBackgroundImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *demoPointsImg;
+
+@property (weak, nonatomic) IBOutlet UILabel            *makeYourTripLbl;
+@property (weak, nonatomic) IBOutlet UILabel            *doNotSeeLbl;
+@property (weak, nonatomic) IBOutlet UILabel            *openAppPermissionLbl;
 
 @end

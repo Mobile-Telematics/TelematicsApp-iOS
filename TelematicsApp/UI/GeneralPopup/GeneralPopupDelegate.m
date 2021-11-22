@@ -47,10 +47,10 @@
 
 - (void)initialize {
     if (!self.inAnimation) {
-        self.inAnimation = DefaultInAnimation;
+        self.inAnimation = DELAY_IMMEDIATELY_03_SEC;
     }
     if (!self.outAnimation) {
-        self.outAnimation = DefaultOutAnimation;
+        self.outAnimation = DELAY_IMMEDIATELY_03_SEC;
     }
     if (!self.topMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
@@ -83,7 +83,7 @@
         self.buttonRadius = DefaultButtonRadius;
     }
     if (!self.animationDuration) {
-        self.animationDuration = DefaultAnimationDuration;
+        self.animationDuration = DELAY_IMMEDIATELY_03_SEC;
     }
     if (!self.dimBackgroundLevel) {
         self.dimBackgroundLevel = DefaultDimmedLevel;

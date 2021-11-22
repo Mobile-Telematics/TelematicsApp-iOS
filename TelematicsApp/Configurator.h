@@ -53,8 +53,11 @@
 @property(nonatomic, strong) NSString       *mainLogoClear;
 
 //ENABLE HIGH-FREQUENCY LOCATION POSITION - DEFAULT YES
-@property(nonatomic, assign) BOOL           sdkEnableHF;
+@property(nonatomic, assign) BOOL           sdkEnableHighFrequency;
 @property(nonatomic, strong) NSString       *appStoreAppId;
+
+//ENABLE ELM OBD BLUETTOTH DEVICES - DEFAULT NO
+@property(nonatomic, assign) BOOL           sdkEnableELM;
 
 //MAIN TAB BAR NUMBER IN APP - IT FIRST FOR APP RUNNING. CONFIG THIS IN Configuration.plist
 @property(nonatomic, strong) NSNumber       *mainTabBarNumber;
@@ -66,13 +69,7 @@
 @property(nonatomic, strong) NSNumber       *profileTabBarNumber; // 3
 
 //DISTANSE FOR OUR SERVICES FOR FIRS SCORING & STATISTIC - BY DEFAULT 10 km
-@property(nonatomic, strong) NSNumber       *needDistanceForScoringKm;
-
-//FEED SCREEN - SHOW DRIVING SIGNATURE BUTTON. ORIGINAL DRIVER/PASSENGER/BUS/MOTORCYCLE/TRAIN/BICYCLE/TAXI/OTHER
-@property(nonatomic, assign) BOOL           showTrackSignatureCustomButton;
-
-//FEED SCREEN - SHOW ONLY TAGS 2 CHOICES BUTTON (EXAMPLE PERSONAL/BUSINESS)
-@property(nonatomic, assign) BOOL           showTrackTagCustomButton;
+@property(nonatomic, strong) NSNumber       *needUserDriveDistanceForScoringKm;
 
 //FEED SCREEN - NEED SWIPE AND SHOW DELETING BUTTON
 @property(nonatomic, assign) BOOL           needTripsDeleting;

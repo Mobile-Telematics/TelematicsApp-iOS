@@ -1458,7 +1458,7 @@
 #pragma mark - Coins Backend if lost connection
 
 - (void)reloadCoins:(id)sender {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [sender endRefreshing];
     });
     

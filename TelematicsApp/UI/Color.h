@@ -41,6 +41,7 @@ alpha:1.0]
 + (UIColor*)separatorLightGrayColor;
 + (UIColor*)grayColor;
 + (UIColor*)softGrayColor;
++ (UIColor*)separatorLightGrayColorAlpha;
 + (UIColor*)buttonGrayTextColor;
 + (UIColor*)darkGrayColor83;
 + (UIColor*)darkGrayColor43;

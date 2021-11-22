@@ -2,7 +2,7 @@
 //  ChangeCompanyIdViewCtrl.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 09.09.21.
+//  Created by DATA MOTION PTE. LTD. on 10.06.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -12,10 +12,10 @@
 #import "Helpers.h"
 #import "UIViewController+Preloader.h"
 #import "GeneralService.h"
-#import "UITextField+Form.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
 #import "RefreshTokenRequestData.h"
+
 
 @interface ChangeCompanyIdViewCtrl () <UIScrollViewDelegate, UITextFieldDelegate>
 
@@ -62,7 +62,7 @@
     self.companyIdField.textColor = [UIColor darkGrayColor];
     [self.companyIdField setBackgroundColor:[Color lightSeparatorColor]];
     [self.companyIdField.layer setMasksToBounds:YES];
-    [self.companyIdField.layer setCornerRadius:15.0f];
+    [self.companyIdField.layer setCornerRadius:20.0f];
     [self.companyIdField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.companyIdField.layer setBorderWidth:1.5];
     self.companyIdField.placeholder = localizeString(@"Invite code");
@@ -199,7 +199,6 @@
 #pragma mark - Navigation
 
 - (IBAction)backAction:(id)sender {
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"showJoinCompanyFromSettingsRelease" object:nil];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

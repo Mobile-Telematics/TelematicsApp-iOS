@@ -2,7 +2,7 @@
 //  BottomSheetView.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 10.06.20.
+//  Created by DATA MOTION PTE. LTD. on 21.11.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -45,6 +45,12 @@
             frameR.origin.x -=25;
             frameR.size.width -=10;
             self.contentView.legendRedLbl.frame = frameR;
+            
+            self.contentView.accelerationTextLbl.font = [Font regular13];
+            self.contentView.brakingTextLbl.font = [Font regular13];
+            self.contentView.phoneUsageTextLbl.font = [Font regular13];
+            self.contentView.speedingTextLbl.font = [Font regular13];
+            self.contentView.corneringTextLbl.font = [Font regular13];
         }
         
         [self setup:isCollapsed];
@@ -63,33 +69,25 @@
     [self setupChevronView:isCollapsed];
     
     [self setupContentView];
-        
-    if ([Configurator sharedInstance].showTrackTagCustomButton) {
-        [self setupDriverSwitcher];
-    } else {
-        [self setupDrivingSignatureButton];
-    }
+    
+    [self setupDrivingSignatureButton];
+    [self setupDriverSwitcher];
     [self setupPointsColorButtons];
 }
 
 - (void)setupDrivingSignatureButton {
-    //TODO
+    //
 }
 
 - (void)setupDriverSwitcher {
-    if ([Configurator sharedInstance].showTrackTagCustomButton) {
-        self.driverSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"Personal"), localizeString(@"Business")]];
-    } else {
-        self.driverSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"Driver"), localizeString(@"Passenger")]];
-    }
+    self.driverSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"Personal"), localizeString(@"Business")]];
     
-    
-    self.driverSwitcher.frame = CGRectMake(15, 86, 191, 38);
+    self.driverSwitcher.frame = CGRectMake(19, 139, 191, 38);
     self.driverSwitcher.font = [Font medium15Helvetica];
     self.driverSwitcher.cornerRadius = 19;
     if (IS_IPHONE_5 || IS_IPHONE_4) {
-        self.driverSwitcher.frame = CGRectMake(15, 86, 160, 30);
-        self.driverSwitcher.cornerRadius = 15;
+        self.driverSwitcher.frame = CGRectMake(18, 138, 160, 38);
+        self.driverSwitcher.cornerRadius = 19;
         self.driverSwitcher.font = [Font medium12Helvetica];
     }
     self.driverSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];
@@ -101,20 +99,16 @@
     
     __weak typeof(self) weakSelf = self;
     [self.driverSwitcher setPressedHandler:^(NSUInteger index) {
-        
-        if ([Configurator sharedInstance].showTrackTagCustomButton) {
-            if (index == 1) {
-                [weakSelf changeTagActionForSheet:weakSelf.driverSwitcher];
-            } else {
-                [weakSelf resetTagActionForSheet:weakSelf.driverSwitcher];
-            }
+        if (index == 1) {
+            [weakSelf changeTagActionForSheet:weakSelf.driverSwitcher];
         } else {
-            [weakSelf changeDriverOriginAction:weakSelf.driverSwitcher];
+            [weakSelf resetTagActionForSheet:weakSelf.driverSwitcher];
         }
     }];
 }
  
 - (void)setupContentView {
+    
     self.contentView.translatesAutoresizingMaskIntoConstraints = false;
     [self addSubview:self.contentView];
     
@@ -220,7 +214,7 @@
     NSRange mainRangeTotalPoints = [totalPointsLbl rangeOfString:pointsLbl1];
     UIFont *mainFontTotalPoints = [Font heavy26];
     if (IS_IPHONE_5 || IS_IPHONE_4)
-        mainFontTotalPoints = [Font heavy17];
+        mainFontTotalPoints = [Font heavy24];
     
     if (p > 80) {
         [completeText addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:mainRangeTotalPoints];
@@ -237,7 +231,7 @@
     NSRange mainRangePointsLbl = [totalPointsLbl rangeOfString:pointsLbl2];
     UIFont *mainFontPointsLbl = [Font semibold15];
     if (IS_IPHONE_5 || IS_IPHONE_4)
-        mainFontPointsLbl = [Font semibold10];
+        mainFontPointsLbl = [Font semibold11];
     
     [completeText addAttribute:NSForegroundColorAttributeName value:[Color lightGrayColor] range:mainRangePointsLbl];
     [completeText addAttribute:NSFontAttributeName value:mainFontPointsLbl range:mainRangePointsLbl];
@@ -258,7 +252,7 @@
     NSRange mainRange1 = [totalKmLbl rangeOfString:kmLbl1];
     UIFont *mainFont1 = [Font heavy26];
     if (IS_IPHONE_5 || IS_IPHONE_4)
-        mainFont1 = [Font heavy17];
+        mainFont1 = [Font heavy24];
     
     [completeTextKm addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor] range:mainRange1];
     [completeTextKm addAttribute:NSFontAttributeName value:mainFont1 range:mainRange1];
@@ -266,7 +260,7 @@
     NSRange mainRange2 = [totalKmLbl rangeOfString:kmLbl2];
     UIFont *mainFont2 = [Font semibold15];
     if (IS_IPHONE_5 || IS_IPHONE_4)
-        mainFont2 = [Font semibold10];
+        mainFont2 = [Font semibold11];
     
     [completeTextKm addAttribute:NSForegroundColorAttributeName value:[Color lightGrayColor] range:mainRange2];
     [completeTextKm addAttribute:NSFontAttributeName value:mainFont2 range:mainRange2];
@@ -290,7 +284,7 @@
     NSRange mainRange1 = [totalTimeLbl rangeOfString:timeLbl1];
     UIFont *mainFont1 = [Font heavy26];
     if (IS_IPHONE_5 || IS_IPHONE_4)
-        mainFont1 = [Font heavy17];
+        mainFont1 = [Font heavy18];
     
     [completeTextTime addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor] range:mainRange1];
     [completeTextTime addAttribute:NSFontAttributeName value:mainFont1 range:mainRange1];
@@ -298,7 +292,7 @@
     NSRange mainRange2 = [totalTimeLbl rangeOfString:timeLbl2];
     UIFont *mainFont2 = [Font semibold15];
     if (IS_IPHONE_5 || IS_IPHONE_4)
-        mainFont2 = [Font semibold10];
+        mainFont2 = [Font medium10];
     
     [completeTextTime addAttribute:NSForegroundColorAttributeName value:[Color lightGrayColor] range:mainRange2];
     [completeTextTime addAttribute:NSFontAttributeName value:mainFont2 range:mainRange2];
@@ -343,51 +337,47 @@
 
 - (void)sheetUpdateTrackOriginButton:(NSString*)origin
 {
-    if ([Configurator sharedInstance].showTrackSignatureCustomButton) {
-        
-        if ([origin isEqual:@"OriginalDriver"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Driver";
-        } else if ([origin isEqual:@"Passanger"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"passenger_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Passenger";
-        } else if ([origin isEqual:@"Bus"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"bus_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Bus";
-        } else if ([origin isEqual:@"Motorcycle"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"motorcycle_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Motorcycle";
-        } else if ([origin isEqual:@"Train"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"train_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Train";
-        } else if ([origin isEqual:@"Taxi"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"taxi_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Taxi";
-        } else if ([origin isEqual:@"Bicycle"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"bicycle_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Bicycle";
-        } else if ([origin isEqual:@"Other"]) {
-            [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"other_green"] forState:UIControlStateNormal];
-            self.contentView.driverSignatureOnTripLbl.text = @"Other";
-        }
+    if ([origin isEqual:@"OriginalDriver"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Driver";
+    } else if ([origin isEqual:@"Passanger"] || [origin isEqual:@"Passenger"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"passenger_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Passenger";
+    } else if ([origin isEqual:@"Bus"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"bus_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Bus";
+    } else if ([origin isEqual:@"Motorcycle"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"motorcycle_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Motorcycle";
+    } else if ([origin isEqual:@"Train"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"train_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Train";
+    } else if ([origin isEqual:@"Taxi"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"taxi_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Taxi";
+    } else if ([origin isEqual:@"Bicycle"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"bicycle_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Bicycle";
+    } else if ([origin isEqual:@"Other"]) {
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"other_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Other";
     } else {
-        self.driverSwitcher.hidden = YES;
+        [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
+        self.contentView.driverSignatureOnTripLbl.text = @"Driver";
     }
 }
 
 - (void)sheetUpdateTagsButton:(NSArray*)tagsArray {
-    if ([Configurator sharedInstance].showTrackSignatureCustomButton) {
-        self.driverSwitcher.alpha = 1;
-        self.driverSwitcher.userInteractionEnabled = YES;
-        [self.driverSwitcher selectIndex:0 animated:NO];
-        
-        if (tagsArray.count != 0) {
-            for (RPTag *tag in tagsArray) {
-                if ([tag.tag isEqualToString:@"Business"]) {
-                    self.driverSwitcher.alpha = 1;
-                    self.driverSwitcher.userInteractionEnabled = YES;
-                    [self.driverSwitcher selectIndex:1 animated:NO];
-                }
+    self.driverSwitcher.alpha = 1;
+    self.driverSwitcher.userInteractionEnabled = YES;
+    [self.driverSwitcher selectIndex:0 animated:NO];
+    
+    if (tagsArray.count != 0) {
+        for (RPTag *tag in tagsArray) {
+            if ([tag.tag isEqualToString:@"Business"]) {
+                self.driverSwitcher.alpha = 1;
+                self.driverSwitcher.userInteractionEnabled = YES;
+                [self.driverSwitcher selectIndex:1 animated:NO];
             }
         }
     }
@@ -488,46 +478,22 @@
 - (IBAction)changeDriverOriginAlert:(id)sender {
     [HapticHelper generateFeedback:FeedbackTypeImpactMedium];
     
-    if ([Configurator sharedInstance].showTrackTagCustomButton) {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                       message:localizeString(@"passanger_tag_title")
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *personalAction = [UIAlertAction actionWithTitle:localizeString(@"Personal") style:UIAlertActionStyleDefault
-                                                               handler:^(UIAlertAction *action) {
-            [self resetTagActionForSheet:sender];
-        }];
-        UIAlertAction *setTagAction = [UIAlertAction actionWithTitle:localizeString(@"TelematicsApp") style:UIAlertActionStyleDefault
-                                                                handler:^(UIAlertAction *action) {
-            [self changeTagActionForSheet:sender];
-        }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:localizeString(@"Cancel") style:UIAlertActionStyleCancel
-        handler:^(UIAlertAction *action) {
-            
-        }];
-        [alert addAction:personalAction];
-        [alert addAction:setTagAction];
-        [alert addAction:cancelAction];
-        
-        UIViewController *currentTopVC = [self currentTopViewController];
-        [currentTopVC presentViewController:alert animated:YES completion:nil];
-    } else {
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                       message:localizeString(@"passanger_title")
-                                                                preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction *yesButton = [UIAlertAction actionWithTitle:localizeString(@"Yes")
-                                                            style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction *action) {
-                                                              [self changeDriverOriginAction:sender];
-                                                          }];
-        UIAlertAction *noButton = [UIAlertAction actionWithTitle:localizeString(@"No")
-                                                           style:UIAlertActionStyleDestructive
-                                                         handler:^(UIAlertAction *action) {}];
-        [alert addAction:yesButton];
-        [alert addAction:noButton];
-        
-        UIViewController *currentTopVC = [self currentTopViewController];
-        [currentTopVC presentViewController:alert animated:YES completion:nil];
-    }
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
+                                                                   message:localizeString(@"passenger_title")
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:localizeString(@"Yes")
+                                                        style:UIAlertActionStyleDestructive
+                                                      handler:^(UIAlertAction *action) {
+                                                          [self changeDriverOriginAction:sender];
+                                                      }];
+    UIAlertAction *noButton = [UIAlertAction actionWithTitle:localizeString(@"No")
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {}];
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    UIViewController *currentTopVC = [self currentTopViewController];
+    [currentTopVC presentViewController:alert animated:YES completion:nil];
 }
 
 - (IBAction)changeDriverOriginAction:(id)sender {
@@ -542,42 +508,73 @@
 }
 
 
-#pragma mark - TelematicsApp Tags Origin Methods
+#pragma mark - SharetownTag Origin Methods
 
 - (void)changeTagActionForSheet:(id)sender {
     
-    defaults_set_object(@"needUpdateViewForFeedScreen", @(YES));
+    defaults_set_object(@"needUpdateForFeedScreen", @(YES));
     NSString *tToken = defaults_object(@"selectedTrackToken");
     
     RPTag *tag = [[RPTag alloc] init];
     tag.tag = @"Business";
-    tag.source = @"TelematicsApp";
+    tag.source = localizeString(@"TelematicsApp");
     
     [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tag, nil] to:tToken completion:^(id response, NSArray *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            //
+            NSLog(@"TAG BUSINESS ADDED ON SHEET");
         });
     }];
 }
 
 - (void)resetTagActionForSheet:(id)sender {
     
-    defaults_set_object(@"needUpdateViewForFeedScreen", @(YES));
+    defaults_set_object(@"needUpdateForFeedScreen", @(YES));
     NSString *tToken = defaults_object(@"selectedTrackToken");
     
     RPTag *tag = [[RPTag alloc] init];
     tag.tag = @"Business";
-    tag.source = @"TelematicsApp";
+    tag.source = localizeString(@"TelematicsApp");
     
     [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tag, nil] from:tToken completion:^(id response, NSArray *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            //
+            NSLog(@"TAG BUSINESS DELETED ON SHEET");
         });
     }];
 }
 
 
-#pragma mark - Delete trip status
+#pragma mark - Hide Trip status
+
+- (IBAction)hideTripSheetAlert:(id)sender {
+    
+    [HapticHelper generateFeedback:FeedbackTypeImpactMedium];
+    
+    UIAlertController *alert = [UIAlertController
+                                   alertControllerWithTitle:nil
+                                   message:localizeString(@"hide_trip")
+                                   preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *yesButton = [UIAlertAction actionWithTitle:localizeString(@"Yes")
+                                                        style:UIAlertActionStyleDestructive
+                                                      handler:^(UIAlertAction *action) {
+                                                          [self hideTripFinalAction:sender];
+                                                      }];
+    UIAlertAction *noButton = [UIAlertAction actionWithTitle:localizeString(@"No")
+                                                       style:UIAlertActionStyleDefault
+                                                     handler:^(UIAlertAction *action) {}];
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    
+    UIViewController *currentTopVC = [self currentTopViewController];
+    [currentTopVC presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)hideTripFinalAction:(id)sender {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"readyHideThisTrip" object:nil];
+}
+
+
+#pragma mark - Delete Trip status
 
 - (IBAction)deleteTripSheetAlert:(id)sender {
     
@@ -589,12 +586,12 @@
                                    preferredStyle:UIAlertControllerStyleAlert];
     
     UIAlertAction *yesButton = [UIAlertAction actionWithTitle:localizeString(@"Yes")
-                                                        style:UIAlertActionStyleDefault
+                                                        style:UIAlertActionStyleDestructive
                                                       handler:^(UIAlertAction *action) {
                                                           [self deleteTripFinalAction:sender];
                                                       }];
     UIAlertAction *noButton = [UIAlertAction actionWithTitle:localizeString(@"No")
-                                                       style:UIAlertActionStyleDestructive
+                                                       style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction *action) {}];
     [alert addAction:yesButton];
     [alert addAction:noButton];

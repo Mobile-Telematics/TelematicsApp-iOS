@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +15,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmm-EE-NvH">
-                    <rect key="frame" x="25" y="19" width="276" height="32"/>
+                    <rect key="frame" x="25" y="63" width="276" height="32"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="32" id="hse-qo-bus"/>
                     </constraints>
@@ -22,7 +24,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Grow your Safe Driving Score" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5zg-Qy-Eq7">
-                    <rect key="frame" x="25" y="144" width="276" height="20"/>
+                    <rect key="frame" x="25" y="188" width="276" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="CZf-TD-395"/>
                     </constraints>
@@ -30,8 +32,8 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have given access to all permissions and now you can use full power of TelematicsApp app" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uef-Zy-KQC">
-                    <rect key="frame" x="25" y="52" width="276" height="85"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have given access to all permissions and now you can use full power of TelematicsApp!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uef-Zy-KQC">
+                    <rect key="frame" x="25" y="96" width="276" height="85"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="85" id="IdJ-GM-le8"/>
                     </constraints>
@@ -40,11 +42,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rdp-Kw-Ulg" customClass="GeneralButton">
-                    <rect key="frame" x="103" y="266" width="120" height="32"/>
+                    <rect key="frame" x="103" y="308" width="120" height="40"/>
                     <color key="backgroundColor" red="0.25490196079999999" green="0.80784313730000001" blue="0.1764705882" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="120" id="Uis-NL-zqd"/>
-                        <constraint firstAttribute="height" constant="32" id="Www-nE-vvK"/>
+                        <constraint firstAttribute="height" constant="40" id="Www-nE-vvK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                     <state key="normal" title="LET'S GO!">
@@ -52,7 +54,7 @@
                     </state>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete with your Friends" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="haW-Os-C22">
-                    <rect key="frame" x="25" y="179" width="276" height="20"/>
+                    <rect key="frame" x="25" y="223" width="276" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="7Hg-uv-5QR"/>
                     </constraints>
@@ -61,7 +63,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Complete Challenges &amp; Gain Coins" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LeK-4s-pIw">
-                    <rect key="frame" x="25" y="214" width="276" height="20"/>
+                    <rect key="frame" x="25" y="258" width="276" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="P1w-eP-fLd"/>
                     </constraints>
@@ -81,7 +83,7 @@
                 <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" priority="750" constant="103" id="PCj-OW-z4a"/>
                 <constraint firstItem="jmm-EE-NvH" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="19" id="PbI-PI-xV7"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Rdp-Kw-Ulg" secondAttribute="trailing" priority="750" constant="103" id="VXX-6y-0Hm"/>
-                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="top" secondItem="LeK-4s-pIw" secondAttribute="bottom" constant="32" id="W49-d9-2d7"/>
+                <constraint firstItem="Rdp-Kw-Ulg" firstAttribute="top" secondItem="LeK-4s-pIw" secondAttribute="bottom" constant="30" id="W49-d9-2d7"/>
                 <constraint firstItem="5zg-Qy-Eq7" firstAttribute="top" secondItem="Uef-Zy-KQC" secondAttribute="bottom" constant="7" id="X7u-Kt-z9m"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Uef-Zy-KQC" secondAttribute="trailing" constant="25" id="afF-6h-teA"/>
                 <constraint firstItem="haW-Os-C22" firstAttribute="top" secondItem="5zg-Qy-Eq7" secondAttribute="bottom" constant="15" id="c06-v7-B6H"/>
@@ -107,4 +109,9 @@
             <point key="canvasLocation" x="24" y="6.2968515742128943"/>
         </view>
     </objects>
+    <designables>
+        <designable name="Rdp-Kw-Ulg">
+            <size key="intrinsicContentSize" width="60" height="27"/>
+        </designable>
+    </designables>
 </document>

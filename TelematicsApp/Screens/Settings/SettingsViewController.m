@@ -9,7 +9,10 @@
 #import "SettingsViewController.h"
 #import "SettingsMenuCell.h"
 #import "SettingsNoIconCell.h"
+#import "SettingsBatteryCell.h"
+#import "SettingsAccidentCell.h"
 #import "ProfileViewController.h"
+#import "DriveModeViewCtrl.h"
 #import "LeaderboardViewCtrl.h"
 #import "MeasuresViewCtrl.h"
 #import "ChangeCompanyIdViewCtrl.h"
@@ -19,6 +22,7 @@
 #import "ClaimsTokenResponse.h"
 #import "ClaimsUserResponse.h"
 #import "ClaimsAccidentResponse.h"
+
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
 
@@ -41,6 +45,8 @@
     self.mainTitle.text = localizeString(@"settings_title");
     
     [self getTokenForClaims];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSettings) name:@"reloadOnDemandSettingsPage" object:nil];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -55,7 +61,7 @@
 #pragma mark - UITableViewDataSource Methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+    return 5;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -69,7 +75,7 @@
     } if (section == 3) {
         return 1;
     } else {
-        return 1;
+        return 2;
     }
 }
 
@@ -146,21 +152,61 @@
         
     } else {
         
-        SettingsNoIconCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsNoIconCell"];
-        if (!cell) {
-            cell = [[SettingsNoIconCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SettingsNoIconCell"];
-        }
-        
         if (indexPath.row == 0) {
-            cell.titleLbl.text = localizeString(@"menuitem_privacy");
+            
+            SettingsNoIconCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsNoIconCell"];
+            if (!cell) {
+                cell = [[SettingsNoIconCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SettingsNoIconCell"];
+            }
+            cell.titleLbl.text = localizeString(@"Tracking Mode");
+            
+            if ([RPEntry instance].disableTracking) {
+                cell.statusLbl.text = localizeString(@"Disabled");
+            } else {
+                cell.statusLbl.text = localizeString(@"Automatic");
+            }
+            
+            if ([defaults_object(@"onDemandTracking") boolValue]) {
+                cell.statusLbl.text = localizeString(@"On-Demand");
+            }
+            
+            return cell;
+            
         } else if (indexPath.row == 1) {
-            cell.titleLbl.text = localizeString(@"menuitem_terms");
-        } else if (indexPath.row == 2) {
-            cell.titleLbl.text = localizeString(@"menuitem_rate");
-        } else if (indexPath.row == 3) {
-            cell.titleLbl.text = localizeString(@"menuitem_help");
+            
+            SettingsBatteryCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsBatteryCell"];
+            if (!cell) {
+                cell = [[SettingsBatteryCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SettingsBatteryCell"];
+            }
+            cell.titleLbl.text = localizeString(@"Battery Saver");
+            
+            if ([RPEntry instance].aggressiveHeartbeat) {
+                [cell.bleSwitch setOn:NO];
+            } else {
+                [cell.bleSwitch setOn:YES];
+            }
+            
+            return cell;
+            
+        } else {
+            
+            //COMING SOON DECEMBER 2021
+            SettingsAccidentCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SettingsAccidentCell"];
+//            if (!cell) {
+//                cell = [[SettingsAccidentCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"SettingsAccidentCell"];
+//            }
+//            cell.titleLbl.text = localizeString(@"Accidents Detection");
+//            [cell.accidentSwitch addTarget:self action:@selector(presentAccidentAlert) forControlEvents:UIControlEventTouchUpInside];
+//
+//            BOOL isAccidentsEnabled = [RPEntry isEnabledAccidents];
+//            if (isAccidentsEnabled) {
+//                [cell.accidentSwitch setOn:YES];
+//            } else {
+//                [cell.accidentSwitch setOn:NO];
+//            }
+            
+            return cell;
         }
-        return cell;
     }
 }
 
@@ -207,7 +253,11 @@
         } else if (indexPath.row == 3) {
             [self settingsHelpClick];
         }
-	}
+	} else if (indexPath.section == 4) {
+        if (indexPath.row == 0) {
+            [self selectTrackingModeClick];
+        }
+    }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -297,6 +347,20 @@
 - (void)settingsRateAppClick {
     NSString *link = [NSString stringWithFormat:@"itms-apps://itunes.apple.com/us/app/id%@?action=write-review", [Configurator sharedInstance].appStoreAppId];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:link] options:@{} completionHandler:nil];
+}
+
+- (void)selectTrackingModeClick {
+    DriveModeViewCtrl *dmEdit = [self.storyboard instantiateViewControllerWithIdentifier:@"DriveModeViewCtrl"];
+    CATransition *transition = [[CATransition alloc] init];
+    transition.duration = 0.5;
+    transition.type = kCATransitionPush;
+    transition.subtype = kCATransitionFromRight;
+    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
+    [self.view.window.layer addAnimation:transition forKey:kCATransition];
+    
+    dmEdit.modalPresentationStyle = UIModalPresentationCustom;
+    dmEdit.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:dmEdit animated:NO completion:nil];
 }
     
 - (void)logoutButtonPressed {
@@ -446,4 +510,36 @@
     [super didReceiveMemoryWarning];
 }
 
+- (void)reloadSettings {
+    [self.tableView reloadData];
+}
+
+
+#pragma mark - Accidents On Power Alert
+
+- (void)presentAccidentAlert {
+    //COMING SOON DECEMBER 2021
+//    BOOL isAccidentsEnabled = [RPEntry isEnabledAccidents];
+//    if (isAccidentsEnabled) {
+//        [RPEntry enableAccidents:NO];
+//        [self.tableView reloadData];
+//    } else {
+//        UIAlertController *alert = [UIAlertController alertControllerWithTitle:localizeString(@"Attention")
+//                                                                       message:localizeString(@"Enabling accidents detection can increase the battery drain.")
+//                                                                preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction *yesAction = [UIAlertAction actionWithTitle:localizeString(@"Cancel") style:UIAlertActionStyleDefault
+//                                                          handler:^(UIAlertAction *action) {
+//                                                            [RPEntry enableAccidents:NO];
+//                                                            [self.tableView reloadData];
+//                                                          }];
+//        UIAlertAction *noAction = [UIAlertAction actionWithTitle:localizeString(@"Ok") style:UIAlertActionStyleCancel
+//                                                         handler:^(UIAlertAction *action) {
+//                                                            [RPEntry enableAccidents:YES];
+//                                                            [self.tableView reloadData];
+//                                                         }];
+//        [alert addAction:yesAction];
+//        [alert addAction:noAction];
+//        [self presentViewController:alert animated:YES completion:nil];
+//    }
+}
 @end

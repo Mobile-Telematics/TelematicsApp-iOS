@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "TowingSwitch.h"
+#import "TagsSwitch.h"
 
-@class TowingSwitch;
+@class TagsSwitch;
 
 @interface TowingViewController : UIViewController
 
-@property (strong, nonatomic) TowingSwitch *drivableSwitcher;
-@property (strong, nonatomic) TowingSwitch *towingSwitcher;
+@property (strong, nonatomic) TagsSwitch *drivableSwitcher;
+@property (strong, nonatomic) TagsSwitch *towingSwitcher;
 
 @end
 

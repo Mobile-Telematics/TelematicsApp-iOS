@@ -12,7 +12,7 @@
 
 @property (strong, nonatomic) NSMutableArray            *labels;
 @property (strong, nonatomic) NSMutableArray            *onTopLabels;
-@property (strong, nonatomic) NSArray *strings;
+@property (strong, nonatomic) NSArray                   *strings;
 
 @property (strong, nonatomic) void (^handlerBlock)(NSUInteger index);
 @property (strong, nonatomic) void (^willBePressedHandlerBlock)(NSUInteger index);

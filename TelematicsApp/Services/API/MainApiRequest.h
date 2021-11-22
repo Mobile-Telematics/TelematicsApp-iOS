@@ -61,6 +61,12 @@
 - (void)getCoinsDaily:(NSString *)startDate endDate:(NSString*)endDate;
 
 
+#pragma mark OnDemand Tags OnDuty mode
+
+- (void)getTagRiskScore:(NSString *)tagName startDate:(NSString*)startDate endDate:(NSString*)endDate;
+- (void)getTagStatistic:(NSString *)tagName startDate:(NSString*)startDate endDate:(NSString*)endDate;
+
+
 #pragma mark Leaderboard
 
 - (void)getLeaderboardForUser;
@@ -69,7 +75,7 @@
 
 #pragma mark DeleteTrack On Feed Screen
 
-- (void)deleteTrackSendStatusForBackEnd:(NSString *)trackToken;
+- (void)deleteThisTripSendStatusForBackEnd:(NSString *)trackToken;
 
 
 #pragma mark Browse Track Events On Trip Details Screen

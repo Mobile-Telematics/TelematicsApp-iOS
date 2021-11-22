@@ -11,7 +11,6 @@
 #import "EmailLoginViewCtrl.h"
 #import "MainPhoneViewCtrl.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 #import "CheckUserRequestData.h"
 #import "CheckResponse.h"
 #import "RegResponse.h"
@@ -57,14 +56,14 @@
     [self.emailField makeFormFieldZero];
     [self.emailField setBackgroundColor:[Color lightSeparatorColor]];
     [self.emailField.layer setMasksToBounds:YES];
-    [self.emailField.layer setCornerRadius:15.0f];
+    [self.emailField.layer setCornerRadius:20.0f];
     [self.emailField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.emailField.layer setBorderWidth:0.5];
     
     [self.passwordField makeFormFieldZero];
     [self.passwordField setBackgroundColor:[Color lightSeparatorColor]];
     [self.passwordField.layer setMasksToBounds:YES];
-    [self.passwordField.layer setCornerRadius:15.0f];
+    [self.passwordField.layer setCornerRadius:20.0f];
     [self.passwordField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.passwordField.layer setBorderWidth:0.5];
     
@@ -80,7 +79,7 @@
     [self.joinBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
     [self.joinBtn setBackgroundColor:[Color officialGreenColor]];
     [self.joinBtn.layer setMasksToBounds:YES];
-    [self.joinBtn.layer setCornerRadius:16.0f];
+    [self.joinBtn.layer setCornerRadius:20.0f];
     NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"SIGN IN")];
     [loginText addAttribute:NSFontAttributeName value:[Font medium13] range:NSMakeRange(0, [loginText length])];
     [loginText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleNone] range:NSMakeRange(0, [loginText length])];
@@ -91,7 +90,7 @@
     [self.signInBtn setTitleColor:[Color darkGrayColor83] forState:UIControlStateNormal];
     [self.signInBtn setBackgroundColor:[Color officialWhiteColor]];
     [self.signInBtn.layer setMasksToBounds:YES];
-    [self.signInBtn.layer setCornerRadius:16.0f];
+    [self.signInBtn.layer setCornerRadius:20.0f];
     [self.signInBtn.layer setBorderColor:[[Color officialWhiteColor] CGColor]];
     [self.signInBtn.layer setBorderWidth:0.4];
     NSMutableAttributedString *signUpText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Don’t have an account? Sign Up")];
@@ -143,7 +142,7 @@
         self.welcomeLbl.font = [Font regular19];
         
         //UPDATE ERROR LABEL AFTER 4 SECONDS
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_4_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.welcomeLbl.text = localizeString(@"Sign In\n");
             self.welcomeLbl.textColor = [Color officialGreenColor];
             self.welcomeLbl.font = [Font semibold22];
@@ -157,7 +156,7 @@
         self.welcomeLbl.textColor = [Color officialDarkRedColor];
         self.welcomeLbl.font = [Font regular19];
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_4_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.welcomeLbl.text = localizeString(@"Sign In\n");
             self.welcomeLbl.textColor = [Color officialGreenColor];
             self.welcomeLbl.font = [Font semibold22];
@@ -245,7 +244,7 @@
                                                             [GeneralService sharedService].refresh_token_number = newRefreshToken;
 
                                                             //LOGIN EXIST USER IN APP
-                                                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                                                                 [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
                                                                                                            jwToken:[GeneralService sharedService].jwt_token_number
                                                                                                       refreshToken:[GeneralService sharedService].refresh_token_number];
@@ -337,7 +336,7 @@
                     [GeneralService sharedService].stored_address = @"";
                     [GeneralService sharedService].stored_clientId = @"";
                 
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
                                                                    jwToken:[GeneralService sharedService].jwt_token_number
                                                               refreshToken:[GeneralService sharedService].refresh_token_number];
@@ -398,7 +397,7 @@
          ];
 
         //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST AFTER STORE SNAPSHOT IN FIREBASE
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
                                                        jwToken:[GeneralService sharedService].jwt_token_number
                                                   refreshToken:[GeneralService sharedService].refresh_token_number];
@@ -434,7 +433,7 @@
         [self.joinBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
         [self.joinBtn setBackgroundColor:[Color officialOrangeColor]];
         [self.joinBtn.layer setMasksToBounds:YES];
-        [self.joinBtn.layer setCornerRadius:16.0f];
+        [self.joinBtn.layer setCornerRadius:20.0f];
         [self.joinBtn.layer setBorderColor:[[Color officialOrangeColor] CGColor]];
         [self.joinBtn.layer setBorderWidth:0.4];
         NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"JOIN")];
@@ -447,7 +446,7 @@
         [self.signInBtn setTitleColor:[Color darkGrayColor83] forState:UIControlStateNormal];
         [self.signInBtn setBackgroundColor:[Color officialWhiteColor]];
         [self.signInBtn.layer setMasksToBounds:YES];
-        [self.signInBtn.layer setCornerRadius:16.0f];
+        [self.signInBtn.layer setCornerRadius:20.0f];
         [self.signInBtn.layer setBorderColor:[[Color officialWhiteColor] CGColor]];
         [self.signInBtn.layer setBorderWidth:0.4];
         NSMutableAttributedString *signInText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Already have an account? Sign In")];
@@ -472,7 +471,7 @@
         [self.joinBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
         [self.joinBtn setBackgroundColor:[Color officialGreenColor]];
         [self.joinBtn.layer setMasksToBounds:YES];
-        [self.joinBtn.layer setCornerRadius:16.0f];
+        [self.joinBtn.layer setCornerRadius:20.0f];
         [self.joinBtn.layer setBorderColor:[[Color officialGreenColor] CGColor]];
         [self.joinBtn.layer setBorderWidth:0.4];
         NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"SIGN IN")];
@@ -485,7 +484,7 @@
         [self.signInBtn setTitleColor:[Color darkGrayColor83] forState:UIControlStateNormal];
         [self.signInBtn setBackgroundColor:[Color officialWhiteColor]];
         [self.signInBtn.layer setMasksToBounds:YES];
-        [self.signInBtn.layer setCornerRadius:16.0f];
+        [self.signInBtn.layer setCornerRadius:20.0f];
         [self.signInBtn.layer setBorderColor:[[Color officialWhiteColor] CGColor]];
         [self.signInBtn.layer setBorderWidth:0.4];
         NSMutableAttributedString *signInText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Don’t have an account? Sign Up")];
@@ -592,7 +591,7 @@
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.5];
     
-    [UIView animateWithDuration:0.5 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+    [UIView animateWithDuration:DELAY_IMMEDIATELY_05_SEC delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         
         [self.view setFrame:CGRectMake(0.f, -170.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
         self.mainLogoImg.transform = transform;
@@ -606,7 +605,7 @@
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)codeField {
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+    [UIView animateWithDuration:DELAY_IMMEDIATELY_03_SEC delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         [self.view setFrame:CGRectMake(0.f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
         self.mainLogoImg.transform = CGAffineTransformMakeScale(1.0, 1.0);
     } completion:^(BOOL finished) {

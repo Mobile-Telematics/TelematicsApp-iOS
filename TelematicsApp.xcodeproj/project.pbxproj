@@ -77,6 +77,15 @@
 		E9332F3622B0376900EC70B6 /* BottomSheetPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F2F22B0376900EC70B6 /* BottomSheetPresenter.m */; };
 		E9332F3722B0376900EC70B6 /* ChevronView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F3122B0376900EC70B6 /* ChevronView.m */; };
 		E9332F3822B0376900EC70B6 /* BottomSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F3322B0376900EC70B6 /* BottomSheetView.m */; };
+		E93953EB274BBB0400E0289E /* WelcomeRewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93953EA274BBB0400E0289E /* WelcomeRewards.storyboard */; };
+		E9395408274BC28600E0289E /* TagResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395404274BC28600E0289E /* TagResponse.m */; };
+		E9395409274BC28600E0289E /* TagResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395405274BC28600E0289E /* TagResultResponse.m */; };
+		E939540F274BC32C00E0289E /* JobsAcceptedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E939540D274BC32C00E0289E /* JobsAcceptedCell.m */; };
+		E9395410274BC32C00E0289E /* JobsCompletedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E939540E274BC32C00E0289E /* JobsCompletedCell.m */; };
+		E9395412274BC5A500E0289E /* DashboardMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9395411274BC5A500E0289E /* DashboardMain.storyboard */; };
+		E9395415274BCEEE00E0289E /* DriveModeViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395414274BCEEE00E0289E /* DriveModeViewCtrl.m */; };
+		E939541A274BE8CC00E0289E /* SettingsAccidentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395417274BE8CC00E0289E /* SettingsAccidentCell.m */; };
+		E939541B274BE8CC00E0289E /* SettingsBatteryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395418274BE8CC00E0289E /* SettingsBatteryCell.m */; };
 		E93FBF59240F066A001387C6 /* VisibleBuildConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = E93FBF57240F066A001387C6 /* VisibleBuildConfig.m */; };
 		E947D3B525348FAC003DB17A /* DriverSignaturePopupDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E947D3AF25348FAB003DB17A /* DriverSignaturePopupDelegate.m */; };
 		E947D3BC25348FAC003DB17A /* DriverSignaturePopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = E947D3B125348FAB003DB17A /* DriverSignaturePopup.xib */; };
@@ -204,7 +213,6 @@
 		E9B6C9D6268536A0000B5B51 /* ClaimQouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B5268536A0000B5B51 /* ClaimQouteCell.m */; };
 		E9B6C9D7268536A0000B5B51 /* ClaimCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B6268536A0000B5B51 /* ClaimCarCell.m */; };
 		E9B6C9D8268536A0000B5B51 /* CarPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B8268536A0000B5B51 /* CarPhotoCell.m */; };
-		E9B6C9D9268536A0000B5B51 /* TowingSwitch.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BA268536A0000B5B51 /* TowingSwitch.m */; };
 		E9B6C9DA268536A0000B5B51 /* StepPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BC268536A0000B5B51 /* StepPhotoViewController.m */; };
 		E9B6C9DB268536A0000B5B51 /* RetypeVehicleCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BD268536A0000B5B51 /* RetypeVehicleCtrl.m */; };
 		E9B6C9DC268536A0000B5B51 /* Step3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BE268536A0000B5B51 /* Step3ViewController.m */; };
@@ -295,7 +303,7 @@
 		E9F0B83A26DD4B390071DFA9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E9F0B83926DD4B390071DFA9 /* README.md */; };
 		E9F19D6021CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5C21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m */; };
 		E9F19D6121CC271900523C02 /* TelematicsAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */; };
-		E9F5496D22A94E1A00CCA5E5 /* DashboardMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F5496C22A94E1A00CCA5E5 /* DashboardMain.storyboard */; };
+		E9F5496D22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F5496C22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard */; };
 		E9F5497F22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */; };
 		E9F6E520204F600A003BFAD3 /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51D204F6009003BFAD3 /* NSDate+ISO8601.m */; };
 		E9F6E521204F600A003BFAD3 /* ISO8601Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51F204F600A003BFAD3 /* ISO8601Serialization.m */; };
@@ -456,6 +464,22 @@
 		E9332F3222B0376900EC70B6 /* ChevronView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChevronView.h; sourceTree = "<group>"; };
 		E9332F3322B0376900EC70B6 /* BottomSheetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BottomSheetView.m; sourceTree = "<group>"; };
 		E9332F3422B0376900EC70B6 /* BottomSheetPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BottomSheetPresenter.h; sourceTree = "<group>"; };
+		E93953EA274BBB0400E0289E /* WelcomeRewards.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WelcomeRewards.storyboard; sourceTree = "<group>"; };
+		E9395404274BC28600E0289E /* TagResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagResponse.m; sourceTree = "<group>"; };
+		E9395405274BC28600E0289E /* TagResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagResultResponse.m; sourceTree = "<group>"; };
+		E9395406274BC28600E0289E /* TagResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagResponse.h; sourceTree = "<group>"; };
+		E9395407274BC28600E0289E /* TagResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagResultResponse.h; sourceTree = "<group>"; };
+		E939540B274BC32C00E0289E /* JobsAcceptedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsAcceptedCell.h; sourceTree = "<group>"; };
+		E939540C274BC32C00E0289E /* JobsCompletedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JobsCompletedCell.h; sourceTree = "<group>"; };
+		E939540D274BC32C00E0289E /* JobsAcceptedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsAcceptedCell.m; sourceTree = "<group>"; };
+		E939540E274BC32C00E0289E /* JobsCompletedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JobsCompletedCell.m; sourceTree = "<group>"; };
+		E9395411274BC5A500E0289E /* DashboardMain.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DashboardMain.storyboard; sourceTree = "<group>"; };
+		E9395413274BCEEE00E0289E /* DriveModeViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveModeViewCtrl.h; sourceTree = "<group>"; };
+		E9395414274BCEEE00E0289E /* DriveModeViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveModeViewCtrl.m; sourceTree = "<group>"; };
+		E9395416274BE8CC00E0289E /* SettingsAccidentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsAccidentCell.h; path = TelematicsApp/Screens/Settings/SettingsAccidentCell.h; sourceTree = SOURCE_ROOT; };
+		E9395417274BE8CC00E0289E /* SettingsAccidentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsAccidentCell.m; path = TelematicsApp/Screens/Settings/SettingsAccidentCell.m; sourceTree = SOURCE_ROOT; };
+		E9395418274BE8CC00E0289E /* SettingsBatteryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SettingsBatteryCell.m; path = TelematicsApp/Screens/Settings/SettingsBatteryCell.m; sourceTree = SOURCE_ROOT; };
+		E9395419274BE8CC00E0289E /* SettingsBatteryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SettingsBatteryCell.h; path = TelematicsApp/Screens/Settings/SettingsBatteryCell.h; sourceTree = SOURCE_ROOT; };
 		E93FBF57240F066A001387C6 /* VisibleBuildConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleBuildConfig.m; sourceTree = "<group>"; };
 		E93FBF58240F066A001387C6 /* VisibleBuildConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleBuildConfig.h; sourceTree = "<group>"; };
 		E947D3AF25348FAB003DB17A /* DriverSignaturePopupDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriverSignaturePopupDelegate.m; sourceTree = "<group>"; };
@@ -681,8 +705,6 @@
 		E9B6C9B6268536A0000B5B51 /* ClaimCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimCarCell.m; sourceTree = "<group>"; };
 		E9B6C9B7268536A0000B5B51 /* ClaimQouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimQouteCell.h; sourceTree = "<group>"; };
 		E9B6C9B8268536A0000B5B51 /* CarPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarPhotoCell.m; sourceTree = "<group>"; };
-		E9B6C9BA268536A0000B5B51 /* TowingSwitch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowingSwitch.m; sourceTree = "<group>"; };
-		E9B6C9BB268536A0000B5B51 /* TowingSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowingSwitch.h; sourceTree = "<group>"; };
 		E9B6C9BC268536A0000B5B51 /* StepPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepPhotoViewController.m; sourceTree = "<group>"; };
 		E9B6C9BD268536A0000B5B51 /* RetypeVehicleCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetypeVehicleCtrl.m; sourceTree = "<group>"; };
 		E9B6C9BE268536A0000B5B51 /* Step3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step3ViewController.m; sourceTree = "<group>"; };
@@ -850,7 +872,7 @@
 		E9F19D5D21CC271900523C02 /* TelematicsAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppModel.h; sourceTree = "<group>"; };
 		E9F19D5E21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TelematicsAppModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppModel.m; sourceTree = "<group>"; };
-		E9F5496C22A94E1A00CCA5E5 /* DashboardMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardMain.storyboard; sourceTree = "<group>"; };
+		E9F5496C22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardMainDeprecated.storyboard; sourceTree = "<group>"; };
 		E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppCollapsibleConstraints.m; sourceTree = "<group>"; };
 		E9F5497E22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppCollapsibleConstraints.h; sourceTree = "<group>"; };
 		E9F6E51C204F6009003BFAD3 /* ISO8601Serialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601Serialization.h; sourceTree = "<group>"; };
@@ -998,7 +1020,9 @@
 			children = (
 				E9DF353C2418154F0070203D /* MainTabBar.storyboard */,
 				174D93971D79A215003F743F /* Auth.storyboard */,
-				E9F5496C22A94E1A00CCA5E5 /* DashboardMain.storyboard */,
+				E9F5496C22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard */,
+				E9395411274BC5A500E0289E /* DashboardMain.storyboard */,
+				E93953EA274BBB0400E0289E /* WelcomeRewards.storyboard */,
 				E9C6464C2417D61200CDF337 /* Feed.storyboard */,
 				E90DF4A926CF1CDD0003C2A1 /* WelcomeRewards.storyboard */,
 				E9A7FDEE26CEFB8F000F0C44 /* Rewards.storyboard */,
@@ -1136,6 +1160,7 @@
 				E9B6CA2326854028000B5B51 /* ClaimsUser */,
 				E9B6CA3B26854281000B5B51 /* ClaimsGallery */,
 				E96ABE572611AB6800C0AC24 /* Leaderboard */,
+				E9395403274BC28600E0289E /* TagResponse */,
 				1713904B1D81D68D007E4007 /* RootResponse.h */,
 				1713904C1D81D68D007E4007 /* RootResponse.m */,
 				1739739A1D6219FE00C9447E /* ResponseObject.h */,
@@ -1330,16 +1355,17 @@
 		E930826A229EF83800E17C1D /* DashboardMain */ = {
 			isa = PBXGroup;
 			children = (
-				E930826E229F098A00E17C1D /* Cells */,
-				E9308275229F102E00E17C1D /* GaugeView */,
-				E93082B6229F384A00E17C1D /* LineChart */,
+				E939540A274BC32C00E0289E /* OnDemandCell */,
+				E930826E229F098A00E17C1D /* DashboardCell */,
+				E9308275229F102E00E17C1D /* DashboardGaugeView */,
+				E93082B6229F384A00E17C1D /* DashboardLineChart */,
 				E930826C229EF83800E17C1D /* DashMainViewController.h */,
 				E930826B229EF83800E17C1D /* DashMainViewController.m */,
 			);
 			path = DashboardMain;
 			sourceTree = "<group>";
 		};
-		E930826E229F098A00E17C1D /* Cells */ = {
+		E930826E229F098A00E17C1D /* DashboardCell */ = {
 			isa = PBXGroup;
 			children = (
 				E930826F229F098A00E17C1D /* DashLiteCell.h */,
@@ -1348,25 +1374,25 @@
 				E98660F2258A9B800074BE6F /* UserActivityCell.m */,
 				E98660F1258A9B800074BE6F /* UserActivityCell.xib */,
 			);
-			path = Cells;
+			path = DashboardCell;
 			sourceTree = "<group>";
 		};
-		E9308275229F102E00E17C1D /* GaugeView */ = {
+		E9308275229F102E00E17C1D /* DashboardGaugeView */ = {
 			isa = PBXGroup;
 			children = (
 				E9308276229F102E00E17C1D /* DashLiteGaugeView.h */,
 				E9308277229F102E00E17C1D /* DashLiteGaugeView.m */,
 			);
-			path = GaugeView;
+			path = DashboardGaugeView;
 			sourceTree = "<group>";
 		};
-		E93082B6229F384A00E17C1D /* LineChart */ = {
+		E93082B6229F384A00E17C1D /* DashboardLineChart */ = {
 			isa = PBXGroup;
 			children = (
 				E93082B7229F384A00E17C1D /* LineChart.h */,
 				E93082B8229F384A00E17C1D /* LineChart.m */,
 			);
-			path = LineChart;
+			path = DashboardLineChart;
 			sourceTree = "<group>";
 		};
 		E9332F2D22B0376900EC70B6 /* FeedBottomSheetView */ = {
@@ -1381,6 +1407,28 @@
 				E9332F2E22B0376900EC70B6 /* BottomSheetView.xib */,
 			);
 			path = FeedBottomSheetView;
+			sourceTree = "<group>";
+		};
+		E9395403274BC28600E0289E /* TagResponse */ = {
+			isa = PBXGroup;
+			children = (
+				E9395407274BC28600E0289E /* TagResultResponse.h */,
+				E9395405274BC28600E0289E /* TagResultResponse.m */,
+				E9395406274BC28600E0289E /* TagResponse.h */,
+				E9395404274BC28600E0289E /* TagResponse.m */,
+			);
+			path = TagResponse;
+			sourceTree = "<group>";
+		};
+		E939540A274BC32C00E0289E /* OnDemandCell */ = {
+			isa = PBXGroup;
+			children = (
+				E939540B274BC32C00E0289E /* JobsAcceptedCell.h */,
+				E939540D274BC32C00E0289E /* JobsAcceptedCell.m */,
+				E939540C274BC32C00E0289E /* JobsCompletedCell.h */,
+				E939540E274BC32C00E0289E /* JobsCompletedCell.m */,
+			);
+			path = OnDemandCell;
 			sourceTree = "<group>";
 		};
 		E93FBF56240F066A001387C6 /* BuildConfig */ = {
@@ -1412,6 +1460,10 @@
 				E951AC1F2162A97900717D8C /* SettingsMenuCell.m */,
 				E90088FA21D1BC0A00D33D85 /* SettingsNoIconCell.h */,
 				E90088FB21D1BC0B00D33D85 /* SettingsNoIconCell.m */,
+				E9395416274BE8CC00E0289E /* SettingsAccidentCell.h */,
+				E9395417274BE8CC00E0289E /* SettingsAccidentCell.m */,
+				E9395419274BE8CC00E0289E /* SettingsBatteryCell.h */,
+				E9395418274BE8CC00E0289E /* SettingsBatteryCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1757,6 +1809,8 @@
 				E951AC1E2162A97900717D8C /* Cell */,
 				E990B1582154350500F2EF11 /* SettingsViewController.h */,
 				E990B1572154350500F2EF11 /* SettingsViewController.m */,
+				E9395413274BCEEE00E0289E /* DriveModeViewCtrl.h */,
+				E9395414274BCEEE00E0289E /* DriveModeViewCtrl.m */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1893,7 +1947,6 @@
 			isa = PBXGroup;
 			children = (
 				E9B6C9AD268536A0000B5B51 /* CollectionLayout */,
-				E9B6C9B9268536A0000B5B51 /* TowingSwitch */,
 				E9B6CA1426853DB0000B5B51 /* GMaps */,
 				E9B6C9E72685392D000B5B51 /* GalleryUpload */,
 				E9B6CA0826853AD3000B5B51 /* ClaimsCameraCar */,
@@ -1948,15 +2001,6 @@
 				E9B6C9B5268536A0000B5B51 /* ClaimQouteCell.m */,
 			);
 			path = Cells;
-			sourceTree = "<group>";
-		};
-		E9B6C9B9268536A0000B5B51 /* TowingSwitch */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9BB268536A0000B5B51 /* TowingSwitch.h */,
-				E9B6C9BA268536A0000B5B51 /* TowingSwitch.m */,
-			);
-			path = TowingSwitch;
 			sourceTree = "<group>";
 		};
 		E9B6C9E326853859000B5B51 /* ClaimsService */ = {
@@ -2408,7 +2452,7 @@
 				E970305121B5AFF8008CEA13 /* GeneralPopup.xib in Resources */,
 				E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */,
 				E9B6CA59268544A7000B5B51 /* GMImagePicker.strings in Resources */,
-				E9F5496D22A94E1A00CCA5E5 /* DashboardMain.storyboard in Resources */,
+				E9F5496D22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard in Resources */,
 				E9B6CA0C26853AD3000B5B51 /* CameraCar.storyboard in Resources */,
 				E90DF4AA26CF1CDD0003C2A1 /* WelcomeRewards.storyboard in Resources */,
 				174D93981D79A215003F743F /* Auth.storyboard in Resources */,
@@ -2416,6 +2460,7 @@
 				E990B15B215435E800F2EF11 /* Settings.storyboard in Resources */,
 				E9B6CA63268544A7000B5B51 /* GMSelected.png in Resources */,
 				E9B6CA5F268544A7000B5B51 /* GMVideoIcon.png in Resources */,
+				E9395412274BC5A500E0289E /* DashboardMain.storyboard in Resources */,
 				E9FCB5FF22F3862F002C9944 /* CongratulationsPopup.xib in Resources */,
 				E9C6464B2417D27B00CDF337 /* Assets.xcassets in Resources */,
 				E9DF353D2418154F0070203D /* MainTabBar.storyboard in Resources */,
@@ -2431,6 +2476,7 @@
 				E9332F3522B0376900EC70B6 /* BottomSheetView.xib in Resources */,
 				E978BAF223D7A98D00A59A8F /* InfoPlist.strings in Resources */,
 				E947D3BC25348FAC003DB17A /* DriverSignaturePopup.xib in Resources */,
+				E93953EB274BBB0400E0289E /* WelcomeRewards.storyboard in Resources */,
 				E9C6464D2417D61200CDF337 /* Feed.storyboard in Resources */,
 				E9B6CA5C268544A7000B5B51 /* GMVideoIcon@2x.png in Resources */,
 				E9F0B83A26DD4B390071DFA9 /* README.md in Resources */,
@@ -2511,7 +2557,7 @@
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMAKit/NMAKit.framework/NMAKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/HEREMaps/NMAKit.framework/NMAKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2595,6 +2641,7 @@
 				E96ABEE72612229100C0AC24 /* OBDSlideBluetoothDelegate.swift in Sources */,
 				E96ABE472611AB1600C0AC24 /* OverallCell.m in Sources */,
 				E9E21E7126416F0D00EE4FC9 /* EditVehicleCtrl.m in Sources */,
+				E9395410274BC32C00E0289E /* JobsCompletedCell.m in Sources */,
 				E96ABEE32612229100C0AC24 /* AddCarCtrl.m in Sources */,
 				E9F5497F22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m in Sources */,
 				E96ABE412611AB1600C0AC24 /* MainScoresViewCtrl.m in Sources */,
@@ -2618,6 +2665,7 @@
 				E96ABE552611AB1600C0AC24 /* PagesCell.m in Sources */,
 				E96ABE4C2611AB1600C0AC24 /* ScoreTimeVC.m in Sources */,
 				E96ABE532611AB1600C0AC24 /* ScorePhoneVC.m in Sources */,
+				E9395415274BCEEE00E0289E /* DriveModeViewCtrl.m in Sources */,
 				E9B6CA052685392D000B5B51 /* KSSDImageManager.m in Sources */,
 				E978BAED23D11CEF00A59A8F /* AccessTokenObject.m in Sources */,
 				171390361D818720007E4007 /* UITextField+Form.m in Sources */,
@@ -2654,6 +2702,7 @@
 				E98661D6258AB80E0074BE6F /* UserProfileObject.m in Sources */,
 				E96ABE4E2611AB1600C0AC24 /* ScoreMileageVC.m in Sources */,
 				E9BFA2FC21FE467900D80C21 /* CountriesViewController.swift in Sources */,
+				E939540F274BC32C00E0289E /* JobsAcceptedCell.m in Sources */,
 				E95487DD2593F84C004E2610 /* ProfilePopupDelegate.m in Sources */,
 				E9B6CA3426854028000B5B51 /* ClaimsUserObject.m in Sources */,
 				E96ABF15261226EA00C0AC24 /* Global.swift in Sources */,
@@ -2684,6 +2733,7 @@
 				1713904D1D81D68D007E4007 /* RootResponse.m in Sources */,
 				E900890121D2C65100D33D85 /* UserImagePickerViewController.m in Sources */,
 				E9B6C9D7268536A0000B5B51 /* ClaimCarCell.m in Sources */,
+				E9395408274BC28600E0289E /* TagResponse.m in Sources */,
 				E96ABE522611AB1600C0AC24 /* ScoreOverallVC.m in Sources */,
 				E96ABE602611AB6800C0AC24 /* LeaderboardResponse.m in Sources */,
 				E96ABEDE2612229100C0AC24 /* LookingPopupViewCtrl.swift in Sources */,
@@ -2753,6 +2803,7 @@
 				E9D260DC21ADED1D00632BAE /* ProfileViewController.m in Sources */,
 				E9B6CA3826854028000B5B51 /* ClaimsTokenResultResponse.m in Sources */,
 				E96ABF2226127DD200C0AC24 /* NSUserDefaultsExtension.swift in Sources */,
+				E939541A274BE8CC00E0289E /* SettingsAccidentCell.m in Sources */,
 				E95487DF2593F84C004E2610 /* UIView+parentViewController.m in Sources */,
 				FA12350C1DD4D417000C522D /* WiFiGPSChecker.m in Sources */,
 				E9B6CA2226853DB1000B5B51 /* CustomLocationPickerVC.m in Sources */,
@@ -2827,6 +2878,7 @@
 				E99ACAFA2200E1140083DD99 /* ProfileResponse.m in Sources */,
 				E9249737230364E200FC099F /* DrivingDetailsResponse.m in Sources */,
 				E9B6C9D3268536A0000B5B51 /* ClaimDetailsViewCtrl.m in Sources */,
+				E939541B274BE8CC00E0289E /* SettingsBatteryCell.m in Sources */,
 				E9B6C9D4268536A0000B5B51 /* DelegateCollectionViewFillLayout.m in Sources */,
 				E919F73A21503A8500CCF3A6 /* UIView+XIB.m in Sources */,
 				E9E05D2E21B80E9800F6C76C /* TelematicsAppPrivacyRequestManager+AppUtils.m in Sources */,
@@ -2835,7 +2887,7 @@
 				171390491D81D499007E4007 /* ErrorsResponse.m in Sources */,
 				17D13F661D9E940F00F731CC /* Font.m in Sources */,
 				E96ABF1A26127CB900C0AC24 /* IconRightLabel.swift in Sources */,
-				E9B6C9D9268536A0000B5B51 /* TowingSwitch.m in Sources */,
+				E9395409274BC28600E0289E /* TagResultResponse.m in Sources */,
 				E9B6CA022685392D000B5B51 /* KSPhotoCell.m in Sources */,
 				E9524306214ECDC800C70E95 /* FeedViewController.m in Sources */,
 				E92963CD25D195E5000BF615 /* TelematicsAppRegPopup.m in Sources */,
@@ -3043,7 +3095,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = MTK2QVQ5B8;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

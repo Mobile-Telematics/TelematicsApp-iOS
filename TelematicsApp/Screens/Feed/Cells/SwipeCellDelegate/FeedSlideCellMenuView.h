@@ -23,9 +23,8 @@
 
 @optional
 
-- (void)cellMenuViewShareBtnTapped:(FeedSlideCellMenuView *)menuView;
+- (void)cellMenuViewHideTripBtnTapped:(FeedSlideCellMenuView *)menuView;
 - (void)cellMenuViewDeleteBtnTapped:(FeedSlideCellMenuView *)menuView;
-
-- (void)cellMenuViewFlagBtnTapped:(FeedSlideCellMenuView *)menuView;
+- (void)cellMenuViewShareBtnTapped:(FeedSlideCellMenuView *)menuView;
 
 @end

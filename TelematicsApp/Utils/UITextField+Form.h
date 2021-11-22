@@ -11,6 +11,7 @@
 @interface UITextField (Form)
 
 - (void)makeFormFieldZero;
+- (void)makeFormFieldShift5;
 - (void)makeFormFieldShift20;
 - (void)makeFormFieldShift40;
     

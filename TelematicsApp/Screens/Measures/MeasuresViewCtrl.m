@@ -11,7 +11,6 @@
 #import "Color.h"
 #import "Helpers.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
 
@@ -69,12 +68,12 @@
     
     self.distanceSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"km"), localizeString(@"mi")]];
     if (@available(iOS 13.0, *)) {
-        self.distanceSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 115, 150, 30);
+        self.distanceSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 115, 150, 40);
     } else {
         if (IS_IPHONE_8P || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4)
-            self.distanceSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 135, 150, 30);
+            self.distanceSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 135, 150, 40);
         else
-            self.distanceSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 158, 150, 30);
+            self.distanceSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 158, 150, 40);
     }
     
     self.distanceSwitcher.font = [Font medium15Helvetica];
@@ -83,7 +82,7 @@
     self.distanceSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
     self.distanceSwitcher.sliderColor = [Color officialWhiteColor];
     self.distanceSwitcher.sliderOffset = 1.0;
-    self.distanceSwitcher.cornerRadius = 15;
+    self.distanceSwitcher.cornerRadius = 20;
     [self.view addSubview:self.distanceSwitcher];
     
     if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
@@ -107,12 +106,12 @@
     
     self.dateSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"dd/mm"), localizeString(@"mm/dd")]];
     if (@available(iOS 13.0, *)) {
-        self.dateSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 175, 150, 30);
+        self.dateSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 175, 150, 40);
     } else {
         if (IS_IPHONE_8P || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4)
-            self.dateSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 195, 150, 30);
+            self.dateSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 195, 150, 40);
         else
-            self.dateSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 218, 150, 30);
+            self.dateSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 218, 150, 40);
     }
     
     self.dateSwitcher.font = [Font medium15Helvetica];
@@ -121,7 +120,7 @@
     self.dateSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
     self.dateSwitcher.sliderColor = [Color officialWhiteColor];
     self.dateSwitcher.sliderOffset = 1.0;
-    self.dateSwitcher.cornerRadius = 15;
+    self.dateSwitcher.cornerRadius = 20;
     [self.view addSubview:self.dateSwitcher];
     
     if ([Configurator sharedInstance].needAmPmTime || [defaults_object(@"needDateSpecialFormat") boolValue]) {
@@ -145,12 +144,12 @@
     
     self.timeSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"24h"), localizeString(@"12h")]];
     if (@available(iOS 13.0, *)) {
-        self.timeSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 235, 150, 30);
+        self.timeSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 235, 150, 40);
     } else {
         if (IS_IPHONE_8P || IS_IPHONE_8 || IS_IPHONE_5 || IS_IPHONE_4)
-            self.timeSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 255, 150, 30);
+            self.timeSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 255, 150, 40);
         else
-            self.timeSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 278, 150, 30);
+            self.timeSwitcher.frame = CGRectMake(self.view.frame.size.width - 170, 278, 150, 40);
     }
     
     self.timeSwitcher.font = [Font medium15Helvetica];
@@ -159,7 +158,7 @@
     self.timeSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
     self.timeSwitcher.sliderColor = [Color officialWhiteColor];
     self.timeSwitcher.sliderOffset = 1.0;
-    self.timeSwitcher.cornerRadius = 15;
+    self.timeSwitcher.cornerRadius = 20;
     [self.view addSubview:self.timeSwitcher];
         
     if ([Configurator sharedInstance].needAmPmTime || [defaults_object(@"needAmPmFormat") boolValue]) {
@@ -182,6 +181,7 @@
 - (void)saveMeasuresParameters {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadDashboardPage" object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadTripPage" object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadOnDemandDashboardSection" object:self];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadCoinsDashboardSection" object:self];
     
     defaults_set_object(@"needUpdateViewForFeedScreen", @(YES));

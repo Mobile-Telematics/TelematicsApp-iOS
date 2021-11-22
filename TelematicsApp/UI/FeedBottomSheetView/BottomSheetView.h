@@ -2,7 +2,7 @@
 //  BottomSheetView.h
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 10.06.20.
+//  Created by DATA MOTION PTE. LTD. on 21.11.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -55,7 +55,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIButton       *driverSignatureOnTripBtn;
 @property (nonatomic, weak) IBOutlet UILabel        *driverSignatureOnTripLbl;
 
+@property (nonatomic, weak) IBOutlet UIButton       *hideTripBtn;
+@property (nonatomic, weak) IBOutlet UIButton       *hideTripBackgroundBtn;
+@property (nonatomic, weak) IBOutlet UIImageView    *hideTripIcon;
+
 @property (nonatomic, weak) IBOutlet UIButton       *deleteTripBtn;
+@property (nonatomic, weak) IBOutlet UIButton       *deleteTripBackgroundBtn;
 @property (nonatomic, weak) IBOutlet UIImageView    *deleteTripIcon;
 
 @property (strong, nonatomic) TagsSwitch            *driverSwitcher;

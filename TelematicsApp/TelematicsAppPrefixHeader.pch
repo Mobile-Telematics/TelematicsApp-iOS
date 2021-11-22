@@ -25,6 +25,7 @@
 #import "Font.h"
 #import "Format.h"
 #import "LogSetup.h"
+#import "UITextField+Form.h"
 #import <TelematicsApp-Swift.h>
 #import <LoginAuth/LoginAuth.h>
 @import Firebase;

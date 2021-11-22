@@ -11,7 +11,6 @@
 #import "Color.h"
 #import "Helpers.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 
 
 @interface Step2ViewController () <UIScrollViewDelegate, UITextFieldDelegate>
@@ -195,7 +194,7 @@
     if ([_firstNameField.text isEqualToString:@""]) {
         [_firstNameField setBackgroundColor:[Color curveRedColorAlpha]];
         [_firstNameField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self->_firstNameField setBackgroundColor:[Color lightSeparatorColor]];
             [self->_firstNameField.layer setBorderColor:[[Color grayColor] CGColor]];
         });
@@ -204,7 +203,7 @@
     } else if ([_lastNameField.text isEqualToString:@""]) {
         [_lastNameField setBackgroundColor:[Color curveRedColorAlpha]];
         [_lastNameField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self->_lastNameField setBackgroundColor:[Color lightSeparatorColor]];
             [self->_lastNameField.layer setBorderColor:[[Color grayColor] CGColor]];
         });
@@ -213,7 +212,7 @@
     } else if ([_driverLicenseField.text isEqualToString:@""]) {
         [_driverLicenseField setBackgroundColor:[Color curveRedColorAlpha]];
         [_driverLicenseField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self->_driverLicenseField setBackgroundColor:[Color lightSeparatorColor]];
             [self->_driverLicenseField.layer setBorderColor:[[Color grayColor] CGColor]];
         });

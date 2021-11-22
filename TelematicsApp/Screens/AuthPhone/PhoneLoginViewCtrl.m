@@ -8,7 +8,6 @@
 
 #import "PhoneLoginViewCtrl.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 #import "UIImageView+WebCache.h"
 #import "Helpers.h"
 
@@ -46,7 +45,7 @@
     self.passField.textColor = [UIColor blackColor];
     [self.passField setBackgroundColor:[Color lightSeparatorColor]];
     [self.passField.layer setMasksToBounds:YES];
-    [self.passField.layer setCornerRadius:15.0f];
+    [self.passField.layer setCornerRadius:20.0f];
     [self.passField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.passField.layer setBorderWidth:1.5];
     self.passField.placeholder = localizeString(@"enter password");
@@ -57,7 +56,7 @@
     
     [self.loginBtn setBackgroundColor:[Color officialMainAppColor]];
     [self.loginBtn.layer setMasksToBounds:YES];
-    [self.loginBtn.layer setCornerRadius:15.0f];
+    [self.loginBtn.layer setCornerRadius:20.0f];
     [self.loginBtn.titleLabel setFont:[Font medium13]];
     //[self.loginBtn setTitle:localizeString(@"SIGN IN") forState:UIControlStateNormal];
     [self.loginBtn setTitle:localizeString(@"LOG IN") forState:UIControlStateNormal];
@@ -88,7 +87,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.8 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_08_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self showKeyboard];
     });
 }
@@ -195,7 +194,7 @@
                     [GeneralService sharedService].stored_clientId = @"";
 
                     //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST AFTER STORE SNAPSHOT IN FIREBASE
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
                                                                    jwToken:[GeneralService sharedService].jwt_token_number
                                                               refreshToken:[GeneralService sharedService].refresh_token_number];
@@ -290,7 +289,7 @@
                          ];
 
                         //LOGIN USER IN APP WITH NEW DEVICETOKEN IF IT'S LOST!
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                             [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
                                                                        jwToken:[GeneralService sharedService].jwt_token_number
                                                                   refreshToken:[GeneralService sharedService].refresh_token_number];
@@ -317,7 +316,7 @@
                         [GeneralService sharedService].refresh_token_number = newRefreshToken;
                         
                         //LOGIN EXIST USER IN APP
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_2_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                             [[GeneralService sharedService] enterUserInAppWith:[GeneralService sharedService].device_token_number
                                                                        jwToken:[GeneralService sharedService].jwt_token_number
                                                                   refreshToken:[GeneralService sharedService].refresh_token_number];
@@ -368,7 +367,7 @@
     
     [self.errorHandler dismissActiveNotifNow];
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_04_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //ANIMATION VALUE FOR LOGO
         double coefPhoto = 0.38;
         float coefLbl = 170.0f;
@@ -395,7 +394,7 @@
         [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
         [UIView setAnimationDuration:0.4];
 
-        [UIView animateWithDuration:0.4 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+        [UIView animateWithDuration:DELAY_IMMEDIATELY_04_SEC delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
 
             [self.view setFrame:CGRectMake(0.f, -160.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
             self.logoImg.transform = transformAvatar;
@@ -421,7 +420,7 @@
     } else if (IS_IPHONE_5 || IS_IPHONE_4)
         coefLbl = 274.0f;
     
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+    [UIView animateWithDuration:DELAY_IMMEDIATELY_04_SEC delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
         [self.view setFrame:CGRectMake(0.f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
         self.logoImg.transform = CGAffineTransformMakeScale(1.0, 1.0);
         CGAffineTransform translateLabel = CGAffineTransformMakeTranslation(0, self.loggedNameLbl.frame.origin.y - coefLbl);
@@ -468,26 +467,6 @@
     }
     return YES;
 }
-
-
-//DEPRECATED
-//- (void)errorPhoneLoginFunction {
-//    if (IS_IPHONE_5 || IS_IPHONE_4)
-//        self.enterPassLbl.font = [Font medium10];
-//
-//    self.enterPassLbl.text = localizeString(@"validation_invalid_password");
-//    self.enterPassLbl.textColor = [Color officialRedColor];
-//    [self.loginBtn setTitle:localizeString(@"TRY AGAIN") forState:UIControlStateNormal];
-//
-//    //UPDATE ERROR LABEL AFTER 4 SECONDS
-//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        if (IS_IPHONE_5 || IS_IPHONE_4)
-//            self.enterPassLbl.font = [Font regular12];
-//
-//        self.enterPassLbl.text = localizeString(@"Enter your password from sms");
-//        self.enterPassLbl.textColor = [Color darkGrayColor];
-//    });
-//}
 
 
 @end

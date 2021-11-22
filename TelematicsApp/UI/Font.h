@@ -13,6 +13,7 @@
 + (UIFont*)light8Helvetica;
 + (UIFont*)light10Helvetica;
 + (UIFont*)regular12Helvetica;
++ (UIFont*)regular13Helvetica;
 + (UIFont*)medium12Helvetica;
 + (UIFont*)medium15Helvetica;
 + (UIFont*)medium18Helvetica;
@@ -23,6 +24,7 @@
 + (UIFont*)light11;
 + (UIFont*)light12;
 + (UIFont*)light13;
++ (UIFont*)regular9;
 + (UIFont*)regular11;
 + (UIFont*)regular12;
 + (UIFont*)regular13;
@@ -49,6 +51,7 @@
 + (UIFont*)semibold23;
 + (UIFont*)bold11;
 + (UIFont*)bold12;
++ (UIFont*)bold13;
 + (UIFont*)bold14;
 + (UIFont*)bold15;
 + (UIFont*)bold17;

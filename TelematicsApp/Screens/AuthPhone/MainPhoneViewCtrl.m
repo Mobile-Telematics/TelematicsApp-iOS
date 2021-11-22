@@ -10,7 +10,6 @@
 #import "CoreTabBarController.h"
 #import "PhoneLoginViewCtrl.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 #import "CheckResponse.h"
 #import "RegResponse.h"
 #import "CheckUserRequestData.h"
@@ -26,8 +25,6 @@
 
 @property (weak, nonatomic) IBOutlet SHSPhoneTextField  *phoneField;
 @property (weak, nonatomic) IBOutlet UIImageView        *mainLogoImg;
-@property (weak, nonatomic) IBOutlet UIButton           *facebookBtn;
-@property (weak, nonatomic) IBOutlet UIButton           *googleBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *loginBtn;
 @property (weak, nonatomic) IBOutlet UIButton           *justUsingBtn;
 @property (weak, nonatomic) IBOutlet UILabel            *justUsingLbl;
@@ -54,7 +51,7 @@
     [self.phoneField makeFormFieldShift40];
     [self.phoneField setBackgroundColor:[Color lightSeparatorColor]];
     [self.phoneField.layer setMasksToBounds:YES];
-    [self.phoneField.layer setCornerRadius:15.0f];
+    [self.phoneField.layer setCornerRadius:20.0f];
     [self.phoneField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.phoneField.layer setBorderWidth:0.5];
     self.phoneField.placeholder = localizeString(@"enter phone");
@@ -67,13 +64,13 @@
     [self.countryButton.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
     [self.countryButton setBackgroundColor:[Color lightSeparatorColor]];
     [self.countryButton.layer setBorderWidth:0.5];
-    [self.countryButton.layer setCornerRadius:15.0f];
+    [self.countryButton.layer setCornerRadius:20.0f];
     
     [self.loginBtn setTintColor:[Color officialWhiteColor]];
     [self.loginBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
     [self.loginBtn setBackgroundColor:[Color officialMainAppColor]];
     [self.loginBtn.layer setMasksToBounds:YES];
-    [self.loginBtn.layer setCornerRadius:16.0f];
+    [self.loginBtn.layer setCornerRadius:20.0f];
     NSMutableAttributedString *loginText = [[NSMutableAttributedString alloc] initWithString:localizeString(@"JOIN")];
     [loginText addAttribute:NSFontAttributeName value:[Font medium13] range:NSMakeRange(0, [loginText length])];
     [loginText addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleNone] range:NSMakeRange(0, [loginText length])];
@@ -175,7 +172,7 @@
         self.usePhoneLbl.font = [Font regular19];
         
         //UPDATE ERROR LABEL AFTER 4 SECONDS
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_4_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.usePhoneLbl.text = localizeString(@"Use your phone number");
             self.usePhoneLbl.textColor = [Color officialGreenColor];
             self.usePhoneLbl.font = [Font semibold22];
@@ -213,7 +210,7 @@
             self.usePhoneLbl.textColor = [Color officialDarkRedColor];
             
             //UPDATE ERROR LABEL AFTER 4 SECONDS
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_4_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 self.usePhoneLbl.text = localizeString(@"Use your phone number");
                 self.usePhoneLbl.textColor = [Color officialGreenColor];
                 self.usePhoneLbl.font = [Font semibold22];
@@ -314,7 +311,7 @@
     [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
     [UIView setAnimationDuration:0.3];
     
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+    [UIView animateWithDuration:DELAY_IMMEDIATELY_03_SEC delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         
         [self.view setFrame:CGRectMake(0.f, -170.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
         self.mainLogoImg.transform = transform;
@@ -329,7 +326,7 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)codeField {
     
-    [UIView animateWithDuration:0.3 delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
+    [UIView animateWithDuration:DELAY_IMMEDIATELY_03_SEC delay:0 options:UIViewAnimationOptionCurveEaseOut  animations:^{
         [self.view setFrame:CGRectMake(0.f, 0.0f, self.view.bounds.size.width, self.view.bounds.size.height)];
         self.mainLogoImg.transform = CGAffineTransformMakeScale(1.0, 1.0);
     } completion:^(BOOL finished) {

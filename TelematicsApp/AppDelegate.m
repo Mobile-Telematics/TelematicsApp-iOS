@@ -76,7 +76,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
         NSLog(@"%@", [GeneralService sharedService].device_token_number);
         [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number; //REQUIRED
         
-        if ([Configurator sharedInstance].sdkEnableHF) {
+        if ([Configurator sharedInstance].sdkEnableHighFrequency) {
             [RPEntry enableHF:YES];
         } else {
             [RPEntry enableHF:NO];
@@ -84,6 +84,10 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 
         if ([RPEntry instance].virtualDeviceToken.length > 0) {
             [RPEntry initializeWithRequestingPermissions:YES];
+        }
+        
+        if ([Configurator sharedInstance].sdkEnableELM) {
+            [RPEntry enableELM:YES];
         }
         
         [RPEntry application:application didFinishLaunchingWithOptions:launchOptions];
@@ -92,13 +96,23 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
         if ([ASIdentifierManager sharedManager].isAdvertisingTrackingEnabled) {
             [RPEntry instance].advertisingIdentifier = [ASIdentifierManager sharedManager].advertisingIdentifier;
         }
+        
+        if ([defaults_object(@"onDemandTracking") boolValue]) {
+            NSString *jname = defaults_object(@"currentJobNameTitle");
+            if (![jname isEqualToString:@""] && jname.length > 0) {
+                //
+            } else {
+                [RPEntry instance].disableTracking = YES;
+                [[RPEntry instance] setEnableSdk:NO];
+            }
+        }
     } else {
         
         //FIRST RUN
         NSLog(@"%@", [GeneralService sharedService].device_token_number);
         [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number; //REQUIRED
         
-        if ([Configurator sharedInstance].sdkEnableHF) {
+        if ([Configurator sharedInstance].sdkEnableHighFrequency) {
             [RPEntry enableHF:YES];
         } else {
             [RPEntry enableHF:NO];
@@ -106,6 +120,14 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
 
         if ([RPEntry instance].virtualDeviceToken.length > 0) {
             [RPEntry initializeWithRequestingPermissions:YES];
+        }
+        
+        if ([Configurator sharedInstance].sdkEnableELM) {
+            [RPEntry enableELM:YES];
+        }
+        
+        if ([defaults_object(@"onDemandTracking") boolValue]) {
+            [RPEntry instance].disableTracking = YES;
         }
     }
     

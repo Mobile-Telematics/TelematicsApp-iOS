@@ -168,4 +168,43 @@
     return [df stringFromDate:self];
 }
 
+
+#pragma mark - OnDemand Special
+
+- (NSString*)dateTimeStringShort_OnDemand {
+    NSDate* date = self;
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"dd MMMM, HH:mm:ss";
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [df setLocale:locale];
+    return [df stringFromDate:date];
+}
+
+- (NSString*)dateTimeStringShortMmDd24_OnDemand {
+    NSDate* date = self;
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"MMMM dd, HH:mm:ss";
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [df setLocale:locale];
+    return [df stringFromDate:date];
+}
+
+- (NSString*)dateTimeStringShortDdMmAmPm_OnDemand {
+    NSDate* date = self;
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"dd MMMM, hh:mm:ssa";
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [df setLocale:locale];
+    return [df stringFromDate:date];
+}
+
+- (NSString*)dateTimeStringShortMmDdAmPm_OnDemand {
+    NSDate* date = self;
+    NSDateFormatter* df = [[NSDateFormatter alloc] init];
+    df.dateFormat = @"MMMM dd, hh:mm:ssa";
+    NSLocale *locale = [[NSLocale alloc] initWithLocaleIdentifier:@"en_US"];
+    [df setLocale:locale];
+    return [df stringFromDate:date];
+}
+
 @end

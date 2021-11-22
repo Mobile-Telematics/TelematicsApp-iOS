@@ -16,6 +16,12 @@
     self.leftViewMode = UITextFieldViewModeAlways;
 }
 
+- (void)makeFormFieldShift5 {
+    UIView* left = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 10)];
+    self.leftView = left;
+    self.leftViewMode = UITextFieldViewModeAlways;
+}
+
 - (void)makeFormFieldShift20 {
     UIView* left = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 10)];
     self.leftView = left;

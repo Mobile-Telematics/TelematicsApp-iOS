@@ -14,6 +14,8 @@
 #import "LatestDayScoringResponse.h"
 #import "LatestDayScoringResultResponse.h"
 #import "DrivingDetailsResponse.h"
+#import "TagResponse.h"
+#import "TagResultResponse.h"
 #import "CoinsResponse.h"
 #import "CoinsResultResponse.h"
 #import "StreaksResponse.h"
@@ -42,6 +44,8 @@
 #import "NSDate+ISO8601.h"
 #import "TelematicsAppCollapsibleConstraints.h"
 #import "UIImage+FixOrientation.h"
+#import "JobsAcceptedCell.h"
+#import "JobsCompletedCell.h"
 #import <StoreKit/StoreKit.h>
 #import <NMAKit/NMAKit.h>
 
@@ -65,6 +69,8 @@
 
 @property (strong, nonatomic) StreaksResultResponse             *streaksDetails;
 
+@property (strong, nonatomic) TagResultResponse                 *tagIndividual;
+
 @property (nonatomic, weak) IBOutlet UIButton                   *showLeaderBtn;
 @property (nonatomic, weak) IBOutlet UILabel                    *showLeaderLbl;
 @property (nonatomic, weak) IBOutlet UILabel                    *latestScoredTripLbl;
@@ -74,6 +80,11 @@
 
 @property (weak, nonatomic) IBOutlet UIView                     *mainDashboardView;
 @property (weak, nonatomic) IBOutlet UIImageView                *mainBackgroundView;
+
+@property (weak, nonatomic) IBOutlet UIView                     *trackingBtnView;
+@property (weak, nonatomic) IBOutlet UILabel                    *trackingStartTxt;
+@property (nonatomic, weak) IBOutlet UIButton                   *trackingStartBtn;
+@property (nonatomic, weak) IBOutlet UILabel                    *trackingStartLbl;
 
 @property (weak, nonatomic) IBOutlet UIView                     *demoDashboardView;
 @property (weak, nonatomic) IBOutlet UIImageView                *needDistanceDemoImgView;
@@ -120,6 +131,7 @@
 @property (nonatomic) RPTrackProcessed                          *track;
 @property (nonatomic) NSArray<NMAGeoCoordinates *>              *speedPoints;
 @property (weak, nonatomic) IBOutlet UIImageView                *mapSnapshot;
+@property (weak, nonatomic) IBOutlet UIImageView                *mapSnapshotForDemo;
 @property (weak, nonatomic) IBOutlet UILabel                    *pointsLbl;
 @property (weak, nonatomic) IBOutlet UILabel                    *kmLbl;
 @property (weak, nonatomic) IBOutlet UILabel                    *timeLbl;
@@ -161,6 +173,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_mainDashTriangleIcon;
 
 //ECO SCORING
+@property (weak, nonatomic) IBOutlet UILabel                    *demo_completeFirstTripLbl;
 @property (weak, nonatomic) IBOutlet UICollectionView           *collectionViewActivity;
 @property (nonatomic, assign) CGFloat                           lastContentOffset;
 @property (weak, nonatomic) IBOutlet CMTabbarView               *activityTabBarView;
@@ -179,8 +192,9 @@
 @property (weak, nonatomic) IBOutlet UIImageView                *roundPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *arrowPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *zigzagIndividualImg;
+@property (weak, nonatomic) IBOutlet UILabel                    *factor_costOfOwnershipLbl;
 
-//ECO SCORING DEMO
+//ECO SCORING DEMO BLOCK
 @property (weak, nonatomic) IBOutlet UICollectionView           *demo_collectionViewActivity;
 @property (weak, nonatomic) IBOutlet CMTabbarView               *demo_activityTabBarView;
 @property (strong, nonatomic) NSArray                           *demo_activityDates2;
@@ -198,12 +212,39 @@
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_roundPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_arrowPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_zigzagIndividualImg;
+@property (weak, nonatomic) IBOutlet UILabel                    *demo_factor_costOfOwnershipLbl;
 
 //COMING SOON IN NEXT RELEASE
 @property (weak, nonatomic) IBOutlet UILabel                    *streaks_speedingLbl;
 @property (weak, nonatomic) IBOutlet UILabel                    *streaks_speedingValueLbl;
 @property (weak, nonatomic) IBOutlet UILabel                    *streaks_phoneLbl;
 @property (weak, nonatomic) IBOutlet UILabel                    *streaks_phoneValueLbl;
+
+//DELIVERY ON-DUTY MODE
+@property (weak, nonatomic) IBOutlet UIView                     *jobsMainView;
+@property (weak, nonatomic) IBOutlet UIButton                   *jobsStatusBtn;
+@property (weak, nonatomic) IBOutlet UIButton                   *jobsGoBtn;
+@property (weak, nonatomic) IBOutlet UILabel                    *jobsCurrentLbl;
+@property (weak, nonatomic) IBOutlet UIButton                   *jobsOkGreenBtn;
+@property (weak, nonatomic) IBOutlet UIButton                   *jobsPauseBtn;
+
+@property (weak, nonatomic) IBOutlet UITextField                *jobsOnDutyTimerTextField;
+@property (nonatomic, strong) NSTimer                           *jobsOnDutyTimerImplementation;
+@property (nonatomic, strong) NSMutableArray                    *jobsOnDutyAcceptedArray;
+@property (nonatomic, strong) NSMutableArray                    *jobsOnDutyCompletedArray;
+
+@property (weak, nonatomic) IBOutlet UIButton                   *jobsOnDutyCurrentAcceptBtn;
+@property (weak, nonatomic) IBOutlet UIButton                   *jobsOnDutyCurrentStartBtn;
+@property (weak, nonatomic) IBOutlet UITableView                *jobsOnDutyAcceptTableView;
+@property (weak, nonatomic) IBOutlet UITableView                *jobsOnDutyCompletedTableView;
+@property (weak, nonatomic) IBOutlet UIView                     *jobsOnDutyAcceptPlaceholder;
+@property (weak, nonatomic) IBOutlet UIView                     *jobsOnDutyCompletedPlaceholder;
+
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint       *mainDashboardViewTopPositionForJobsREALConstraint;
+@property (strong, nonatomic) IBOutlet NSLayoutConstraint       *mainDashboardViewTopPositionForJobsDEMOConstraint;
+@property (weak, nonatomic) IBOutlet UIView                     *mainDashboardViewSpecialWhiteEndREALView;
+@property (weak, nonatomic) IBOutlet UIView                     *mainDashboardViewSpecialWhiteEndDEMOView;
+@property (weak, nonatomic) IBOutlet UIView                     *mainDashboardViewSpecialGreyEndView;
 
 @end
 
@@ -233,7 +274,7 @@
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     
     [self setupRoundViews];
-    [self setupTranslation];
+    [self setupAdditionalTranslation];
     [self setupTabBarTitles];
     [self setupEcoCollectionsForViews];
     
@@ -251,7 +292,7 @@
         [self startFetchStatisticData];
         
         //IF NEED REPEAT FOR NEW USERS
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_5_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.disableCounting = YES;
             [self getDashboardIndicatorsStatisticsData];
             [self getDashboardEcoDataAllTime];
@@ -307,6 +348,10 @@
     self.mapSnapshot.userInteractionEnabled = YES;
     [self.mapSnapshot addGestureRecognizer:lastTripTap];
     
+    UITapGestureRecognizer *lastTripDemoTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lastTripTapDetect:)];
+    self.mapSnapshotForDemo.userInteractionEnabled = YES;
+    [self.mapSnapshotForDemo addGestureRecognizer:lastTripDemoTap];
+    
     UITapGestureRecognizer *lastDemoTripTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(lastTripTapDetect:)];
     self.mapDemo_snapshot.userInteractionEnabled = YES;
     [self.mapDemo_snapshot addGestureRecognizer:lastDemoTripTap];
@@ -318,11 +363,16 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:@"updateUserInfo" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:@"reloadDashboardPage" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:@"reloadOnDemandDashboardSection" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateUserInfo:) name:@"finishOnDemandDashboardSection" object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(appWillEnterForeground) name:UIApplicationWillEnterForegroundNotification object:nil];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_06_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self mainCheckPermissions];
     });
+    
+    //ONDEMAND DEMOBLOCK START INNITIALIZATION
+    [self setupOnDemandUIDemoBlock];
     
     if (IS_IPHONE_5 || IS_IPHONE_4) [self lowFontsForOldDevices];
     
@@ -368,7 +418,7 @@
 }
 
 - (void)startFetchStatisticData {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_1_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.disableCounting = YES;
         [self getDashboardIndicatorsStatisticsData];
         [self getDashboardEcoDataAllTime];
@@ -438,6 +488,13 @@
         });
     } else if ([[notification name] isEqualToString:@"reloadDashboardPage"]) {
         [self refreshStatisticData:nil];
+    } else if ([[notification name] isEqualToString:@"reloadOnDemandDashboardSection"]) {
+        [self setupOnDemandUIDemoBlock];
+    } else if ([[notification name] isEqualToString:@"finishOnDemandDashboardSection"]) {
+        [self stopGreenBtnClick:self];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_1_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self stopAllJobs];
+        });
     }
 }
 
@@ -517,7 +574,7 @@
         if (!error && [response isSuccesful]) {
             self.dashboard = ((DashboardResponse *)response).Result;
             
-            self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
+            self.appModel.statDistanceForScoring = [Configurator sharedInstance].needUserDriveDistanceForScoringKm;
             
             if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
                 float miles = convertKmToMiles(self.appModel.statDistanceForScoring.floatValue);
@@ -531,7 +588,7 @@
             NSDate *currentDate = [NSDate date];
             [self getDashboardScoringsIndividualOnCurrentDay:currentDate endDate:currentDate];
         } else {
-            self.appModel.statDistanceForScoring = [Configurator sharedInstance].needDistanceForScoringKm;
+            self.appModel.statDistanceForScoring = [Configurator sharedInstance].needUserDriveDistanceForScoringKm;
             
             if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
                 float miles = convertKmToMiles(self.appModel.statDistanceForScoring.floatValue);
@@ -1469,17 +1526,47 @@
     _needDisplayAlert = needDisplayAlert;
     
     if (self.needDisplayAlert) {
-        if (!self.alertTimer.isValid) {
-            self.alertTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(checkAlertRunTimer) userInfo:nil repeats:YES];
+        if ([defaults_object(@"onDemandTracking") boolValue]) {
+            if (!self.jobsOnDutyTimerImplementation.isValid) {
+                self.jobsOnDutyTimerImplementation = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateOnDutyStartTextFieldDate) userInfo:nil repeats:YES];
+            }
+        } else {
+            if (!self.jobsOnDutyTimerImplementation.isValid) {
+                self.jobsOnDutyTimerImplementation = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(updateOnDutyStartTextFieldDate) userInfo:nil repeats:YES]; //TEST?
+            }
         }
+        
+        if (!self.alertTimer.isValid) {
+            self.alertTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(checkAlertRunTimer) userInfo:nil repeats:YES];
+        }
+        
     } else {
         [self.alertTimer invalidate];
         self.alertTimer = nil;
+        [self.jobsOnDutyTimerImplementation invalidate];
+        self.jobsOnDutyTimerImplementation = nil;
     }
 }
 
 - (void)checkAlertRunTimer {
     [self timerCheckPermissions];
+}
+
+- (void)updateOnDutyStartTextFieldDate {
+    NSDate *currentDate = [NSDate date];
+    if ([Configurator sharedInstance].needAmPmTime || [defaults_object(@"needDateSpecialFormat") boolValue] || [defaults_object(@"needAmPmFormat") boolValue]) {
+        if ([defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShortMmDd24_OnDemand];
+        } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && [defaults_object(@"needAmPmFormat") boolValue]) {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShortDdMmAmPm_OnDemand];
+        } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShort_OnDemand];
+        } else {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShortMmDdAmPm_OnDemand];
+        }
+    } else {
+        self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShort_OnDemand];
+    }
 }
 
 - (void)timerCheckPermissions {
@@ -1615,7 +1702,7 @@
             
             if ([defaults_object(@"userDoneWizard") boolValue]) {
                 if ([defaults_object(@"userWorkingWithPermissionsWizardNow") boolValue]) {
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_5_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         defaults_set_object(@"userWorkingWithPermissionsWizardNow", @(NO));
                     });
                 }
@@ -1647,10 +1734,14 @@
             [RPEntry initializeWithRequestingPermissions:NO];
             [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number;
             
-            if ([Configurator sharedInstance].sdkEnableHF) {
+            if ([Configurator sharedInstance].sdkEnableHighFrequency) {
                 [RPEntry enableHF:YES];
             } else {
                 [RPEntry enableHF:NO];
+            }
+            
+            if ([Configurator sharedInstance].sdkEnableELM) {
+                [RPEntry enableELM:YES];
             }
         }
         defaults_set_object(@"needTrackingOnRequired", @(YES));
@@ -1691,18 +1782,24 @@
             [[RPCSettings returnInstance] setWizardNextButtonBgColor:[Color officialMainAppColor]];
             [[RPCSettings returnInstance] setAppName:localizeString(@"TelematicsApp")];
             
-#warning TODO: Production Bluetooth Setup
-            [[RPCPermissionsWizard returnInstance] setupBluetoothEnabled]; //IF YOU USE ELM BLUETOOTH CONNECTION ENABLE THIS LINE FOR TELEMATICS SDK
+            if ([Configurator sharedInstance].sdkEnableELM) {
+                [[RPCPermissionsWizard returnInstance] setupBluetoothEnabled]; //IF YOU USE ELM BLUETOOTH CONNECTION ENABLE THIS LINE FOR TELEMATICS SDK
+                [RPEntry enableELM:YES];
+            }
             
             [[RPCPermissionsWizard returnInstance] launchWithFinish:^(BOOL showWizzard) {
                 [RPEntry initializeWithRequestingPermissions:YES];
                 [RPEntry instance].disableTracking = NO;
                 [RPEntry instance].virtualDeviceToken = [GeneralService sharedService].device_token_number;
                 
-                if ([Configurator sharedInstance].sdkEnableHF) {
+                if ([Configurator sharedInstance].sdkEnableHighFrequency) {
                     [RPEntry enableHF:YES];
                 } else {
                     [RPEntry enableHF:NO];
+                }
+                
+                if ([Configurator sharedInstance].sdkEnableELM) {
+                    [RPEntry enableELM:YES];
                 }
                 
                 defaults_set_object(@"userDoneWizard", @(YES));
@@ -1793,7 +1890,7 @@
 #pragma mark - Dashboard refresh spinner
 
 - (void)refreshStatisticData:(id)sender {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [sender endRefreshing];
     });
     [self getDashboardIndicatorsStatisticsData];
@@ -1802,7 +1899,7 @@
     [self getDashboardEcoDataMonth];
     [self getDashboardEcoDataYear];
     
-    [self setupTranslation];
+    [self setupAdditionalTranslation];
     defaults_set_object(@"LatestTripTokenInMemory", @"");
     [sender endRefreshing];
 }
@@ -1912,12 +2009,12 @@
 - (void)setupEcoDemoBlock {
 
     self.mapDemo_noTripsView.hidden = NO;
-    self.mapDemo_snapshot.hidden = YES;
+    self.mapDemo_snapshot.hidden = NO;
     self.mapDemo_pointsLbl.hidden = YES;
     self.mapDemo_kmLbl.hidden = YES;
     self.mapDemo_startTimeLbl.hidden = YES;
     self.mapDemo_endTimeLbl.hidden = YES;
-    [self.mapDemo_permissBtn setAttributedTitle:[self createOpenAppSettingsLblImgBefore:@"Check App Permissions"] forState:UIControlStateNormal];
+    [self.mapDemo_permissBtn setAttributedTitle:[self createOpenAppSettingsLblImgBefore:@"Check App Permissions \u2B95"] forState:UIControlStateNormal];
     
     _demo_activityTabBarView.indicatorAttributes = @{CMTabIndicatorColor:[UIColor blackColor], CMTabIndicatorViewHeight:@(2.5f), CMTabBoxBackgroundColor:[UIColor blackColor]};
     _demo_activityTabBarView.normalAttributes = @{NSForegroundColorAttributeName:[UIColor blackColor], NSFontAttributeName:[UIFont boldSystemFontOfSize:10.0f]};
@@ -2264,6 +2361,10 @@
                   self.mapSnapshot.contentMode = UIViewContentModeScaleAspectFill;
                   self.mapSnapshot.image = image;
                   
+                  self.mapSnapshotForDemo.layer.cornerRadius = 16;
+                  self.mapSnapshotForDemo.contentMode = UIViewContentModeScaleAspectFill;
+                  self.mapSnapshotForDemo.image = image;
+                  
                   self.mapDemo_snapshot.layer.cornerRadius = 16;
                   self.mapDemo_snapshot.contentMode = UIViewContentModeScaleAspectFill;
                   self.mapDemo_snapshot.image = image;
@@ -2294,9 +2395,9 @@
         self.mapSnapshot.contentMode = UIViewContentModeScaleAspectFill;
         self.mapSnapshot.image = savedImg;
         
-        self.mapDemo_snapshot.layer.cornerRadius = 16;
-        self.mapDemo_snapshot.contentMode = UIViewContentModeScaleAspectFill;
-        self.mapDemo_snapshot.image = savedImg;
+        self.mapSnapshotForDemo.layer.cornerRadius = 16;
+        self.mapSnapshotForDemo.contentMode = UIViewContentModeScaleAspectFill;
+        self.mapSnapshotForDemo.image = savedImg;
     }
 }
 
@@ -2316,12 +2417,22 @@
     self.demoDashboardView.layer.shadowOffset = CGSizeMake(0, 0);
     self.demoDashboardView.layer.shadowRadius = 2;
     self.demoDashboardView.layer.shadowOpacity = 0.1;
+    if ([defaults_object(@"onDemandTracking") boolValue]) {
+        self.demoDashboardView.layer.shadowRadius = 0;
+    } else {
+        self.demoDashboardView.layer.shadowRadius = 2;
+    }
     
     self.mainDashboardView.layer.cornerRadius = 16;
     self.mainDashboardView.layer.masksToBounds = NO;
     self.mainDashboardView.layer.shadowOffset = CGSizeMake(0, 0);
     self.mainDashboardView.layer.shadowRadius = 2;
     self.mainDashboardView.layer.shadowOpacity = 0.1;
+    if ([defaults_object(@"onDemandTracking") boolValue]) {
+        self.mainDashboardView.layer.shadowRadius = 0;
+    } else {
+        self.mainDashboardView.layer.shadowRadius = 2;
+    }
     
     [self updateMainConstraints];
 }
@@ -2334,40 +2445,1034 @@
     }
     
     //Real-time update
-    NSLayoutConstraint *heightConstraint;
-    for (NSLayoutConstraint *constraint in self.mainScrollView.constraints) {
-        if (constraint.firstAttribute == NSLayoutAttributeHeight) {
-            heightConstraint = constraint;
-            break;
+    if ([defaults_object(@"onDemandTracking") boolValue]) {
+        
+        self.mainDashboardViewTopPositionForJobsREALConstraint.constant = 700;
+        self.mainDashboardViewTopPositionForJobsDEMOConstraint.constant = 700;
+        self.mainDashboardViewSpecialWhiteEndREALView.hidden = NO;
+        self.mainDashboardViewSpecialWhiteEndDEMOView.hidden = NO;
+        self.mainDashboardViewSpecialGreyEndView.hidden = NO;
+        
+        NSLayoutConstraint *heightConstraint;
+        for (NSLayoutConstraint *constraint in self.mainScrollView.constraints) {
+            if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+                heightConstraint = constraint;
+                break;
+            }
         }
-    }
-    if (userRealDistance >= requiredDistance) {
-        if (IS_IPHONE_5 || IS_IPHONE_4) {
-            heightConstraint.constant = 850;
-        } else if (IS_IPHONE_8) {
-            heightConstraint.constant = 740;
-        } else if (IS_IPHONE_8P) {
-            heightConstraint.constant = 700;
-        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
-            heightConstraint.constant = 680;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
-            heightConstraint.constant = 580;
+        if (userRealDistance >= requiredDistance) {
+            if (IS_IPHONE_5 || IS_IPHONE_4) {
+                heightConstraint.constant = 1700;
+            } else if (IS_IPHONE_8) {
+                heightConstraint.constant = 1600;
+            } else if (IS_IPHONE_8P) {
+                heightConstraint.constant = 1620;
+            } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
+                heightConstraint.constant = 1550;
+            } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
+                heightConstraint.constant = 1430;
+            }
+        } else if (userRealDistance < requiredDistance) {
+            if (IS_IPHONE_5 || IS_IPHONE_4) {
+                heightConstraint.constant = 1640;
+            } else if (IS_IPHONE_8 || IS_IPHONE_8P) {
+                heightConstraint.constant = 1560;
+            } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
+                heightConstraint.constant = 1470;
+            } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
+                heightConstraint.constant = 1400;
+            }
         }
-    } else if (userRealDistance < requiredDistance) {
-        if (IS_IPHONE_5 || IS_IPHONE_4) {
-            heightConstraint.constant = 940;
-        } else if (IS_IPHONE_8 || IS_IPHONE_8P) {
-            heightConstraint.constant = 860;
-        } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
-            heightConstraint.constant = 770;
-        } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
-            heightConstraint.constant = 700;
+        
+    } else {
+        
+        self.mainDashboardViewTopPositionForJobsREALConstraint.constant = 0;
+        self.mainDashboardViewTopPositionForJobsDEMOConstraint.constant = 0;
+        self.mainDashboardViewSpecialWhiteEndREALView.hidden = YES;
+        self.mainDashboardViewSpecialWhiteEndDEMOView.hidden = YES;
+        self.mainDashboardViewSpecialGreyEndView.hidden = YES;
+        
+        NSLayoutConstraint *heightConstraint;
+        for (NSLayoutConstraint *constraint in self.mainScrollView.constraints) {
+            if (constraint.firstAttribute == NSLayoutAttributeHeight) {
+                heightConstraint = constraint;
+                break;
+            }
+        }
+        if (userRealDistance >= requiredDistance) {
+            if (IS_IPHONE_5 || IS_IPHONE_4) {
+                heightConstraint.constant = 1000;
+            } else if (IS_IPHONE_8) {
+                heightConstraint.constant = 890;
+            } else if (IS_IPHONE_8P) {
+                heightConstraint.constant = 850;
+            } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
+                heightConstraint.constant = 830;
+            } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
+                heightConstraint.constant = 730;
+            }
+        } else if (userRealDistance < requiredDistance) {
+            if (IS_IPHONE_5 || IS_IPHONE_4) {
+                heightConstraint.constant = 940;
+            } else if (IS_IPHONE_8 || IS_IPHONE_8P) {
+                heightConstraint.constant = 860;
+            } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
+                heightConstraint.constant = 770;
+            } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
+                heightConstraint.constant = 700;
+            }
         }
     }
 }
 
 
-#pragma mark - TabBar Titles Configuration for setting
+#pragma mark - ONDEMAND TRACKING SAMPLE IMPLEMENTATION NOVEMBER 2021 - ON/OFF IN APP SETTINGS
+#pragma mark - ONDEMAND Duty Job Main buttons
+
+- (void)setupOnDemandUIDemoBlock {
+    
+    [[RPEntry instance].api getFutureTrackTag:0 completion:^(RPTagStatus status, NSArray<RPTag *> *tags, NSInteger timestamp) {
+        for (RPTag *item in tags) {
+            NSLog(@"%@", item.tag);
+            NSLog(@"%@", item.source);
+            NSLog(@"TAGS OK WORKING");
+        }
+    }];
+    
+    [self.mainScrollView setContentOffset:CGPointZero animated:NO];
+    [self setupRoundViews];
+    self.jobsOnDutyAcceptTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.jobsOnDutyCompletedTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    if ([RPEntry instance].disableTracking) {
+        [self.jobsStatusBtn setAttributedTitle:[self createJobOfflineBtnImgBefore:@"Offline"] forState:UIControlStateNormal];
+        
+        NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Online")];
+        [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+        [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color officialMainAppColor] range:NSMakeRange(0, [goOnDuty length])];
+        [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+    } else {
+        [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"Online"] forState:UIControlStateNormal];
+        
+        NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Offline")];
+        [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+        [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color softGrayColor] range:NSMakeRange(0, [goOnDuty length])];
+        [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+    }
+    
+    NSString *jname = defaults_object(@"currentJobNameTitle");
+    if (![jname isEqualToString:@""] && jname.length > 0) {
+        
+        [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"On Duty"] forState:UIControlStateNormal];
+        
+        NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Offline")];
+        [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+        [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color softGrayColor] range:NSMakeRange(0, [goOnDuty length])];
+        [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+        
+        self.jobsCurrentLbl.text = defaults_object(@"currentJobNameTitle");
+        self.jobsCurrentLbl.textColor = [Color darkGrayColor43];
+        
+        self.jobsOkGreenBtn.alpha = 1.0;
+        self.jobsPauseBtn.alpha = 1.0;
+        self.jobsOkGreenBtn.userInteractionEnabled = YES;
+        self.jobsPauseBtn.userInteractionEnabled = YES;
+    } else {
+        self.jobsCurrentLbl.text = @"No current job";
+        self.jobsCurrentLbl.textColor = [Color softGrayColor];
+        
+        self.jobsOkGreenBtn.alpha = 0.7;
+        self.jobsPauseBtn.alpha = 0.7;
+        self.jobsOkGreenBtn.userInteractionEnabled = NO;
+        self.jobsPauseBtn.userInteractionEnabled = NO;
+    }
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    NSMutableArray *compJobs = defaults_object(@"completedJobs");
+    self.jobsOnDutyAcceptedArray = [[NSMutableArray alloc] initWithArray:accJobs];
+    self.jobsOnDutyCompletedArray = [[NSMutableArray alloc] initWithArray:compJobs];
+    
+    NSDate *currentDate = [NSDate date];
+    self.jobsOnDutyTimerTextField.delegate = self;
+    [self.jobsOnDutyTimerTextField makeFormFieldShift20];
+    self.jobsOnDutyTimerTextField.textColor = [UIColor blackColor];
+    [self.jobsOnDutyTimerTextField setBackgroundColor:[Color officialWhiteColor]];
+    [self.jobsOnDutyTimerTextField.layer setMasksToBounds:YES];
+    [self.jobsOnDutyTimerTextField.layer setCornerRadius:15.0f];
+    [self.jobsOnDutyTimerTextField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
+    [self.jobsOnDutyTimerTextField.layer setBorderWidth:1.9];
+    
+    if ([Configurator sharedInstance].needAmPmTime || [defaults_object(@"needDateSpecialFormat") boolValue] || [defaults_object(@"needAmPmFormat") boolValue]) {
+        if ([defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShortMmDd24_OnDemand];
+        } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && [defaults_object(@"needAmPmFormat") boolValue]) {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShortDdMmAmPm_OnDemand];
+        } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShort_OnDemand];
+        } else {
+            self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShortMmDdAmPm_OnDemand];
+        }
+    } else {
+        self.jobsOnDutyTimerTextField.text = [currentDate dateTimeStringShort_OnDemand];
+    }
+    
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+    [self checkJobsArraysNow];
+    
+    self.jobsOnDutyCurrentAcceptBtn.layer.borderWidth = 0.8;
+    self.jobsOnDutyCurrentAcceptBtn.layer.borderColor = [Color officialMainAppColor].CGColor;
+    self.jobsOnDutyCurrentAcceptBtn.backgroundColor = [Color officialWhiteColor];
+    [self.jobsOnDutyCurrentAcceptBtn setTitleColor:[Color officialMainAppColor] forState:UIControlStateNormal];
+    
+    self.jobsOnDutyCurrentStartBtn.layer.borderWidth = 0.8;
+    self.jobsOnDutyCurrentStartBtn.layer.borderColor = [Color officialMainAppColor].CGColor;
+    self.jobsOnDutyCurrentStartBtn.backgroundColor = [Color officialMainAppColor];
+    [self.jobsOnDutyCurrentStartBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
+    
+    if (IS_IPHONE_5 || IS_IPHONE_4)
+        [self lowFontsForOldDevices];
+}
+
+- (IBAction)goOnDutyBtnClick:(id)sender {
+    self.jobsStatusBtn.hidden = NO;
+    
+    if ([RPEntry instance].disableTracking) {
+        self.jobsStatusBtn.hidden = YES;
+        [RPEntry instance].disableTracking = NO;
+        [[RPEntry instance] setEnableSdk:YES];
+        defaults_set_object(@"onDemandTracking", @(YES));
+        
+        [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"Online"] forState:UIControlStateNormal];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_03_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.jobsStatusBtn.hidden = NO;
+        });
+        
+        NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Offline")];
+        [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+        [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color softGrayColor] range:NSMakeRange(0, [goOnDuty length])];
+        [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+    } else {
+        NSString *jname = defaults_object(@"currentJobNameTitle");
+        if (![jname isEqualToString:@""] && jname.length > 0) {
+            self.jobsStatusBtn.hidden = NO;
+            [self showAlertStoppingAllUserJobs:sender];
+            return;
+        } else {
+            NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+            for (int i = 0; i < accJobs.count; i++) {
+                NSString *jobStatus = [[accJobs objectAtIndex:i] valueForKey:@"currentJobStatus"];
+                if ([jobStatus isEqualToString:@"Pause"]) {
+                    self.jobsStatusBtn.hidden = NO;
+                    [self showAlertStoppingAllUserJobs:sender];
+                    return;
+                }
+            }
+        }
+        
+        self.jobsStatusBtn.hidden = YES;
+        [RPEntry instance].disableTracking = YES;
+        [[RPEntry instance] setEnableSdk:NO];
+        [self.jobsStatusBtn setAttributedTitle:[self createJobOfflineBtnImgBefore:@"Offline"] forState:UIControlStateNormal];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_03_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.jobsStatusBtn.hidden = NO;
+        });
+        
+        NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Online")];
+        [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+        [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color officialMainAppColor] range:NSMakeRange(0, [goOnDuty length])];
+        [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+    }
+}
+
+- (IBAction)showAlertStoppingAllUserJobs:(id)sender {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:localizeString(@"Job in progress")
+                                message:localizeString(@"All current jobs will be paused. Are you sure?")
+                                //message:localizeString(@"All current jobs will be completed. Are you sure?")
+                                preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesButton = [UIAlertAction
+                                actionWithTitle:localizeString(@"Yes")
+                                style:UIAlertActionStyleDestructive
+                                handler:^(UIAlertAction *action) {
+                                    [self pauseBtnClick:sender];
+        
+                                    [self.jobsStatusBtn setAttributedTitle:[self createJobOfflineBtnImgBefore:@"Offline"] forState:UIControlStateNormal];
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        self.jobsStatusBtn.hidden = NO;
+                                    });
+        
+                                    [RPEntry instance].disableTracking = YES;
+                                    [[RPEntry instance] setEnableSdk:NO];
+
+                                    NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Online")];
+                                    [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+                                    [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color officialMainAppColor] range:NSMakeRange(0, [goOnDuty length])];
+                                    [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+                                }];
+    UIAlertAction *noButton = [UIAlertAction
+                               actionWithTitle:localizeString(@"No")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {}];
+    [alert addAction:yesButton];
+    [alert addAction:noButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (IBAction)stopAllJobs {
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    for (int i = 0; i < accJobs.count; i++) {
+        NSString *jobStatus = [[accJobs objectAtIndex:i] valueForKey:@"currentJobStatus"];
+        if ([jobStatus isEqualToString:@"Pause"]) {
+            NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+            [jobDict setDictionary:@{@"currentJobName": [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"],
+                                     @"currentJobStatus": @"Finished",
+                                     @"currentJobTimeStamp": [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"],
+                                     @"currentJobDate": [[accJobs objectAtIndex:i] valueForKey:@"currentJobDate"]
+            }];
+            
+            NSMutableArray *compJobs = defaults_object(@"completedJobs");
+            NSString *jfs = [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"];
+            BOOL completedContainsJobAlready = [self checkArray:compJobs containsJob:jfs];
+            
+            if (completedContainsJobAlready) {
+                [self.jobsOnDutyAcceptedArray removeObjectAtIndex:i];
+            } else {
+                [self.jobsOnDutyCompletedArray insertObject:jobDict atIndex:0];
+                if (i >= self.jobsOnDutyAcceptedArray.count) {
+                    [self.jobsOnDutyAcceptedArray removeObjectAtIndex:0];
+                } else {
+                    [self.jobsOnDutyAcceptedArray removeObjectAtIndex:i];
+                }
+            }
+        }
+    }
+    
+    [self.jobsOnDutyAcceptedArray removeAllObjects];
+    
+    defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+    defaults_set_object(@"completedJobs", self.jobsOnDutyCompletedArray);
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+    [self checkJobsArraysNow];
+}
+
+- (IBAction)stopGreenBtnClick:(id)sender {
+    NSString *jobSavedTime = defaults_object(@"currentJobNameTimeStamp");
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    for (int i = 0; i < accJobs.count; i++) {
+        NSString *jStatusTimeStamp = [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"];
+        if ([jStatusTimeStamp isEqualToString:jobSavedTime]) {
+            
+            NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+            [jobDict setDictionary:@{@"currentJobName": [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"],
+                                     @"currentJobStatus": @"Finished",
+                                     @"currentJobTimeStamp": [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"],
+                                     @"currentJobDate": [[accJobs objectAtIndex:i] valueForKey:@"currentJobDate"]
+            }];
+            
+            NSMutableArray *compJobs = defaults_object(@"completedJobs");
+            NSString *jfc = [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"];
+            BOOL completedContainsJobAlready = [self checkArray:compJobs containsJob:jfc];
+            
+            if (completedContainsJobAlready) {
+                [self.jobsOnDutyAcceptedArray removeObjectAtIndex:i];
+            } else {
+                [self.jobsOnDutyCompletedArray insertObject:jobDict atIndex:0];
+                [self.jobsOnDutyAcceptedArray removeObjectAtIndex:i];
+            }
+            
+            defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+            defaults_set_object(@"completedJobs", self.jobsOnDutyCompletedArray);
+        }
+    }
+    
+    [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
+    
+    [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"Online"] forState:UIControlStateNormal];
+    self.jobsOkGreenBtn.alpha = 0.7;
+    self.jobsPauseBtn.alpha = 0.7;
+    self.jobsOkGreenBtn.userInteractionEnabled = NO;
+    self.jobsPauseBtn.userInteractionEnabled = NO;
+    
+    defaults_set_object(@"currentJobNameTitle", @"");
+    defaults_set_object(@"currentJobNameTimeStamp", @"");
+    self.jobsCurrentLbl.text = @"No current job";
+    self.jobsCurrentLbl.textColor = [Color softGrayColor];
+    [self checkJobsArraysNow];
+    
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+}
+
+- (IBAction)pauseBtnClick:(id)sender {
+    NSString *jobTime = defaults_object(@"currentJobNameTimeStamp");
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    
+    for (int i = 0; i < accJobs.count; i++) {
+        NSString *jStatusName = [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"];
+        if ([jStatusName isEqualToString:jobTime]) {
+            
+            NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+            [jobDict setDictionary:@{@"currentJobName": [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"],
+                                     @"currentJobStatus": @"Pause",
+                                     @"currentJobTimeStamp": [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"],
+                                     @"currentJobDate": [[accJobs objectAtIndex:i] valueForKey:@"currentJobDate"]
+            }];
+            [self.jobsOnDutyAcceptedArray replaceObjectAtIndex:i withObject:jobDict];
+            defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+        }
+    }
+    
+    [self.jobsOnDutyAcceptTableView reloadData];
+    defaults_set_object(@"currentJobNameTitle", @"");
+    defaults_set_object(@"currentJobNameTimeStamp", @"");
+    self.jobsCurrentLbl.text = @"No current job";
+    self.jobsCurrentLbl.textColor = [Color softGrayColor];
+    
+    [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
+    
+    [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"Online"] forState:UIControlStateNormal];
+    self.jobsOkGreenBtn.alpha = 0.7;
+    self.jobsPauseBtn.alpha = 0.7;
+    self.jobsOkGreenBtn.userInteractionEnabled = NO;
+    self.jobsPauseBtn.userInteractionEnabled = NO;
+    [self checkJobsArraysNow];
+}
+
+- (IBAction)acceptJobBtnClick:(id)sender {
+    
+    NSString *jobForAddToAccepted = self.jobsOnDutyTimerTextField.text;
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    
+    for (int i = 0; i < accJobs.count; i++) {
+        NSString *jNameForSearch = [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"];
+        if ([jNameForSearch isEqualToString:jobForAddToAccepted]) {
+            
+            [self becomeFirstResponder];
+            [self.jobsOnDutyTimerTextField.layer setBorderColor:[[Color officialRedColor] CGColor]];
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:localizeString(@"Choose a new name")
+                                        message:localizeString(@"This job name is already taken")
+                                        preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *yesButton = [UIAlertAction
+                                        actionWithTitle:localizeString(@"Ok")
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            //
+                                        }];
+            [alert addAction:yesButton];
+            [self presentViewController:alert animated:YES completion:nil];
+            [self.view endEditing:YES];
+            return;
+        }
+    }
+    
+    time_t result = time(NULL);
+    NSString *timeStampString = [@(result) stringValue];
+    
+    NSDate *currentDate = [NSDate date];
+    NSString *jDate = [currentDate dateTimeStringSpecial];
+    
+    NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+    [jobDict setDictionary:@{@"currentJobName": self.jobsOnDutyTimerTextField.text,
+                             @"currentJobStatus": @"Pending",
+                             @"currentJobTimeStamp": timeStampString,
+                             @"currentJobDate": jDate
+    }];
+    
+    [self.jobsOnDutyAcceptedArray insertObject:jobDict atIndex:0];
+    defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+    
+    NSString *jobName = defaults_object(@"currentJobNameTitle");
+    if (![jobName isEqualToString:@""] && jobName.length > 0) {
+        self.jobsOkGreenBtn.alpha = 1.0;
+        self.jobsPauseBtn.alpha = 1.0;
+        self.jobsOkGreenBtn.userInteractionEnabled = YES;
+        self.jobsPauseBtn.userInteractionEnabled = YES;
+    } else {
+        self.jobsOkGreenBtn.alpha = 0.7;
+        self.jobsPauseBtn.alpha = 0.7;
+        self.jobsOkGreenBtn.userInteractionEnabled = NO;
+        self.jobsPauseBtn.userInteractionEnabled = NO;
+    }
+    
+    [self.jobsOnDutyTimerTextField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
+    self.needDisplayAlert = YES;
+    [self checkJobsArraysNow];
+    [self.view endEditing:YES];
+}
+
+- (IBAction)startJobBtnClick:(id)sender {
+    [self.view endEditing:YES];
+    
+    NSString *jobToStartNow = self.jobsOnDutyTimerTextField.text;
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    
+    for (int i = 0; i < accJobs.count; i++) {
+        NSString *jNameForSearch = [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"];
+        if ([jNameForSearch isEqualToString:jobToStartNow]) {
+            
+            [self becomeFirstResponder];
+            [self.jobsOnDutyTimerTextField.layer setBorderColor:[[Color officialRedColor] CGColor]];
+            
+            UIAlertController *alert = [UIAlertController
+                                        alertControllerWithTitle:localizeString(@"Choose a new name")
+                                        message:localizeString(@"This job name is already taken")
+                                        preferredStyle:UIAlertControllerStyleAlert];
+            UIAlertAction *yesButton = [UIAlertAction
+                                        actionWithTitle:localizeString(@"Ok")
+                                        style:UIAlertActionStyleDefault
+                                        handler:^(UIAlertAction *action) {
+                                            //
+                                        }];
+            [alert addAction:yesButton];
+            [self presentViewController:alert animated:YES completion:nil];
+            [self.view endEditing:YES];
+            return;
+        }
+    }
+    
+    NSString *jobName = defaults_object(@"currentJobNameTitle");
+    if (![jobName isEqualToString:@""] && jobName.length > 0) {
+        [self showJobCancelledErrorForMainJobView:sender];
+        return;
+    }
+    
+    if (self.jobsOnDutyTimerTextField.text.length == 0) {
+        UIAlertController *alert = [UIAlertController
+                                    alertControllerWithTitle:nil
+                                    message:localizeString(@"Job must have a name. Enter it in the field below")
+                                    preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *okAction = [UIAlertAction
+                                    actionWithTitle:localizeString(@"Ok")
+                                    style:UIAlertActionStyleDefault
+                                    handler:^(UIAlertAction *action) {
+                                        //NOT NEEDED
+                                    }];
+        [alert addAction:okAction];
+        [self presentViewController:alert animated:YES completion:nil];
+        return;
+    }
+    
+    [RPEntry instance].disableTracking = NO;
+    [[RPEntry instance] setEnableSdk:YES];
+    defaults_set_object(@"onDemandTracking", @(YES));
+    
+    [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"On Duty"] forState:UIControlStateNormal];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_03_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        self.jobsStatusBtn.hidden = NO;
+    });
+    
+    NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Offline")];
+    [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+    [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color softGrayColor] range:NSMakeRange(0, [goOnDuty length])];
+    [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+    
+    time_t result = time(NULL);
+    NSString *timeStampString = [@(result) stringValue];
+    
+    NSDate *currentDate = [NSDate date];
+    NSString *jDate = [currentDate dateTimeStringSpecial];
+    
+    NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+    [jobDict setDictionary:@{@"currentJobName": self.jobsOnDutyTimerTextField.text,
+                             @"currentJobStatus": @"Start",
+                             @"currentJobTimeStamp": timeStampString,
+                             @"currentJobDate": jDate
+    }];
+    [self.jobsOnDutyAcceptedArray insertObject:jobDict atIndex:0];
+    defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+    
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+    
+    self.jobsCurrentLbl.text = self.jobsOnDutyTimerTextField.text;
+    self.jobsCurrentLbl.textColor = [Color darkGrayColor43];
+    
+    self.jobsOkGreenBtn.alpha = 1.0;
+    self.jobsPauseBtn.alpha = 1.0;
+    self.jobsOkGreenBtn.userInteractionEnabled = YES;
+    self.jobsPauseBtn.userInteractionEnabled = YES;
+    [self.jobsOnDutyTimerTextField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
+    
+    [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
+    RPTag *tag = [[RPTag alloc] init];
+    tag.tag = self.jobsOnDutyTimerTextField.text;
+    tag.source = @"ZenRoad OnDemand";
+    [[RPEntry instance].api addFutureTrackTag:tag completion:nil];
+    
+    defaults_set_object(@"currentJobNameTitle", self.jobsOnDutyTimerTextField.text);
+    defaults_set_object(@"currentJobNameTimeStamp", timeStampString);
+    self.needDisplayAlert = YES;
+    [self checkJobsArraysNow];
+    [self.view endEditing:YES];
+}
+
+- (void)checkJobsArraysNow {
+    if (self.jobsOnDutyAcceptedArray.count == 0)
+        self.jobsOnDutyAcceptPlaceholder.hidden = NO;
+    else
+        self.jobsOnDutyAcceptPlaceholder.hidden = YES;
+    
+    if (self.jobsOnDutyCompletedArray.count == 0)
+        self.jobsOnDutyCompletedPlaceholder.hidden = NO;
+    else
+        self.jobsOnDutyCompletedPlaceholder.hidden = YES;
+}
+
+
+#pragma mark - ONDEMAND Duty Job Table buttons
+
+- (void)declineCellBtnClicked:(UIButton*)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.jobsOnDutyAcceptTableView];
+    NSIndexPath *indexPath = [self.jobsOnDutyAcceptTableView indexPathForRowAtPoint:buttonPosition];
+    [self.jobsOnDutyAcceptedArray removeObjectAtIndex:indexPath.row];
+    defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+    
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+    
+    [self checkJobsArraysNow];
+}
+
+- (void)startJobCellBtnClicked:(UIButton*)sender {
+    NSString *jname = defaults_object(@"currentJobNameTitle");
+    if (![jname isEqualToString:@""] && jname.length > 0) {
+        [self showJobCancelledErrorForCell:sender];
+        return;
+    }
+    
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.jobsOnDutyAcceptTableView];
+    NSIndexPath *indexPath = [self.jobsOnDutyAcceptTableView indexPathForRowAtPoint:buttonPosition];
+    NSString *startjobCellSelectedTimeStamp = [[self.jobsOnDutyAcceptedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobTimeStamp"];
+    
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    
+    NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+    [jobDict setDictionary:@{@"currentJobName": [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobName"],
+                             @"currentJobStatus": @"Start",
+                             @"currentJobTimeStamp": startjobCellSelectedTimeStamp,
+                             @"currentJobDate": [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobDate"]
+    }];
+    
+    [self.jobsOnDutyAcceptedArray replaceObjectAtIndex:indexPath.row withObject:jobDict];
+    defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+    [self.jobsOnDutyAcceptTableView reloadData];
+    
+    [RPEntry instance].disableTracking = NO;
+    [[RPEntry instance] setEnableSdk:YES];
+    
+    [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
+    RPTag *tag = [[RPTag alloc] init];
+    tag.tag = [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobName"];
+    tag.source = @"ZenRoad OnDemand";
+    [[RPEntry instance].api addFutureTrackTag:tag completion:nil];
+    
+    defaults_set_object(@"onDemandTracking", @(YES));
+    
+    [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"On Duty"] forState:UIControlStateNormal];
+    NSMutableAttributedString *goOnDuty = [[NSMutableAttributedString alloc] initWithString:localizeString(@"Go Offline")];
+    [goOnDuty addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(0, [goOnDuty length])];
+    [goOnDuty addAttribute:NSForegroundColorAttributeName value:[Color softGrayColor] range:NSMakeRange(0, [goOnDuty length])];
+    [self.jobsGoBtn setAttributedTitle:goOnDuty forState:UIControlStateNormal];
+    
+    self.jobsOkGreenBtn.alpha = 1.0;
+    self.jobsPauseBtn.alpha = 1.0;
+    self.jobsOkGreenBtn.userInteractionEnabled = YES;
+    self.jobsPauseBtn.userInteractionEnabled = YES;
+    
+    defaults_set_object(@"currentJobNameTitle", [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobName"]);
+    defaults_set_object(@"currentJobNameTimeStamp", [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobTimeStamp"]);
+    self.jobsCurrentLbl.text = [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobName"];
+    self.jobsCurrentLbl.textColor = [Color darkGrayColor43];
+    
+    [self checkJobsArraysNow];
+}
+
+- (void)pauseJobCellBtnClicked:(UIButton*)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.jobsOnDutyAcceptTableView];
+    NSIndexPath *indexPath = [self.jobsOnDutyAcceptTableView indexPathForRowAtPoint:buttonPosition];
+    NSString *jobCellSelected = [[self.jobsOnDutyAcceptedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobTimeStamp"];
+    
+    NSMutableArray *accJobs = defaults_object(@"acceptedJobs");
+    for (int i = 0; i < accJobs.count; i++) {
+        NSString *jStatusName = [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"];
+        if ([jStatusName isEqualToString:jobCellSelected]) {
+            
+            NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+            [jobDict setDictionary:@{@"currentJobName": [[accJobs objectAtIndex:i] valueForKey:@"currentJobName"],
+                                     @"currentJobStatus": @"Pause",
+                                     @"currentJobTimeStamp": [[accJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"],
+                                     @"currentJobDate": [[accJobs objectAtIndex:i] valueForKey:@"currentJobDate"]
+            }];
+            [self.jobsOnDutyAcceptedArray replaceObjectAtIndex:i withObject:jobDict];
+            defaults_set_object(@"acceptedJobs", self.jobsOnDutyAcceptedArray);
+        }
+    }
+    
+    [self.jobsOnDutyAcceptTableView reloadData];
+    defaults_set_object(@"currentJobNameTitle", @"");
+    defaults_set_object(@"currentJobNameTimeStamp", @"");
+    self.jobsCurrentLbl.text = @"No current job";
+    self.jobsCurrentLbl.textColor = [Color softGrayColor];
+    
+    [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
+    
+    [self.jobsStatusBtn setAttributedTitle:[self createJobOnlineBtnImgBefore:@"Online"] forState:UIControlStateNormal];
+    self.jobsOkGreenBtn.alpha = 0.7;
+    self.jobsPauseBtn.alpha = 0.7;
+    self.jobsOkGreenBtn.userInteractionEnabled = NO;
+    self.jobsPauseBtn.userInteractionEnabled = NO;
+    
+    [self checkJobsArraysNow];
+}
+
+- (void)hideJobCellBtnClicked:(UIButton*)sender {
+    CGPoint buttonPosition = [sender convertPoint:CGPointZero toView:self.jobsOnDutyCompletedTableView];
+    NSIndexPath *indexPath = [self.jobsOnDutyCompletedTableView indexPathForRowAtPoint:buttonPosition];
+    
+    [self.jobsOnDutyCompletedArray removeObjectAtIndex:indexPath.row];
+    defaults_set_object(@"completedJobs", self.jobsOnDutyCompletedArray);
+    [CoreDataCoordinator saveCoreDataCoordinatorContext];
+    [self.jobsOnDutyAcceptTableView reloadData];
+    [self.jobsOnDutyCompletedTableView reloadData];
+    [self checkJobsArraysNow];
+}
+
+
+#pragma mark - ONDEMAND Duty Job Risk & Statistics Tags
+
+- (void)getRiskScoreForEachTag {
+    NSMutableArray *compJobs = defaults_object(@"completedJobs");
+    NSMutableArray *tempForCompJobs = [compJobs mutableCopy];
+    for (int i = 0; i < compJobs.count; i++) {
+        NSDate *currentDate = [NSDate date];
+        NSString *jStatusName = [[compJobs objectAtIndex:i] valueForKey:@"currentJobName"];
+        //jStatusName = @"1614868760"; //TEST
+        
+        NSString *jStartDate = [[compJobs objectAtIndex:i] valueForKey:@"currentJobDate"];
+        if (jStartDate == nil) {
+            jStartDate = [currentDate dateTimeStringSpecial];
+        }
+        NSString *jCurrentDate = [currentDate dateTimeStringSpecial];
+        
+        [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+            NSLog(@"%s %@ %@", __func__, response, error);
+            if (!error && [response isSuccesful]) {
+                self.tagIndividual = ((TagResponse *)response).Result;
+                
+                float riskScoreFloat = [self.tagIndividual.OverallScore floatValue];
+                NSString *jobStatRiskScore = [NSString stringWithFormat:@"%.1f", riskScoreFloat];
+                
+                NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+                [jobDict setDictionary:@{@"currentJobName": [[compJobs objectAtIndex:i] valueForKey:@"currentJobName"],
+                                         @"currentJobStatus": [[compJobs objectAtIndex:i] valueForKey:@"currentJobStatus"],
+                                         @"currentJobTimeStamp": [[compJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"],
+                                         @"currentJobDate": [[compJobs objectAtIndex:i] valueForKey:@"currentJobDate"],
+                                         @"currentJobStatRiskScore": jobStatRiskScore,
+                                         @"currentJobStatTripsCount": @"",
+                                         @"currentJobStatMileage": @"",
+                                         @"currentJobStatTime": @""
+                }];
+                [tempForCompJobs replaceObjectAtIndex:i withObject:jobDict];
+                
+                self.jobsOnDutyCompletedArray = [[NSMutableArray alloc] initWithArray:tempForCompJobs];
+                defaults_set_object(@"completedJobs", self.jobsOnDutyCompletedArray);
+                [self.jobsOnDutyCompletedTableView reloadData];
+            }
+        }] getTagRiskScore:jStatusName startDate:jStartDate endDate:jCurrentDate];
+    }
+}
+
+- (void)getStatisticsDataForEachTag {
+    NSMutableArray *compJobs = defaults_object(@"completedJobs");
+    NSMutableArray *tempForCompJobs = [compJobs mutableCopy];
+    for (int i = 0; i < compJobs.count; i++) {
+        
+        NSDate *currentDate = [NSDate date];
+        NSString *jStatusName = [[compJobs objectAtIndex:i] valueForKey:@"currentJobName"];
+        
+        NSString *jStartDate = [[compJobs objectAtIndex:i] valueForKey:@"currentJobDate"];
+        if (jStartDate == nil) {
+            jStartDate = [currentDate dateTimeStringSpecial];
+        }
+        NSString *jCurrentDate = [currentDate dateTimeStringSpecial];
+        
+        [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
+            NSLog(@"%s %@ %@", __func__, response, error);
+            if (!error && [response isSuccesful]) {
+                self.tagIndividual = ((TagResponse *)response).Result;
+                
+                float tripsCountFloat = [self.tagIndividual.TripsCount floatValue];
+                float mileageCountFloat = [self.tagIndividual.MileageKm floatValue];
+                float driveTimeCountFloat = [self.tagIndividual.DrivingTime floatValue] / 60;
+                if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
+                    float milesStat = convertKmToMiles(mileageCountFloat);
+                    mileageCountFloat = milesStat;
+                }
+                
+                NSString *jobStatTripsCount = [NSString stringWithFormat:@"%.0f", tripsCountFloat];
+                NSString *jobStatMileage = [NSString stringWithFormat:@"%.1f", mileageCountFloat];
+                NSString *jobStatTime = [NSString stringWithFormat:@"%.1f", driveTimeCountFloat];
+                
+                NSString *checkRSvalue = [[compJobs objectAtIndex:i] valueForKey:@"currentJobStatRiskScore"];
+                if (checkRSvalue == nil) {
+                    // STOP
+                } else {
+                    NSMutableDictionary *jobDict = [[NSMutableDictionary alloc] init];
+                    [jobDict setDictionary:@{@"currentJobName": [[compJobs objectAtIndex:i] valueForKey:@"currentJobName"],
+                                             @"currentJobStatus": [[compJobs objectAtIndex:i] valueForKey:@"currentJobStatus"],
+                                             @"currentJobTimeStamp": [[compJobs objectAtIndex:i] valueForKey:@"currentJobTimeStamp"],
+                                             @"currentJobDate": [[compJobs objectAtIndex:i] valueForKey:@"currentJobDate"],
+                                             @"currentJobStatRiskScore": [[compJobs objectAtIndex:i] valueForKey:@"currentJobStatRiskScore"],
+                                             @"currentJobStatTripsCount": jobStatTripsCount,
+                                             @"currentJobStatMileage": jobStatMileage,
+                                             @"currentJobStatTime": jobStatTime
+                    }];
+                    [tempForCompJobs replaceObjectAtIndex:i withObject:jobDict];
+                    
+                    self.jobsOnDutyCompletedArray = [[NSMutableArray alloc] initWithArray:tempForCompJobs];
+                    defaults_set_object(@"completedJobs", self.jobsOnDutyCompletedArray);
+                    [self.jobsOnDutyCompletedTableView reloadData];
+                }
+            }
+        }] getTagStatistic:jStatusName startDate:jStartDate endDate:jCurrentDate];
+    }
+}
+
+
+#pragma mark - ONDEMAND Duty Job Table view datasource
+
+- (UITableViewCell*)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.jobsOnDutyAcceptTableView) {
+        JobsAcceptedCell *jobsAcceptedCell = [tableView dequeueReusableCellWithIdentifier:@"JobsAcceptedCell"];
+        jobsAcceptedCell.jobNameLbl.text = [[self.jobsOnDutyAcceptedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobName"];
+        [jobsAcceptedCell.jobDeclineBtn addTarget:self action:@selector(declineCellBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [jobsAcceptedCell.jobStartBtn addTarget:self action:@selector(startJobCellBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        [jobsAcceptedCell.jobPauseBtn addTarget:self action:@selector(pauseJobCellBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        jobsAcceptedCell.jobDeclineBtn.hidden = NO;
+        jobsAcceptedCell.jobStartBtn.hidden = NO;
+        jobsAcceptedCell.jobPauseBtn.hidden = YES;
+        
+        if ([[[self.jobsOnDutyAcceptedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobStatus"] isEqualToString:@"Pause"]) {
+            jobsAcceptedCell.jobStartBtn.layer.borderWidth = 0.8;
+            jobsAcceptedCell.jobStartBtn.layer.borderColor = [Color officialMainAppColor].CGColor;
+            jobsAcceptedCell.jobStartBtn.backgroundColor = [Color officialWhiteColor];
+            [jobsAcceptedCell.jobStartBtn setTitleColor:[Color officialMainAppColor] forState:UIControlStateNormal];
+            [jobsAcceptedCell.jobStartBtn setTitle:@"RESUME" forState:UIControlStateNormal];
+            
+        } else if ([[[self.jobsOnDutyAcceptedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobStatus"] isEqualToString:@"Start"]) {
+            jobsAcceptedCell.jobDeclineBtn.hidden = YES;
+            jobsAcceptedCell.jobStartBtn.hidden = YES;
+            jobsAcceptedCell.jobPauseBtn.hidden = NO;
+        } else {
+            jobsAcceptedCell.jobStartBtn.layer.borderWidth = 0.8;
+            jobsAcceptedCell.jobStartBtn.layer.borderColor = [Color officialMainAppColor].CGColor;
+            jobsAcceptedCell.jobStartBtn.backgroundColor = [Color officialMainAppColor];
+            [jobsAcceptedCell.jobStartBtn setTitleColor:[Color officialWhiteColor] forState:UIControlStateNormal];
+            [jobsAcceptedCell.jobStartBtn setTitle:@"START" forState:UIControlStateNormal];
+        }
+        return jobsAcceptedCell;
+    } else if (tableView == self.jobsOnDutyCompletedTableView) {
+        
+        JobsCompletedCell *jobsCompletedCell = [tableView dequeueReusableCellWithIdentifier:@"JobsCompletedCell"];
+        jobsCompletedCell.jobCompletedNameLbl.text = [[self.jobsOnDutyCompletedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobName"];
+        [jobsCompletedCell.jobHideBtn addTarget:self action:@selector(hideJobCellBtnClicked:) forControlEvents:UIControlEventTouchUpInside];
+        
+        jobsCompletedCell.job_riskScoreImg.hidden = NO;
+        jobsCompletedCell.job_tripsCountImg.hidden = NO;
+        jobsCompletedCell.job_mileageImg.hidden = NO;
+        jobsCompletedCell.job_timeImg.hidden = NO;
+        
+        NSString *checkRSvalue = [[self.jobsOnDutyCompletedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobStatRiskScore"];
+        if (checkRSvalue == nil) {
+            jobsCompletedCell.job_riskScoreImg.hidden = NO;
+            jobsCompletedCell.job_tripsCountImg.hidden = NO;
+            jobsCompletedCell.job_mileageImg.hidden = NO;
+            jobsCompletedCell.job_timeImg.hidden = NO;
+            
+        } else {
+            
+            //COMPLETED JOB RISK
+            NSString *riskScoreLbl = @"Risk Score -";
+            NSString *riskScoreTotalLbl = [NSString stringWithFormat:@"%@ %@", riskScoreLbl, checkRSvalue];
+            NSMutableAttributedString *riskScoreCompletedLbl = [[NSMutableAttributedString alloc] initWithString:riskScoreTotalLbl];
+
+            NSRange mainRangeTotalPoints = [riskScoreTotalLbl rangeOfString:checkRSvalue];
+            UIFont *boldFontForPoints = [Font bold13];
+            if (IS_IPHONE_5 || IS_IPHONE_4)
+                boldFontForPoints = [Font bold12];
+
+            if (checkRSvalue.floatValue > 80) {
+                [riskScoreCompletedLbl addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:mainRangeTotalPoints];
+            } else if (checkRSvalue.floatValue > 60) {
+                [riskScoreCompletedLbl addAttribute:NSForegroundColorAttributeName value:[Color officialYellowColor] range:mainRangeTotalPoints];
+            } else if (checkRSvalue.floatValue > 40) {
+                [riskScoreCompletedLbl addAttribute:NSForegroundColorAttributeName value:[Color officialOrangeColor] range:mainRangeTotalPoints];
+            } else {
+                [riskScoreCompletedLbl addAttribute:NSForegroundColorAttributeName value:[Color officialDarkRedColor] range:mainRangeTotalPoints];
+            }
+            [riskScoreCompletedLbl addAttribute:NSFontAttributeName value:boldFontForPoints range:mainRangeTotalPoints];
+            jobsCompletedCell.job_riskScoreLbl.attributedText = riskScoreCompletedLbl;
+
+            //COMPLETED JOB TRIPSCOUNT
+            NSString *tripsCountValueLbl = [[self.jobsOnDutyCompletedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobStatTripsCount"];
+            NSString *tripsCountTotalLbl = [NSString stringWithFormat:@"%@ %@", @"Trips Count -", tripsCountValueLbl];
+            NSMutableAttributedString *tripsCountCompletedLbl = [[NSMutableAttributedString alloc] initWithString:tripsCountTotalLbl];
+
+            NSRange mainRangeTripsCount = [tripsCountTotalLbl rangeOfString:tripsCountValueLbl];
+            [tripsCountCompletedLbl addAttribute:NSFontAttributeName value:boldFontForPoints range:mainRangeTripsCount];
+            jobsCompletedCell.job_tripsCountLbl.attributedText = tripsCountCompletedLbl;
+            
+            //COMPLETED JOB MILEAGE
+            NSString *mileageValueLbl = [[self.jobsOnDutyCompletedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobStatMileage"];
+            NSString *mileageTotalLbl = [NSString stringWithFormat:@"%@ %@ km", @"Mileage -", mileageValueLbl];
+            if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
+                float milesOnDemand = convertKmToMiles(mileageValueLbl.floatValue);
+                mileageValueLbl = [NSString stringWithFormat:@"%.1f", milesOnDemand];
+                mileageTotalLbl = [NSString stringWithFormat:@"%@ %@ mi", @"Mileage -", mileageValueLbl];
+            }
+            NSMutableAttributedString *mileageCompletedLbl = [[NSMutableAttributedString alloc] initWithString:mileageTotalLbl];
+
+            NSRange mainRangeMileage = [mileageTotalLbl rangeOfString:mileageValueLbl];
+            [mileageCompletedLbl addAttribute:NSFontAttributeName value:boldFontForPoints range:mainRangeMileage];
+            jobsCompletedCell.job_mileageLbl.attributedText = mileageCompletedLbl;
+            
+            //COMPLETED JOB TIME
+            NSString *timeValueLbl = [[self.jobsOnDutyCompletedArray objectAtIndex:indexPath.row] valueForKey:@"currentJobStatTime"];
+            NSString *timeTotalLbl = [NSString stringWithFormat:@"%@ %@ h", @"Time -", timeValueLbl];
+            NSMutableAttributedString *timeCompletedLbl = [[NSMutableAttributedString alloc] initWithString:timeTotalLbl];
+            
+            NSRange mainRangeTime = [timeTotalLbl rangeOfString:timeValueLbl];
+            [timeCompletedLbl addAttribute:NSFontAttributeName value:boldFontForPoints range:mainRangeTime];
+            jobsCompletedCell.job_timeLbl.attributedText = timeCompletedLbl;
+            
+            jobsCompletedCell.job_riskScoreImg.hidden = YES;
+            if ([tripsCountValueLbl isEqual:@""]) {
+                jobsCompletedCell.job_tripsCountImg.hidden = NO;
+            } else {
+                jobsCompletedCell.job_tripsCountImg.hidden = YES;
+            }
+            
+            if ([mileageValueLbl isEqual:@""] || [mileageValueLbl isEqual:@"0.0"]) {
+                jobsCompletedCell.job_mileageImg.hidden = NO;
+            } else {
+                jobsCompletedCell.job_mileageImg.hidden = YES;
+            }
+            
+            if ([timeValueLbl isEqual:@""]) {
+                jobsCompletedCell.job_timeImg.hidden = NO;
+            } else {
+                jobsCompletedCell.job_timeImg.hidden = YES;
+            }
+        }
+        
+        return jobsCompletedCell;
+    } else {
+        JobsCompletedCell *jobsCompletedCell = [tableView dequeueReusableCellWithIdentifier:@"JobsCompletedCell"];
+        return jobsCompletedCell;
+    }
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (tableView == self.jobsOnDutyAcceptTableView) {
+        return self.jobsOnDutyAcceptedArray.count;
+    } else if (tableView == self.jobsOnDutyCompletedTableView) {
+        return self.jobsOnDutyCompletedArray.count;
+    } else {
+        return 3;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (tableView == self.jobsOnDutyAcceptTableView) {
+        return 40.0;
+    } else if (tableView == self.jobsOnDutyCompletedTableView) {
+        return 100.0;
+    } else {
+        return 68.0;
+    }
+}
+
+
+#pragma mark - ONDEMAND Duty Job Pause & Errors
+
+- (void)showJobCancelledErrorForMainJobView:(UIButton*)sender {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:localizeString(@"Job in progress")
+                                message:localizeString(@"Do you want to Complete or Pause current job?")
+                                preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesButton = [UIAlertAction
+                                actionWithTitle:localizeString(@"Complete")
+                                style:UIAlertActionStyleDestructive
+                                handler:^(UIAlertAction *action) {
+                                    [self stopGreenBtnClick:sender];
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        [self startJobBtnClick:sender];
+                                    });
+                                }];
+    UIAlertAction *pauseButton = [UIAlertAction
+                                actionWithTitle:localizeString(@"Pause")
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action) {
+                                    [self pauseBtnClick:sender];
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        [self startJobBtnClick:sender];
+                                    });
+                                }];
+    UIAlertAction *noButton = [UIAlertAction
+                               actionWithTitle:localizeString(@"Cancel")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {}];
+    [alert addAction:yesButton];
+    [alert addAction:pauseButton];
+    [alert addAction:noButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)showJobCancelledErrorForCell:(UIButton*)sender {
+    UIAlertController *alert = [UIAlertController
+                                alertControllerWithTitle:localizeString(@"Job in progress")
+                                message:localizeString(@"Do you want to Complete or Pause current job?")
+                                preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *yesButton = [UIAlertAction
+                                actionWithTitle:localizeString(@"Complete")
+                                style:UIAlertActionStyleDestructive
+                                handler:^(UIAlertAction *action) {
+                                    [self stopGreenBtnClick:sender];
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        [self startJobCellBtnClicked:sender];
+                                    });
+                                }];
+    UIAlertAction *pauseButton = [UIAlertAction
+                                actionWithTitle:localizeString(@"Pause")
+                                style:UIAlertActionStyleDefault
+                                handler:^(UIAlertAction *action) {
+                                    [self pauseBtnClick:sender];
+                                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                        [self startJobCellBtnClicked:sender];
+                                    });
+                                }];
+    UIAlertAction *noButton = [UIAlertAction
+                               actionWithTitle:localizeString(@"Cancel")
+                               style:UIAlertActionStyleDefault
+                               handler:^(UIAlertAction *action) {}];
+    [alert addAction:yesButton];
+    [alert addAction:pauseButton];
+    [alert addAction:noButton];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+
+#pragma mark - Main TabBar Titles Configuration for setting
 
 - (void)setupTabBarTitles {
     
@@ -2393,9 +3498,9 @@
 }
 
 
-#pragma mark - Translation Welcome to Localizable.strings file
+#pragma mark - Translation sample Welcome to Localizable.strings file
 
-- (void)setupTranslation {
+- (void)setupAdditionalTranslation {
     
     self.welcomeLbl.text = localizeString(@"Welcome aboard!");
     self.welcomeLbl.textColor = [Color officialMainAppColor];
@@ -2426,7 +3531,7 @@
 }
 
 
-#pragma mark - Helpers for labels
+#pragma mark - Helpers for labels with images left/right
 
 - (IBAction)lastTripTapDetect:(id)sender {
     UITabBarController *tabBar = (UITabBarController *)[AppDelegate appDelegate].window.rootViewController;
@@ -2460,6 +3565,8 @@
 }
 
 - (NSMutableAttributedString*)createOpenAppSettingsLblImgBefore:(NSString*)text {
+    if IS_OS_12_OR_OLD
+        text = @"Check App Permissions";
     NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
     imageAttachment.image = [UIImage imageNamed:@"demo_mapAlert"];
     imageAttachment.bounds = CGRectMake(0, -2, imageAttachment.image.size.width/2.8, imageAttachment.image.size.height/2.8);
@@ -2468,8 +3575,52 @@
     [completeText appendAttributedString:attachmentString];
     NSString *spaceText = [NSString stringWithFormat:@"  %@", text];
     NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:spaceText];
+    [textAfterIcon addAttribute:NSForegroundColorAttributeName value:[Color officialWhiteColor] range:(NSRange){0, [textAfterIcon length]}];
     [completeText appendAttributedString:textAfterIcon];
     return completeText;
+}
+
+- (NSMutableAttributedString*)createJobOfflineBtnImgBefore:(NSString*)text {
+    NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
+    imageAttachment.image = [UIImage imageNamed:@"delivery_ph"];
+    imageAttachment.bounds = CGRectMake(0, -10, imageAttachment.image.size.width/5, imageAttachment.image.size.height/5);
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
+    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
+    [completeText appendAttributedString:attachmentString];
+    NSString *spaceText = [NSString stringWithFormat:@"  %@", text];
+    NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:spaceText];
+    [textAfterIcon addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor43] range:NSMakeRange(0, [textAfterIcon length])];
+    [completeText appendAttributedString:textAfterIcon];
+    return completeText;
+}
+
+- (NSMutableAttributedString*)createJobOnlineBtnImgBefore:(NSString*)text {
+    NSTextAttachment *imageAttachment = [[NSTextAttachment alloc] init];
+    imageAttachment.image = [UIImage imageNamed:@"delivery_ph_g"];
+    imageAttachment.bounds = CGRectMake(0, -10, imageAttachment.image.size.width/5, imageAttachment.image.size.height/5);
+    NSAttributedString *attachmentString = [NSAttributedString attributedStringWithAttachment:imageAttachment];
+    NSMutableAttributedString *completeText = [[NSMutableAttributedString alloc] initWithString:@""];
+    [completeText appendAttributedString:attachmentString];
+    NSString *spaceText = [NSString stringWithFormat:@"  %@", text];
+    NSMutableAttributedString *textAfterIcon = [[NSMutableAttributedString alloc] initWithString:spaceText];
+    [textAfterIcon addAttribute:NSForegroundColorAttributeName value:[Color darkGrayColor43] range:NSMakeRange(0, [textAfterIcon length])];
+    [completeText appendAttributedString:textAfterIcon];
+    return completeText;
+}
+
+- (BOOL)checkArray:(NSArray *)array containsJob:(NSString *)jobName {
+    BOOL jobFound = NO;
+    for (id object in array) {
+        if ([object isKindOfClass:[NSDictionary class]]) {
+            NSString *searchName = [object valueForKey:@"currentJobName"];
+            NSRange range = [searchName rangeOfString:jobName];
+            if (range.location != NSNotFound) {
+                jobFound = YES;
+                break;
+            }
+        }
+    }
+    return jobFound;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -2486,6 +3637,11 @@
     self.mapSnapshot.layer.borderColor = [UIColor clearColor].CGColor;
     self.mapSnapshot.layer.masksToBounds = true;
     self.mapSnapshot.clipsToBounds = true;
+    
+    self.mapSnapshotForDemo.layer.borderWidth = 1.0;
+    self.mapSnapshotForDemo.layer.borderColor = [UIColor clearColor].CGColor;
+    self.mapSnapshotForDemo.layer.masksToBounds = true;
+    self.mapSnapshotForDemo.clipsToBounds = true;
     
     self.mapDemo_snapshot.layer.borderWidth = 1.0;
     self.mapDemo_snapshot.layer.borderColor = [UIColor clearColor].CGColor;
@@ -2513,6 +3669,12 @@
     [self presentViewController:settingsVC animated:YES completion:nil];
 }
 
+- (IBAction)openStreaksAction:(id)sender {
+    defaults_set_object(@"userWantOpenStreaksNow", @(1));
+    [HapticHelper generateFeedback:FeedbackTypeImpactMedium];
+    [self.tabBarController setSelectedIndex:[[Configurator sharedInstance].rewardsTabBarNumber intValue]];
+}
+
 - (IBAction)chatOpenAction:(id)sender {
     //TODO IF NEEDED
 }
@@ -2530,21 +3692,34 @@
 
 //iPHONE 5S DEPRECATED EXCUSE US, LOW FONTS IF YOU NEEDED HELPERS FOR SOME ELEMENTS
 - (void)lowFontsForOldDevices {
+    
     self.needDistanceLabel.font = [Font heavy21];
     
-    self.descNeedTotalTripsLbl.font = [Font medium10];
-    self.descNeedMileageLbl.font = [Font medium10];
-    self.descNeedTimeDrivenLbl.font = [Font medium10];
+    self.descNeedTotalTripsLbl.font = [Font medium13];
+    self.descNeedMileageLbl.font = [Font medium13];
+    self.descNeedTimeDrivenLbl.font = [Font medium13];
 
     self.descTotalTripsLbl.font = [Font medium10];
     self.descMileageLbl.font = [Font medium10];
     self.descTimeDrivenLbl.font = [Font medium10];
+    
+    self.demo_completeFirstTripLbl.font = [Font bold14];
+    self.trackingStartLbl.font = [Font bold12];
     
     self.tipLbl.font = [Font regular11];
     self.tipAdviceLbl.font = [Font regular11];
     
     self.demo_tipLbl.font = [Font regular11];
     self.demo_tipAdviceLbl.font = [Font regular11];
+    
+    self.jobsOnDutyTimerTextField.font = [Font regular9];
+    [self.jobsOnDutyTimerTextField makeFormFieldShift5];
+    
+    self.factor_costOfOwnershipLbl.font = [Font light13];
+    self.demo_factor_costOfOwnershipLbl.font = [Font light13];
+    
+    self.streaks_speedingLbl.font = [Font semibold11];
+    self.streaks_phoneLbl.font = [Font semibold11];
     
     [self.arrowUpDownBtn addConstraint:[NSLayoutConstraint constraintWithItem:self.arrowUpDownBtn
                                                                       attribute:NSLayoutAttributeWidth

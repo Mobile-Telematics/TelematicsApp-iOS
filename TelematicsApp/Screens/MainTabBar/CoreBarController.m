@@ -128,13 +128,13 @@
             } break;
                 
             case TelematicsAppAnimation_Fade:{
-                [UIView animateWithDuration:0.6
+                [UIView animateWithDuration:DELAY_IMMEDIATELY_06_SEC
                      animations:^{
                          tabBarItemview.alpha = 0;
                      }
                  completion:^(BOOL finished) {
                      
-                     [UIView animateWithDuration:0.6
+                     [UIView animateWithDuration:DELAY_IMMEDIATELY_06_SEC
                       animations:^{
                           tabBarItemview.alpha = 1;
                       }

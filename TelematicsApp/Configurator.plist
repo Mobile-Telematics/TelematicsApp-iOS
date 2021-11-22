@@ -63,19 +63,17 @@
 		<string>2</string>
 		<key>profileTabBarNumber</key>
 		<integer>3</integer>
-		<key>needDistanceForScoringKm</key>
+		<key>needUserDriveDistanceForScoringKm</key>
 		<integer>10</integer>
-		<key>showTrackSignatureCustomButton</key>
-		<true/>
-		<key>showTrackTagCustomButton</key>
-		<false/>
 		<key>needTripsDeleting</key>
 		<true/>
 		<key>needDistanceInMiles</key>
 		<false/>
 		<key>needAmPmTime</key>
 		<false/>
-		<key>sdkEnableHF</key>
+		<key>sdkEnableHighFrequency</key>
+		<true/>
+		<key>sdkEnableELM</key>
 		<true/>
 		<key>needEventsReviewButton</key>
 		<true/>

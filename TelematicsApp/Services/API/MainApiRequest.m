@@ -15,6 +15,7 @@
 #import "LoginResponse.h"
 #import "DashboardResponse.h"
 #import "CoinsResponse.h"
+#import "TagResponse.h"
 #import "CoinsDetailsResponse.h"
 #import "StreaksResponse.h"
 #import "EcoResponse.h"
@@ -191,6 +192,18 @@
     [self performRequestCoinsService:@"DriveCoins/detailed" responseClass:[CoinsDetailsResponse class] parameters:params method:GET];
 }
 
+#pragma mark OnDemand Tags when "on duty trips" Dashboard statistics
+
+- (void)getTagRiskScore:(NSString *)tagName startDate:(NSString*)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"Tag": tagName, @"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestIndicatorsService:@"Scorings/individual" responseClass:[TagResponse class] parameters:params method:GET];
+}
+
+- (void)getTagStatistic:(NSString *)tagName startDate:(NSString*)startDate endDate:(NSString*)endDate {
+    NSDictionary *params = @{@"Tag": tagName, @"StartDate": startDate, @"EndDate": endDate};
+    [self performRequestIndicatorsService:@"Statistics/individual" responseClass:[TagResponse class] parameters:params method:GET];
+}
+
 
 #pragma mark Leaderboard
 
@@ -246,7 +259,7 @@
 
 #pragma mark Delete Track From Feed Screen
 
-- (void)deleteTrackSendStatusForBackEnd:(NSString *)trackToken {
+- (void)deleteThisTripSendStatusForBackEnd:(NSString *)trackToken {
     NSString *URLStr = [NSString stringWithFormat:@"https://mobilesdk.telematicssdk.com/mobilesdk/stage/track/%@/setdeleted/v1", trackToken];
     NSError *error;
     NSMutableURLRequest *request = [self.sessionManager.requestSerializer requestWithMethod:POST URLString:URLStr parameters:nil error:&error];

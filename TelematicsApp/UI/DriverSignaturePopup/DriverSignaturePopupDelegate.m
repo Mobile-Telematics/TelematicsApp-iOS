@@ -18,7 +18,7 @@
 #define DefaultRightMargin 35
 #define DefaultDimmedLevel 0.85
 #define DefaultCornerRadius 20
-#define DefaultButtonRadius 16
+#define DefaultButtonRadius 20
 
 
 @interface DriverSignaturePopupDelegate()
@@ -44,10 +44,10 @@
 
 - (void)initialize {
     if (!self.inAnimation) {
-        self.inAnimation = DefaultInAnimation;
+        self.inAnimation = DELAY_IMMEDIATELY_03_SEC;
     }
     if (!self.outAnimation) {
-        self.outAnimation = DefaultOutAnimation;
+        self.outAnimation = DELAY_IMMEDIATELY_03_SEC;
     }
     if (!self.topMargin) {
         if (IS_IPHONE_5 || IS_IPHONE_4) {
@@ -94,13 +94,13 @@
         self.buttonRadius = DefaultButtonRadius;
     }
     if (!self.animationDuration) {
-        self.animationDuration = DefaultAnimationDuration;
+        self.animationDuration = DELAY_IMMEDIATELY_03_SEC;
     }
     if (!self.dimBackgroundLevel) {
         self.dimBackgroundLevel = DefaultDimmedLevel;
     }
     if (!self.message) {
-        self.message = localizeString(@"You have given access to all permissions and now you can use full power of\nTelematicsApp app!");
+        self.message = localizeString(@"You have given access to all permissions and now you can use full power of\nTelematicsApp!");
     }
     if (!self.fixButtonTitle) {
         self.fixButtonTitle = DefaultCancelTitle;
@@ -210,7 +210,7 @@
     
     if ([self.signature_selectedEventTypeMarker isEqualToString:@"OriginalDriver"]) {
         [self.customView.event1Btn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
-    } else if ([self.signature_selectedEventTypeMarker isEqualToString:@"Passanger"]) {
+    } else if ([self.signature_selectedEventTypeMarker isEqualToString:@"Passenger"]) {
         [self.customView.event2Btn setBackgroundImage:[UIImage imageNamed:@"passenger_green"] forState:UIControlStateNormal];
     } else if ([self.signature_selectedEventTypeMarker isEqualToString:@"Bus"]) {
         [self.customView.event3Btn setBackgroundImage:[UIImage imageNamed:@"bus_green"] forState:UIControlStateNormal];
@@ -237,7 +237,7 @@
 }
 
 - (void)event2_PassengerSignatureButtonAction {
-    [_delegate event2_Passenger_ButtonAction:self.customView newType:@"Passanger" button:self.customView.event2Btn];
+    [_delegate event2_Passenger_ButtonAction:self.customView newType:@"Passenger" button:self.customView.event2Btn];
 }
 
 - (void)event3_BusSignatureButtonAction {

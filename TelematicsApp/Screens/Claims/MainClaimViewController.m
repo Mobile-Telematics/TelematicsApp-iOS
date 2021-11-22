@@ -70,7 +70,7 @@
     if (self.userClaims.Claims.count == 0) {
         [self showPreloader];
         [self refreshUserClaims];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_4_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self hidePreloader];
         });
     }

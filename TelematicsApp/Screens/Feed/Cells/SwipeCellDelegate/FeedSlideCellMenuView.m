@@ -21,9 +21,9 @@
 
 #pragma mark Actions
 
-- (IBAction)shareBtnPressed:(id)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(cellMenuViewShareBtnTapped:)])
-        [_delegate cellMenuViewShareBtnTapped:self];
+- (IBAction)hideBtnPressed:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(cellMenuViewHideTripBtnTapped:)])
+        [_delegate cellMenuViewHideTripBtnTapped:self];
 }
 
 - (IBAction)deleteBtnPressed:(id)sender {
@@ -31,9 +31,9 @@
         [_delegate cellMenuViewDeleteBtnTapped:self];
 }
 
-- (IBAction)flagBtnPressed:(id)sender {
-    if (_delegate && [_delegate respondsToSelector:@selector(cellMenuViewFlagBtnTapped:)])
-        [_delegate cellMenuViewFlagBtnTapped:self];
+- (IBAction)shareBtnPressed:(id)sender {
+    if (_delegate && [_delegate respondsToSelector:@selector(cellMenuViewShareBtnTapped:)])
+        [_delegate cellMenuViewShareBtnTapped:self];
 }
 
 @end

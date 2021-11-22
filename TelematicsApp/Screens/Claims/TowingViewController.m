@@ -11,7 +11,6 @@
 #import "Color.h"
 #import "Helpers.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 
 
 @interface TowingViewController ()
@@ -47,7 +46,7 @@
 {
     NSInteger margin = 70;
     
-    self.drivableSwitcher = [[TowingSwitch alloc] initWithStringsArray:@[@"YES", @"NO"]];
+    self.drivableSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[@"YES", @"NO"]];
     self.drivableSwitcher.frame = CGRectMake(margin, margin * 3, self.view.frame.size.width - margin * 2, 40);
     self.drivableSwitcher.font = [Font medium15Helvetica];
     self.drivableSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];
@@ -65,7 +64,7 @@
         }
     }];
     
-    self.towingSwitcher = [[TowingSwitch alloc] initWithStringsArray:@[@"YES", @"NO"]];
+    self.towingSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[@"YES", @"NO"]];
     self.towingSwitcher.frame = CGRectMake(margin, margin * 6, self.view.frame.size.width - margin * 2, 40);
     self.towingSwitcher.font = [Font medium15Helvetica];
     self.towingSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];

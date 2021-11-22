@@ -2,7 +2,7 @@
 //  BottomSheetPresenter.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 10.06.20.
+//  Created by DATA MOTION PTE. LTD. on 21.11.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -12,9 +12,9 @@
 
 @interface BottomSheetPresenter()
 
-@property (nonatomic) BottomSheetView *         bottomSheetView;
-@property (nonatomic) NSLayoutConstraint *      bottomSheetBottomConstaint;
-@property (nonatomic) CGFloat                   initialBottomConststraintValue;
+@property (nonatomic) BottomSheetView * bottomSheetView;
+@property (nonatomic) NSLayoutConstraint * bottomSheetBottomConstaint;
+@property (nonatomic) CGFloat initialBottomConststraintValue;
 
 @end
 
@@ -36,27 +36,17 @@
     self.bottomSheetView.userInteractionEnabled = YES;
     self.bottomSheetView.translatesAutoresizingMaskIntoConstraints = false;
     
-    if ([Configurator sharedInstance].showTrackSignatureCustomButton) {
-        self.bottomSheetView.driverSwitcher.hidden = YES;
-        self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-        self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-        self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
-        self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
-        
-    } else if ([Configurator sharedInstance].showTrackTagCustomButton) {
-        self.bottomSheetView.driverSwitcher.hidden = YES;
-        self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-        self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-        self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
-        self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
-        
-    } else {
-        self.bottomSheetView.driverSwitcher.hidden = YES;
-        self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-        self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-        self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
-        self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
-    }
+    self.bottomSheetView.driverSwitcher.hidden = YES;
+    self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
+    self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
+    
+    self.bottomSheetView.contentView.hideTripBtn.hidden = YES;
+    self.bottomSheetView.contentView.hideTripBackgroundBtn.hidden = YES;
+    self.bottomSheetView.contentView.hideTripIcon.hidden = YES;
+    
+    self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
+    self.bottomSheetView.contentView.deleteTripBackgroundBtn.hidden = YES;
+    self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
     
     [self.superView addSubview:self.bottomSheetView];
     
@@ -75,7 +65,9 @@
                                                                                          attribute:NSLayoutAttributeRight
                                                                                         multiplier:1.0
                                                                                           constant:0];
+    
     double bottomConstant = self.isBottomSheetHidden ? [self.delegate bounceHeight] - [self.delegate collapsedHeight] : 0;
+    
     NSLayoutConstraint * bottomSheetViewBottomConstraint = [NSLayoutConstraint constraintWithItem:self.bottomSheetView
                                                                                           attribute:NSLayoutAttributeBottom
                                                                                           relatedBy:NSLayoutRelationEqual
@@ -272,8 +264,7 @@
     }
 }
 
-- (void)show
-{
+- (void)show {
     self.isBottomSheetHidden = false;
     [self.bottomSheetView update:ChevronViewStateUp];
     
@@ -281,27 +272,17 @@
         
         self.bottomSheetBottomConstaint.constant = [self.delegate bounceHeight] - [self.delegate expandedHeight];
         
-        if ([Configurator sharedInstance].showTrackSignatureCustomButton) {
-            self.bottomSheetView.driverSwitcher.hidden = NO;
-            self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = NO;
-            self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = NO;
-            self.bottomSheetView.contentView.deleteTripBtn.hidden = NO;
-            self.bottomSheetView.contentView.deleteTripIcon.hidden = NO;
-            
-        } else if ([Configurator sharedInstance].showTrackTagCustomButton) {
-            self.bottomSheetView.driverSwitcher.hidden = NO;
-            self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripBtn.hidden = NO;
-            self.bottomSheetView.contentView.deleteTripIcon.hidden = NO;
-            
-        } else {
-            self.bottomSheetView.driverSwitcher.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
-        }
+        self.bottomSheetView.driverSwitcher.hidden = NO;
+        self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = NO;
+        self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = NO;
+        
+        self.bottomSheetView.contentView.hideTripBtn.hidden = NO;
+        self.bottomSheetView.contentView.hideTripBackgroundBtn.hidden = NO;
+        self.bottomSheetView.contentView.hideTripIcon.hidden = NO;
+        
+        self.bottomSheetView.contentView.deleteTripBtn.hidden = NO;
+        self.bottomSheetView.contentView.deleteTripBackgroundBtn.hidden = NO;
+        self.bottomSheetView.contentView.deleteTripIcon.hidden = NO;
         
         [self.superView layoutIfNeeded];
         
@@ -310,8 +291,7 @@
     }];
 }
 
-- (void)hideAnimated:(BOOL)animated
-{
+- (void)hideAnimated:(BOOL)animated {
     self.isBottomSheetHidden = true;
     [self.bottomSheetView update:ChevronViewStateDown];
     
@@ -335,8 +315,7 @@
     }
 }
 
-- (void)hideWithChevronDisplaying
-{
+- (void)hideWithChevronDisplaying {
     self.isBottomSheetHidden = true;
     [self.bottomSheetView update:ChevronViewStateDown];
     
@@ -345,27 +324,17 @@
         CGFloat bottomSheetHeight = [self.delegate bounceHeight] - [self.delegate collapsedHeight];
         self.bottomSheetBottomConstaint.constant = bottomSheetHeight;
         
-        if ([Configurator sharedInstance].showTrackSignatureCustomButton) {
-            self.bottomSheetView.driverSwitcher.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
-            
-        } else if ([Configurator sharedInstance].showTrackTagCustomButton) {
-            self.bottomSheetView.driverSwitcher.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
-            self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
-            
-        } else {
-            self.bottomSheetView.driverSwitcher.hidden = YES;
-            self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = NO;
-            self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = NO;
-            self.bottomSheetView.contentView.deleteTripBtn.hidden = NO;
-            self.bottomSheetView.contentView.deleteTripIcon.hidden = NO;
-        }
+        self.bottomSheetView.driverSwitcher.hidden = YES;
+        self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
+        self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
+        
+        self.bottomSheetView.contentView.hideTripBtn.hidden = YES;
+        self.bottomSheetView.contentView.hideTripBackgroundBtn.hidden = YES;
+        self.bottomSheetView.contentView.hideTripIcon.hidden = YES;
+        
+        self.bottomSheetView.contentView.deleteTripBtn.hidden = YES;
+        self.bottomSheetView.contentView.deleteTripBackgroundBtn.hidden = YES;
+        self.bottomSheetView.contentView.deleteTripIcon.hidden = YES;
         
         [self.superView layoutIfNeeded];
         

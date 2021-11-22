@@ -137,9 +137,10 @@
 
 /* feed */
 "TRIPS" = "TRIPS";
+"hide_trip" = "Are you sure you want to hide this trip?";
 "delete_trip" = "Are you sure you want to delete this trip?";
-"passanger_title" = "Have you been a passenger on this trip?";
-"passanger_tag_title" = "Was this trip Personal or for Business?";
+"passenger_title" = "Have you been a passenger on this trip?";
+"passenger_tag_title" = "Was this trip Personal or for Business?";
 "more_info" = "More";
 "trip_mileage_value" = "%d km";
 "trip_mileage_value_short" = "%.1f km";
@@ -254,7 +255,7 @@
 "Saturday" = "Saturday";
 "Sunday" = "Sunday";
 "Permission status" = "Permission status";
-"To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp app, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits." = "To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp app, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits.";
+"To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits." = "To determine your location automatically, you need to resolve access to the following functions.\n\nBut in order to fully use the TelematicsApp, you must issue all permissions, including GPS only ALWAYS mode.\n\nDo it now and get all the benefits.";
 "To collect accurate data and complete app operation, you need to resolve access to the following functions:" = "To collect accurate data and complete app operation, you need to resolve access to the following functions:";
 "Enable GPS always" = "Enable GPS always";
 "Enable Motions" = "Enable Motions";
@@ -268,7 +269,7 @@
 
 /* congratulation popup */
 "Congratulations!" = "Congratulations!";
-"You have given access to all permissions and now you can use full power of\nTelematicsApp app!" = "You have given access to all permissions and now you can use full power of\nTelematicsApp app!";
+"You have given access to all permissions and now you can use full power of\nTelematicsApp!" = "You have given access to all permissions and now you can use full power of\nTelematicsApp!";
 "      Grow your Safe Driving Score" = "      Grow your Safe Driving Score";
 "             Grow your Safe Driving Score" = "             Grow your Safe Driving Score";
 "      Complete with your Friends" = "      Complete with your Friends";

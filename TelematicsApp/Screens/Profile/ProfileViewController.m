@@ -233,11 +233,14 @@
             VehicleObject *obj = [self.appModel.vehicleShortData objectAtIndex:indexPath.row];
             cell.vehiclePlaceholder.hidden = YES;
             
-            NSString *carModel = obj.Manufacturer ? obj.Manufacturer : localizeString(@"Car make not specified");
+            NSString *carMake = obj.Manufacturer ? obj.Manufacturer : localizeString(@"Car make not specified");
+            NSString *carModel = obj.Model ? obj.Model : localizeString(@"Car model not specified");
             if (obj.Manufacturer == nil || ([obj.Manufacturer isEqual:@""])) {
-                cell.vehicleNameLbl.text = carModel;
+                cell.vehicleMakeLbl.text = carMake;
+                cell.vehicleModelLbl.text = carModel;
             } else {
-                cell.vehicleNameLbl.text = carModel;
+                cell.vehicleMakeLbl.text = carMake;
+                cell.vehicleModelLbl.text = carModel;
             }
 
             NSString *vinCode = obj.Vin ? obj.Vin : localizeString(@"Not specified");
@@ -397,7 +400,7 @@
 - (void)imagePicker:(UserImagePickerViewController *)imagePicker didSelectImage:(UIImage *)image {
     [self showPreloader];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_03_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.avatarImg.image = image;
         
         //USER PROFILE PICTURE TO NSDATA CONVERT

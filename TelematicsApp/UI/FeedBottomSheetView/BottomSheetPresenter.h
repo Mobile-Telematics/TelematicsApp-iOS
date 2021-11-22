@@ -2,7 +2,7 @@
 //  BottomSheetPresenter.h
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 10.06.20.
+//  Created by DATA MOTION PTE. LTD. on 21.11.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -23,11 +23,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BottomSheetPresenter: NSObject
 
-@property (nonatomic) UIView                            *superView;
-@property (nonatomic) BOOL                              isBottomSheetHidden;
-@property (nonatomic) RPTag*                            tags;
+@property (nonatomic) UIView * superView;
+@property (nonatomic) BOOL isBottomSheetHidden;
+@property (nonatomic) RPTag* tags;
 
-@property (nonatomic) id<BottomSheetPresenterDelegate>  delegate;
+@property (nonatomic) id<BottomSheetPresenterDelegate> delegate;
 
 - (instancetype)initWith:(UIView *)superView andDelegate:(id<BottomSheetPresenterDelegate>)delegate;
 

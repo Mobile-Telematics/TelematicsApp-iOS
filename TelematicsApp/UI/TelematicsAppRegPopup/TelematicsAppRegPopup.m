@@ -185,7 +185,7 @@
     [CATransaction begin];
     [CATransaction setAnimationDuration:0.25];
     [CATransaction setCompletionBlock:^{
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_1_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self startAnimationLoading];
         });
     }];

@@ -13,7 +13,7 @@
 @end
 
 @implementation TripCell
-@synthesize sampleLabel;
+//@synthesize sampleLabel;
  
 
 @end

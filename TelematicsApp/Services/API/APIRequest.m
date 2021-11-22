@@ -558,7 +558,7 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
                         self.counter = 0;
                         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.counter] forKey:@"counterRefreshKey"];
 
-                        self.extraMainResetCounter = [[[NSUserDefaults standardUserDefaults] objectForKey:@"counterMainReset"] intValue];
+                        self.extraMainResetCounter = [[[NSUserDefaults standardUserDefaults] objectForKey:@"counterMainReset"] intValue] ? [[[NSUserDefaults standardUserDefaults] objectForKey:@"counterMainReset"] intValue] : 0;
                         self.extraMainResetCounter += 1;
                         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInt:self.extraMainResetCounter] forKey:@"counterMainReset"];
                     }

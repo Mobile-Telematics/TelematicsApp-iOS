@@ -150,8 +150,6 @@
     [_clientIdField setReturnKeyType:UIReturnKeyDone];
     _clientIdField.placeholder = localizeString(@"ID (Optional)");
     
-    //[self.scrollView setContentSize:(CGSizeMake(self.view.frame.size.width, self.view.frame.size.height))];
-    
     [self registerForKeyboardNotifications];
     self.shiftHeight = -1;
     [[NSNotificationCenter defaultCenter] addObserver:self

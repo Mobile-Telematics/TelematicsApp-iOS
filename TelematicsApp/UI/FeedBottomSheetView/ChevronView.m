@@ -2,7 +2,7 @@
 //  ChevronView.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 10.06.20.
+//  Created by DATA MOTION PTE. LTD. on 21.11.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -11,14 +11,14 @@
 
 static const CGFloat ChevronDefaultWidth = 4.67;
 static const CGFloat ChevronAngleCoefficient = 20.5714286;
-static const NSTimeInterval ChevronDefaultAnimationDuration = 0.3;
+static const NSTimeInterval ChevronDELAY_IMMEDIATELY_03_SEC = 0.3;
 
 IB_DESIGNABLE
 @interface ChevronView (Inspectable)
 
-@property (nonatomic, assign) IBInspectable NSInteger                   chevronState;
-@property (nonatomic, strong, null_resettable) IBInspectable UIColor *  color;
-@property (nonatomic, assign) IBInspectable CGFloat                     width;
+@property (nonatomic, assign) IBInspectable NSInteger chevronState;
+@property (nonatomic, strong, null_resettable) IBInspectable UIColor * color;
+@property (nonatomic, assign) IBInspectable CGFloat width;
 
 @end
 
@@ -50,7 +50,7 @@ IB_DESIGNABLE
 {
     self.color = [UIColor lightGrayColor];
     self.width = ChevronDefaultWidth;
-    self.animationDuration = ChevronDefaultAnimationDuration;
+    self.animationDuration = ChevronDELAY_IMMEDIATELY_03_SEC;
     
     self.userInteractionEnabled = NO;
 }

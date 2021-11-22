@@ -77,7 +77,7 @@
     self.mapView.safetySpotsVisible = NO;
     self.mapView.landmarksVisible = NO;
     self.mapView.extrudedBuildingsVisible = NO;
-    [self.mapView setVisibility:NO forPoiCategory:NMAMapPoiCategoryAll]; //all
+    [self.mapView setVisibility:NO forPoiCategory:NMAMapPoiCategoryAll]; //all off
 
     //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
@@ -243,36 +243,39 @@
     [self.bottomSheetPresenter updateStartCityLabel:self.track.cityStart];
     [self.bottomSheetPresenter updateEndCityLabel:self.track.cityFinish];
     
-    if ([Configurator sharedInstance].showTrackTagCustomButton) {
-        NSMutableArray *tags = [[NSMutableArray alloc] init];
-        if (self.track.tags.count != 0) {
-            for (RPTag *tag in self.track.tags) {
-                [tags addObject:tag];
-            }
-            [self.bottomSheetPresenter updateTrackTagsButton:tags];
-        } else {
-            [self.bottomSheetPresenter updateTrackTagsButton:tags];
-        }
+    //SETUP DRIVER SIGNATURE ROLE ON SHEET
+    defaults_set_object(@"selectedTrackSignatureOriginalRole", self.track.trackOriginCode);
+    
+    if ([self.track.trackOriginCode isEqual:@"OriginalDriver"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"OriginalDriver"];
+    } else if ([self.track.trackOriginCode isEqual:@"Passanger"] || [self.track.trackOriginCode isEqual:@"Passenger"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Passenger"];
+    } else if ([self.track.trackOriginCode isEqual:@"Bus"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Bus"];
+    } else if ([self.track.trackOriginCode isEqual:@"Motorcycle"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Motorcycle"];
+    } else if ([self.track.trackOriginCode isEqual:@"Train"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Train"];
+    } else if ([self.track.trackOriginCode isEqual:@"Taxi"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Taxi"];
+    } else if ([self.track.trackOriginCode isEqual:@"Bicycle"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Bicycle"];
+    } else if ([self.track.trackOriginCode isEqual:@"Other"]) {
+        [self.bottomSheetPresenter updateTrackOriginButton:@"Other"];
     } else {
-        defaults_set_object(@"selectedTrackSignatureOriginalRole", self.track.trackOriginCode);
-        
-        if ([self.track.trackOriginCode isEqual:@"OriginalDriver"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"OriginalDriver"];
-        } else if ([self.track.trackOriginCode isEqual:@"Passanger"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Passanger"];
-        } else if ([self.track.trackOriginCode isEqual:@"Bus"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Bus"];
-        } else if ([self.track.trackOriginCode isEqual:@"Motorcycle"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Motorcycle"];
-        } else if ([self.track.trackOriginCode isEqual:@"Train"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Train"];
-        } else if ([self.track.trackOriginCode isEqual:@"Taxi"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Taxi"];
-        } else if ([self.track.trackOriginCode isEqual:@"Bicycle"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Bicycle"];
-        } else if ([self.track.trackOriginCode isEqual:@"Other"]) {
-            [self.bottomSheetPresenter updateTrackOriginButton:@"Other"];
+        [self.bottomSheetPresenter updateTrackOriginButton:@"OriginalDriver"];
+    }
+    
+    //SETUP TAGS BUTTON ON SHEET
+    //NSLog(@"%@", self.track.tags);
+    NSMutableArray *tags = [[NSMutableArray alloc] init];
+    if (self.track.tags.count != 0) {
+        for (RPTag *tag in self.track.tags) {
+            [tags addObject:tag];
         }
+        [self.bottomSheetPresenter updateTrackTagsButton:tags];
+    } else {
+        [self.bottomSheetPresenter updateTrackTagsButton:tags];
     }
 }
 
@@ -470,14 +473,14 @@
     [self.mapView addMapObject:endMarker];
     [self.mapObjectsArray addObject:endMarker];
     
-    [UIView animateWithDuration:3.0 animations:^{
+    [UIView animateWithDuration:DELAY_IMMEDIATELY_3_SEC animations:^{
         [GearLoadingView hideGearLoadingForView:self.view];
         [self hidePreloader];
     } completion:^(BOOL finished) {
         //
     }];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_1_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.mapView.hidden = NO;
     });
 }
@@ -611,11 +614,11 @@
                     self.popTip.popoverColor = [Color officialWhiteColor];
                     
                     if ([Configurator sharedInstance].needEventsReviewButton) {
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.6 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_06_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                             [self.popTip showCustomView:customView direction:MapPopTipDirectionUp inView:self.mapView.superview fromFrame:overlay.frame];
                         });
                     } else {
-                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_03_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                             [self.popTip showCustomView:customView direction:MapPopTipDirectionUp inView:self.mapView.superview fromFrame:overlay.frame];
                         });
                     }
@@ -893,7 +896,7 @@
 }
 
 - (double)expandedHeight {
-    return 410;
+    return 460;
 }
 
 - (double)collapsedHeight {
@@ -1211,7 +1214,7 @@
     [popupView.event6Btn setBackgroundImage:[UIImage imageNamed:@"taxi_white"] forState:UIControlStateNormal];
     [popupView.event7Btn setBackgroundImage:[UIImage imageNamed:@"bicycle_white"] forState:UIControlStateNormal];
     [popupView.event8Btn setBackgroundImage:[UIImage imageNamed:@"other_white"] forState:UIControlStateNormal];
-    self.selectedDriverSignatureRole = @"Passanger";
+    self.selectedDriverSignatureRole = @"Passenger";
 }
 
 - (void)event3_Bus_ButtonAction:(DriverSignaturePopup *)popupView newType:(NSString *)newType button:(UIButton *)button {
@@ -1304,8 +1307,8 @@
                 
                 if ([self.selectedDriverSignatureRole isEqual:@"OriginalDriver"]) {
                     [self.bottomSheetPresenter updateTrackOriginButton:@"OriginalDriver"];
-                } else if ([self.selectedDriverSignatureRole isEqual:@"Passanger"]) {
-                    [self.bottomSheetPresenter updateTrackOriginButton:@"Passanger"];
+                } else if ([self.selectedDriverSignatureRole isEqual:@"Passenger"]) {
+                    [self.bottomSheetPresenter updateTrackOriginButton:@"Passenger"];
                 } else if ([self.selectedDriverSignatureRole isEqual:@"Bus"]) {
                     [self.bottomSheetPresenter updateTrackOriginButton:@"Bus"];
                 } else if ([self.selectedDriverSignatureRole isEqual:@"Motorcycle"]) {
@@ -1336,7 +1339,7 @@
     
     RPTag *tag = [[RPTag alloc] init];
     tag.tag = @"DEL";
-    tag.source = @"TelematicsApp";
+    tag.source = localizeString(@"TelematicsApp");
 
     NSString *tToken = defaults_object(@"selectedTrackToken");
     NSString *tmpTokenForDeleting = defaults_object(@"selectedTrackToken");

@@ -12,7 +12,6 @@
 #import "Color.h"
 #import "Helpers.h"
 #import "UIViewController+Preloader.h"
-#import "UITextField+Form.h"
 #import "NSDate+UI.h"
 #import "NSDate+ISO8601.h"
 #import <NMAKit/NMAKit.h>
@@ -481,7 +480,7 @@
     if ([_dateField.text isEqualToString:@""]) {
         [_dateField setBackgroundColor:[Color curveRedColorAlpha]];
         [_dateField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self->_dateField setBackgroundColor:[Color lightSeparatorColor]];
             [self->_dateField.layer setBorderColor:[[Color grayColor] CGColor]];
         });
@@ -490,7 +489,7 @@
     } else if ([_onlyTimeField.text isEqualToString:@""]) {
         [_onlyTimeField setBackgroundColor:[Color curveRedColorAlpha]];
         [_onlyTimeField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self->_onlyTimeField setBackgroundColor:[Color lightSeparatorColor]];
             [self->_onlyTimeField.layer setBorderColor:[[Color grayColor] CGColor]];
         });
@@ -500,7 +499,7 @@
         //        //IF NEEDED LOCATION REQUIRED
         //        [_locationField setBackgroundColor:[Color curveRedColorAlpha]];
         //        [_locationField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //            [self->_locationField setBackgroundColor:[Color lightSeparatorColor]];
         //            [self->_locationField.layer setBorderColor:[[Color grayColor] CGColor]];
         //        });
@@ -509,7 +508,7 @@
     } else if ([_detailsField.text isEqualToString:@""] || [_detailsField.text isEqualToString:@"Specify accident details including exact location and what happened"]) {
         [_detailsField setBackgroundColor:[Color curveRedColorAlpha]];
         [_detailsField.layer setBorderColor:[[Color officialRedColor] CGColor]];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3. * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(DELAY_IMMEDIATELY_3_SEC * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [self->_detailsField setBackgroundColor:[Color lightSeparatorColor]];
             [self->_detailsField.layer setBorderColor:[[Color grayColor] CGColor]];
         });
