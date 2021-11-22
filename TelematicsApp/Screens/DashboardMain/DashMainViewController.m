@@ -50,7 +50,7 @@
 #import <NMAKit/NMAKit.h>
 
 
-@interface DashMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, GeneralPopupProtocol, CongratulationsPopupProtocol, CMTabbarViewDelegate, CMTabbarViewDatasouce> {
+@interface DashMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, GeneralPopupProtocol, CongratulationsPopupProtocol, CMTabbarViewDelegate, CMTabbarViewDatasouce> {
     GeneralPopupDelegate *permissionPopup;
     CongratulationsPopupDelegate *congratulationsPopup;
 }
@@ -1784,7 +1784,6 @@
             
             if ([Configurator sharedInstance].sdkEnableELM) {
                 [[RPCPermissionsWizard returnInstance] setupBluetoothEnabled]; //IF YOU USE ELM BLUETOOTH CONNECTION ENABLE THIS LINE FOR TELEMATICS SDK
-                [RPEntry enableELM:YES];
             }
             
             [[RPCPermissionsWizard returnInstance] launchWithFinish:^(BOOL showWizzard) {
@@ -2593,7 +2592,7 @@
     
     NSDate *currentDate = [NSDate date];
     self.jobsOnDutyTimerTextField.delegate = self;
-    [self.jobsOnDutyTimerTextField makeFormFieldShift20];
+    [self.jobsOnDutyTimerTextField makeFormFieldShift10];
     self.jobsOnDutyTimerTextField.textColor = [UIColor blackColor];
     [self.jobsOnDutyTimerTextField setBackgroundColor:[Color officialWhiteColor]];
     [self.jobsOnDutyTimerTextField.layer setMasksToBounds:YES];
@@ -3647,6 +3646,27 @@
     self.mapDemo_snapshot.layer.borderColor = [UIColor clearColor].CGColor;
     self.mapDemo_snapshot.layer.masksToBounds = true;
     self.mapDemo_snapshot.clipsToBounds = true;
+}
+
+
+#pragma mark - TextField
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    if (textField == self.jobsOnDutyTimerTextField) {
+        [self.view endEditing:YES];
+        return YES;
+    }
+    return YES;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.jobsOnDutyTimerTextField.layer setBorderColor:[[Color officialMainAppColor] CGColor]];
+    [self.jobsOnDutyTimerImplementation invalidate];
+    self.jobsOnDutyTimerImplementation = nil;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    //self.needDisplayAlert = YES;
 }
 
 

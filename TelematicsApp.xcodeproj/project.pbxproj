@@ -77,7 +77,6 @@
 		E9332F3622B0376900EC70B6 /* BottomSheetPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F2F22B0376900EC70B6 /* BottomSheetPresenter.m */; };
 		E9332F3722B0376900EC70B6 /* ChevronView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F3122B0376900EC70B6 /* ChevronView.m */; };
 		E9332F3822B0376900EC70B6 /* BottomSheetView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F3322B0376900EC70B6 /* BottomSheetView.m */; };
-		E93953EB274BBB0400E0289E /* WelcomeRewards.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E93953EA274BBB0400E0289E /* WelcomeRewards.storyboard */; };
 		E9395408274BC28600E0289E /* TagResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395404274BC28600E0289E /* TagResponse.m */; };
 		E9395409274BC28600E0289E /* TagResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9395405274BC28600E0289E /* TagResultResponse.m */; };
 		E939540F274BC32C00E0289E /* JobsAcceptedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E939540D274BC32C00E0289E /* JobsAcceptedCell.m */; };
@@ -2476,7 +2475,6 @@
 				E9332F3522B0376900EC70B6 /* BottomSheetView.xib in Resources */,
 				E978BAF223D7A98D00A59A8F /* InfoPlist.strings in Resources */,
 				E947D3BC25348FAC003DB17A /* DriverSignaturePopup.xib in Resources */,
-				E93953EB274BBB0400E0289E /* WelcomeRewards.storyboard in Resources */,
 				E9C6464D2417D61200CDF337 /* Feed.storyboard in Resources */,
 				E9B6CA5C268544A7000B5B51 /* GMVideoIcon@2x.png in Resources */,
 				E9F0B83A26DD4B390071DFA9 /* README.md in Resources */,
