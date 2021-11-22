@@ -1,8 +1,8 @@
 //
 //  UITextField+Form.m
-//  CoreProduct
+//  TelematicsApp
 //
-//  Created by pp@datamotion.ai on 14.01.21.
+//  Created by DATA MOTION PTE. LTD. on 14.01.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -18,6 +18,12 @@
 
 - (void)makeFormFieldShift5 {
     UIView* left = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 5, 10)];
+    self.leftView = left;
+    self.leftViewMode = UITextFieldViewModeAlways;
+}
+
+- (void)makeFormFieldShift10 {
+    UIView* left = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 10, 10)];
     self.leftView = left;
     self.leftViewMode = UITextFieldViewModeAlways;
 }
