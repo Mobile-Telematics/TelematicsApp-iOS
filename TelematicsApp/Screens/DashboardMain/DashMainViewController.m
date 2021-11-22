@@ -2414,7 +2414,6 @@
     self.demoDashboardView.layer.cornerRadius = 16;
     self.demoDashboardView.layer.masksToBounds = NO;
     self.demoDashboardView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.demoDashboardView.layer.shadowRadius = 2;
     self.demoDashboardView.layer.shadowOpacity = 0.1;
     if ([defaults_object(@"onDemandTracking") boolValue]) {
         self.demoDashboardView.layer.shadowRadius = 0;
@@ -2425,13 +2424,18 @@
     self.mainDashboardView.layer.cornerRadius = 16;
     self.mainDashboardView.layer.masksToBounds = NO;
     self.mainDashboardView.layer.shadowOffset = CGSizeMake(0, 0);
-    self.mainDashboardView.layer.shadowRadius = 2;
     self.mainDashboardView.layer.shadowOpacity = 0.1;
     if ([defaults_object(@"onDemandTracking") boolValue]) {
         self.mainDashboardView.layer.shadowRadius = 0;
     } else {
         self.mainDashboardView.layer.shadowRadius = 2;
     }
+    
+    self.jobsMainView.layer.cornerRadius = 16;
+    self.jobsMainView.layer.masksToBounds = NO;
+    self.jobsMainView.layer.shadowOffset = CGSizeMake(0, 0);
+    self.jobsMainView.layer.shadowRadius = 2;
+    self.jobsMainView.layer.shadowOpacity = 0.1;
     
     [self updateMainConstraints];
 }
