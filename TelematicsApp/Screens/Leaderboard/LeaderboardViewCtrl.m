@@ -138,7 +138,7 @@
         self.chatBtn.hidden = YES;
     }
     
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
     [self initRefreshControlSpinner];
     
     self.noUsersInLeaderboardView.layer.cornerRadius = 16;
@@ -156,7 +156,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -175,7 +175,7 @@
 
 #pragma mark - UserInfo
 
-- (void)displayUserInfo {
+- (void)displayUserNavigationBarInfo {
     self.userNameLbl.text = self.appModel.userFullName ? self.appModel.userFullName : @"";
     self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width / 2.0;
     self.avatarImg.layer.masksToBounds = YES;

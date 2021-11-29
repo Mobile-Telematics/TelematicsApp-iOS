@@ -2,7 +2,7 @@
 //  DashMainViewController.m
 //  TelematicsApp
 //
-//  Created by DATA MOTION PTE. LTD. on 28.05.20.
+//  Created by DATA MOTION PTE. LTD. on 28.11.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
@@ -310,7 +310,7 @@
     self.progressBarDistance.barFillColor = [Color officialMainAppColor];
     [self.progressBarDistance setBarBackgroundColor:[Color lightSeparatorColor]];
     
-    [self loadUserViewsDashboardMain];
+    [self loadUserViewsForMainDashboard];
     
     self.collectionViewCurve.delegate = self;
     self.collectionViewCurve.dataSource = self;
@@ -384,7 +384,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
     
     if (self.appModel.detailsAllDrivingScores.count != 0) {
         if (!_itsNotAppFirstRun) {
@@ -431,7 +431,7 @@
 
 #pragma mark - UserInfo fetch
 
-- (void)displayUserInfo {
+- (void)displayUserNavigationBarInfo {
     self.userNameLbl.text = self.appModel.userFullName ? self.appModel.userFullName : @"";
     
     self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width / 2.0;
@@ -442,7 +442,7 @@
     }
 }
 
-- (void)loadUserViewsDashboardMain {
+- (void)loadUserViewsForMainDashboard {
     if ([defaults_object(@"needTrackingOnRequired") boolValue]) {
         float requiredDistance = self.appModel.statDistanceForScoring.floatValue;
         float userRealDistance = self.appModel.statSummaryDistance.floatValue;

@@ -302,7 +302,6 @@
 		E9F0B83A26DD4B390071DFA9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = E9F0B83926DD4B390071DFA9 /* README.md */; };
 		E9F19D6021CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5C21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.m */; };
 		E9F19D6121CC271900523C02 /* TelematicsAppModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */; };
-		E9F5496D22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9F5496C22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard */; };
 		E9F5497F22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */; };
 		E9F6E520204F600A003BFAD3 /* NSDate+ISO8601.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51D204F6009003BFAD3 /* NSDate+ISO8601.m */; };
 		E9F6E521204F600A003BFAD3 /* ISO8601Serialization.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E51F204F600A003BFAD3 /* ISO8601Serialization.m */; };
@@ -871,7 +870,6 @@
 		E9F19D5D21CC271900523C02 /* TelematicsAppModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppModel.h; sourceTree = "<group>"; };
 		E9F19D5E21CC271900523C02 /* TelematicsAppModel+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TelematicsAppModel+CoreDataProperties.h"; sourceTree = "<group>"; };
 		E9F19D5F21CC271900523C02 /* TelematicsAppModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppModel.m; sourceTree = "<group>"; };
-		E9F5496C22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DashboardMainDeprecated.storyboard; sourceTree = "<group>"; };
 		E9F5497D22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TelematicsAppCollapsibleConstraints.m; sourceTree = "<group>"; };
 		E9F5497E22A9852200CCA5E5 /* TelematicsAppCollapsibleConstraints.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TelematicsAppCollapsibleConstraints.h; sourceTree = "<group>"; };
 		E9F6E51C204F6009003BFAD3 /* ISO8601Serialization.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISO8601Serialization.h; sourceTree = "<group>"; };
@@ -1019,7 +1017,6 @@
 			children = (
 				E9DF353C2418154F0070203D /* MainTabBar.storyboard */,
 				174D93971D79A215003F743F /* Auth.storyboard */,
-				E9F5496C22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard */,
 				E9395411274BC5A500E0289E /* DashboardMain.storyboard */,
 				E93953EA274BBB0400E0289E /* WelcomeRewards.storyboard */,
 				E9C6464C2417D61200CDF337 /* Feed.storyboard */,
@@ -2451,7 +2448,6 @@
 				E970305121B5AFF8008CEA13 /* GeneralPopup.xib in Resources */,
 				E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */,
 				E9B6CA59268544A7000B5B51 /* GMImagePicker.strings in Resources */,
-				E9F5496D22A94E1A00CCA5E5 /* DashboardMainDeprecated.storyboard in Resources */,
 				E9B6CA0C26853AD3000B5B51 /* CameraCar.storyboard in Resources */,
 				E90DF4AA26CF1CDD0003C2A1 /* WelcomeRewards.storyboard in Resources */,
 				174D93981D79A215003F743F /* Auth.storyboard in Resources */,
@@ -2985,7 +2981,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3034,7 +3030,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -3064,14 +3060,14 @@
 				);
 				GCC_PREFIX_HEADER = TelematicsApp/TelematicsAppPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TelematicsApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.telematics.firebasedemoapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.firebasedemoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -3093,7 +3089,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = MTK2QVQ5B8;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3102,14 +3098,14 @@
 				);
 				GCC_PREFIX_HEADER = TelematicsApp/TelematicsAppPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TelematicsApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.telematics.firebasedemoapp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.demo.firebasedemoapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

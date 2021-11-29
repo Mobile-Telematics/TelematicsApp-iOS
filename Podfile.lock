@@ -143,7 +143,7 @@ PODS:
   - nanopb/encode (2.30908.0)
   - PPTopMostController (0.0.1)
   - PromisesObjC (2.0.0)
-  - RaxelPulse (5.10)
+  - RaxelPulse (5.13)
   - RMessage (2.3.4):
     - HexColors (~> 4.0)
     - PPTopMostController
@@ -184,7 +184,7 @@ DEPENDENCIES:
   - KDLoadingView
   - libPhoneNumber-iOS (~> 0.8)
   - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord`)
-  - RaxelPulse (= 5.10)
+  - RaxelPulse (= 5.13)
   - RMessage (= 2.3.4)
   - SDWebImage (= 5.9.0)
   - SHSPhoneComponent
@@ -288,7 +288,7 @@ SPEC CHECKSUMS:
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PPTopMostController: 4e6f1e5f8c645bdcc74cd837a20f607ff262c048
   PromisesObjC: 68159ce6952d93e17b2dfe273b8c40907db5ba58
-  RaxelPulse: 7fbbed8ec0d4f01d5e0c22526572ef150ef9782f
+  RaxelPulse: a10dc310aa395fa8bb7f1afd0ae5e33dabf7d2e0
   RMessage: c53d90b788d64387f68bce3725b309e377b6bf15
   SCSiriWaveformView: 15b9dd6f94c7536e2032b34a35c6ff74d38c7411
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
@@ -301,6 +301,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 7dce0b44a1e2c8e5e96d34a12ef83f4752233120
+PODFILE CHECKSUM: e1f0b6ce23c4ebac7fd492ffa40c70e4b51e74fb
 
 COCOAPODS: 1.11.2

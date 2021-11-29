@@ -33,7 +33,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *userSharedTripAvatarImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *userSharedTripArrowImg;
 
-@property (weak, nonatomic) IBOutlet UIImageView        *demoCenterImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *demoBackgroundImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *demoPointsImg;
 

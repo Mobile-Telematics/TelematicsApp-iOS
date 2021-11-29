@@ -43,7 +43,7 @@
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
 
     [self setupView];
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,7 +83,7 @@
 
 #pragma mark - UserInfo
 
-- (void)displayUserInfo {
+- (void)displayUserNavigationBarInfo {
     self.avatar.layer.cornerRadius = self.avatar.frame.size.width / 2.0;
     self.avatar.layer.masksToBounds = YES;
     self.avatar.contentMode = UIViewContentModeScaleAspectFill;

@@ -71,7 +71,7 @@
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     [self.saveBtn setTitle:localizeString(@"Save") forState:UIControlStateNormal];
     
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
     
     _licensePlateField.colorNormal = [UIColor groupTableViewBackgroundColor];
     _licensePlateField.colorHighlight = [Color lightSeparatorColor];
@@ -215,7 +215,7 @@
     [super viewWillDisappear:animated];
 }
 
-- (void)displayUserInfo {
+- (void)displayUserNavigationBarInfo {
     self.userNameLbl.text = self.appModel.userFullName ? self.appModel.userFullName : @"";
     self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width / 2.0;
     self.avatarImg.layer.masksToBounds = YES;

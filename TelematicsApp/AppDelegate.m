@@ -259,7 +259,6 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     UNNotificationRequest *request = [UNNotificationRequest requestWithIdentifier:@"overspeed" content:content trigger:trigger];
 
     [[UNUserNotificationCenter currentNotificationCenter] addNotificationRequest:request withCompletionHandler:nil];
-
 }
 
 - (void)lowPowerMode:(Boolean)state {

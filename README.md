@@ -97,7 +97,14 @@ Step 13: Select "Start a locked mode" and click the "Enable" button.
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f13.png)
 
-Step 14: Now you need to change rules for your Realtime Database. You need to go to “Realtime Database” section on the left side of the menu. In the “Rules” tab change read and write fields to ".read": true & ".write": true.
+Step 14: Now you need to change rules for your Realtime Database. You need to go to “Realtime Database” section on the left side of the menu. In the “Rules” tab change read and write fields to ".read": "auth.uid != null" & ".write": "auth.uid != null".
+
+{
+  "rules": {
+    ".read": "auth.uid != null",
+    ".write": "auth.uid != null"
+  }
+}
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f14.png)
 
@@ -106,9 +113,6 @@ Step 15: Open our TelematicsApp in xCode, make sure to transfer the `GoogleServi
 Build & Run!
 
 ## Setup Telematics App Configuration.plist file
-
-Open our Telematics App source code by tapping TelematicsApp.xcworkspace file. 
-![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f15.png)
 
 For your convenience, we have created a standard iOS file with parameters named `Configuration.plist`, where you can specify the basic settings for your future app.
 Using this file, you can configure the basic parameters of your application by specifying server addresses, basic settings and links, as well as specifying several images for an individual design. Carefully study the parameters provided below for further work.
@@ -154,7 +158,11 @@ needEventsReviewButton | BOOL parameter, allowing to mark events on the map
 
 We use CocoaPods dependency libraries.
 The Telematics SDK is installed by default in the Telematics app using the `pod 'RaxelPulse'` command in the application Podfile.
-After the first download of this app, you need to enter the command  `pod install` in the macOS Terminal. This will install the required dependency libraries for the app to work correctly.
+For your convenience, enable fast access to macOS PathBar (screenshot), copy the path to the application folder (right click), enter the command 'cd (ctrl + v paste path address see screenshot)' -> Enter in the terminal.
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f15.png)
+Next you need enter the command  `pod install` in the macOS Terminal. This will install the required dependency libraries for the app to work correctly.
+
 Run Your new application by opening the `TelematicsApp.xcworkspace` file in the source code folder after.
 Below we present the basic methods for AppDelegate that allow you to initialize the Telematics SDK in a few steps.
 
@@ -177,6 +185,16 @@ Below we present the basic methods for AppDelegate that allow you to initialize 
         };
         return YES;
     }
+
+You must add the necessary Background Tasks to the Info.plist file for the Telematics SDK to work.
+`<key>BGTaskSchedulerPermittedIdentifiers</key>`
+        `<array>`
+        `<string>sdk.damoov.apprefreshtaskid</string>`
+        `<string>sdk.damoov.appprocessingtaskid</string>`
+        `</array>`
+
+You can always find out all about the new changes with the release of xCode13 in our Telematics SDK documentation https://docs.damoov.com/docs/-download-the-sdk-and-install-it-in-your-environment
+In the new version of the Telematics App, these tasks are added.
 
 ## Telematics SDK | Permission Wizard
 
@@ -210,7 +228,7 @@ We have created a special Framework that allows you to receive `deviceToken`, `j
 
 You can find complete information about LoginAuth Framework in our repository https://github.com/Mobile-Telematics/LoginAuthFramework-iOS
 
-# Screens 
+# Screens
 
 ## Dashboard
 
@@ -332,6 +350,16 @@ In detail, you can see the work with methods for rewards in the Telematics App s
 Settings screen gives you the opportunity to make specific settings for the entire application, provide links to any guides, as well as addresses of technical support etc.
 >Use the values in the Configuration.plist file for easy linking for Privacy Policy, Email address or Rate you app links. This will help you easily customize the Settings screen.
 
+## On-Demand Tracking Mode
+
+In the new version of the app, we have provided the ability to select Tracking Mode in Settings. There may be 3 options - `Automatic Tracking`, `On-Demand Tracking`, `Tracking disabled`.
+
+The`On-Demand Tracking` provides an updated `Dashboard` by applying and programmatically increasing Constraints in InterfaceBuilder and a special method for increasing the vertical dimensions of the DashboardController.m file. In this Mode, the user can create a Job for himself.
+
+`JobName` is a specific tag identifier that will be added for 1 or any number of trips made by the user. The user must necessarily start a certain job or order, and complete it accordingly. In the future, when the trip is enriched on our backend-side, the app will receive statistics for this `JobName` tag. The user will see the number of trips made for this task, the rating of maneuverability, risk score, etc. All this is available in a new section on our `Dashboard`.
+
+`On-Demand Tracking` is great for any business like delivery service, taxi and many others. Currently, this Mode will be an integral part of the Telematics App and provide you with a new experience of integrations and work options.
+
 ## User Log Out
 
 In the Telematics App source code, we show you an option to clear user data after logging out. Do not forget - to stop tracking and record user trips, you need to explicitly delete `VIRTUAL_DEVICE_TOKEN`.
@@ -403,5 +431,6 @@ Happy coding!
 [Official ZenRoad app for Huawei](https://appgallery.huawei.com/#/app/C104163115)
 
 ###### Copyright © 2020-2021 DATA MOTION PTE. LTD. All rights reserved.
+
 
 

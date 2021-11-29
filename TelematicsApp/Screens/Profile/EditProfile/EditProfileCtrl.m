@@ -57,7 +57,7 @@
     
     [self.saveBtn setTitle:localizeString(@"Save") forState:UIControlStateNormal];
     
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
     
     _firstNameField.delegate = self;
     _lastNameField.delegate = self;
@@ -184,7 +184,7 @@
     [super viewWillDisappear:animated];
 }
 
-- (void)displayUserInfo {
+- (void)displayUserNavigationBarInfo {
     self.userNameLbl.text = self.appModel.userFullName ? self.appModel.userFullName : @"";
     self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width / 2.0;
     self.avatarImg.layer.masksToBounds = YES;

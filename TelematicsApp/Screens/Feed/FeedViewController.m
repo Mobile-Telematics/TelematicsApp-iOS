@@ -179,7 +179,7 @@ static NSString *rewardCellIdentifier = @"RewardCell";
     
     [self loadLatestUserTrips];
     
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
     [self initRefreshControlSpinner];
     
     UIViewController *currentTopVC = [self currentTopViewController];
@@ -204,7 +204,7 @@ static NSString *rewardCellIdentifier = @"RewardCell";
     self.navigationController.navigationBar.clipsToBounds = YES;
     
     self.disableReloadPageDown = NO;
-    [self displayUserInfo];
+    [self displayUserNavigationBarInfo];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -301,7 +301,7 @@ static NSString *rewardCellIdentifier = @"RewardCell";
 
 #pragma mark - UserInfo
 
-- (void)displayUserInfo {
+- (void)displayUserNavigationBarInfo {
     self.userNameLbl.text = self.appModel.userFullName ? self.appModel.userFullName : @"";
     self.avatarImg.layer.cornerRadius = self.avatarImg.frame.size.width / 2.0;
     self.avatarImg.layer.masksToBounds = YES;
@@ -737,7 +737,6 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         //cell.contentView.userInteractionEnabled = YES;
         cell.demoBackgroundImg.hidden = YES;
         cell.demoPointsImg.hidden = YES;
-        cell.demoCenterImg.hidden = YES;
         
         cell.makeYourTripLbl.hidden = YES;
         cell.doNotSeeLbl.hidden = YES;
@@ -807,7 +806,6 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         cell.userTripAdditionalLbl.hidden = NO;
         
         if ([defaults_object(@"demoModeEnabled") boolValue]) {
-            cell.demoCenterImg.hidden = YES;
             cell.demoBackgroundImg.hidden = NO;
             cell.demoPointsImg.hidden = NO;
             
@@ -824,7 +822,6 @@ static NSString *rewardCellIdentifier = @"RewardCell";
             
             cell.userInteractionEnabled = NO;
         } else {
-            cell.demoCenterImg.hidden = YES;
             cell.demoBackgroundImg.hidden = YES;
             cell.demoPointsImg.hidden = YES;
             
@@ -963,7 +960,6 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         [cell.tripGreenBubble setTitle:localizeString(@"TRIP") forState:UIControlStateNormal];
         cell.tripGreenBubble.hidden = NO;
 
-        cell.demoCenterImg.hidden = YES;
         cell.demoBackgroundImg.hidden = NO;
         cell.demoPointsImg.hidden = NO;
         
