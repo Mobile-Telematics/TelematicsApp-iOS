@@ -6,7 +6,7 @@ use_frameworks!
 
 def available_pods
   
-    pod 'RaxelPulse', '5.13' #TELEMATICS SDK 5.13 NEW RELEASE DECEMBER 2021 /!!!5.12 FOR XCODE12 LAST RELEASE DEPRECATED!!!/
+    pod 'RaxelPulse', '5.13.1' #TELEMATICS SDK 5.13.1 NEW RELEASE DECEMBER 2021 /!!!5.12.1 FOR XCODE12 LAST RELEASE - DEPRECATED!!!/
     pod 'HEREMaps'
     pod 'Firebase/Core', '8.6.1'
     pod ‘Firebase/Database’
