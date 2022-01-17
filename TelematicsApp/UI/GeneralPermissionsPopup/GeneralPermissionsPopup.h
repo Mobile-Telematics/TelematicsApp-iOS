@@ -1,5 +1,5 @@
 //
-//  GeneralPopup.h
+//  GeneralPermissionsPopup.h
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.12.21.
@@ -9,7 +9,7 @@
 @import UIKit;
 #import "GeneralButton.h"
 
-@interface GeneralPopup: UIView
+@interface GeneralPermissionsPopup: UIView
 
 @property (strong, nonatomic) IBOutlet UIImageView      *iconView;
 @property (strong, nonatomic) IBOutlet UIImageView      *imgView;

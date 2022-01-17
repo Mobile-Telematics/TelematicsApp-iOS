@@ -1,5 +1,5 @@
 //
-//  GeneralPopupDelegate.h
+//  GeneralPermissionsPopupDelegate.h
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.12.21.
@@ -7,11 +7,11 @@
 //
 
 @import UIKit;
-#import "GeneralPopupProtocol.h"
+#import "GeneralPermissionsPopupProtocol.h"
 
-@interface GeneralPopupDelegate: UIView
+@interface GeneralPermissionsPopupDelegate: UIView
 
-@property (nonatomic, strong) id <GeneralPopupProtocol> delegate;
+@property (nonatomic, strong) id <GeneralPermissionsPopupProtocol> delegate;
 
 typedef enum {
     FlyInAnimationDefault,

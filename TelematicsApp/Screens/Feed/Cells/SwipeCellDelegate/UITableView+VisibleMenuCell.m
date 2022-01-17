@@ -14,7 +14,7 @@
 @dynamic visibleMenuCell;
 
 - (void)setVisibleMenuCell:(FeedSlideMenuTableViewCell *)visibleMenuCell {
-    objc_setAssociatedObject(self, @selector(visibleMenuCell), visibleMenuCell, OBJC_ASSOCIATION_ASSIGN);
+    objc_setAssociatedObject(self, @selector(visibleMenuCell), visibleMenuCell, OBJC_ASSOCIATION_RETAIN);
 }
 
 - (FeedSlideMenuTableViewCell *)visibleMenuCell {

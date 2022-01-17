@@ -32,7 +32,7 @@
 #import "WiFiGPSChecker.h"
 #import "UIViewController+Preloader.h"
 #import "UIImageView+WebCache.h"
-#import "GeneralPopupDelegate.h"
+#import "GeneralPermissionsPopupDelegate.h"
 #import "CongratulationsPopupDelegate.h"
 #import "TelematicsAppPrivacyRequestManager.h"
 #import "TelematicsAppLocationAccessor.h"
@@ -50,8 +50,8 @@
 #import <NMAKit/NMAKit.h>
 
 
-@interface DashMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, GeneralPopupProtocol, CongratulationsPopupProtocol, CMTabbarViewDelegate, CMTabbarViewDatasouce> {
-    GeneralPopupDelegate *permissionPopup;
+@interface DashMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, GeneralPermissionsPopupProtocol, CongratulationsPopupProtocol, CMTabbarViewDelegate, CMTabbarViewDatasouce> {
+    GeneralPermissionsPopupDelegate *permissionPopup;
     CongratulationsPopupDelegate *congratulationsPopup;
 }
 
@@ -331,7 +331,7 @@
     
     self.needDisplayAlert = YES;
     
-    permissionPopup = [[GeneralPopupDelegate alloc] initOnView:self.view];
+    permissionPopup = [[GeneralPermissionsPopupDelegate alloc] initOnView:self.view];
     permissionPopup.delegate = self;
     permissionPopup.dismissOnBackgroundTap = NO;
     defaults_set_object(@"permissionPopupShowing", @(NO));
@@ -1763,7 +1763,7 @@
 }
 
 
-#pragma mark - GeneralPopup Permission Warning Actions
+#pragma mark - GeneralPermissionsPopup Permission Warning Actions
 
 - (IBAction)startTelematicsBtnClick:(id)sender {
     if ([defaults_object(@"userDoneWizard") boolValue]) {
@@ -1833,7 +1833,7 @@
     }
 }
 
-- (void)gpsButtonAction:(GeneralPopup *)popupView button:(UIButton *)button {
+- (void)gpsButtonAction:(GeneralPermissionsPopup *)popupView button:(UIButton *)button {
     if ([defaults_object(@"needTrackingOnRequired") boolValue]) {
         [TelematicsAppPrivacyRequestManager gotoApplicationSystemSettings];
     } else {
@@ -1849,7 +1849,7 @@
     }
 }
 
-- (void)motionButtonAction:(GeneralPopup *)popupView button:(UIButton *)button {
+- (void)motionButtonAction:(GeneralPermissionsPopup *)popupView button:(UIButton *)button {
     switch ([CMMotionActivityManager authorizationStatus]) {
         case CMAuthorizationStatusNotDetermined:
         {
@@ -1878,7 +1878,7 @@
     }
 }
 
-- (void)pushButtonAction:(GeneralPopup *)popupView button:(UIButton *)button {
+- (void)pushButtonAction:(GeneralPermissionsPopup *)popupView button:(UIButton *)button {
     //HIDE PERMISSION POPUP ONLY ONCE
     [permissionPopup hidePopup];
     defaults_set_object(@"permissionPopupShowing", @(NO));

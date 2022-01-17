@@ -1,13 +1,13 @@
 //
-//  GeneralPopupDelegate.m
+//  GeneralPermissionsPopupDelegate.m
 //  TelematicsApp
 //
 //  Created by DATA MOTION PTE. LTD. on 01.12.21.
 //  Copyright © 2021 DATA MOTION PTE. LTD. All rights reserved.
 //
 
-#import "GeneralPopupDelegate.h"
-#import "GeneralPopup.h"
+#import "GeneralPermissionsPopupDelegate.h"
+#import "GeneralPermissionsPopup.h"
 #import "GeneralButton.h"
 #import "Helpers.h"
 
@@ -26,16 +26,16 @@
 #define DefaultCornerRadius 20
 #define DefaultButtonRadius 23
 
-@interface GeneralPopupDelegate()
+@interface GeneralPermissionsPopupDelegate()
 
-@property (strong, nonatomic) GeneralPopup              *customView;
-@property (strong, nonatomic) UIView                    *view;
-@property (strong, nonatomic) UIView                    *dimBG;
-@property (strong, nonatomic) UIVisualEffectView        *blurBG;
+@property (strong, nonatomic) GeneralPermissionsPopup       *customView;
+@property (strong, nonatomic) UIView                        *view;
+@property (strong, nonatomic) UIView                        *dimBG;
+@property (strong, nonatomic) UIVisualEffectView            *blurBG;
 
 @end
 
-@implementation GeneralPopupDelegate
+@implementation GeneralPermissionsPopupDelegate
 
 
 #pragma mark - Initialization Methods
@@ -116,7 +116,7 @@
 
 - (void)setPopup {
     [self initialize];
-    self.customView = [[[NSBundle mainBundle] loadNibNamed:@"GeneralPopup" owner:nil options:nil] firstObject];
+    self.customView = [[[NSBundle mainBundle] loadNibNamed:@"GeneralPermissionsPopup" owner:nil options:nil] firstObject];
     self.customView.frame = CGRectMake(0, 0, self.view.bounds.size.width - (self.leftMargin + self.rightMargin), self.view.bounds.size.height - (self.topMargin + self.bottomMargin));
     self.customView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     self.customView.center = self.view.center;
@@ -198,6 +198,7 @@
 }
 
 - (void)setupButtonGPS {
+    
     self.customView.gpsButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.customView.gpsButton.imagePosition = GeneralButtonImagePositionRight;
     self.customView.gpsButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -205,9 +206,12 @@
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         self.customView.gpsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
         self.customView.gpsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 51, 0, 0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
+    } else if (IS_IPHONE_13_PROMAX || IS_IPHONE_11_PROMAX || IS_IPHONE_8P) {
         self.customView.gpsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.gpsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 121, 0, 0);
+    } else if (IS_IPHONE_13_PRO) {
+        self.customView.gpsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        self.customView.gpsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 102, 0, 0);
     } else {
         self.customView.gpsButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.gpsButton.imageEdgeInsets = UIEdgeInsetsMake(0, 82, 0, 0);
@@ -220,10 +224,12 @@
         UIImage *gps_re = [GeneralButton imageWithImage:[UIImage imageNamed:@"popup_ok"] scaledToHeight:25];
         [self.customView.gpsButton setImage:gps_re forState:UIControlStateNormal];
     }
+    
     [self layoutIfNeeded];
 }
 
 - (void)setupButtonMotion {
+    
     self.customView.motionButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.customView.motionButton.imagePosition = GeneralButtonImagePositionRight;
     self.customView.motionButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -231,9 +237,12 @@
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         self.customView.motionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
         self.customView.motionButton.imageEdgeInsets = UIEdgeInsetsMake(0, 74.5, 0, 0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
+    } else if (IS_IPHONE_13_PROMAX || IS_IPHONE_11_PROMAX || IS_IPHONE_8P) {
         self.customView.motionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.motionButton.imageEdgeInsets = UIEdgeInsetsMake(0, 145, 0, 0);
+    } else if (IS_IPHONE_13_PRO) {
+        self.customView.motionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        self.customView.motionButton.imageEdgeInsets = UIEdgeInsetsMake(0, 128, 0, 0);
     } else {
         self.customView.motionButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.motionButton.imageEdgeInsets = UIEdgeInsetsMake(0, 106, 0, 0);
@@ -246,10 +255,12 @@
         UIImage *motion_re = [GeneralButton imageWithImage:[UIImage imageNamed:@"popup_ok"] scaledToHeight:25];
         [self.customView.motionButton setImage:motion_re forState:UIControlStateNormal];
     }
+    
     [self layoutIfNeeded];
 }
 
 - (void)setupButtonPush {
+    
     self.customView.pushButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.customView.pushButton.imagePosition = GeneralButtonImagePositionRight;
     self.customView.pushButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
@@ -257,9 +268,12 @@
     if (IS_IPHONE_5 || IS_IPHONE_4) {
         self.customView.pushButton.titleEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 0);
         self.customView.pushButton.imageEdgeInsets = UIEdgeInsetsMake(0, 5, 0, 0);
-    } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX || IS_IPHONE_8P) {
+    } else if (IS_IPHONE_13_PROMAX || IS_IPHONE_11_PROMAX || IS_IPHONE_8P) {
         self.customView.pushButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.pushButton.imageEdgeInsets = UIEdgeInsetsMake(0, 75, 0, 0);
+    } else if (IS_IPHONE_13_PRO) {
+        self.customView.pushButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
+        self.customView.pushButton.imageEdgeInsets = UIEdgeInsetsMake(0, 58, 0, 0);
     } else {
         self.customView.pushButton.titleEdgeInsets = UIEdgeInsetsMake(0, 20, 0, 0);
         self.customView.pushButton.imageEdgeInsets = UIEdgeInsetsMake(0, 36, 0, 0);
