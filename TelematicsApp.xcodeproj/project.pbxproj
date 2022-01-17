@@ -153,9 +153,9 @@
 		E96ABF5A261281C700C0AC24 /* VehicleResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABF57261281C700C0AC24 /* VehicleResultResponse.m */; };
 		E96ABF5B261281C700C0AC24 /* VehicleResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E96ABF58261281C700C0AC24 /* VehicleResponse.m */; };
 		E96ABF5F261282C500C0AC24 /* Leaderboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E96ABF5E261282C500C0AC24 /* Leaderboard.storyboard */; };
-		E970305121B5AFF8008CEA13 /* GeneralPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = E970304B21B5AFF8008CEA13 /* GeneralPopup.xib */; };
-		E970305221B5AFF8008CEA13 /* GeneralPopupDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E970304D21B5AFF8008CEA13 /* GeneralPopupDelegate.m */; };
-		E970305321B5AFF8008CEA13 /* GeneralPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E970304E21B5AFF8008CEA13 /* GeneralPopup.m */; };
+		E970305121B5AFF8008CEA13 /* GeneralPermissionsPopup.xib in Resources */ = {isa = PBXBuildFile; fileRef = E970304B21B5AFF8008CEA13 /* GeneralPermissionsPopup.xib */; };
+		E970305221B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E970304D21B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m */; };
+		E970305321B5AFF8008CEA13 /* GeneralPermissionsPopup.m in Sources */ = {isa = PBXBuildFile; fileRef = E970304E21B5AFF8008CEA13 /* GeneralPermissionsPopup.m */; };
 		E970305921B5DCDF008CEA13 /* GeneralButton.m in Sources */ = {isa = PBXBuildFile; fileRef = E970305821B5DCDF008CEA13 /* GeneralButton.m */; };
 		E9745E51218B811D00EE8102 /* CoreDataCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = E9745E49218B811D00EE8102 /* CoreDataCoordinator.m */; };
 		E9745E54218B811D00EE8102 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E9745E4E218B811D00EE8102 /* Model.xcdatamodeld */; };
@@ -597,12 +597,12 @@
 		E96ABF57261281C700C0AC24 /* VehicleResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleResultResponse.m; sourceTree = "<group>"; };
 		E96ABF58261281C700C0AC24 /* VehicleResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VehicleResponse.m; sourceTree = "<group>"; };
 		E96ABF5E261282C500C0AC24 /* Leaderboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Leaderboard.storyboard; sourceTree = "<group>"; };
-		E970304B21B5AFF8008CEA13 /* GeneralPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPopup.xib; sourceTree = "<group>"; };
-		E970304C21B5AFF8008CEA13 /* GeneralPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPopup.h; sourceTree = "<group>"; };
-		E970304D21B5AFF8008CEA13 /* GeneralPopupDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPopupDelegate.m; sourceTree = "<group>"; };
-		E970304E21B5AFF8008CEA13 /* GeneralPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPopup.m; sourceTree = "<group>"; };
-		E970304F21B5AFF8008CEA13 /* GeneralPopupProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPopupProtocol.h; sourceTree = "<group>"; };
-		E970305021B5AFF8008CEA13 /* GeneralPopupDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPopupDelegate.h; sourceTree = "<group>"; };
+		E970304B21B5AFF8008CEA13 /* GeneralPermissionsPopup.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GeneralPermissionsPopup.xib; sourceTree = "<group>"; };
+		E970304C21B5AFF8008CEA13 /* GeneralPermissionsPopup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPermissionsPopup.h; sourceTree = "<group>"; };
+		E970304D21B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPermissionsPopupDelegate.m; sourceTree = "<group>"; };
+		E970304E21B5AFF8008CEA13 /* GeneralPermissionsPopup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPermissionsPopup.m; sourceTree = "<group>"; };
+		E970304F21B5AFF8008CEA13 /* GeneralPermissionsPopupProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPermissionsPopupProtocol.h; sourceTree = "<group>"; };
+		E970305021B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPermissionsPopupDelegate.h; sourceTree = "<group>"; };
 		E970305721B5DCDF008CEA13 /* GeneralButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralButton.h; sourceTree = "<group>"; };
 		E970305821B5DCDF008CEA13 /* GeneralButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralButton.m; sourceTree = "<group>"; };
 		E9745E49218B811D00EE8102 /* CoreDataCoordinator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataCoordinator.m; sourceTree = "<group>"; };
@@ -909,7 +909,7 @@
 		170041771D749B470058C934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				E970304A21B5AFF8008CEA13 /* GeneralPopup */,
+				E970304A21B5AFF8008CEA13 /* GeneralPermissionsPopup */,
 				E9FCB5F422F3862F002C9944 /* CongratulationsPopup */,
 				E9332F2D22B0376900EC70B6 /* FeedBottomSheetView */,
 				E947D3AE25348FAB003DB17A /* DriverSignaturePopup */,
@@ -1700,17 +1700,17 @@
 			path = Vehicles;
 			sourceTree = "<group>";
 		};
-		E970304A21B5AFF8008CEA13 /* GeneralPopup */ = {
+		E970304A21B5AFF8008CEA13 /* GeneralPermissionsPopup */ = {
 			isa = PBXGroup;
 			children = (
-				E970304F21B5AFF8008CEA13 /* GeneralPopupProtocol.h */,
-				E970305021B5AFF8008CEA13 /* GeneralPopupDelegate.h */,
-				E970304D21B5AFF8008CEA13 /* GeneralPopupDelegate.m */,
-				E970304C21B5AFF8008CEA13 /* GeneralPopup.h */,
-				E970304E21B5AFF8008CEA13 /* GeneralPopup.m */,
-				E970304B21B5AFF8008CEA13 /* GeneralPopup.xib */,
+				E970304F21B5AFF8008CEA13 /* GeneralPermissionsPopupProtocol.h */,
+				E970305021B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.h */,
+				E970304D21B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m */,
+				E970304C21B5AFF8008CEA13 /* GeneralPermissionsPopup.h */,
+				E970304E21B5AFF8008CEA13 /* GeneralPermissionsPopup.m */,
+				E970304B21B5AFF8008CEA13 /* GeneralPermissionsPopup.xib */,
 			);
-			path = GeneralPopup;
+			path = GeneralPermissionsPopup;
 			sourceTree = "<group>";
 		};
 		E9745E46218B811D00EE8102 /* CoreData */ = {
@@ -2445,7 +2445,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E970305121B5AFF8008CEA13 /* GeneralPopup.xib in Resources */,
+				E970305121B5AFF8008CEA13 /* GeneralPermissionsPopup.xib in Resources */,
 				E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */,
 				E9B6CA59268544A7000B5B51 /* GMImagePicker.strings in Resources */,
 				E9B6CA0C26853AD3000B5B51 /* CameraCar.storyboard in Resources */,
@@ -2747,7 +2747,7 @@
 				E9A7FE2526CF0D1D000F0C44 /* UIView+Extension.m in Sources */,
 				E9A7FDFD26CEFBFB000F0C44 /* WelcomeRewards.m in Sources */,
 				E9E05D2A21B80E9800F6C76C /* TelematicsAppPhotoLibraryAccessor.m in Sources */,
-				E970305221B5AFF8008CEA13 /* GeneralPopupDelegate.m in Sources */,
+				E970305221B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m in Sources */,
 				E9B6C9D8268536A0000B5B51 /* CarPhotoCell.m in Sources */,
 				E9B6CA4426854281000B5B51 /* GalleryResultResponse.m in Sources */,
 				E9745E51218B811D00EE8102 /* CoreDataCoordinator.m in Sources */,
@@ -2786,7 +2786,7 @@
 				E96ABF1F26127D7400C0AC24 /* SwiftSpinner.swift in Sources */,
 				E9B6CA5E268544A7000B5B51 /* GMGridViewController.m in Sources */,
 				E96ABE5F2611AB6800C0AC24 /* LeaderboardObject.m in Sources */,
-				E970305321B5AFF8008CEA13 /* GeneralPopup.m in Sources */,
+				E970305321B5AFF8008CEA13 /* GeneralPermissionsPopup.m in Sources */,
 				E96ABE542611AB1600C0AC24 /* GlobalLeadCell.m in Sources */,
 				E9332F3622B0376900EC70B6 /* BottomSheetPresenter.m in Sources */,
 				E914DBA921598CF5002BB116 /* CheckResponse.m in Sources */,
@@ -2981,7 +2981,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -3030,7 +3030,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -3060,7 +3060,7 @@
 				);
 				GCC_PREFIX_HEADER = TelematicsApp/TelematicsAppPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TelematicsApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3098,7 +3098,7 @@
 				);
 				GCC_PREFIX_HEADER = TelematicsApp/TelematicsAppPrefixHeader.pch;
 				INFOPLIST_FILE = "$(SRCROOT)/TelematicsApp/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
