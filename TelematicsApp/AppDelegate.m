@@ -59,6 +59,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
     [MagicalRecord setupCoreDataStackWithStoreNamed:kRecipesStoreName];
     if (![defaults_object(@"TelematicsAppShouldMigrateCoreDataV10") boolValue]) {
         [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
+        [TelematicsLeaderboardModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"leaderboard_user == 1"]];
         
         [MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:kRecipesStoreName];
         defaults_set_object(@"TelematicsAppShouldMigrateCoreDataV10", @(YES));

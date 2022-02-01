@@ -357,11 +357,12 @@ static NSString *rewardCellIdentifier = @"RewardCell";
                                 NSLog(@"%@", tag.source);
                                 if ([tag.tag isEqualToString:@"DEL"]) {
                                     [sortedEventArray removeObjectAtIndex:i];
+                                } else if ([tag.tag isEqualToString:@"Personal"]) {
+                                    [self.states setObject:@"Personal" forKey:trip.trackToken];
                                 } else if ([tag.tag isEqualToString:@"Business"]) {
-                                    [self.states setObject:@"1" forKey:trip.trackToken];
+                                    [self.states setObject:@"Business" forKey:trip.trackToken];
                                 } else {
                                     NSLog(@"%@",tag.source);
-                                    //[filteredTrips addObject:trip]; //TEST
                                 }
                             }
                         }
@@ -414,24 +415,23 @@ static NSString *rewardCellIdentifier = @"RewardCell";
                         RPTrackProcessed *trip = sortedEventArray[i];
 
                         if (trip.tags.count != 0) {
-                            NSLog(@"TAGS COUNT %lu", (unsigned long)trip.tags.count);
+                            //NSLog(@"TAGS COUNT %lu", (unsigned long)trip.tags.count);
                             for (RPTag *tag in trip.tags) {
                                 //NSLog(@"%@", tag.tag);
                                 //NSLog(@"%@", tag.source);
                                 
                                 if ([tag.tag isEqualToString:@"DEL"]) {
                                     [sortedEventArray removeObjectAtIndex:i];
+                                } else if ([tag.tag isEqualToString:@"Personal"]) {
+                                    [self.states setObject:@"Personal" forKey:trip.trackToken];
                                 } else if ([tag.tag isEqualToString:@"Business"]) {
-                                    [self.states setObject:@"1" forKey:trip.trackToken];
+                                    [self.states setObject:@"Business" forKey:trip.trackToken];
                                 } else {
                                     NSLog(@"%@",tag.source);
-                                    //[filteredTrips addObject:trip]; //TEST
                                 }
                             }
                         }
                     }
-                } else {
-                    //filteredTrips = [sortedEventArray mutableCopy];
                 }
                 
                 if (loadedItems.count < 10 && self.tripsData.count < self.appModel.statTrackCount.intValue) {
@@ -679,6 +679,9 @@ static NSString *rewardCellIdentifier = @"RewardCell";
             cell.endLabel.width = 103;
             cell.startAreaLabel.width = 215;
             cell.endAreaLabel.width = 215;
+        } else if (IS_IPHONE_13_PROMAX) {
+            cell.startLabel.width = 103;
+            cell.endLabel.width = 103;
         } else {
             cell.startAreaLabel.width = 205;
             cell.endAreaLabel.width = 205;
@@ -711,8 +714,8 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         if (IS_IPHONE_5 || IS_IPHONE_4) {
             cell.startLabel.width = 80;
             cell.endLabel.width = 80;
-            cell.startAreaLabel.width = 195;
-            cell.endAreaLabel.width = 195;
+            cell.startAreaLabel.width = 190;
+            cell.endAreaLabel.width = 190;
         } else if (IS_IPHONE_8P) {
             cell.startAreaLabel.width = 260;
             cell.endAreaLabel.width = 260;
@@ -726,7 +729,14 @@ static NSString *rewardCellIdentifier = @"RewardCell";
             cell.endLabel.width = 84;
             cell.startAreaLabel.x = 119;
             cell.endAreaLabel.x = 119;
+        } else if (IS_IPHONE_13_PROMAX) {
+            cell.startLabel.width = 88;
+            cell.endLabel.width = 88;
+            cell.startAreaLabel.x = 120;
+            cell.endAreaLabel.x = 120;
         } else {
+            cell.startLabel.width = 88;
+            cell.endLabel.width = 88;
             cell.startAreaLabel.width = 227;
             cell.endAreaLabel.width = 227;
         }
@@ -848,7 +858,7 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         if ([trip.trackOriginCode isEqual:@"OriginalDriver"]) {
             [cell.driverBtn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
             cell.userTripAdditionalLbl.text = @"Driver";
-        } else if ([trip.trackOriginCode isEqual:@"Passenger"]) {
+        } else if ([trip.trackOriginCode isEqual:@"Passenger"] || [trip.trackOriginCode isEqual:@"Passanger"]) {
             [cell.driverBtn setBackgroundImage:[UIImage imageNamed:@"passenger_green"] forState:UIControlStateNormal];
             cell.userTripAdditionalLbl.text = @"Passenger";
         } else if ([trip.trackOriginCode isEqual:@"Bus"]) {
@@ -876,45 +886,51 @@ static NSString *rewardCellIdentifier = @"RewardCell";
 
         [cell.driverBtn addTarget:self action:@selector(changeDriverOriginAction:) forControlEvents:UIControlEventTouchUpInside];
         
-        //NEW DRIVER SWITCHER PERSONAL/BUSINESS
-        cell.driverSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"Personal"), localizeString(@"Business")]];
-        cell.driverSwitcher.frame = CGRectMake(29, 126, 146, 34);
-        cell.driverSwitcher.cornerRadius = 17;
-        cell.driverSwitcher.font = [Font regular13Helvetica];
-        if (IS_IPHONE_5 || IS_IPHONE_4) {
-            cell.driverSwitcher.frame = CGRectMake(29, 126, 146, 34);
-            cell.driverSwitcher.cornerRadius = 17;
-            cell.driverSwitcher.font = [Font regular13Helvetica];
-        }
-        cell.driverSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];
-        cell.driverSwitcher.labelTextColorInsideSlider = [Color officialMainAppColor];
-        cell.driverSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
-        cell.driverSwitcher.sliderColor = [Color officialWhiteColor];
-        cell.driverSwitcher.sliderOffset = 1.0;
-        cell.driverSwitcher.tag = indexPath.row;
+        //NEW TRIP TAGS SWITCHER NONE/PERSONAL/BUSINESS
+        cell.tagsSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"None"), localizeString(@"Personal"), localizeString(@"Business")]];
+        cell.tagsSwitcher.frame = CGRectMake(29, 126, 219, 34);
+        cell.tagsSwitcher.cornerRadius = 17;
+        cell.tagsSwitcher.font = [Font regular13Helvetica];
+        
+        cell.tagsSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];
+        cell.tagsSwitcher.labelTextColorInsideSlider = [Color officialMainAppColor];
+        cell.tagsSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
+        cell.tagsSwitcher.sliderColor = [Color officialWhiteColor];
+        cell.tagsSwitcher.sliderOffset = 1.0;
+        cell.tagsSwitcher.tag = indexPath.row;
 
         for (UIView *ds in cell.contentView.subviews) {
             if ([ds isKindOfClass:[TagsSwitch class]]) {
                 [ds removeFromSuperview];
             }
         }
-        [cell.contentView addSubview:cell.driverSwitcher];
+        [cell.contentView addSubview:cell.tagsSwitcher];
 
         __weak TripCell * weakCustomCell = cell;
-        [cell.driverSwitcher setPressedHandler:^(NSUInteger index) {
+        [cell.tagsSwitcher setPressedHandler:^(NSUInteger index) {
             NSLog(@"Did press position on first switch at index: %lu", (unsigned long)index);
             if (index == 1) {
-                [self changeTagAction:weakCustomCell];
+                [self setPesonalTagAction:weakCustomCell];
+            } else if (index == 2) {
+                [self setBusinessTagAction:weakCustomCell];
             } else {
-                [self resetTagAction:weakCustomCell];
+                [self resetNoTagAction:weakCustomCell];
             }
         }];
         
-        //ZENROAD TAGS BUTTON SPECIAL INTERFACE
+        //TELEMATICS APP TAGS BUTTON SPECIAL INTERFACE
+        NSLog(@"%@", self.states);
         if ([[self.states allKeys] containsObject:trip.trackToken]) {
-            [cell.driverSwitcher selectIndex:1 animated:NO];
-            cell.driverSwitcher.userInteractionEnabled = YES;
-            cell.driverSwitcher.alpha = 1;
+            NSString *tagStringValue = [self.states valueForKey:trip.trackToken];
+            if ([tagStringValue isEqualToString:@"Personal"]) {
+                [cell.tagsSwitcher selectIndex:1 animated:NO];
+            } else if ([tagStringValue isEqualToString:@"Business"]) {
+                [cell.tagsSwitcher selectIndex:2 animated:NO];
+            } else {
+                [cell.tagsSwitcher selectIndex:0 animated:NO];
+            }
+            cell.tagsSwitcher.userInteractionEnabled = YES;
+            cell.tagsSwitcher.alpha = 1;
         }
         
         if ([defaults_object(@"demoModeEnabled") boolValue]) {
@@ -928,8 +944,8 @@ static NSString *rewardCellIdentifier = @"RewardCell";
             cell.startAreaLabel.hidden = YES;
             cell.endAreaLabel.hidden = YES;
             
-            cell.driverSwitcher.userInteractionEnabled = NO;
-            cell.driverSwitcher.alpha = 0;
+            cell.tagsSwitcher.userInteractionEnabled = NO;
+            cell.tagsSwitcher.alpha = 0;
         }
         
         cell.kmLabel.text = localizeString(@"km");
@@ -984,7 +1000,7 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         cell.endLabel.hidden = YES;
 
         cell.userSharedTripArrowImg.hidden = YES;
-        cell.driverSwitcher.hidden = YES;
+        cell.tagsSwitcher.hidden = YES;
         
         if ([defaults_object(@"demoModeEnabled") boolValue]) {
             cell.userInteractionEnabled = NO;
@@ -1055,7 +1071,7 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         
         if ([track.trackOriginCode isEqual:@"OriginalDriver"]) {
             [signaturePopup showDriverSignaturePopup:@"OriginalDriver"];
-        } else if ([track.trackOriginCode isEqual:@"Passenger"]) {
+        } else if ([track.trackOriginCode isEqual:@"Passenger"] || [track.trackOriginCode isEqual:@"Passanger"]) {
             [signaturePopup showDriverSignaturePopup:@"Passenger"];
         } else if ([track.trackOriginCode isEqual:@"Bus"]) {
             [signaturePopup showDriverSignaturePopup:@"Bus"];
@@ -1078,32 +1094,31 @@ static NSString *rewardCellIdentifier = @"RewardCell";
 
 #pragma mark - Tag Origin Methods
 
-- (IBAction)changeTagOriginAlert:(id)sender {
+- (void)resetNoTagAction:(id)sender {
     
-    [HapticHelper generateFeedback:FeedbackTypeImpactMedium];
+    CGPoint senderPosition = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderPosition];
     
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil
-                                                                   message:localizeString(@"passenger_sharetown_title")
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *personalAction = [UIAlertAction actionWithTitle:localizeString(@"Personal") style:UIAlertActionStyleDefault
-                                                           handler:^(UIAlertAction *action) {
-        [self resetTagAction:sender];
+    RPTrackProcessed *track = self.tripsData[indexPath.row];
+    self.selectedTrackToken = track.trackToken;
+    
+    RPTag *tagPersonal = [[RPTag alloc] init];
+    tagPersonal.tag = @"Personal";
+    tagPersonal.source = localizeString(@"TelematicsApp");
+    
+    RPTag *tagBusiness = [[RPTag alloc] init];
+    tagBusiness.tag = @"Business";
+    tagBusiness.source = localizeString(@"TelematicsApp");
+    
+    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tagPersonal, tagBusiness, nil] from:track.trackToken completion:^(id response, NSArray *error) {
+        if ([[self.states allKeys] containsObject:track.trackToken]) {
+            NSLog(@"!!!DELETE ALL TAGS COMPLETED!!!");
+            [self.states removeObjectForKey:track.trackToken];
+        }
     }];
-    UIAlertAction *sharetownAction = [UIAlertAction actionWithTitle:localizeString(@"Sharetown") style:UIAlertActionStyleDefault
-                                                            handler:^(UIAlertAction *action) {
-        [self changeTagAction:sender];
-    }];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:localizeString(@"Cancel") style:UIAlertActionStyleCancel
-    handler:^(UIAlertAction *action) {
-        
-    }];
-    [alert addAction:personalAction];
-    [alert addAction:sharetownAction];
-    [alert addAction:cancelAction];
-    [self presentViewController:alert animated:NO completion:nil];
 }
 
-- (void)changeTagAction:(id)sender {
+- (void)setPesonalTagAction:(id)sender {
     
     CGPoint senderPosition = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderPosition];
@@ -1112,20 +1127,31 @@ static NSString *rewardCellIdentifier = @"RewardCell";
         RPTrackProcessed *track = self.tripsData[indexPath.row];
         self.selectedTrackToken = track.trackToken;
         
-        RPTag *tag = [[RPTag alloc] init];
-        tag.tag = @"Business";
-        tag.source = localizeString(@"TelematicsApp");
+        RPTag *tagPersonal = [[RPTag alloc] init];
+        tagPersonal.tag = @"Personal";
+        tagPersonal.source = localizeString(@"TelematicsApp");
         
-        [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tag, nil] to:track.trackToken completion:^(id response, NSArray *error) {
-            if (![[self.states allKeys] containsObject:track.trackToken]) {
-                NSLog(@"!!!STATES CONTAIN THIS TOKEN!!!");
-                [self.states setObject:@"1" forKey:track.trackToken];
+        RPTag *tagBusiness = [[RPTag alloc] init];
+        tagBusiness.tag = @"Business";
+        tagBusiness.source = localizeString(@"TelematicsApp");
+        
+        [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tagBusiness, nil] from:track.trackToken completion:^(id response, NSArray *error) {
+            if ([[self.states allKeys] containsObject:track.trackToken]) {
+                NSLog(@"!!!TAG STATE DELETE BUSINESS!!!");
+                [self.states removeObjectForKey:track.trackToken];
             }
+            
+            [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tagPersonal, nil] to:track.trackToken completion:^(id response, NSArray *error) {
+                if (![[self.states allKeys] containsObject:track.trackToken]) {
+                    NSLog(@"!!!TAG STATE PERSONAL NOW CONTAIN THIS TOKEN!!!");
+                    [self.states setObject:@"Personal" forKey:track.trackToken];
+                }
+            }];
         }];
     }
 }
 
-- (void)resetTagAction:(id)sender {
+- (void)setBusinessTagAction:(id)sender {
     
     CGPoint senderPosition = [sender convertPoint:CGPointZero toView:self.tableView];
     NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderPosition];
@@ -1133,15 +1159,26 @@ static NSString *rewardCellIdentifier = @"RewardCell";
     RPTrackProcessed *track = self.tripsData[indexPath.row];
     self.selectedTrackToken = track.trackToken;
     
-    RPTag *tag = [[RPTag alloc] init];
-    tag.tag = @"Business";
-    tag.source = localizeString(@"TelematicsApp");
+    RPTag *tagPersonal = [[RPTag alloc] init];
+    tagPersonal.tag = @"Personal";
+    tagPersonal.source = localizeString(@"TelematicsApp");
     
-    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tag, nil] from:track.trackToken completion:^(id response, NSArray *error) {
+    RPTag *tagBusiness = [[RPTag alloc] init];
+    tagBusiness.tag = @"Business";
+    tagBusiness.source = localizeString(@"TelematicsApp");
+    
+    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tagPersonal, nil] from:track.trackToken completion:^(id response, NSArray *error) {
         if ([[self.states allKeys] containsObject:track.trackToken]) {
-            NSLog(@"!!!DELETE THIS STATE TOKEN!!!");
+            NSLog(@"!!!TAG STATE DELETE PERSONAL!!!");
             [self.states removeObjectForKey:track.trackToken];
         }
+        
+        [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tagBusiness, nil] to:track.trackToken completion:^(id response, NSArray *error) {
+            if (![[self.states allKeys] containsObject:track.trackToken]) {
+                NSLog(@"!!!TAG STATE BUSINESS NOW CONTAIN THIS TRACK TOKEN!!!");
+                [self.states setObject:@"Business" forKey:track.trackToken];
+            }
+        }];
     }];
 }
 
@@ -1490,10 +1527,13 @@ static NSString *rewardCellIdentifier = @"RewardCell";
 }
 
 - (void)submitSignatureButtonAction:(DriverSignaturePopup *)popupView button:(UIButton *)button {
-    //[self showPreloader];
+    
+    UIViewController *currentTopVC = [self currentTopViewController];
+    [currentTopVC showPreloader];
+    
     [[RPEntry instance].api changeTrackOrigin:self.selectedDriverSignatureRole forTrackToken:self.selectedTrackToken completion:^(id response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self hidePreloader];
+            [currentTopVC hidePreloader];
             [self->signaturePopup hideDriverSignaturePopup];
             if (!error) {
                 if (self->_disableRefresh) {
@@ -1504,7 +1544,6 @@ static NSString *rewardCellIdentifier = @"RewardCell";
             }
         });
     }];
-    [self hidePreloader];
 }
 
 - (void)cancelSignatureButtonAction:(DriverSignaturePopup *)popupView button:(UIButton *)button {

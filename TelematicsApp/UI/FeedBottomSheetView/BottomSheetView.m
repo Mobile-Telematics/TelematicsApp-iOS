@@ -80,29 +80,27 @@
 }
 
 - (void)setupDriverSwitcher {
-    self.driverSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"Personal"), localizeString(@"Business")]];
+    self.tagsSwitcher = [[TagsSwitch alloc] initWithStringsArray:@[localizeString(@"None"), localizeString(@"Personal"), localizeString(@"Business")]];
     
-    self.driverSwitcher.frame = CGRectMake(19, 139, 191, 38);
-    self.driverSwitcher.font = [Font medium15Helvetica];
-    self.driverSwitcher.cornerRadius = 19;
-    if (IS_IPHONE_5 || IS_IPHONE_4) {
-        self.driverSwitcher.frame = CGRectMake(18, 138, 160, 38);
-        self.driverSwitcher.cornerRadius = 19;
-        self.driverSwitcher.font = [Font medium12Helvetica];
-    }
-    self.driverSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];
-    self.driverSwitcher.labelTextColorInsideSlider = [Color officialMainAppColor];
-    self.driverSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
-    self.driverSwitcher.sliderColor = [Color officialWhiteColor];
-    self.driverSwitcher.sliderOffset = 1.0;
-    [self addSubview:self.driverSwitcher];
+    self.tagsSwitcher.frame = CGRectMake(19, 139, 285, 38);
+    self.tagsSwitcher.font = [Font medium15Helvetica];
+    self.tagsSwitcher.cornerRadius = 19;
+    
+    self.tagsSwitcher.labelTextColorOutsideSlider = [UIColor darkGrayColor];
+    self.tagsSwitcher.labelTextColorInsideSlider = [Color officialMainAppColor];
+    self.tagsSwitcher.backgroundColor = [Color officialMainAppColorAlpha];
+    self.tagsSwitcher.sliderColor = [Color officialWhiteColor];
+    self.tagsSwitcher.sliderOffset = 1.0;
+    [self addSubview:self.tagsSwitcher];
     
     __weak typeof(self) weakSelf = self;
-    [self.driverSwitcher setPressedHandler:^(NSUInteger index) {
+    [self.tagsSwitcher setPressedHandler:^(NSUInteger index) {
         if (index == 1) {
-            [weakSelf changeTagActionForSheet:weakSelf.driverSwitcher];
+            [weakSelf setPersonalTagActionForSheet:weakSelf.tagsSwitcher];
+        } else if (index == 2) {
+            [weakSelf setBusinessTagActionForSheet:weakSelf.tagsSwitcher];
         } else {
-            [weakSelf resetTagActionForSheet:weakSelf.driverSwitcher];
+            [weakSelf resetNoTagActionForSheet:weakSelf.tagsSwitcher];
         }
     }];
 }
@@ -340,7 +338,7 @@
     if ([origin isEqual:@"OriginalDriver"]) {
         [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
         self.contentView.driverSignatureOnTripLbl.text = @"Driver";
-    } else if ([origin isEqual:@"Passanger"] || [origin isEqual:@"Passenger"]) {
+    } else if ([origin isEqual:@"Passenger"] || [origin isEqual:@"Passanger"]) {
         [self.contentView.driverSignatureOnTripBtn setBackgroundImage:[UIImage imageNamed:@"passenger_green"] forState:UIControlStateNormal];
         self.contentView.driverSignatureOnTripLbl.text = @"Passenger";
     } else if ([origin isEqual:@"Bus"]) {
@@ -368,16 +366,16 @@
 }
 
 - (void)sheetUpdateTagsButton:(NSArray*)tagsArray {
-    self.driverSwitcher.alpha = 1;
-    self.driverSwitcher.userInteractionEnabled = YES;
-    [self.driverSwitcher selectIndex:0 animated:NO];
+    self.tagsSwitcher.alpha = 1;
+    self.tagsSwitcher.userInteractionEnabled = YES;
+    [self.tagsSwitcher selectIndex:0 animated:NO];
     
     if (tagsArray.count != 0) {
         for (RPTag *tag in tagsArray) {
             if ([tag.tag isEqualToString:@"Business"]) {
-                self.driverSwitcher.alpha = 1;
-                self.driverSwitcher.userInteractionEnabled = YES;
-                [self.driverSwitcher selectIndex:1 animated:NO];
+                self.tagsSwitcher.alpha = 1;
+                self.tagsSwitcher.userInteractionEnabled = YES;
+                [self.tagsSwitcher selectIndex:1 animated:NO];
             }
         }
     }
@@ -508,37 +506,67 @@
 }
 
 
-#pragma mark - SharetownTag Origin Methods
+#pragma mark - Tags Personal/Business Origin Methods
 
-- (void)changeTagActionForSheet:(id)sender {
+- (void)resetNoTagActionForSheet:(id)sender {
     
     defaults_set_object(@"needUpdateForFeedScreen", @(YES));
     NSString *tToken = defaults_object(@"selectedTrackToken");
     
-    RPTag *tag = [[RPTag alloc] init];
-    tag.tag = @"Business";
-    tag.source = localizeString(@"TelematicsApp");
+    RPTag *tagPersonal = [[RPTag alloc] init];
+    tagPersonal.tag = @"Personal";
+    tagPersonal.source = localizeString(@"TelematicsApp");
     
-    [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tag, nil] to:tToken completion:^(id response, NSArray *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"TAG BUSINESS ADDED ON SHEET");
-        });
+    RPTag *tagBusiness = [[RPTag alloc] init];
+    tagBusiness.tag = @"Business";
+    tagBusiness.source = localizeString(@"TelematicsApp");
+    
+    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tagPersonal, tagBusiness, nil] from:tToken completion:^(id response, NSArray *error) {
+        NSLog(@"DELETE ALL TAGS COMPLETED ON SHEET");
     }];
 }
 
-- (void)resetTagActionForSheet:(id)sender {
+- (void)setPersonalTagActionForSheet:(id)sender {
     
     defaults_set_object(@"needUpdateForFeedScreen", @(YES));
     NSString *tToken = defaults_object(@"selectedTrackToken");
     
-    RPTag *tag = [[RPTag alloc] init];
-    tag.tag = @"Business";
-    tag.source = localizeString(@"TelematicsApp");
+    RPTag *tagPersonal = [[RPTag alloc] init];
+    tagPersonal.tag = @"Personal";
+    tagPersonal.source = localizeString(@"TelematicsApp");
     
-    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tag, nil] from:tToken completion:^(id response, NSArray *error) {
-        dispatch_async(dispatch_get_main_queue(), ^{
-            NSLog(@"TAG BUSINESS DELETED ON SHEET");
-        });
+    RPTag *tagBusiness = [[RPTag alloc] init];
+    tagBusiness.tag = @"Business";
+    tagBusiness.source = localizeString(@"TelematicsApp");
+    
+    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tagBusiness, nil] from:tToken completion:^(id response, NSArray *error) {
+        NSLog(@"TAG BUSINESS DELETED ON SHEET");
+        
+        [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tagPersonal, nil] to:tToken completion:^(id response, NSArray *error) {
+            NSLog(@"TAG PERSONAL ADDED ON SHEET");
+        }];
+    }];
+}
+
+- (void)setBusinessTagActionForSheet:(id)sender {
+    
+    defaults_set_object(@"needUpdateForFeedScreen", @(YES));
+    NSString *tToken = defaults_object(@"selectedTrackToken");
+    
+    RPTag *tagPersonal = [[RPTag alloc] init];
+    tagPersonal.tag = @"Personal";
+    tagPersonal.source = localizeString(@"TelematicsApp");
+    
+    RPTag *tagBusiness = [[RPTag alloc] init];
+    tagBusiness.tag = @"Business";
+    tagBusiness.source = localizeString(@"TelematicsApp");
+    
+    [[RPEntry instance].api removeTrackTags:[[NSArray alloc] initWithObjects:tagPersonal, nil] from:tToken completion:^(id response, NSArray *error) {
+        NSLog(@"TAG PERSONAL DELETED ON SHEET");
+        
+        [[RPEntry instance].api addTrackTags:[[NSArray alloc] initWithObjects:tagBusiness, nil] to:tToken completion:^(id response, NSArray *error) {
+            NSLog(@"TAG BUSINESS ADDED ON SHEET");
+        }];
     }];
 }
 

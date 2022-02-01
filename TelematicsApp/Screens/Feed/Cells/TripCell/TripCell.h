@@ -22,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView        *dotAImg;
 @property (weak, nonatomic) IBOutlet UIImageView        *dotBImg;
 
-@property (strong, nonatomic) TagsSwitch                *driverSwitcher;
+@property (strong, nonatomic) TagsSwitch                *tagsSwitcher;
 
 @property (weak, nonatomic) IBOutlet UILabel            *kmLabel;
 @property (weak, nonatomic) IBOutlet UILabel            *pointsLabel;

@@ -36,7 +36,7 @@
     self.bottomSheetView.userInteractionEnabled = YES;
     self.bottomSheetView.translatesAutoresizingMaskIntoConstraints = false;
     
-    self.bottomSheetView.driverSwitcher.hidden = YES;
+    self.bottomSheetView.tagsSwitcher.hidden = YES;
     self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
     self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
     
@@ -272,7 +272,7 @@
         
         self.bottomSheetBottomConstaint.constant = [self.delegate bounceHeight] - [self.delegate expandedHeight];
         
-        self.bottomSheetView.driverSwitcher.hidden = NO;
+        self.bottomSheetView.tagsSwitcher.hidden = NO;
         self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = NO;
         self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = NO;
         
@@ -324,7 +324,7 @@
         CGFloat bottomSheetHeight = [self.delegate bounceHeight] - [self.delegate collapsedHeight];
         self.bottomSheetBottomConstaint.constant = bottomSheetHeight;
         
-        self.bottomSheetView.driverSwitcher.hidden = YES;
+        self.bottomSheetView.tagsSwitcher.hidden = YES;
         self.bottomSheetView.contentView.driverSignatureOnTripBtn.hidden = YES;
         self.bottomSheetView.contentView.driverSignatureOnTripLbl.hidden = YES;
         

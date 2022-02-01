@@ -248,7 +248,7 @@
     
     if ([self.track.trackOriginCode isEqual:@"OriginalDriver"]) {
         [self.bottomSheetPresenter updateTrackOriginButton:@"OriginalDriver"];
-    } else if ([self.track.trackOriginCode isEqual:@"Passanger"] || [self.track.trackOriginCode isEqual:@"Passenger"]) {
+    } else if ([self.track.trackOriginCode isEqual:@"Passenger"] || [self.track.trackOriginCode isEqual:@"Passanger"]) {
         [self.bottomSheetPresenter updateTrackOriginButton:@"Passenger"];
     } else if ([self.track.trackOriginCode isEqual:@"Bus"]) {
         [self.bottomSheetPresenter updateTrackOriginButton:@"Bus"];
@@ -1298,6 +1298,9 @@
 - (void)submitSignatureButtonAction:(DriverSignaturePopup *)popupView button:(UIButton *)button {
     NSString *tToken = defaults_object(@"selectedTrackToken");
     
+    UIViewController *currentTopVC = [self currentTopViewController];
+    [currentTopVC showPreloader];
+    
     [[RPEntry instance].api changeTrackOrigin:self.selectedDriverSignatureRole forTrackToken:tToken completion:^(id response, NSError *error) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if (!error) {
@@ -1323,6 +1326,8 @@
                     [self.bottomSheetPresenter updateTrackOriginButton:@"Other"];
                 }
             }
+            
+            [currentTopVC hidePreloader];
         });
     }];
 }
@@ -1396,6 +1401,17 @@
             }
         });
     }];
+}
+
+
+#pragma mark - View Detecting
+
+- (UIViewController *)currentTopViewController {
+    UIViewController *topVC = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    while (topVC.presentedViewController) {
+        topVC = topVC.presentedViewController;
+    }
+    return topVC;
 }
 
 @end

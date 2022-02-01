@@ -56,6 +56,7 @@
 }
 
 @property (strong, nonatomic) TelematicsAppModel                *appModel;
+@property (strong, nonatomic) TelematicsLeaderboardModel        *leaderboardModel;
 
 @property (strong, nonatomic) DashboardResultResponse           *dashboard;
 @property (strong, nonatomic) LatestDayScoringResultResponse    *latestScoring;
@@ -287,6 +288,11 @@
         self.appModel.notFirstRunApp = YES;
         //CREATE USER COREDATA MODEL
         self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+        
+        [TelematicsLeaderboardModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"leaderboard_user == 1"]];
+        self.leaderboardModel = [TelematicsLeaderboardModel MR_createEntity];
+        self.leaderboardModel.leaderboard_user = @1;
+        self.leaderboardModel = [TelematicsLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
         
         self.disableCounting = YES;
         [self startFetchStatisticData];
@@ -3004,7 +3010,7 @@
     [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
     RPTag *tag = [[RPTag alloc] init];
     tag.tag = self.jobsOnDutyTimerTextField.text;
-    tag.source = @"ZenRoad OnDemand";
+    tag.source = @"TelematicsApp OnDemand";
     [[RPEntry instance].api addFutureTrackTag:tag completion:nil];
     
     defaults_set_object(@"currentJobNameTitle", self.jobsOnDutyTimerTextField.text);
@@ -3071,7 +3077,7 @@
     [[RPEntry instance].api removeAllFutureTrackTagsWithСompletion:^(RPTagStatus status, NSInteger timestamp) {}];
     RPTag *tag = [[RPTag alloc] init];
     tag.tag = [[accJobs objectAtIndex:indexPath.row] valueForKey:@"currentJobName"];
-    tag.source = @"ZenRoad OnDemand";
+    tag.source = @"TelematicsApp OnDemand";
     [[RPEntry instance].api addFutureTrackTag:tag completion:nil];
     
     defaults_set_object(@"onDemandTracking", @(YES));

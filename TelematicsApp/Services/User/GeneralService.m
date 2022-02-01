@@ -242,6 +242,7 @@
     self.appModel.notFirstRunApp = NO;
     
     [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
+    [TelematicsLeaderboardModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"leaderboard_user == 1"]];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains (NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];

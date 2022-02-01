@@ -63,7 +63,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, weak) IBOutlet UIButton       *deleteTripBackgroundBtn;
 @property (nonatomic, weak) IBOutlet UIImageView    *deleteTripIcon;
 
-@property (strong, nonatomic) TagsSwitch            *driverSwitcher;
+@property (strong, nonatomic) TagsSwitch            *tagsSwitcher;
 
 - (instancetype)initWith:(UIView *)contentView isSheetCollapsed:(BOOL)isCollapsed;
 - (void)update:(ChevronViewState)state;

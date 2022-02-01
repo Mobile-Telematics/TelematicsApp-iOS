@@ -10,17 +10,17 @@
 
 @interface TagsSwitch ()
 
-@property (strong, nonatomic) NSMutableArray            *labels;
-@property (strong, nonatomic) NSMutableArray            *onTopLabels;
-@property (strong, nonatomic) NSArray                   *strings;
+@property (strong, nonatomic) NSMutableArray    *labels;
+@property (strong, nonatomic) NSMutableArray    *onTopLabels;
+@property (strong, nonatomic) NSArray           *strings;
 
 @property (strong, nonatomic) void (^handlerBlock)(NSUInteger index);
 @property (strong, nonatomic) void (^willBePressedHandlerBlock)(NSUInteger index);
 
-@property (strong, nonatomic) UIView                    *backgroundView;
-@property (strong, nonatomic) UIView                    *sliderView;
+@property (strong, nonatomic) UIView            *backgroundView;
+@property (strong, nonatomic) UIView            *sliderView;
 
-@property (nonatomic) NSInteger                         selectedIndex;
+@property (nonatomic) NSInteger                 selectedIndex;
 
 @end
 
@@ -93,6 +93,7 @@
         label.text = string;
         label.font = self.font;
         label.adjustsFontSizeToFitWidth = YES;
+        //label.adjustsLetterSpacingToFitWidth = YES;
         label.textAlignment = NSTextAlignmentCenter;
         label.textColor = self.labelTextColorInsideSlider;
         [self.sliderView addSubview:label];
@@ -191,11 +192,8 @@
     self.selectedIndex = index;
     
     if (animated) {
-        
         [self animateChangeToIndex:index callHandler:YES];
-        
     } else {
-        
         [self changeToIndexWithoutAnimation:index callHandler:YES];
     }
 }

@@ -229,6 +229,11 @@
 - (IBAction)confirmProceedBtnAction:(id)sender {
     [self showPreloader];
     
+    if (_modeSelect == 0) {
+        [self dismissViewControllerAnimated:NO completion:nil];
+        return;
+    }
+    
     if (_modeSelect == 1) {
         defaults_set_object(@"onDemandTracking", @(NO));
         [RPEntry instance].disableTracking = NO;

@@ -100,9 +100,11 @@
         [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
             if (!error && [response isSuccesful]) {
                 self.leaderboard = response;
-                self.leaderboardModel.leaderboardGlobal = self.leaderboard.Result.Users;
+                
+                self.leaderboardModel.leaderboardGlobal = @[self.leaderboard.Result];
+                
                 if (self.leaderboard.Result.Users.count == 0)
-                    self.placeholderMainView.hidden = NO;
+                    self.placeholderMainView.hidden = YES;
                 else
                     self.placeholderMainView.hidden = YES;
                 [CoreDataCoordinator saveCoreDataCoordinatorContext];
