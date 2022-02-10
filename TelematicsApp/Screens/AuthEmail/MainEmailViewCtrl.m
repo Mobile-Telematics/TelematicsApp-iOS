@@ -201,6 +201,9 @@
                                                     
                                                     [GeneralService sharedService].device_token_number = allUsersData[@"deviceToken"];
                                                     [GeneralService sharedService].firebase_user_id = allUsersData[@"userId"];
+                                                    if (!allUsersData[@"userId"]) {
+                                                        [GeneralService sharedService].firebase_user_id = existUser.user.uid;
+                                                    }
                                                     
                                                     [GeneralService sharedService].stored_userEmail = allUsersData[@"email"];
                                                     [GeneralService sharedService].stored_userPhone = allUsersData[@"phone"];
