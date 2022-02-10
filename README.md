@@ -108,7 +108,11 @@ Step 14: Now you need to change rules for your Realtime Database. You need to go
 
 ![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f14.png)
 
-Step 15: Open our TelematicsApp in xCode, make sure to transfer the `GoogleService-Info.plist` file to your project (See Step 5 above) and Enjoy! 
+Important! After creating a user, his data will be entered into the database with the following field names. The structure is identical for iOS and Android and cannot be changed to sync user data across mobile platforms. 
+
+![](https://github.com/Mobile-Telematics/TelematicsAppFirebase-iOS/raw/master/img_readme/f16.png)
+
+Step 15: Open our TelematicsApp.xcworkspace in xCode, make sure to transfer the `GoogleService-Info.plist` file to your project (See Step 5 above), instanceId & instanceKey in `Configurator.plist` and Enjoy! 
 
 Build & Run!
 
