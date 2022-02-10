@@ -174,7 +174,7 @@
                                                                                      @"address": @"",
                                                                                      @"gender": @"",
                                                                                      @"maritalStatus": @"",
-                                                                                     @"childrenCount": @"",
+                                                                                     @"childrenCount": @0,
                                                                                      @"clientId": @"",
                                                                                      @"profilePictureLink": @""
                                                }];

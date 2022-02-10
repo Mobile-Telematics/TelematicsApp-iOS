@@ -128,6 +128,17 @@ typedef void (^CompleteUpdateUserProfile)(NSString *success);
                                               result:(void (^)(NSString *))completion;
 
 
+//
+// Create new user with invite code & get deviceToken, jwToken, refreshToken
+// instanceId, instanceKey & invite code required
+//
+- (void)createDeviceTokenForUserWithInviteCodeAndInstanceId:(NSString *)instanceId
+                                                instanceKey:(NSString *)instanceKey
+                                                 inviteCode:(NSString *)inviteCode
+                                                   clientId:(NSString *)clientId
+                                                     result:(void (^)(NSString *, NSString *, NSString *))completion;
+
+    
 //+ (id)sharedManager;
 + (LoginAuthCore *)sharedManager;
 

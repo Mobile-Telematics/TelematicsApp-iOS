@@ -324,7 +324,7 @@
                                                                                      @"birthday": @"",
                                                                                      @"address": @"",
                                                                                      @"maritalStatus": @"",
-                                                                                     @"childrenCount": @"",
+                                                                                     @"childrenCount": @0,
                                                                                      @"clientId": @"",
                                                                                      @"profilePictureLink": @""
                                                }];

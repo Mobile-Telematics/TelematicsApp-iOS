@@ -33,6 +33,6 @@
 @property (nonatomic, strong) NSNumber<Optional>* AccountIsComplete;
 @property (nonatomic, strong) NSString<Optional>* Address;
 @property (nonatomic, strong) NSString<Optional>* Marital;
-@property (nonatomic, strong) NSString<Optional>* ChildrenCount;
+@property (nonatomic, strong) NSNumber<Optional>* ChildrenCount;
 
 @end

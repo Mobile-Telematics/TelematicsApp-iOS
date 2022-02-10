@@ -17,7 +17,7 @@
 @property (nonatomic, strong) NSString<Optional>* Gender;
 @property (nonatomic, strong) NSString<Optional>* Birthday;
 @property (nonatomic, strong) NSString<Optional>* MaritalStatus;
-@property (nonatomic, strong) NSString<Optional>* ChildrenCount;
+@property (nonatomic, strong) NSNumber<Optional>* ChildrenCount;
 @property (nonatomic, strong) NSString<Optional>* Address;
 @property (nonatomic, strong) NSString<Optional>* Country;
 @property (nonatomic, strong) NSString<Optional>* District;
