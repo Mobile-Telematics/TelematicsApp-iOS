@@ -323,6 +323,8 @@
                                                                                      @"lastName": @"",
                                                                                      @"birthday": @"",
                                                                                      @"address": @"",
+                                                                                     @"maritalStatus": @"",
+                                                                                     @"childrenCount": @"",
                                                                                      @"clientId": @"",
                                                                                      @"profilePictureLink": @""
                                                }];
