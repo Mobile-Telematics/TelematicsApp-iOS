@@ -273,6 +273,7 @@
     
     //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
+    self.leaderboardModel = [TelematicsLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
     
     [self setupRoundViews];
     [self setupAdditionalTranslation];
@@ -282,11 +283,10 @@
     if (!self.appModel.notFirstRunApp) {
         [self showPreloader];
         
+        //CREATE USER COREDATA MODEL
         [TelematicsAppModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"current_user == 1"]];
         self.appModel = [TelematicsAppModel MR_createEntity];
         self.appModel.current_user = @1;
-        self.appModel.notFirstRunApp = YES;
-        //CREATE USER COREDATA MODEL
         self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
         
         [TelematicsLeaderboardModel MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"leaderboard_user == 1"]];
@@ -294,6 +294,7 @@
         self.leaderboardModel.leaderboard_user = @1;
         self.leaderboardModel = [TelematicsLeaderboardModel MR_findFirstByAttribute:@"leaderboard_user" withValue:@1];
         
+        self.appModel.notFirstRunApp = YES;
         self.disableCounting = YES;
         [self startFetchStatisticData];
         
