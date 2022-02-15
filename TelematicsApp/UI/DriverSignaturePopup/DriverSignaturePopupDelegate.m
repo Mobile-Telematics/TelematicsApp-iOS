@@ -210,7 +210,7 @@
     
     if ([self.signature_selectedEventTypeMarker isEqualToString:@"OriginalDriver"]) {
         [self.customView.event1Btn setBackgroundImage:[UIImage imageNamed:@"driver_green"] forState:UIControlStateNormal];
-    } else if ([self.signature_selectedEventTypeMarker isEqualToString:@"Passenger"]) {
+    } else if ([self.signature_selectedEventTypeMarker isEqualToString:@"Passenger"] || [self.signature_selectedEventTypeMarker isEqualToString:@"Passanger"]) {
         [self.customView.event2Btn setBackgroundImage:[UIImage imageNamed:@"passenger_green"] forState:UIControlStateNormal];
     } else if ([self.signature_selectedEventTypeMarker isEqualToString:@"Bus"]) {
         [self.customView.event3Btn setBackgroundImage:[UIImage imageNamed:@"bus_green"] forState:UIControlStateNormal];

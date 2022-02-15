@@ -1310,7 +1310,7 @@
                 
                 if ([self.selectedDriverSignatureRole isEqual:@"OriginalDriver"]) {
                     [self.bottomSheetPresenter updateTrackOriginButton:@"OriginalDriver"];
-                } else if ([self.selectedDriverSignatureRole isEqual:@"Passenger"]) {
+                } else if ([self.selectedDriverSignatureRole isEqual:@"Passenger"] || [self.selectedDriverSignatureRole isEqual:@"Passanger"]) {
                     [self.bottomSheetPresenter updateTrackOriginButton:@"Passenger"];
                 } else if ([self.selectedDriverSignatureRole isEqual:@"Bus"]) {
                     [self.bottomSheetPresenter updateTrackOriginButton:@"Bus"];
