@@ -16,12 +16,9 @@
 #import "EcoResponse.h"
 #import "EcoResultResponse.h"
 #import "IndicatorsResponse.h"
-#import "StreaksResponse.h"
 #import "UIView+Extension.h"
-#import "DriveCoinsSegmentView.h"
 #import "DaysCoinsSegmentView.h"
 #import "CoinsChart.h"
-#import "StreakCell.h"
 #import "ProgressBarView.h"
 #import "UICountingLabel.h"
 #import "NSDate+UI.h"
@@ -29,8 +26,7 @@
 #import "NSString+Date.h"
 
 //DRIVECOINS SCREEN WITH SAMPLE IMPLEMENTATION
-@interface DriveCoinsViewController () <UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource, DriveCoinsSegmentViewDelegate, DaysCoinsSegmentViewDelegate> {
-    DriveCoinsSegmentView       *_driveCoinsMainSegmentView;
+@interface DriveCoinsViewController () <UIScrollViewDelegate, DaysCoinsSegmentViewDelegate> {
     DaysCoinsSegmentView        *_daysSegmentView;
 }
 
@@ -46,11 +42,9 @@
 @property (weak, nonatomic) IBOutlet UIScrollView        *rewardsScrollView;
 @property (strong, nonatomic) CoinsDetailsResponse       *coinsDailyDetails;
 @property (strong, nonatomic) IndicatorsResultResponse   *indicators;
-@property (strong, nonatomic) StreaksResultResponse      *streaks;
 @property (strong, nonatomic) EcoResultResponse          *ecoPercents;
 @property (strong, nonatomic) CoinsResultResponse        *coinsReload;
 
-@property (weak, nonatomic) IBOutlet UIView              *segmentBackView;
 @property (weak, nonatomic) IBOutlet UIView              *daysSegmentBackView;
 
 @property (weak, nonatomic) IBOutlet UIView              *additional1View;
@@ -102,9 +96,6 @@
 @property (nonatomic) NSTimer                           *coins_timerTyres;
 @property (nonatomic) NSTimer                           *coins_timerCost;
 
-//STREAKS
-@property (weak, nonatomic) IBOutlet UITableView        *streaksTableView;
-
 @end
 
 @implementation DriveCoinsViewController
@@ -115,12 +106,6 @@
     
     //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
-    
-    self.streaksTableView.dataSource = self;
-    self.streaksTableView.delegate = self;
-    [self.streaksTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    [self.streaksTableView setSeparatorColor:[UIColor lightGrayColor]];
-    self.streaksTableView.hidden = YES;
     
     UITabBarItem *tabBarItem2 = [self.tabBarController.tabBar.items objectAtIndex:[[Configurator sharedInstance].rewardsTabBarNumber intValue]];
     [tabBarItem2 setImage:[[UIImage imageNamed:@"rewards_unselected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -154,12 +139,6 @@
     self.additional1View.hidden = NO;
     self.additional2View.hidden = YES;
     self.additional3View.hidden = YES;
-    
-    _driveCoinsMainSegmentView = [[DriveCoinsSegmentView alloc] initWithItems:@[localizeString(@"DRIVECOINS"),
-                                                                                localizeString(@"STREAKS")] andNormalFontColor:[Color darkGrayColor43] andSelectedColor:[Color darkGrayColor43] andLineColor:[Color darkGrayColor43] andFrame:CGRectMake(0, 0, self.segmentBackView.frame.size.width, self.segmentBackView.frame.size.height)];
-    _driveCoinsMainSegmentView.delegate = self;
-    [self.segmentBackView addSubview:_driveCoinsMainSegmentView];
-    self.segmentBackView.hidden = NO;
     
     _daysSegmentView = [[DaysCoinsSegmentView alloc] initWithItems:@[localizeString(@"ALL TIME"),
                                                             localizeString(@"DAY"),
@@ -207,14 +186,6 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    
-    if ([defaults_object(@"userWantOpenStreaksNow") boolValue]) {
-        [self->_driveCoinsMainSegmentView setSelectedIndex:1];
-        defaults_set_object(@"userWantOpenStreaksNow", @(0));
-    } else {
-        [self->_driveCoinsMainSegmentView setSelectedIndex:0];
-        defaults_set_object(@"userWantOpenStreaksNow", @(0));
-    }
     
     //[self->_driveCoinsMainSegmentView setSelectedIndex:0];
     [self->_daysSegmentView setSelectedIndex:0];
@@ -290,7 +261,6 @@
     });
     
     [self startFetchCoinsFactorsFirstTime];
-    [self startFetchStreaksImmediatily];
     
     if (totalUserCoins.intValue == 0) {
         [self reloadCoins:nil];
@@ -309,10 +279,8 @@
 
 - (void)segmentDriveCoinsChose:(NSInteger)index {
     if (index == 0) {
-        self.streaksTableView.hidden = YES;
         self.rewardsScrollView.scrollEnabled = YES;
     } else if (index == 1) {
-        self.streaksTableView.hidden = NO;
         [_rewardsScrollView setContentOffset:CGPointZero animated:YES];
         self.rewardsScrollView.scrollEnabled = NO;
     }
@@ -667,22 +635,6 @@
 }
 
 
-#pragma mark - Streaks Backend
-
-- (void)startFetchStreaksImmediatily {
-    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-        NSLog(@"%s %@ %@", __func__, response, error);
-        if (!error && [response isSuccesful]) {
-            self.streaks = ((StreaksResponse *)response).Result;
-            NSLog(@"Streaks Ok");
-            [self.streaksTableView reloadData];
-        } else {
-            NSLog(@"%s %@ %@", __func__, response, error);
-        }
-    }] getIndicatorsStreaksSection];
-}
-
-
 #pragma mark - Fetch daily coins 2 weeks & graph setup
 
 - (void)getCoinsEverydayDetailsForGraph:(NSDate *)startDate endDate:(NSDate *)endDate {
@@ -807,542 +759,6 @@
     };
     
     [_coinsChartView setChartData:chartData];
-}
-
-
-#pragma mark - Streaks TableView
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 185;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    StreakCell *streakCell = [tableView dequeueReusableCellWithIdentifier:@"StreakCell"];
-    if (indexPath.row == 0) {
-        
-        //STREAK TITLE ACCELERATION
-        streakCell.mainTitleLbl.text = @"Trips Without Harsh Acceleration";
-        streakCell.mainStreakImg.image = [UIImage imageNamed:@"streak_up"];
-        
-        //FIRST SECTION
-        float roundCurrentDistance = [self.streaks.StreakAccelerationCurrentDistanceKm floatValue];
-        NSString *currentDistanceString = [NSString stringWithFormat:@"%.0f km", roundCurrentDistance];
-        
-        float roundCurrentDuration = [self.streaks.StreakAccelerationCurrentDurationSec floatValue] / 60;
-        NSString *currentDurationString = [NSString stringWithFormat:@"%.0f m", roundCurrentDuration];
-        
-        float roundBestDistance = [self.streaks.StreakAccelerationBestDistanceKm floatValue];
-        NSString *bestDistanceString = [NSString stringWithFormat:@"%.f km", roundBestDistance];
-        
-        float roundBestDuration = [self.streaks.StreakAccelerationBestDurationSec floatValue] / 60;
-        NSString *bestDurationString = [NSString stringWithFormat:@"%.0f m", roundBestDuration];
-        
-        //Miles convert
-        if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-            float currentInMiles = convertKmToMiles(roundCurrentDistance);
-            currentDistanceString = [NSString stringWithFormat:@"%.1f mi", currentInMiles];
-            float bestInMiles = convertKmToMiles(roundBestDistance);
-            bestDistanceString = [NSString stringWithFormat:@"%.1f mi", bestInMiles];
-        }
-        
-        NSString *currentFinal = [NSString stringWithFormat:@"%@  |  %@", currentDistanceString, currentDurationString];
-        NSString *bestFinal = [NSString stringWithFormat:@"%@  |  %@", bestDistanceString, bestDurationString];
-        
-        streakCell.currentValueLbl.text = currentFinal;
-        streakCell.bestValueLbl.text = bestFinal;
-        
-        //SECOND SECTION ATTRIBUTED STRING CURRENT
-        NSString *currentStreakCounter = self.streaks.StreakAccelerationCurrentStreak.stringValue ? self.streaks.StreakAccelerationCurrentStreak.stringValue : @"0";
-        NSString *currentStreakItem = localizeString(@"trips"); //if ([currentStreakCounter isEqualToString:@""]) { currentStreakItem = @""; };
-        NSString *currentStreakString = [NSString stringWithFormat:@"%@ %@", currentStreakCounter, currentStreakItem];
-        
-        NSMutableAttributedString *currentStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:currentStreakString];
-        
-        NSRange currentRangeTotalPoints = [currentStreakString rangeOfString:currentStreakCounter];
-        UIFont *currentFontTotalPoints = [Font heavy26];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:currentRangeTotalPoints];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTotalPoints range:currentRangeTotalPoints];
-        
-        NSRange currentRangeTripsAdd = [currentStreakString rangeOfString:currentStreakItem];
-        UIFont *currentFontTripsAdd = [Font medium15];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:currentRangeTripsAdd];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTripsAdd range:currentRangeTripsAdd];
-        
-        //SECOND SECTION ATTRIBUTED STRING BEST
-        NSString *bestStreakCounter = self.streaks.StreakAccelerationBest.stringValue ? self.streaks.StreakAccelerationBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips");
-        NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
-        
-        NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
-        
-        NSRange bestRangeTotalPoints = [bestStreakString rangeOfString:bestStreakCounter];
-        UIFont *bestFontTotalPoints = [Font heavy26];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTotalPoints];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTotalPoints range:bestRangeTotalPoints];
-        
-        NSRange bestRangeTripsAdd = [bestStreakString rangeOfString:bestStreakItem];
-        UIFont *bestFontTripsAdd = [Font medium15];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTripsAdd];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTripsAdd range:bestRangeTripsAdd];
-        
-        streakCell.section1ValueLbl.attributedText = currentStreakCompleteText;
-        streakCell.section2ValueLbl.attributedText = bestStreakCompleteText;
-        
-        //THIRD SECTION
-        NSDate *currentStartDate = [NSDate dateWithISO8601String:self.streaks.StreakAccelerationCurrentFromDate];
-        NSDate *currentEndDate = [NSDate dateWithISO8601String:self.streaks.StreakAccelerationCurrentToDate];
-        NSString *currentStartDateString = [currentStartDate dateStringShortYear];
-        NSString *currentEndDateString = [currentEndDate dateStringShortYear];
-        
-        NSDate *bestStartDate = [NSDate dateWithISO8601String:self.streaks.StreakAccelerationBestFromDate];
-        NSDate *bestEndDate = [NSDate dateWithISO8601String:self.streaks.StreakAccelerationBestToDate];
-        NSString *bestStartDateString = [bestStartDate dateStringShortYear];
-        NSString *bestEndDateString = [bestEndDate dateStringShortYear];
-        
-        if ([defaults_object(@"needDateFormatInverse") boolValue]) {
-            currentStartDateString = [currentStartDate dateStringShortYearInverse];
-            currentEndDateString = [currentEndDate dateStringShortYearInverse];
-            bestStartDateString = [bestStartDate dateStringShortYearInverse];
-            bestEndDateString = [bestEndDate dateStringShortYearInverse];
-        }
-        
-        NSString *currentTimeFinal = [NSString stringWithFormat:@"%@ to %@", currentStartDateString, currentEndDateString];
-        NSString *bestTimeFinal = [NSString stringWithFormat:@"%@ to %@", bestStartDateString, bestEndDateString];
-        
-        streakCell.dateTimeSection1Lbl.text = currentTimeFinal;
-        streakCell.dateTimeSection2Lbl.text = bestTimeFinal;
-        
-        if (currentStartDate == nil) {
-            streakCell.currentValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.bestValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.dateTimeSection1Lbl.text = localizeString(@"a best yet");
-            streakCell.dateTimeSection2Lbl.text = localizeString(@"a best yet");
-            streakCell.currentValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.bestValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection1Lbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection2Lbl.textColor = [Color darkGrayColor83];
-        }
-        
-    } else if (indexPath.row == 1) {
-        
-        //STREAK TITLE BRAKING
-        streakCell.mainTitleLbl.text = @"Trips Without Hard Braking";
-        streakCell.mainStreakImg.image = [UIImage imageNamed:@"lead_deceleration"];
-        
-        //FIRST SECTION
-        float roundCurrentDistance = [self.streaks.StreakBrakingCurrentDistanceKm floatValue];
-        NSString *currentDistanceString = [NSString stringWithFormat:@"%.0f km", roundCurrentDistance];
-        
-        float roundCurrentDuration = [self.streaks.StreakBrakingCurrentDurationSec floatValue] / 60;
-        NSString *currentDurationString = [NSString stringWithFormat:@"%.0f m", roundCurrentDuration];
-        
-        float roundBestDistance = [self.streaks.StreakBrakingBestDistanceKm floatValue];
-        NSString *bestDistanceString = [NSString stringWithFormat:@"%.f km", roundBestDistance];
-        
-        float roundBestDuration = [self.streaks.StreakBrakingBestDurationSec floatValue] / 60;
-        NSString *bestDurationString = [NSString stringWithFormat:@"%.0f m", roundBestDuration];
-        
-        //Miles convert
-        if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-            float currentInMiles = convertKmToMiles(roundCurrentDistance);
-            currentDistanceString = [NSString stringWithFormat:@"%.1f mi", currentInMiles];
-            float bestInMiles = convertKmToMiles(roundBestDistance);
-            bestDistanceString = [NSString stringWithFormat:@"%.1f mi", bestInMiles];
-        }
-        
-        NSString *currentFinal = [NSString stringWithFormat:@"%@  |  %@", currentDistanceString, currentDurationString];
-        NSString *bestFinal = [NSString stringWithFormat:@"%@  |  %@", bestDistanceString, bestDurationString];
-        
-        streakCell.currentValueLbl.text = currentFinal;
-        streakCell.bestValueLbl.text = bestFinal;
-        
-        //SECOND SECTION ATTRIBUTED STRING CURRENT
-        NSString *currentStreakCounter = self.streaks.StreakBrakingCurrentStreak.stringValue ? self.streaks.StreakBrakingCurrentStreak.stringValue : @"0";
-        NSString *currentStreakItem = localizeString(@"trips");
-        NSString *currentStreakString = [NSString stringWithFormat:@"%@ %@", currentStreakCounter, currentStreakItem];
-        
-        NSMutableAttributedString *currentStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:currentStreakString];
-        
-        NSRange currentRangeTotalPoints = [currentStreakString rangeOfString:currentStreakCounter];
-        UIFont *currentFontTotalPoints = [Font heavy26];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:currentRangeTotalPoints];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTotalPoints range:currentRangeTotalPoints];
-        
-        NSRange currentRangeTripsAdd = [currentStreakString rangeOfString:currentStreakItem];
-        UIFont *currentFontTripsAdd = [Font medium15];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:currentRangeTripsAdd];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTripsAdd range:currentRangeTripsAdd];
-        
-        //SECOND SECTION ATTRIBUTED STRING BEST
-        NSString *bestStreakCounter = self.streaks.StreakBrakingBest.stringValue ? self.streaks.StreakBrakingBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips");
-        NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
-        
-        NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
-        
-        NSRange bestRangeTotalPoints = [bestStreakString rangeOfString:bestStreakCounter];
-        UIFont *bestFontTotalPoints = [Font heavy26];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTotalPoints];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTotalPoints range:bestRangeTotalPoints];
-        
-        NSRange bestRangeTripsAdd = [bestStreakString rangeOfString:bestStreakItem];
-        UIFont *bestFontTripsAdd = [Font medium15];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTripsAdd];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTripsAdd range:bestRangeTripsAdd];
-        
-        streakCell.section1ValueLbl.attributedText = currentStreakCompleteText;
-        streakCell.section2ValueLbl.attributedText = bestStreakCompleteText;
-        
-        //THIRD SECTION
-        NSDate *currentStartDate = [NSDate dateWithISO8601String:self.streaks.StreakBrakingCurrentFromDate];
-        NSDate *currentEndDate = [NSDate dateWithISO8601String:self.streaks.StreakBrakingCurrentToDate];
-        NSString *currentStartDateString = [currentStartDate dateStringShortYear];
-        NSString *currentEndDateString = [currentEndDate dateStringShortYear];
-        
-        NSDate *bestStartDate = [NSDate dateWithISO8601String:self.streaks.StreakBrakingBestFromDate];
-        NSDate *bestEndDate = [NSDate dateWithISO8601String:self.streaks.StreakBrakingBestToDate];
-        NSString *bestStartDateString = [bestStartDate dateStringShortYear];
-        NSString *bestEndDateString = [bestEndDate dateStringShortYear];
-        
-        if ([defaults_object(@"needDateFormatInverse") boolValue]) {
-            currentStartDateString = [currentStartDate dateStringShortYearInverse];
-            currentEndDateString = [currentEndDate dateStringShortYearInverse];
-            bestStartDateString = [bestStartDate dateStringShortYearInverse];
-            bestEndDateString = [bestEndDate dateStringShortYearInverse];
-        }
-        
-        NSString *currentTimeFinal = [NSString stringWithFormat:@"%@ to %@", currentStartDateString, currentEndDateString];
-        NSString *bestTimeFinal = [NSString stringWithFormat:@"%@ to %@", bestStartDateString, bestEndDateString];
-        
-        streakCell.dateTimeSection1Lbl.text = currentTimeFinal;
-        streakCell.dateTimeSection2Lbl.text = bestTimeFinal;
-        
-        if (currentStartDate == nil) {
-            streakCell.currentValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.bestValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.dateTimeSection1Lbl.text = localizeString(@"a best yet");
-            streakCell.dateTimeSection2Lbl.text = localizeString(@"a best yet");
-            streakCell.currentValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.bestValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection1Lbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection2Lbl.textColor = [Color darkGrayColor83];
-        }
-        
-    } else if (indexPath.row == 2) {
-        
-        //STREAK TITLE CORNERING
-        streakCell.mainTitleLbl.text = @"Trips Without Hard Cornering";
-        streakCell.mainStreakImg.image = [UIImage imageNamed:@"lead_cornering"];
-        
-        //FIRST SECTION
-        float roundCurrentDistance = [self.streaks.StreakCorneringCurrentDistanceKm floatValue];
-        NSString *currentDistanceString = [NSString stringWithFormat:@"%.0f km", roundCurrentDistance];
-        
-        float roundCurrentDuration = [self.streaks.StreakCorneringCurrentDurationSec floatValue] / 60;
-        NSString *currentDurationString = [NSString stringWithFormat:@"%.0f m", roundCurrentDuration];
-        
-        float roundBestDistance = [self.streaks.StreakCorneringBestDistanceKm floatValue];
-        NSString *bestDistanceString = [NSString stringWithFormat:@"%.f km", roundBestDistance];
-        
-        float roundBestDuration = [self.streaks.StreakCorneringBestDurationSec floatValue] / 60;
-        NSString *bestDurationString = [NSString stringWithFormat:@"%.0f m", roundBestDuration];
-        
-        //Miles convert
-        if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-            float currentInMiles = convertKmToMiles(roundCurrentDistance);
-            currentDistanceString = [NSString stringWithFormat:@"%.1f mi", currentInMiles];
-            float bestInMiles = convertKmToMiles(roundBestDistance);
-            bestDistanceString = [NSString stringWithFormat:@"%.1f mi", bestInMiles];
-        }
-        
-        NSString *currentFinal = [NSString stringWithFormat:@"%@  |  %@", currentDistanceString, currentDurationString];
-        NSString *bestFinal = [NSString stringWithFormat:@"%@  |  %@", bestDistanceString, bestDurationString];
-        
-        streakCell.currentValueLbl.text = currentFinal;
-        streakCell.bestValueLbl.text = bestFinal;
-        
-        //SECOND SECTION ATTRIBUTED STRING CURRENT
-        NSString *currentStreakCounter = self.streaks.StreakCorneringCurrentStreak.stringValue ? self.streaks.StreakCorneringCurrentStreak.stringValue : @"0";
-        NSString *currentStreakItem = localizeString(@"trips");
-        NSString *currentStreakString = [NSString stringWithFormat:@"%@ %@", currentStreakCounter, currentStreakItem];
-        
-        NSMutableAttributedString *currentStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:currentStreakString];
-        
-        NSRange currentRangeTotalPoints = [currentStreakString rangeOfString:currentStreakCounter];
-        UIFont *currentFontTotalPoints = [Font heavy26];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:currentRangeTotalPoints];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTotalPoints range:currentRangeTotalPoints];
-        
-        NSRange currentRangeTripsAdd = [currentStreakString rangeOfString:currentStreakItem];
-        UIFont *currentFontTripsAdd = [Font medium15];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:currentRangeTripsAdd];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTripsAdd range:currentRangeTripsAdd];
-        
-        //SECOND SECTION ATTRIBUTED STRING BEST
-        NSString *bestStreakCounter = self.streaks.StreakCorneringBest.stringValue ? self.streaks.StreakCorneringBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips");
-        NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
-        
-        NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
-        
-        NSRange bestRangeTotalPoints = [bestStreakString rangeOfString:bestStreakCounter];
-        UIFont *bestFontTotalPoints = [Font heavy26];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTotalPoints];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTotalPoints range:bestRangeTotalPoints];
-        
-        NSRange bestRangeTripsAdd = [bestStreakString rangeOfString:bestStreakItem];
-        UIFont *bestFontTripsAdd = [Font medium15];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTripsAdd];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTripsAdd range:bestRangeTripsAdd];
-        
-        streakCell.section1ValueLbl.attributedText = currentStreakCompleteText;
-        streakCell.section2ValueLbl.attributedText = bestStreakCompleteText;
-        
-        //THIRD SECTION
-        NSDate *currentStartDate = [NSDate dateWithISO8601String:self.streaks.StreakCorneringCurrentFromDate];
-        NSDate *currentEndDate = [NSDate dateWithISO8601String:self.streaks.StreakCorneringCurrentToDate];
-        NSString *currentStartDateString = [currentStartDate dateStringShortYear];
-        NSString *currentEndDateString = [currentEndDate dateStringShortYear];
-        
-        NSDate *bestStartDate = [NSDate dateWithISO8601String:self.streaks.StreakCorneringBestFromDate];
-        NSDate *bestEndDate = [NSDate dateWithISO8601String:self.streaks.StreakCorneringBestToDate];
-        NSString *bestStartDateString = [bestStartDate dateStringShortYear];
-        NSString *bestEndDateString = [bestEndDate dateStringShortYear];
-        
-        if ([defaults_object(@"needDateFormatInverse") boolValue]) {
-            currentStartDateString = [currentStartDate dateStringShortYearInverse];
-            currentEndDateString = [currentEndDate dateStringShortYearInverse];
-            bestStartDateString = [bestStartDate dateStringShortYearInverse];
-            bestEndDateString = [bestEndDate dateStringShortYearInverse];
-        }
-        
-        NSString *currentTimeFinal = [NSString stringWithFormat:@"%@ to %@", currentStartDateString, currentEndDateString];
-        NSString *bestTimeFinal = [NSString stringWithFormat:@"%@ to %@", bestStartDateString, bestEndDateString];
-        
-        streakCell.dateTimeSection1Lbl.text = currentTimeFinal;
-        streakCell.dateTimeSection2Lbl.text = bestTimeFinal;
-        
-        if (currentStartDate == nil) {
-            streakCell.currentValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.bestValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.dateTimeSection1Lbl.text = localizeString(@"a best yet");
-            streakCell.dateTimeSection2Lbl.text = localizeString(@"a best yet");
-            streakCell.currentValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.bestValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection1Lbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection2Lbl.textColor = [Color darkGrayColor83];
-        }
-        
-    } else if (indexPath.row == 3) {
-        
-        //STREAK TITLE SPEEDING
-        streakCell.mainTitleLbl.text = @"Trips Without Speeding";
-        streakCell.mainStreakImg.image = [UIImage imageNamed:@"lead_acceleration"];
-        
-        //FIRST SECTION
-        float roundCurrentDistance = [self.streaks.StreakOverSpeedCurrentDistanceKm floatValue];
-        NSString *currentDistanceString = [NSString stringWithFormat:@"%.0f km", roundCurrentDistance];
-        
-        float roundCurrentDuration = [self.streaks.StreakOverSpeedCurrentDurationSec floatValue] / 60;
-        NSString *currentDurationString = [NSString stringWithFormat:@"%.0f m", roundCurrentDuration];
-        
-        float roundBestDistance = [self.streaks.StreakOverSpeedBestDistanceKm floatValue];
-        NSString *bestDistanceString = [NSString stringWithFormat:@"%.f km", roundBestDistance];
-        
-        float roundBestDuration = [self.streaks.StreakOverSpeedBestDurationSec floatValue] / 60;
-        NSString *bestDurationString = [NSString stringWithFormat:@"%.0f m", roundBestDuration];
-        
-        //Miles convert
-        if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-            float currentInMiles = convertKmToMiles(roundCurrentDistance);
-            currentDistanceString = [NSString stringWithFormat:@"%.1f mi", currentInMiles];
-            float bestInMiles = convertKmToMiles(roundBestDistance);
-            bestDistanceString = [NSString stringWithFormat:@"%.1f mi", bestInMiles];
-        }
-        
-        NSString *currentFinal = [NSString stringWithFormat:@"%@  |  %@", currentDistanceString, currentDurationString];
-        NSString *bestFinal = [NSString stringWithFormat:@"%@  |  %@", bestDistanceString, bestDurationString];
-        
-        streakCell.currentValueLbl.text = currentFinal;
-        streakCell.bestValueLbl.text = bestFinal;
-        
-        //SECOND SECTION ATTRIBUTED STRING CURRENT
-        NSString *currentStreakCounter = self.streaks.StreakOverSpeedCurrentStreak.stringValue ? self.streaks.StreakOverSpeedCurrentStreak.stringValue : @"0";
-        NSString *currentStreakItem = localizeString(@"trips");
-        NSString *currentStreakString = [NSString stringWithFormat:@"%@ %@", currentStreakCounter, currentStreakItem];
-        
-        NSMutableAttributedString *currentStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:currentStreakString];
-        
-        NSRange currentRangeTotalPoints = [currentStreakString rangeOfString:currentStreakCounter];
-        UIFont *currentFontTotalPoints = [Font heavy26];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:currentRangeTotalPoints];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTotalPoints range:currentRangeTotalPoints];
-        
-        NSRange currentRangeTripsAdd = [currentStreakString rangeOfString:currentStreakItem];
-        UIFont *currentFontTripsAdd = [Font medium15];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:currentRangeTripsAdd];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTripsAdd range:currentRangeTripsAdd];
-        
-        //SECOND SECTION ATTRIBUTED STRING BEST
-        NSString *bestStreakCounter = self.streaks.StreakOverSpeedBest.stringValue ? self.streaks.StreakOverSpeedBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips");
-        NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
-        
-        NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
-        
-        NSRange bestRangeTotalPoints = [bestStreakString rangeOfString:bestStreakCounter];
-        UIFont *bestFontTotalPoints = [Font heavy26];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTotalPoints];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTotalPoints range:bestRangeTotalPoints];
-        
-        NSRange bestRangeTripsAdd = [bestStreakString rangeOfString:bestStreakItem];
-        UIFont *bestFontTripsAdd = [Font medium15];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTripsAdd];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTripsAdd range:bestRangeTripsAdd];
-        
-        streakCell.section1ValueLbl.attributedText = currentStreakCompleteText;
-        streakCell.section2ValueLbl.attributedText = bestStreakCompleteText;
-        
-        //THIRD SECTION
-        NSDate *currentStartDate = [NSDate dateWithISO8601String:self.streaks.StreakOverSpeedCurrentFromDate];
-        NSDate *currentEndDate = [NSDate dateWithISO8601String:self.streaks.StreakOverSpeedCurrentToDate];
-        NSString *currentStartDateString = [currentStartDate dateStringShortYear];
-        NSString *currentEndDateString = [currentEndDate dateStringShortYear];
-        
-        NSDate *bestStartDate = [NSDate dateWithISO8601String:self.streaks.StreakOverSpeedBestFromDate];
-        NSDate *bestEndDate = [NSDate dateWithISO8601String:self.streaks.StreakOverSpeedBestToDate];
-        NSString *bestStartDateString = [bestStartDate dateStringShortYear];
-        NSString *bestEndDateString = [bestEndDate dateStringShortYear];
-        
-        if ([defaults_object(@"needDateFormatInverse") boolValue]) {
-            currentStartDateString = [currentStartDate dateStringShortYearInverse];
-            currentEndDateString = [currentEndDate dateStringShortYearInverse];
-            bestStartDateString = [bestStartDate dateStringShortYearInverse];
-            bestEndDateString = [bestEndDate dateStringShortYearInverse];
-        }
-        
-        NSString *currentTimeFinal = [NSString stringWithFormat:@"%@ to %@", currentStartDateString, currentEndDateString];
-        NSString *bestTimeFinal = [NSString stringWithFormat:@"%@ to %@", bestStartDateString, bestEndDateString];
-        
-        streakCell.dateTimeSection1Lbl.text = currentTimeFinal;
-        streakCell.dateTimeSection2Lbl.text = bestTimeFinal;
-        
-        if (currentStartDate == nil) {
-            streakCell.currentValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.bestValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.dateTimeSection1Lbl.text = localizeString(@"a best yet");
-            streakCell.dateTimeSection2Lbl.text = localizeString(@"a best yet");
-            streakCell.currentValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.bestValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection1Lbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection2Lbl.textColor = [Color darkGrayColor83];
-        }
-        
-    } else if (indexPath.row == 4) {
-        
-        //STREAK TITLE DISTRACTION
-        streakCell.mainTitleLbl.text = @"Trips Without Phone Usage";
-        streakCell.mainStreakImg.image = [UIImage imageNamed:@"lead_phone"];
-        
-        //FIRST SECTION
-        float roundCurrentDistance = [self.streaks.StreakPhoneUsageCurrentDistanceKm floatValue];
-        NSString *currentDistanceString = [NSString stringWithFormat:@"%.0f km", roundCurrentDistance];
-        
-        float roundCurrentDuration = [self.streaks.StreakPhoneUsageCurrentDurationSec floatValue] / 60;
-        NSString *currentDurationString = [NSString stringWithFormat:@"%.0f m", roundCurrentDuration];
-        
-        float roundBestDistance = [self.streaks.StreakPhoneUsageBestDistanceKm floatValue];
-        NSString *bestDistanceString = [NSString stringWithFormat:@"%.f km", roundBestDistance];
-        
-        float roundBestDuration = [self.streaks.StreakPhoneUsageBestDurationSec floatValue] / 60;
-        NSString *bestDurationString = [NSString stringWithFormat:@"%.0f m", roundBestDuration];
-        
-        //Miles convert
-        if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-            float currentInMiles = convertKmToMiles(roundCurrentDistance);
-            currentDistanceString = [NSString stringWithFormat:@"%.1f mi", currentInMiles];
-            float bestInMiles = convertKmToMiles(roundBestDistance);
-            bestDistanceString = [NSString stringWithFormat:@"%.1f mi", bestInMiles];
-        }
-        
-        NSString *currentFinal = [NSString stringWithFormat:@"%@  |  %@", currentDistanceString, currentDurationString];
-        NSString *bestFinal = [NSString stringWithFormat:@"%@  |  %@", bestDistanceString, bestDurationString];
-        
-        streakCell.currentValueLbl.text = currentFinal;
-        streakCell.bestValueLbl.text = bestFinal;
-        
-        //SECOND SECTION ATTRIBUTED STRING CURRENT
-        NSString *currentStreakCounter = self.streaks.StreakPhoneUsageCurrentStreak.stringValue ? self.streaks.StreakPhoneUsageCurrentStreak.stringValue : @"0";
-        NSString *currentStreakItem = localizeString(@"trips");
-        NSString *currentStreakString = [NSString stringWithFormat:@"%@ %@", currentStreakCounter, currentStreakItem];
-        
-        NSMutableAttributedString *currentStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:currentStreakString];
-        
-        NSRange currentRangeTotalPoints = [currentStreakString rangeOfString:currentStreakCounter];
-        UIFont *currentFontTotalPoints = [Font heavy26];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color officialGreenColor] range:currentRangeTotalPoints];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTotalPoints range:currentRangeTotalPoints];
-        
-        NSRange currentRangeTripsAdd = [currentStreakString rangeOfString:currentStreakItem];
-        UIFont *currentFontTripsAdd = [Font medium15];
-        [currentStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:currentRangeTripsAdd];
-        [currentStreakCompleteText addAttribute:NSFontAttributeName value:currentFontTripsAdd range:currentRangeTripsAdd];
-        
-        //SECOND SECTION ATTRIBUTED STRING BEST
-        NSString *bestStreakCounter = self.streaks.StreakPhoneUsageBest.stringValue ? self.streaks.StreakPhoneUsageBest.stringValue : @"0";
-        NSString *bestStreakItem = localizeString(@"trips");
-        NSString *bestStreakString = [NSString stringWithFormat:@"%@ %@", bestStreakCounter, bestStreakItem];
-        
-        NSMutableAttributedString *bestStreakCompleteText = [[NSMutableAttributedString alloc] initWithString:bestStreakString];
-        
-        NSRange bestRangeTotalPoints = [bestStreakString rangeOfString:bestStreakCounter];
-        UIFont *bestFontTotalPoints = [Font heavy26];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTotalPoints];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTotalPoints range:bestRangeTotalPoints];
-        
-        NSRange bestRangeTripsAdd = [bestStreakString rangeOfString:bestStreakItem];
-        UIFont *bestFontTripsAdd = [Font medium15];
-        [bestStreakCompleteText addAttribute:NSForegroundColorAttributeName value:[Color tabBarDarkColor] range:bestRangeTripsAdd];
-        [bestStreakCompleteText addAttribute:NSFontAttributeName value:bestFontTripsAdd range:bestRangeTripsAdd];
-        
-        streakCell.section1ValueLbl.attributedText = currentStreakCompleteText;
-        streakCell.section2ValueLbl.attributedText = bestStreakCompleteText;
-        
-        //THIRD SECTION
-        NSDate *currentStartDate = [NSDate dateWithISO8601String:self.streaks.StreakPhoneUsageCurrentFromDate];
-        NSDate *currentEndDate = [NSDate dateWithISO8601String:self.streaks.StreakPhoneUsageCurrentToDate];
-        NSString *currentStartDateString = [currentStartDate dateStringShortYear];
-        NSString *currentEndDateString = [currentEndDate dateStringShortYear];
-        
-        NSDate *bestStartDate = [NSDate dateWithISO8601String:self.streaks.StreakPhoneUsageBestFromDate];
-        NSDate *bestEndDate = [NSDate dateWithISO8601String:self.streaks.StreakPhoneUsageBestToDate];
-        NSString *bestStartDateString = [bestStartDate dateStringShortYear];
-        NSString *bestEndDateString = [bestEndDate dateStringShortYear];
-        
-        NSString *currentTimeFinal = [NSString stringWithFormat:@"%@ to %@", currentStartDateString, currentEndDateString];
-        NSString *bestTimeFinal = [NSString stringWithFormat:@"%@ to %@", bestStartDateString, bestEndDateString];
-        
-        streakCell.dateTimeSection1Lbl.text = currentTimeFinal;
-        streakCell.dateTimeSection2Lbl.text = bestTimeFinal;
-        
-        if (currentStartDate == nil) {
-            streakCell.currentValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.bestValueLbl.text = localizeString(@"You haven’t had");
-            streakCell.dateTimeSection1Lbl.text = localizeString(@"a best yet");
-            streakCell.dateTimeSection2Lbl.text = localizeString(@"a best yet");
-            streakCell.currentValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.bestValueLbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection1Lbl.textColor = [Color darkGrayColor83];
-            streakCell.dateTimeSection2Lbl.textColor = [Color darkGrayColor83];
-        }
-    }
-    
-    return streakCell;
 }
 
 

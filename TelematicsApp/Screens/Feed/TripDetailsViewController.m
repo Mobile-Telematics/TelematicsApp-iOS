@@ -812,7 +812,7 @@
 }
 
 
-#pragma mark - Claims PopUp
+#pragma mark - Events Review PopUp
 
 - (void)noEventButtonAction:(ClaimAlertPopup *)popupView button:(UIButton *)button {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil

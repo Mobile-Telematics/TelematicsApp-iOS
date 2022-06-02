@@ -549,7 +549,6 @@
 - (void)quitAndUpdateVehicles {
     [self hidePreloader];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"updateProfileTableDataWait" object:self];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"reloadUserVehiclesForClaims" object:self];
     
     if (self.navigationController.presentingViewController) {
         [self.navigationController popViewControllerAnimated:YES];

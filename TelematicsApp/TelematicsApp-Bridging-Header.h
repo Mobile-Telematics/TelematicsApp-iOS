@@ -13,6 +13,5 @@
 #import "Configurator.h"
 #import "TelematicsAppModel.h"
 #import "GeneralService.h"
-#import "ClaimsService.h"
 #import "MagicalRecord/MagicalRecord.h"
 #import "Color.h"

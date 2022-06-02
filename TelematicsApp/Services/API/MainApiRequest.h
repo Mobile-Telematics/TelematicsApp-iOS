@@ -13,10 +13,6 @@
 @class ProfileRequestData;
 @class VehicleRequestData;
 
-@class ClaimsTokenRequestData;
-@class CreateClaimRequestData;
-
-
 @interface MainApiRequest: APIRequest
 
 
@@ -46,11 +42,6 @@
 #pragma mark Indicators For Coins For Eco Percents
 
 - (void)getIndicatorsIndividualForPeriod:(NSString *)startDate endDate:(NSString*)endDate;
-
-
-#pragma mark Indicators Streaks
-
-- (void)getIndicatorsStreaksSection;
 
 
 #pragma mark My Rewards - Coins
@@ -98,15 +89,6 @@
 - (void)updateVehicle:(VehicleRequestData *)vehicleData;
 - (void)putVehicle:(VehicleRequestData *)vehicleData vehicle:(NSString *)vehicleToken;
 - (void)deleteVehicle:(VehicleRequestData *)vehicleData vehicle:(NSString *)vehicleToken;
-
-
-#pragma mark ClaimsService
-
-- (void)getTokenForClaims:(ClaimsTokenRequestData*)claimsData;
-- (void)getUserClaims;
-- (void)getAccidentTypes;
-- (void)deleteUserClaim:(NSString*)claimId;
-- (void)createClaim:(CreateClaimRequestData*)createClaimData;
 
 
 @end

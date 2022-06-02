@@ -65,11 +65,6 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
     return nil;
 }
 
-+ (NSString *)claimsServiceURL {
-    @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [claimsServiceURL] method to provide server URL" userInfo:nil];
-    return nil;
-}
-
 + (NSString *)driveCoinsServiceURL {
     @throw [NSException exceptionWithName:@"" reason:@"Subclass APIRequest and override [driveCoinsServiceURL] method to provide server URL" userInfo:nil];
     return nil;
@@ -225,25 +220,6 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
 }
 
 
-#pragma mark - Claims Servive
-
-- (void)performRequestClaimsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
-    self.responseClass = responseClass;
-    if (![path hasPrefix:@"http"]) {
-        path = [NSString stringWithFormat:@"%@/%@", [[self class] claimsServiceURL], path];
-    }
-    path = [path stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
-    DDLogDebug(@"%s: %@ %@ , params: %@", __FUNCTION__, httpMethod, path, parameters);
-    AFHTTPSessionManager *manager = [[self class] sharedHTTPSessionManager];
-    NSError* error = nil;
-    NSMutableURLRequest *request = [manager.requestSerializer requestWithMethod:httpMethod URLString:path parameters:parameters error:&error];
-    request.timeoutInterval = 120;
-    NSLog(@"req %@", request.URL.absoluteString);
-    [request setValue:[GeneralService sharedService].claimsToken forHTTPHeaderField:@"Authorization"];
-    [self performRequest:request withResponseClass:responseClass];
-}
-
-
 #pragma mark - Leaderboard Service
 
 - (void)performRequestLeaderboardService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod {
@@ -306,15 +282,6 @@ static NSString* const kAPIRequestErrorDomain = @"APIRequestErrorDomain";
             if (error.code == 405 || [error.localizedDescription isEqualToString:@"Request failed: method not allowed (405)"]) {
                 //EXTERNAL ERROR CHECK
                 NSLog(@"FULL STOP 405");
-                if (self.completionBlock) {
-                    self.completionBlock(nil, error);
-                }
-                return;
-            }
-            
-            //DIDN'T WORK WITH CLAIMS SERVICE REQUIRED!
-            NSString *clUrl = [NSString stringWithFormat:@"%@", arequest.URL];
-            if ([clUrl isEqualToString:@"https://insp.telematicssdk.com/api/v1/profiles/login"]) {
                 if (self.completionBlock) {
                     self.completionBlock(nil, error);
                 }

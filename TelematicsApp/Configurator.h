@@ -24,7 +24,6 @@
 @property(nonatomic, strong) NSString       *indicatorsServiceURL;
 @property(nonatomic, strong) NSString       *leaderboardServiceURL;
 @property(nonatomic, strong) NSString       *carServiceURL;
-@property(nonatomic, strong) NSString       *claimsServiceURL;
 @property(nonatomic, strong) NSString       *driveCoinsServiceURL;
 
 //HERE MAPS KEYS - YOU NEED YOUR OWN HEREMAPS KEYS FOR TRIPS - REGISTER AT HTTP://DEVELOPER.HERE.COM

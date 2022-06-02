@@ -50,7 +50,6 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 + (NSString*)indicatorsServiceURL;
 + (NSString*)leaderboardServiceURL;
 + (NSString*)carServiceURL;
-+ (NSString*)claimsServiceURL;
 + (NSString*)driveCoinsServiceURL
 ;
 + (NSDictionary*)customRequestHeaders;
@@ -94,11 +93,6 @@ typedef void(^APIRequestCompletionBlock)(id response, NSError* error);
 #pragma mark Use For Car Service
 
 - (void)performRequestCarService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
-
-
-#pragma mark Use For Claim Service
-
-- (void)performRequestClaimsService:(NSString*)path responseClass:(Class)responseClass parameters:(NSDictionary*)parameters method:(NSString*)httpMethod;
 
 
 #pragma mark Use With Body Request

@@ -17,12 +17,6 @@
 #import "MeasuresViewCtrl.h"
 #import "ChangeCompanyIdViewCtrl.h"
 #import <MessageUI/MessageUI.h>
-#import "MainClaimViewController.h"
-#import "ClaimsTokenRequestData.h"
-#import "ClaimsTokenResponse.h"
-#import "ClaimsUserResponse.h"
-#import "ClaimsAccidentResponse.h"
-
 
 @interface SettingsViewController () <UITableViewDelegate, UITableViewDataSource, MFMailComposeViewControllerDelegate>
 
@@ -30,8 +24,6 @@
 
 @property (weak, nonatomic) IBOutlet UITableView                *tableView;
 @property (weak, nonatomic) IBOutlet UILabel                    *mainTitle;
-
-@property (nonatomic, strong) ClaimsUserResultResponse          *claimsUserResponse;
 
 @end
 
@@ -43,8 +35,6 @@
     //INITIALIZE USER APP MODEL
     self.appModel = [TelematicsAppModel MR_findFirstByAttribute:@"current_user" withValue:@1];
     self.mainTitle.text = localizeString(@"settings_title");
-    
-    [self getTokenForClaims];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadSettings) name:@"reloadOnDemandSettingsPage" object:nil];
 }
@@ -67,7 +57,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        return 7;
+        return 6;
     } if (section == 1) {
         return 2;
     } if (section == 2) {
@@ -93,21 +83,18 @@
             cell.titleLbl.text = localizeString(@"menuitem_profile");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_user"]];
         } else if (indexPath.row == 1) {
-            cell.titleLbl.text = localizeString(@"menuitem_claims");
-            [cell.iconImg setImage:[UIImage imageNamed:@"ic_claims"]];
-        } else if (indexPath.row == 2) {
             cell.titleLbl.text = localizeString(@"menuitem_leaderboard");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_leader"]];
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 2) {
             cell.titleLbl.text = localizeString(@"menuitem_tsettings");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_telematics"]];
-        } else if (indexPath.row == 4) {
+        } else if (indexPath.row == 3) {
             cell.titleLbl.text = localizeString(@"menuitem_connectobd");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_ridehailing"]];
-        } else if (indexPath.row == 5) {
+        } else if (indexPath.row == 4) {
             cell.titleLbl.text = localizeString(@"menuitem_measures");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_meas"]];
-        } else if (indexPath.row == 6) {
+        } else if (indexPath.row == 5) {
             cell.titleLbl.text = localizeString(@"menuitem_companyId");
             [cell.iconImg setImage:[UIImage imageNamed:@"ic_add_dealer"]];
         }
@@ -227,16 +214,14 @@
 		if (indexPath.row == 0) {
             [self openUserProfile];
         } else if (indexPath.row == 1) {
-            [self openClaims];
-        } else if (indexPath.row == 2) {
 			[self openLeaderboard];
-        } else if (indexPath.row == 3) {
+        } else if (indexPath.row == 2) {
             [self settingsTelematicsClick];
-        } else if (indexPath.row == 4) {
+        } else if (indexPath.row == 3) {
             [self openConnectOBDDevice];
-        } else if (indexPath.row == 5) {
+        } else if (indexPath.row == 4) {
             [self openMeasuresSettings];
-        } else if (indexPath.row == 6) {
+        } else if (indexPath.row == 5) {
             [self openJoinCompany];
         }
 	} else if (indexPath.section == 1) {
@@ -279,21 +264,6 @@
     navController.modalPresentationStyle = UIModalPresentationOverFullScreen;
     navController.navigationBar.hidden = YES;
     [self presentViewController:navController animated:YES completion:nil];
-}
-
-- (void)openClaims {
-    MainClaimViewController *claimVC = [[UIStoryboard storyboardWithName:@"Claims" bundle:nil] instantiateInitialViewController];
-    CATransition *transition = [[CATransition alloc] init];
-    transition.duration = 0.5;
-    transition.type = kCATransitionPush;
-    transition.subtype = kCATransitionFromRight;
-    [transition setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionDefault]];
-    [self.view.window.layer addAnimation:transition forKey:kCATransition];
-    
-    claimVC.modalPresentationStyle = UIModalPresentationCustom;
-    claimVC.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    claimVC.userClaims = self.claimsUserResponse;
-    [self presentViewController:claimVC animated:NO completion:nil];
 }
 
 - (void)openMeasuresSettings {
@@ -420,51 +390,6 @@
 
 - (void)safariViewControllerDidFinish:(SFSafariViewController *)controller {
     //[self dismissViewControllerAnimated:true completion:nil];
-}
-
-
-#pragma mark - Claims Service Get Token Preload
-
-- (void)getTokenForClaims {
-    
-    ClaimsTokenRequestData* requestToken = [[ClaimsTokenRequestData alloc] init];
-    requestToken.device_token = [GeneralService sharedService].device_token_number;
-    
-    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-        NSLog(@"%s %@ %@", __func__, response, error);
-        if (!error && [response isSuccesful]) {
-            [GeneralService sharedService].claimsToken = ((ClaimsTokenResponse*)response).Result.Token;
-            NSLog(@"CLAIMS TOKEN SUCCESS: %@", [GeneralService sharedService].claimsToken);
-            [self getUserClaims];
-            [self getAccidentTypes];
-        } else {
-            NSLog(@"ErrorGetClaimsToken");
-        }
-    }] getTokenForClaims:requestToken];
-}
-
-- (void)getUserClaims {
-    
-    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-        NSLog(@"%s %@ %@", __func__, response, error);
-        if (!error && [response isSuccesful]) {
-            self.claimsUserResponse = ((ClaimsUserResponse*)response).Result;
-        } else {
-            self.claimsUserResponse = ((ClaimsUserResponse*)response).Result;
-        }
-    }] getUserClaims];
-}
-
-- (void)getAccidentTypes {
-    
-    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-        NSLog(@"%s %@ %@", __func__, response, error);
-        if (!error && [response isSuccesful]) {
-            [ClaimsService sharedService].AccidentTypes = ((ClaimsAccidentResponse*)response).Result.AccidentTypes;
-        } else {
-            [ClaimsService sharedService].AccidentTypes = ((ClaimsAccidentResponse*)response).Result.AccidentTypes;
-        }
-    }] getAccidentTypes];
 }
 
 

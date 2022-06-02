@@ -189,67 +189,16 @@
 		E9A7FDFB26CEFBFB000F0C44 /* CoinsChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF226CEFBFA000F0C44 /* CoinsChart.m */; };
 		E9A7FDFC26CEFBFB000F0C44 /* DriveCoinsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF426CEFBFA000F0C44 /* DriveCoinsViewController.m */; };
 		E9A7FDFD26CEFBFB000F0C44 /* WelcomeRewards.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF626CEFBFA000F0C44 /* WelcomeRewards.m */; };
-		E9A7FDFE26CEFBFB000F0C44 /* StreakCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FDF926CEFBFA000F0C44 /* StreakCell.m */; };
-		E9A7FE0E26CEFC9D000F0C44 /* StreaksResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0026CEFC9D000F0C44 /* StreaksResponse.m */; };
-		E9A7FE0F26CEFC9D000F0C44 /* StreaksResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0226CEFC9D000F0C44 /* StreaksResultResponse.m */; };
 		E9A7FE1026CEFC9D000F0C44 /* CoinsDetailsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0626CEFC9D000F0C44 /* CoinsDetailsObject.m */; };
 		E9A7FE1126CEFC9D000F0C44 /* CoinsDetailsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0726CEFC9D000F0C44 /* CoinsDetailsResponse.m */; };
 		E9A7FE1226CEFC9D000F0C44 /* IndicatorsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0C26CEFC9D000F0C44 /* IndicatorsResponse.m */; };
 		E9A7FE1326CEFC9D000F0C44 /* IndicatorsResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE0D26CEFC9D000F0C44 /* IndicatorsResultResponse.m */; };
 		E9A7FE1926CF082C000F0C44 /* CoinsResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE1526CF082C000F0C44 /* CoinsResponse.m */; };
 		E9A7FE1A26CF082C000F0C44 /* CoinsResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE1826CF082C000F0C44 /* CoinsResultResponse.m */; };
-		E9A7FE1E26CF0BE9000F0C44 /* DriveCoinsSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE1C26CF0BE9000F0C44 /* DriveCoinsSegmentView.m */; };
 		E9A7FE2426CF0D1D000F0C44 /* DaysCoinsSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE2226CF0D1D000F0C44 /* DaysCoinsSegmentView.m */; };
 		E9A7FE2526CF0D1D000F0C44 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A7FE2326CF0D1D000F0C44 /* UIView+Extension.m */; };
 		E9A842AE225244530090461E /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9A842AC225244530090461E /* BaseViewController.m */; };
 		E9B28DE423F59861004DE7CB /* ErrorObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B28DE323F59861004DE7CB /* ErrorObject.m */; };
-		E9B6C9A826853680000B5B51 /* Claims.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9B6C9A726853680000B5B51 /* Claims.storyboard */; };
-		E9B6C9D1268536A0000B5B51 /* CarClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9AA268536A0000B5B51 /* CarClaimViewController.m */; };
-		E9B6C9D2268536A0000B5B51 /* Step4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9AB268536A0000B5B51 /* Step4ViewController.m */; };
-		E9B6C9D3268536A0000B5B51 /* ClaimDetailsViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9AC268536A0000B5B51 /* ClaimDetailsViewCtrl.m */; };
-		E9B6C9D4268536A0000B5B51 /* DelegateCollectionViewFillLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9AF268536A0000B5B51 /* DelegateCollectionViewFillLayout.m */; };
-		E9B6C9D5268536A0000B5B51 /* NewClaimCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B0268536A0000B5B51 /* NewClaimCell.m */; };
-		E9B6C9D6268536A0000B5B51 /* ClaimQouteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B5268536A0000B5B51 /* ClaimQouteCell.m */; };
-		E9B6C9D7268536A0000B5B51 /* ClaimCarCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B6268536A0000B5B51 /* ClaimCarCell.m */; };
-		E9B6C9D8268536A0000B5B51 /* CarPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9B8268536A0000B5B51 /* CarPhotoCell.m */; };
-		E9B6C9DA268536A0000B5B51 /* StepPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BC268536A0000B5B51 /* StepPhotoViewController.m */; };
-		E9B6C9DB268536A0000B5B51 /* RetypeVehicleCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BD268536A0000B5B51 /* RetypeVehicleCtrl.m */; };
-		E9B6C9DC268536A0000B5B51 /* Step3ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9BE268536A0000B5B51 /* Step3ViewController.m */; };
-		E9B6C9DD268536A0000B5B51 /* NewClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9C1268536A0000B5B51 /* NewClaimViewController.m */; };
-		E9B6C9DE268536A0000B5B51 /* Step2ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9C2268536A0000B5B51 /* Step2ViewController.m */; };
-		E9B6C9DF268536A0000B5B51 /* ClaimReviewViewCtrl.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9C3268536A0000B5B51 /* ClaimReviewViewCtrl.m */; };
-		E9B6C9E0268536A0000B5B51 /* TowingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9CE268536A0000B5B51 /* TowingViewController.m */; };
-		E9B6C9E1268536A0000B5B51 /* MainClaimViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9CF268536A0000B5B51 /* MainClaimViewController.m */; };
-		E9B6C9E2268536A0000B5B51 /* Step1ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9D0268536A0000B5B51 /* Step1ViewController.m */; };
-		E9B6C9E626853859000B5B51 /* ClaimsService.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9E526853859000B5B51 /* ClaimsService.m */; };
-		E9B6C9FE2685392D000B5B51 /* KSPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9EB2685392D000B5B51 /* KSPhotoView.m */; };
-		E9B6C9FF2685392D000B5B51 /* KSYYImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9EC2685392D000B5B51 /* KSYYImageManager.m */; };
-		E9B6CA002685392D000B5B51 /* KSProgressLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9ED2685392D000B5B51 /* KSProgressLayer.m */; };
-		E9B6CA012685392D000B5B51 /* KSPhotoItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9EE2685392D000B5B51 /* KSPhotoItem.m */; };
-		E9B6CA022685392D000B5B51 /* KSPhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9EF2685392D000B5B51 /* KSPhotoCell.m */; };
-		E9B6CA032685392D000B5B51 /* KSPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9F12685392D000B5B51 /* KSPhotoBrowser.m */; };
-		E9B6CA042685392D000B5B51 /* UIImage+KS.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9F42685392D000B5B51 /* UIImage+KS.m */; };
-		E9B6CA052685392D000B5B51 /* KSSDImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9F82685392D000B5B51 /* KSSDImageManager.m */; };
-		E9B6CA062685392D000B5B51 /* GalleryPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9FC2685392D000B5B51 /* GalleryPreviewViewController.m */; };
-		E9B6CA072685392D000B5B51 /* GalleryCarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6C9FD2685392D000B5B51 /* GalleryCarViewController.m */; };
-		E9B6CA0B26853AD3000B5B51 /* CameraCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA0926853AD3000B5B51 /* CameraCarViewController.swift */; };
-		E9B6CA0C26853AD3000B5B51 /* CameraCar.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9B6CA0A26853AD3000B5B51 /* CameraCar.storyboard */; };
-		E9B6CA1226853C14000B5B51 /* ClaimsTokenRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA0E26853C14000B5B51 /* ClaimsTokenRequestData.m */; };
-		E9B6CA1326853C14000B5B51 /* CreateClaimRequestData.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA0F26853C14000B5B51 /* CreateClaimRequestData.m */; };
-		E9B6CA1F26853DB1000B5B51 /* ConfigGMaps.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA1626853DB0000B5B51 /* ConfigGMaps.m */; };
-		E9B6CA2026853DB1000B5B51 /* CommonFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA1B26853DB0000B5B51 /* CommonFunctions.m */; };
-		E9B6CA2126853DB1000B5B51 /* NSString+urlencode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA1C26853DB0000B5B51 /* NSString+urlencode.m */; };
-		E9B6CA2226853DB1000B5B51 /* CustomLocationPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA1E26853DB0000B5B51 /* CustomLocationPickerVC.m */; };
-		E9B6CA3426854028000B5B51 /* ClaimsUserObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA2726854028000B5B51 /* ClaimsUserObject.m */; };
-		E9B6CA3526854028000B5B51 /* ClaimsUserResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA2826854028000B5B51 /* ClaimsUserResponse.m */; };
-		E9B6CA3626854028000B5B51 /* ClaimsUserResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA2926854028000B5B51 /* ClaimsUserResultResponse.m */; };
-		E9B6CA3726854028000B5B51 /* ClaimsTokenResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA2C26854028000B5B51 /* ClaimsTokenResponse.m */; };
-		E9B6CA3826854028000B5B51 /* ClaimsTokenResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA2D26854028000B5B51 /* ClaimsTokenResultResponse.m */; };
-		E9B6CA3926854028000B5B51 /* ClaimsAccidentResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA3126854028000B5B51 /* ClaimsAccidentResultResponse.m */; };
-		E9B6CA3A26854028000B5B51 /* ClaimsAccidentResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA3326854028000B5B51 /* ClaimsAccidentResponse.m */; };
-		E9B6CA4226854281000B5B51 /* GalleryObject.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA3D26854281000B5B51 /* GalleryObject.m */; };
-		E9B6CA4326854281000B5B51 /* GalleryResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA3E26854281000B5B51 /* GalleryResponse.m */; };
-		E9B6CA4426854281000B5B51 /* GalleryResultResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B6CA4126854281000B5B51 /* GalleryResultResponse.m */; };
 		E9B6CA59268544A7000B5B51 /* GMImagePicker.strings in Resources */ = {isa = PBXBuildFile; fileRef = E9B6CA47268544A7000B5B51 /* GMImagePicker.strings */; };
 		E9B6CA5A268544A7000B5B51 /* GMSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B6CA4D268544A7000B5B51 /* GMSelected@2x.png */; };
 		E9B6CA5B268544A7000B5B51 /* GMEmptyFolder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9B6CA4E268544A7000B5B51 /* GMEmptyFolder@2x.png */; };
@@ -660,13 +609,7 @@
 		E9A7FDF426CEFBFA000F0C44 /* DriveCoinsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveCoinsViewController.m; sourceTree = "<group>"; };
 		E9A7FDF526CEFBFA000F0C44 /* WelcomeRewards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeRewards.h; sourceTree = "<group>"; };
 		E9A7FDF626CEFBFA000F0C44 /* WelcomeRewards.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeRewards.m; sourceTree = "<group>"; };
-		E9A7FDF826CEFBFA000F0C44 /* StreakCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreakCell.h; sourceTree = "<group>"; };
-		E9A7FDF926CEFBFA000F0C44 /* StreakCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreakCell.m; sourceTree = "<group>"; };
 		E9A7FDFA26CEFBFA000F0C44 /* DriveCoinsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveCoinsViewController.h; sourceTree = "<group>"; };
-		E9A7FE0026CEFC9D000F0C44 /* StreaksResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreaksResponse.m; sourceTree = "<group>"; };
-		E9A7FE0126CEFC9D000F0C44 /* StreaksResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreaksResultResponse.h; sourceTree = "<group>"; };
-		E9A7FE0226CEFC9D000F0C44 /* StreaksResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StreaksResultResponse.m; sourceTree = "<group>"; };
-		E9A7FE0326CEFC9D000F0C44 /* StreaksResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StreaksResponse.h; sourceTree = "<group>"; };
 		E9A7FE0526CEFC9D000F0C44 /* CoinsDetailsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsDetailsResponse.h; sourceTree = "<group>"; };
 		E9A7FE0626CEFC9D000F0C44 /* CoinsDetailsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsDetailsObject.m; sourceTree = "<group>"; };
 		E9A7FE0726CEFC9D000F0C44 /* CoinsDetailsResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsDetailsResponse.m; sourceTree = "<group>"; };
@@ -679,8 +622,6 @@
 		E9A7FE1626CF082C000F0C44 /* CoinsResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsResultResponse.h; sourceTree = "<group>"; };
 		E9A7FE1726CF082C000F0C44 /* CoinsResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoinsResponse.h; sourceTree = "<group>"; };
 		E9A7FE1826CF082C000F0C44 /* CoinsResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoinsResultResponse.m; sourceTree = "<group>"; };
-		E9A7FE1C26CF0BE9000F0C44 /* DriveCoinsSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DriveCoinsSegmentView.m; sourceTree = "<group>"; };
-		E9A7FE1D26CF0BE9000F0C44 /* DriveCoinsSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DriveCoinsSegmentView.h; sourceTree = "<group>"; };
 		E9A7FE2026CF0D1D000F0C44 /* DaysCoinsSegmentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaysCoinsSegmentView.h; sourceTree = "<group>"; };
 		E9A7FE2126CF0D1D000F0C44 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		E9A7FE2226CF0D1D000F0C44 /* DaysCoinsSegmentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaysCoinsSegmentView.m; sourceTree = "<group>"; };
@@ -689,98 +630,6 @@
 		E9A842AD225244530090461E /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E9B28DE223F59861004DE7CB /* ErrorObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ErrorObject.h; sourceTree = "<group>"; };
 		E9B28DE323F59861004DE7CB /* ErrorObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ErrorObject.m; sourceTree = "<group>"; };
-		E9B6C9A726853680000B5B51 /* Claims.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Claims.storyboard; sourceTree = "<group>"; };
-		E9B6C9AA268536A0000B5B51 /* CarClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarClaimViewController.m; sourceTree = "<group>"; };
-		E9B6C9AB268536A0000B5B51 /* Step4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step4ViewController.m; sourceTree = "<group>"; };
-		E9B6C9AC268536A0000B5B51 /* ClaimDetailsViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimDetailsViewCtrl.m; sourceTree = "<group>"; };
-		E9B6C9AE268536A0000B5B51 /* NewClaimCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewClaimCell.h; sourceTree = "<group>"; };
-		E9B6C9AF268536A0000B5B51 /* DelegateCollectionViewFillLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateCollectionViewFillLayout.m; sourceTree = "<group>"; };
-		E9B6C9B0268536A0000B5B51 /* NewClaimCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewClaimCell.m; sourceTree = "<group>"; };
-		E9B6C9B1268536A0000B5B51 /* DelegateCollectionViewFillLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateCollectionViewFillLayout.h; sourceTree = "<group>"; };
-		E9B6C9B3268536A0000B5B51 /* ClaimCarCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimCarCell.h; sourceTree = "<group>"; };
-		E9B6C9B4268536A0000B5B51 /* CarPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarPhotoCell.h; sourceTree = "<group>"; };
-		E9B6C9B5268536A0000B5B51 /* ClaimQouteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimQouteCell.m; sourceTree = "<group>"; };
-		E9B6C9B6268536A0000B5B51 /* ClaimCarCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimCarCell.m; sourceTree = "<group>"; };
-		E9B6C9B7268536A0000B5B51 /* ClaimQouteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimQouteCell.h; sourceTree = "<group>"; };
-		E9B6C9B8268536A0000B5B51 /* CarPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CarPhotoCell.m; sourceTree = "<group>"; };
-		E9B6C9BC268536A0000B5B51 /* StepPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepPhotoViewController.m; sourceTree = "<group>"; };
-		E9B6C9BD268536A0000B5B51 /* RetypeVehicleCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RetypeVehicleCtrl.m; sourceTree = "<group>"; };
-		E9B6C9BE268536A0000B5B51 /* Step3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step3ViewController.m; sourceTree = "<group>"; };
-		E9B6C9BF268536A0000B5B51 /* MainClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainClaimViewController.h; sourceTree = "<group>"; };
-		E9B6C9C0268536A0000B5B51 /* TowingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TowingViewController.h; sourceTree = "<group>"; };
-		E9B6C9C1268536A0000B5B51 /* NewClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewClaimViewController.m; sourceTree = "<group>"; };
-		E9B6C9C2268536A0000B5B51 /* Step2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step2ViewController.m; sourceTree = "<group>"; };
-		E9B6C9C3268536A0000B5B51 /* ClaimReviewViewCtrl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimReviewViewCtrl.m; sourceTree = "<group>"; };
-		E9B6C9C4268536A0000B5B51 /* Step1ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step1ViewController.h; sourceTree = "<group>"; };
-		E9B6C9C5268536A0000B5B51 /* ClaimDetailsViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimDetailsViewCtrl.h; sourceTree = "<group>"; };
-		E9B6C9C6268536A0000B5B51 /* Step4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step4ViewController.h; sourceTree = "<group>"; };
-		E9B6C9C7268536A0000B5B51 /* CarClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CarClaimViewController.h; sourceTree = "<group>"; };
-		E9B6C9C8268536A0000B5B51 /* Step3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step3ViewController.h; sourceTree = "<group>"; };
-		E9B6C9C9268536A0000B5B51 /* RetypeVehicleCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RetypeVehicleCtrl.h; sourceTree = "<group>"; };
-		E9B6C9CA268536A0000B5B51 /* StepPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepPhotoViewController.h; sourceTree = "<group>"; };
-		E9B6C9CB268536A0000B5B51 /* ClaimReviewViewCtrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimReviewViewCtrl.h; sourceTree = "<group>"; };
-		E9B6C9CC268536A0000B5B51 /* Step2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step2ViewController.h; sourceTree = "<group>"; };
-		E9B6C9CD268536A0000B5B51 /* NewClaimViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewClaimViewController.h; sourceTree = "<group>"; };
-		E9B6C9CE268536A0000B5B51 /* TowingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TowingViewController.m; sourceTree = "<group>"; };
-		E9B6C9CF268536A0000B5B51 /* MainClaimViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainClaimViewController.m; sourceTree = "<group>"; };
-		E9B6C9D0268536A0000B5B51 /* Step1ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step1ViewController.m; sourceTree = "<group>"; };
-		E9B6C9E426853859000B5B51 /* ClaimsService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsService.h; sourceTree = "<group>"; };
-		E9B6C9E526853859000B5B51 /* ClaimsService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsService.m; sourceTree = "<group>"; };
-		E9B6C9E92685392D000B5B51 /* UIImage+KS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+KS.h"; sourceTree = "<group>"; };
-		E9B6C9EA2685392D000B5B51 /* KSImageManagerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSImageManagerProtocol.h; sourceTree = "<group>"; };
-		E9B6C9EB2685392D000B5B51 /* KSPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPhotoView.m; sourceTree = "<group>"; };
-		E9B6C9EC2685392D000B5B51 /* KSYYImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSYYImageManager.m; sourceTree = "<group>"; };
-		E9B6C9ED2685392D000B5B51 /* KSProgressLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSProgressLayer.m; sourceTree = "<group>"; };
-		E9B6C9EE2685392D000B5B51 /* KSPhotoItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPhotoItem.m; sourceTree = "<group>"; };
-		E9B6C9EF2685392D000B5B51 /* KSPhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPhotoCell.m; sourceTree = "<group>"; };
-		E9B6C9F02685392D000B5B51 /* KSSDImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSSDImageManager.h; sourceTree = "<group>"; };
-		E9B6C9F12685392D000B5B51 /* KSPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSPhotoBrowser.m; sourceTree = "<group>"; };
-		E9B6C9F22685392D000B5B51 /* KSYYImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSYYImageManager.h; sourceTree = "<group>"; };
-		E9B6C9F32685392D000B5B51 /* KSPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPhotoView.h; sourceTree = "<group>"; };
-		E9B6C9F42685392D000B5B51 /* UIImage+KS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+KS.m"; sourceTree = "<group>"; };
-		E9B6C9F52685392D000B5B51 /* KSPhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPhotoCell.h; sourceTree = "<group>"; };
-		E9B6C9F62685392D000B5B51 /* KSPhotoItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPhotoItem.h; sourceTree = "<group>"; };
-		E9B6C9F72685392D000B5B51 /* KSProgressLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSProgressLayer.h; sourceTree = "<group>"; };
-		E9B6C9F82685392D000B5B51 /* KSSDImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSSDImageManager.m; sourceTree = "<group>"; };
-		E9B6C9F92685392D000B5B51 /* KSPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSPhotoBrowser.h; sourceTree = "<group>"; };
-		E9B6C9FA2685392D000B5B51 /* GalleryPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryPreviewViewController.h; sourceTree = "<group>"; };
-		E9B6C9FB2685392D000B5B51 /* GalleryCarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryCarViewController.h; sourceTree = "<group>"; };
-		E9B6C9FC2685392D000B5B51 /* GalleryPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryPreviewViewController.m; sourceTree = "<group>"; };
-		E9B6C9FD2685392D000B5B51 /* GalleryCarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryCarViewController.m; sourceTree = "<group>"; };
-		E9B6CA0926853AD3000B5B51 /* CameraCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraCarViewController.swift; sourceTree = "<group>"; };
-		E9B6CA0A26853AD3000B5B51 /* CameraCar.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CameraCar.storyboard; sourceTree = "<group>"; };
-		E9B6CA0E26853C14000B5B51 /* ClaimsTokenRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsTokenRequestData.m; sourceTree = "<group>"; };
-		E9B6CA0F26853C14000B5B51 /* CreateClaimRequestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateClaimRequestData.m; sourceTree = "<group>"; };
-		E9B6CA1026853C14000B5B51 /* ClaimsTokenRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsTokenRequestData.h; sourceTree = "<group>"; };
-		E9B6CA1126853C14000B5B51 /* CreateClaimRequestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateClaimRequestData.h; sourceTree = "<group>"; };
-		E9B6CA1626853DB0000B5B51 /* ConfigGMaps.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigGMaps.m; sourceTree = "<group>"; };
-		E9B6CA1726853DB0000B5B51 /* ConfigGMaps.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigGMaps.h; sourceTree = "<group>"; };
-		E9B6CA1826853DB0000B5B51 /* CustomLocationPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLocationPickerVC.h; sourceTree = "<group>"; };
-		E9B6CA1A26853DB0000B5B51 /* NSString+urlencode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+urlencode.h"; sourceTree = "<group>"; };
-		E9B6CA1B26853DB0000B5B51 /* CommonFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonFunctions.m; sourceTree = "<group>"; };
-		E9B6CA1C26853DB0000B5B51 /* NSString+urlencode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+urlencode.m"; sourceTree = "<group>"; };
-		E9B6CA1D26853DB0000B5B51 /* CommonFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonFunctions.h; sourceTree = "<group>"; };
-		E9B6CA1E26853DB0000B5B51 /* CustomLocationPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLocationPickerVC.m; sourceTree = "<group>"; };
-		E9B6CA2426854028000B5B51 /* ClaimsUserResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsUserResponse.h; sourceTree = "<group>"; };
-		E9B6CA2526854028000B5B51 /* ClaimsUserObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsUserObject.h; sourceTree = "<group>"; };
-		E9B6CA2626854028000B5B51 /* ClaimsUserResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsUserResultResponse.h; sourceTree = "<group>"; };
-		E9B6CA2726854028000B5B51 /* ClaimsUserObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsUserObject.m; sourceTree = "<group>"; };
-		E9B6CA2826854028000B5B51 /* ClaimsUserResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsUserResponse.m; sourceTree = "<group>"; };
-		E9B6CA2926854028000B5B51 /* ClaimsUserResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsUserResultResponse.m; sourceTree = "<group>"; };
-		E9B6CA2B26854028000B5B51 /* ClaimsTokenResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsTokenResultResponse.h; sourceTree = "<group>"; };
-		E9B6CA2C26854028000B5B51 /* ClaimsTokenResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsTokenResponse.m; sourceTree = "<group>"; };
-		E9B6CA2D26854028000B5B51 /* ClaimsTokenResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsTokenResultResponse.m; sourceTree = "<group>"; };
-		E9B6CA2E26854028000B5B51 /* ClaimsTokenResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsTokenResponse.h; sourceTree = "<group>"; };
-		E9B6CA3026854028000B5B51 /* ClaimsAccidentResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsAccidentResponse.h; sourceTree = "<group>"; };
-		E9B6CA3126854028000B5B51 /* ClaimsAccidentResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsAccidentResultResponse.m; sourceTree = "<group>"; };
-		E9B6CA3226854028000B5B51 /* ClaimsAccidentResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClaimsAccidentResultResponse.h; sourceTree = "<group>"; };
-		E9B6CA3326854028000B5B51 /* ClaimsAccidentResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClaimsAccidentResponse.m; sourceTree = "<group>"; };
-		E9B6CA3C26854281000B5B51 /* GalleryResultResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryResultResponse.h; sourceTree = "<group>"; };
-		E9B6CA3D26854281000B5B51 /* GalleryObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryObject.m; sourceTree = "<group>"; };
-		E9B6CA3E26854281000B5B51 /* GalleryResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryResponse.m; sourceTree = "<group>"; };
-		E9B6CA3F26854281000B5B51 /* GalleryResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryResponse.h; sourceTree = "<group>"; };
-		E9B6CA4026854281000B5B51 /* GalleryObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GalleryObject.h; sourceTree = "<group>"; };
-		E9B6CA4126854281000B5B51 /* GalleryResultResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GalleryResultResponse.m; sourceTree = "<group>"; };
 		E9B6CA46268544A7000B5B51 /* GMAlbumsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMAlbumsViewController.h; sourceTree = "<group>"; };
 		E9B6CA48268544A7000B5B51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/GMImagePicker.strings; sourceTree = "<group>"; };
 		E9B6CA49268544A7000B5B51 /* GMGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GMGridViewController.h; sourceTree = "<group>"; };
@@ -924,7 +773,6 @@
 				E9306C34231DCFB6003E98BB /* MapPopTipView */,
 				E9B6CA6526854778000B5B51 /* SpecialActionSheet */,
 				E9866184258AA5D90074BE6F /* TagsSwitch */,
-				E9A7FE1B26CF0BE9000F0C44 /* DriveCoinsSegment */,
 				E9A7FE1F26CF0D1D000F0C44 /* DaysCoinsSegmentView */,
 				170041781D749B500058C934 /* Color.h */,
 				170041791D749B500058C934 /* Color.m */,
@@ -939,7 +787,6 @@
 			children = (
 				E954A9412595411C0033FA23 /* Auth */,
 				E96ABF4D2612818100C0AC24 /* Vehicle */,
-				E9B6CA0D26853C14000B5B51 /* Claims */,
 				E904B9CF2670D2E7009CD77B /* CheckUser */,
 				171390381D81974C007E4007 /* RequestData.h */,
 				171390391D81974C007E4007 /* RequestData.m */,
@@ -1025,7 +872,6 @@
 				E9866154258A9F2B0074BE6F /* Profile.storyboard */,
 				E990B15A215435E800F2EF11 /* Settings.storyboard */,
 				E96ABF5E261282C500C0AC24 /* Leaderboard.storyboard */,
-				E9B6C9A726853680000B5B51 /* Claims.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -1093,7 +939,6 @@
 				E96ABE0E2611AB1600C0AC24 /* Leaderboard */,
 				E96ABEC72612229100C0AC24 /* ConnectOBD */,
 				E9BD8852227278CC0059FCA1 /* Measures */,
-				E9B6C9A9268536A0000B5B51 /* Claims */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -1103,7 +948,6 @@
 			children = (
 				171390511D81EA85007E4007 /* User */,
 				173973661D62199500C9447E /* API */,
-				E9B6C9E326853859000B5B51 /* ClaimsService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1145,16 +989,11 @@
 				E9C22D112552E21A0055644D /* Eco */,
 				E9A7FE1426CF082C000F0C44 /* Coins */,
 				E9A7FE0426CEFC9D000F0C44 /* CoinsDetails */,
-				E9A7FDFF26CEFC9D000F0C44 /* Streaks */,
 				E99ACAF12200E1140083DD99 /* Profile */,
 				E98661D0258AB80E0074BE6F /* ProfileUserFields */,
 				E90D0B9026EA173200F1AC8A /* JoinCompany */,
 				E96ABF52261281C700C0AC24 /* Vehicles */,
 				E9E21E732641753700EE4FC9 /* VehiclesDictionary */,
-				E9B6CA2F26854028000B5B51 /* ClaimsAccident */,
-				E9B6CA2A26854028000B5B51 /* ClaimsToken */,
-				E9B6CA2326854028000B5B51 /* ClaimsUser */,
-				E9B6CA3B26854281000B5B51 /* ClaimsGallery */,
 				E96ABE572611AB6800C0AC24 /* Leaderboard */,
 				E9395403274BC28600E0289E /* TagResponse */,
 				1713904B1D81D68D007E4007 /* RootResponse.h */,
@@ -1848,7 +1687,6 @@
 			isa = PBXGroup;
 			children = (
 				E9A7FDF126CEFBFA000F0C44 /* CoinsChart */,
-				E9A7FDF726CEFBFA000F0C44 /* StreaksCell */,
 				E9A7FDF526CEFBFA000F0C44 /* WelcomeRewards.h */,
 				E9A7FDF626CEFBFA000F0C44 /* WelcomeRewards.m */,
 				E9A7FDFA26CEFBFA000F0C44 /* DriveCoinsViewController.h */,
@@ -1864,26 +1702,6 @@
 				E9A7FDF226CEFBFA000F0C44 /* CoinsChart.m */,
 			);
 			path = CoinsChart;
-			sourceTree = "<group>";
-		};
-		E9A7FDF726CEFBFA000F0C44 /* StreaksCell */ = {
-			isa = PBXGroup;
-			children = (
-				E9A7FDF826CEFBFA000F0C44 /* StreakCell.h */,
-				E9A7FDF926CEFBFA000F0C44 /* StreakCell.m */,
-			);
-			path = StreaksCell;
-			sourceTree = "<group>";
-		};
-		E9A7FDFF26CEFC9D000F0C44 /* Streaks */ = {
-			isa = PBXGroup;
-			children = (
-				E9A7FE0326CEFC9D000F0C44 /* StreaksResponse.h */,
-				E9A7FE0026CEFC9D000F0C44 /* StreaksResponse.m */,
-				E9A7FE0126CEFC9D000F0C44 /* StreaksResultResponse.h */,
-				E9A7FE0226CEFC9D000F0C44 /* StreaksResultResponse.m */,
-			);
-			path = Streaks;
 			sourceTree = "<group>";
 		};
 		E9A7FE0426CEFC9D000F0C44 /* CoinsDetails */ = {
@@ -1919,15 +1737,6 @@
 			path = Coins;
 			sourceTree = "<group>";
 		};
-		E9A7FE1B26CF0BE9000F0C44 /* DriveCoinsSegment */ = {
-			isa = PBXGroup;
-			children = (
-				E9A7FE1D26CF0BE9000F0C44 /* DriveCoinsSegmentView.h */,
-				E9A7FE1C26CF0BE9000F0C44 /* DriveCoinsSegmentView.m */,
-			);
-			path = DriveCoinsSegment;
-			sourceTree = "<group>";
-		};
 		E9A7FE1F26CF0D1D000F0C44 /* DaysCoinsSegmentView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1937,210 +1746,6 @@
 				E9A7FE2326CF0D1D000F0C44 /* UIView+Extension.m */,
 			);
 			path = DaysCoinsSegmentView;
-			sourceTree = "<group>";
-		};
-		E9B6C9A9268536A0000B5B51 /* Claims */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9AD268536A0000B5B51 /* CollectionLayout */,
-				E9B6CA1426853DB0000B5B51 /* GMaps */,
-				E9B6C9E72685392D000B5B51 /* GalleryUpload */,
-				E9B6CA0826853AD3000B5B51 /* ClaimsCameraCar */,
-				E9B6C9B2268536A0000B5B51 /* Cells */,
-				E9B6C9BF268536A0000B5B51 /* MainClaimViewController.h */,
-				E9B6C9CF268536A0000B5B51 /* MainClaimViewController.m */,
-				E9B6C9CD268536A0000B5B51 /* NewClaimViewController.h */,
-				E9B6C9C1268536A0000B5B51 /* NewClaimViewController.m */,
-				E9B6C9C5268536A0000B5B51 /* ClaimDetailsViewCtrl.h */,
-				E9B6C9AC268536A0000B5B51 /* ClaimDetailsViewCtrl.m */,
-				E9B6C9C4268536A0000B5B51 /* Step1ViewController.h */,
-				E9B6C9D0268536A0000B5B51 /* Step1ViewController.m */,
-				E9B6C9CC268536A0000B5B51 /* Step2ViewController.h */,
-				E9B6C9C2268536A0000B5B51 /* Step2ViewController.m */,
-				E9B6C9C8268536A0000B5B51 /* Step3ViewController.h */,
-				E9B6C9BE268536A0000B5B51 /* Step3ViewController.m */,
-				E9B6C9C6268536A0000B5B51 /* Step4ViewController.h */,
-				E9B6C9AB268536A0000B5B51 /* Step4ViewController.m */,
-				E9B6C9CA268536A0000B5B51 /* StepPhotoViewController.h */,
-				E9B6C9BC268536A0000B5B51 /* StepPhotoViewController.m */,
-				E9B6C9C9268536A0000B5B51 /* RetypeVehicleCtrl.h */,
-				E9B6C9BD268536A0000B5B51 /* RetypeVehicleCtrl.m */,
-				E9B6C9C0268536A0000B5B51 /* TowingViewController.h */,
-				E9B6C9CE268536A0000B5B51 /* TowingViewController.m */,
-				E9B6C9C7268536A0000B5B51 /* CarClaimViewController.h */,
-				E9B6C9AA268536A0000B5B51 /* CarClaimViewController.m */,
-				E9B6C9CB268536A0000B5B51 /* ClaimReviewViewCtrl.h */,
-				E9B6C9C3268536A0000B5B51 /* ClaimReviewViewCtrl.m */,
-			);
-			path = Claims;
-			sourceTree = "<group>";
-		};
-		E9B6C9AD268536A0000B5B51 /* CollectionLayout */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9B1268536A0000B5B51 /* DelegateCollectionViewFillLayout.h */,
-				E9B6C9AF268536A0000B5B51 /* DelegateCollectionViewFillLayout.m */,
-				E9B6C9AE268536A0000B5B51 /* NewClaimCell.h */,
-				E9B6C9B0268536A0000B5B51 /* NewClaimCell.m */,
-			);
-			path = CollectionLayout;
-			sourceTree = "<group>";
-		};
-		E9B6C9B2268536A0000B5B51 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9B3268536A0000B5B51 /* ClaimCarCell.h */,
-				E9B6C9B6268536A0000B5B51 /* ClaimCarCell.m */,
-				E9B6C9B4268536A0000B5B51 /* CarPhotoCell.h */,
-				E9B6C9B8268536A0000B5B51 /* CarPhotoCell.m */,
-				E9B6C9B7268536A0000B5B51 /* ClaimQouteCell.h */,
-				E9B6C9B5268536A0000B5B51 /* ClaimQouteCell.m */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		E9B6C9E326853859000B5B51 /* ClaimsService */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9E426853859000B5B51 /* ClaimsService.h */,
-				E9B6C9E526853859000B5B51 /* ClaimsService.m */,
-			);
-			path = ClaimsService;
-			sourceTree = "<group>";
-		};
-		E9B6C9E72685392D000B5B51 /* GalleryUpload */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9E82685392D000B5B51 /* GalleryPhotoBrowser */,
-				E9B6C9FA2685392D000B5B51 /* GalleryPreviewViewController.h */,
-				E9B6C9FB2685392D000B5B51 /* GalleryCarViewController.h */,
-				E9B6C9FC2685392D000B5B51 /* GalleryPreviewViewController.m */,
-				E9B6C9FD2685392D000B5B51 /* GalleryCarViewController.m */,
-			);
-			path = GalleryUpload;
-			sourceTree = "<group>";
-		};
-		E9B6C9E82685392D000B5B51 /* GalleryPhotoBrowser */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6C9EA2685392D000B5B51 /* KSImageManagerProtocol.h */,
-				E9B6C9F92685392D000B5B51 /* KSPhotoBrowser.h */,
-				E9B6C9F12685392D000B5B51 /* KSPhotoBrowser.m */,
-				E9B6C9F22685392D000B5B51 /* KSYYImageManager.h */,
-				E9B6C9EC2685392D000B5B51 /* KSYYImageManager.m */,
-				E9B6C9F02685392D000B5B51 /* KSSDImageManager.h */,
-				E9B6C9F82685392D000B5B51 /* KSSDImageManager.m */,
-				E9B6C9EB2685392D000B5B51 /* KSPhotoView.m */,
-				E9B6C9F32685392D000B5B51 /* KSPhotoView.h */,
-				E9B6C9E92685392D000B5B51 /* UIImage+KS.h */,
-				E9B6C9F42685392D000B5B51 /* UIImage+KS.m */,
-				E9B6C9F62685392D000B5B51 /* KSPhotoItem.h */,
-				E9B6C9EE2685392D000B5B51 /* KSPhotoItem.m */,
-				E9B6C9F52685392D000B5B51 /* KSPhotoCell.h */,
-				E9B6C9EF2685392D000B5B51 /* KSPhotoCell.m */,
-				E9B6C9F72685392D000B5B51 /* KSProgressLayer.h */,
-				E9B6C9ED2685392D000B5B51 /* KSProgressLayer.m */,
-			);
-			path = GalleryPhotoBrowser;
-			sourceTree = "<group>";
-		};
-		E9B6CA0826853AD3000B5B51 /* ClaimsCameraCar */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA0926853AD3000B5B51 /* CameraCarViewController.swift */,
-				E9B6CA0A26853AD3000B5B51 /* CameraCar.storyboard */,
-			);
-			path = ClaimsCameraCar;
-			sourceTree = "<group>";
-		};
-		E9B6CA0D26853C14000B5B51 /* Claims */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA1026853C14000B5B51 /* ClaimsTokenRequestData.h */,
-				E9B6CA0E26853C14000B5B51 /* ClaimsTokenRequestData.m */,
-				E9B6CA1126853C14000B5B51 /* CreateClaimRequestData.h */,
-				E9B6CA0F26853C14000B5B51 /* CreateClaimRequestData.m */,
-			);
-			path = Claims;
-			sourceTree = "<group>";
-		};
-		E9B6CA1426853DB0000B5B51 /* GMaps */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA1526853DB0000B5B51 /* Config */,
-				E9B6CA1926853DB0000B5B51 /* CommonFunctions */,
-				E9B6CA1826853DB0000B5B51 /* CustomLocationPickerVC.h */,
-				E9B6CA1E26853DB0000B5B51 /* CustomLocationPickerVC.m */,
-			);
-			path = GMaps;
-			sourceTree = "<group>";
-		};
-		E9B6CA1526853DB0000B5B51 /* Config */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA1726853DB0000B5B51 /* ConfigGMaps.h */,
-				E9B6CA1626853DB0000B5B51 /* ConfigGMaps.m */,
-			);
-			path = Config;
-			sourceTree = "<group>";
-		};
-		E9B6CA1926853DB0000B5B51 /* CommonFunctions */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA1D26853DB0000B5B51 /* CommonFunctions.h */,
-				E9B6CA1B26853DB0000B5B51 /* CommonFunctions.m */,
-				E9B6CA1A26853DB0000B5B51 /* NSString+urlencode.h */,
-				E9B6CA1C26853DB0000B5B51 /* NSString+urlencode.m */,
-			);
-			path = CommonFunctions;
-			sourceTree = "<group>";
-		};
-		E9B6CA2326854028000B5B51 /* ClaimsUser */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA2426854028000B5B51 /* ClaimsUserResponse.h */,
-				E9B6CA2826854028000B5B51 /* ClaimsUserResponse.m */,
-				E9B6CA2626854028000B5B51 /* ClaimsUserResultResponse.h */,
-				E9B6CA2926854028000B5B51 /* ClaimsUserResultResponse.m */,
-				E9B6CA2526854028000B5B51 /* ClaimsUserObject.h */,
-				E9B6CA2726854028000B5B51 /* ClaimsUserObject.m */,
-			);
-			path = ClaimsUser;
-			sourceTree = "<group>";
-		};
-		E9B6CA2A26854028000B5B51 /* ClaimsToken */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA2E26854028000B5B51 /* ClaimsTokenResponse.h */,
-				E9B6CA2C26854028000B5B51 /* ClaimsTokenResponse.m */,
-				E9B6CA2B26854028000B5B51 /* ClaimsTokenResultResponse.h */,
-				E9B6CA2D26854028000B5B51 /* ClaimsTokenResultResponse.m */,
-			);
-			path = ClaimsToken;
-			sourceTree = "<group>";
-		};
-		E9B6CA2F26854028000B5B51 /* ClaimsAccident */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA3026854028000B5B51 /* ClaimsAccidentResponse.h */,
-				E9B6CA3326854028000B5B51 /* ClaimsAccidentResponse.m */,
-				E9B6CA3226854028000B5B51 /* ClaimsAccidentResultResponse.h */,
-				E9B6CA3126854028000B5B51 /* ClaimsAccidentResultResponse.m */,
-			);
-			path = ClaimsAccident;
-			sourceTree = "<group>";
-		};
-		E9B6CA3B26854281000B5B51 /* ClaimsGallery */ = {
-			isa = PBXGroup;
-			children = (
-				E9B6CA3F26854281000B5B51 /* GalleryResponse.h */,
-				E9B6CA3E26854281000B5B51 /* GalleryResponse.m */,
-				E9B6CA3C26854281000B5B51 /* GalleryResultResponse.h */,
-				E9B6CA4126854281000B5B51 /* GalleryResultResponse.m */,
-				E9B6CA4026854281000B5B51 /* GalleryObject.h */,
-				E9B6CA3D26854281000B5B51 /* GalleryObject.m */,
-			);
-			path = ClaimsGallery;
 			sourceTree = "<group>";
 		};
 		E9B6CA45268544A7000B5B51 /* ImageGallery */ = {
@@ -2448,10 +2053,8 @@
 				E970305121B5AFF8008CEA13 /* GeneralPermissionsPopup.xib in Resources */,
 				E9A7FDEF26CEFB8F000F0C44 /* Rewards.storyboard in Resources */,
 				E9B6CA59268544A7000B5B51 /* GMImagePicker.strings in Resources */,
-				E9B6CA0C26853AD3000B5B51 /* CameraCar.storyboard in Resources */,
 				E90DF4AA26CF1CDD0003C2A1 /* WelcomeRewards.storyboard in Resources */,
 				174D93981D79A215003F743F /* Auth.storyboard in Resources */,
-				E9B6C9A826853680000B5B51 /* Claims.storyboard in Resources */,
 				E990B15B215435E800F2EF11 /* Settings.storyboard in Resources */,
 				E9B6CA63268544A7000B5B51 /* GMSelected.png in Resources */,
 				E9B6CA5F268544A7000B5B51 /* GMVideoIcon.png in Resources */,
@@ -2630,7 +2233,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E9B6C9E2268536A0000B5B51 /* Step1ViewController.m in Sources */,
 				E919F73F21503A8500CCF3A6 /* TripCell.m in Sources */,
 				E96ABEE72612229100C0AC24 /* OBDSlideBluetoothDelegate.swift in Sources */,
 				E96ABE472611AB1600C0AC24 /* OverallCell.m in Sources */,
@@ -2641,12 +2243,9 @@
 				E96ABE412611AB1600C0AC24 /* MainScoresViewCtrl.m in Sources */,
 				17F88BA91D904174001164F0 /* DashboardResponse.m in Sources */,
 				E914DBB72159A4BB002BB116 /* RegResultResponse.m in Sources */,
-				E9B6C9DC268536A0000B5B51 /* Step3ViewController.m in Sources */,
 				E9D54B1221F8BDEE006B49C9 /* MainEmailViewCtrl.m in Sources */,
 				E9306C46231DCFB6003E98BB /* MapPopTip+Draw.m in Sources */,
-				E9B6CA012685392D000B5B51 /* KSPhotoItem.m in Sources */,
 				E9B6CA62268544A7000B5B51 /* GMAlbumsViewCell.m in Sources */,
-				E9B6C9DF268536A0000B5B51 /* ClaimReviewViewCtrl.m in Sources */,
 				E9FCB5FD22F3862F002C9944 /* CongratulationsPopupDelegate.m in Sources */,
 				E98323AB21D6D4820005F930 /* TelematicsAppTextField.m in Sources */,
 				E96ABE422611AB1600C0AC24 /* PhoneCell.m in Sources */,
@@ -2660,7 +2259,6 @@
 				E96ABE4C2611AB1600C0AC24 /* ScoreTimeVC.m in Sources */,
 				E96ABE532611AB1600C0AC24 /* ScorePhoneVC.m in Sources */,
 				E9395415274BCEEE00E0289E /* DriveModeViewCtrl.m in Sources */,
-				E9B6CA052685392D000B5B51 /* KSSDImageManager.m in Sources */,
 				E978BAED23D11CEF00A59A8F /* AccessTokenObject.m in Sources */,
 				171390361D818720007E4007 /* UITextField+Form.m in Sources */,
 				E96ABE6D2611AD2F00C0AC24 /* TelematicsLeaderboardModel.m in Sources */,
@@ -2669,11 +2267,8 @@
 				E9A7FDFC26CEFBFB000F0C44 /* DriveCoinsViewController.m in Sources */,
 				E90088FC21D1BC0B00D33D85 /* SettingsNoIconCell.m in Sources */,
 				E9D54B1121F8BDEE006B49C9 /* EmailLoginViewCtrl.m in Sources */,
-				E9B6C9D1268536A0000B5B51 /* CarClaimViewController.m in Sources */,
-				E9B6CA3A26854028000B5B51 /* ClaimsAccidentResponse.m in Sources */,
 				E96ABEE12612229100C0AC24 /* FoundCell.swift in Sources */,
 				17A4EF231D86D18D00B6A740 /* MainApiRequest.m in Sources */,
-				E9B6CA1326853C14000B5B51 /* CreateClaimRequestData.m in Sources */,
 				E96ABE4A2611AB1600C0AC24 /* TimeCell.m in Sources */,
 				E9E05D2C21B80E9800F6C76C /* TelematicsAppAddressBookAccessor.m in Sources */,
 				E9306C44231DCFB6003E98BB /* MapPopTip+Entrance.m in Sources */,
@@ -2689,7 +2284,6 @@
 				E9A7FE2426CF0D1D000F0C44 /* DaysCoinsSegmentView.m in Sources */,
 				E9A7FE1926CF082C000F0C44 /* CoinsResponse.m in Sources */,
 				E98CFA5623D8D61700580144 /* PaginationDataSource.m in Sources */,
-				E9B6CA002685392D000B5B51 /* KSProgressLayer.m in Sources */,
 				E93FBF59240F066A001387C6 /* VisibleBuildConfig.m in Sources */,
 				E93082B5229F383800E17C1D /* UIColor+FSPalette.m in Sources */,
 				1700417D1D749B820058C934 /* UIViewController+Preloader.m in Sources */,
@@ -2698,12 +2292,10 @@
 				E9BFA2FC21FE467900D80C21 /* CountriesViewController.swift in Sources */,
 				E939540F274BC32C00E0289E /* JobsAcceptedCell.m in Sources */,
 				E95487DD2593F84C004E2610 /* ProfilePopupDelegate.m in Sources */,
-				E9B6CA3426854028000B5B51 /* ClaimsUserObject.m in Sources */,
 				E96ABF15261226EA00C0AC24 /* Global.swift in Sources */,
 				E96ABE482611AB1600C0AC24 /* MileageCell.m in Sources */,
 				E9F6E521204F600A003BFAD3 /* ISO8601Serialization.m in Sources */,
 				E96ABE502611AB1600C0AC24 /* ScoreAccVC.m in Sources */,
-				E9B6C9D5268536A0000B5B51 /* NewClaimCell.m in Sources */,
 				E9A7FE1226CEFC9D000F0C44 /* IndicatorsResponse.m in Sources */,
 				E96ABEE92612229100C0AC24 /* InternetErrorViewCtrl.swift in Sources */,
 				E98E20E1255096ED00BA30AF /* LatestDayScoringResultResponse.m in Sources */,
@@ -2713,7 +2305,6 @@
 				E96ABE452611AB1600C0AC24 /* AccCell.m in Sources */,
 				1713903A1D81974C007E4007 /* RequestData.m in Sources */,
 				E9332F3722B0376900EC70B6 /* ChevronView.m in Sources */,
-				E9B6CA042685392D000B5B51 /* UIImage+KS.m in Sources */,
 				E9A842AE225244530090461E /* BaseViewController.m in Sources */,
 				E947D3B525348FAC003DB17A /* DriverSignaturePopupDelegate.m in Sources */,
 				E9A7FE1126CEFC9D000F0C44 /* CoinsDetailsResponse.m in Sources */,
@@ -2726,14 +2317,11 @@
 				E9B6CA64268544A7000B5B51 /* GMGridViewCell.m in Sources */,
 				1713904D1D81D68D007E4007 /* RootResponse.m in Sources */,
 				E900890121D2C65100D33D85 /* UserImagePickerViewController.m in Sources */,
-				E9B6C9D7268536A0000B5B51 /* ClaimCarCell.m in Sources */,
 				E9395408274BC28600E0289E /* TagResponse.m in Sources */,
 				E96ABE522611AB1600C0AC24 /* ScoreOverallVC.m in Sources */,
 				E96ABE602611AB6800C0AC24 /* LeaderboardResponse.m in Sources */,
 				E96ABEDE2612229100C0AC24 /* LookingPopupViewCtrl.swift in Sources */,
-				E9B6CA4226854281000B5B51 /* GalleryObject.m in Sources */,
 				E9B6CA60268544A7000B5B51 /* GMAlbumsViewController.m in Sources */,
-				E9B6CA0B26853AD3000B5B51 /* CameraCarViewController.swift in Sources */,
 				E90D0B9526EA173200F1AC8A /* JoinCompanyResultResponse.m in Sources */,
 				E90D0B9626EA173200F1AC8A /* JoinCompanyResponse.m in Sources */,
 				E9A7FE1026CEFC9D000F0C44 /* CoinsDetailsObject.m in Sources */,
@@ -2741,18 +2329,13 @@
 				E9E21E782641753700EE4FC9 /* VehiclesDictionaryResultResponse.m in Sources */,
 				E93082B9229F384A00E17C1D /* LineChart.m in Sources */,
 				E96ABE432611AB1600C0AC24 /* TotalTripsCell.m in Sources */,
-				E9B6CA2026853DB1000B5B51 /* CommonFunctions.m in Sources */,
 				170041761D749B120058C934 /* UITableView+Preloader.m in Sources */,
-				E9B6CA3526854028000B5B51 /* ClaimsUserResponse.m in Sources */,
 				E9A7FE2526CF0D1D000F0C44 /* UIView+Extension.m in Sources */,
 				E9A7FDFD26CEFBFB000F0C44 /* WelcomeRewards.m in Sources */,
 				E9E05D2A21B80E9800F6C76C /* TelematicsAppPhotoLibraryAccessor.m in Sources */,
 				E970305221B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m in Sources */,
-				E9B6C9D8268536A0000B5B51 /* CarPhotoCell.m in Sources */,
-				E9B6CA4426854281000B5B51 /* GalleryResultResponse.m in Sources */,
 				E9745E51218B811D00EE8102 /* CoreDataCoordinator.m in Sources */,
 				E96ABE3F2611AB1600C0AC24 /* LeaderboardViewCtrl.m in Sources */,
-				E9B6C9DD268536A0000B5B51 /* NewClaimViewController.m in Sources */,
 				E96ABEDD2612229100C0AC24 /* ConnectOBDViewCtrl.swift in Sources */,
 				E96ABE402611AB1600C0AC24 /* ScoreCornerVC.m in Sources */,
 				E9580AFF22B2E4E60029B22F /* GearLoadingView.m in Sources */,
@@ -2762,21 +2345,15 @@
 				E97716A2258AC53700419EB0 /* ClaimAlertPopup.m in Sources */,
 				E96ABE682611AC8C00C0AC24 /* TelematicsLeaderboardModel+CoreDataProperties.m in Sources */,
 				E9A7FDFB26CEFBFB000F0C44 /* CoinsChart.m in Sources */,
-				E9B6CA1F26853DB1000B5B51 /* ConfigGMaps.m in Sources */,
 				E96ABEE82612229100C0AC24 /* NotSupportErrorViewCtrl.swift in Sources */,
-				E9B6CA3926854028000B5B51 /* ClaimsAccidentResultResponse.m in Sources */,
 				E94C78CB25928E7100725A29 /* UIView+Extension.m in Sources */,
 				E96ABE5E2611AB6800C0AC24 /* LeaderboardResultResponse.m in Sources */,
 				E9A7FE1A26CF082C000F0C44 /* CoinsResultResponse.m in Sources */,
 				1739736B1D62199500C9447E /* APIErrorHandler.m in Sources */,
-				E9B6C9E626853859000B5B51 /* ClaimsService.m in Sources */,
-				E9A7FDFE26CEFBFB000F0C44 /* StreakCell.m in Sources */,
 				E954A94D2595411C0033FA23 /* RefreshTokenRequestData.m in Sources */,
 				173973311D620CDB00C9447E /* AppDelegate.m in Sources */,
-				E9B6C9FF2685392D000B5B51 /* KSYYImageManager.m in Sources */,
 				E9BFA2FB21FE467900D80C21 /* Countries.swift in Sources */,
 				E919F73B21503A8500CCF3A6 /* FeedSlideCellMenuView.m in Sources */,
-				E9B6C9FE2685392D000B5B51 /* KSPhotoView.m in Sources */,
 				1739736C1D62199500C9447E /* APIRequest.m in Sources */,
 				E96ABEDF2612229100C0AC24 /* UsePhotoViewCtrl.swift in Sources */,
 				17AEDC6C1DA0063800E707B8 /* UIImage+FixOrientation.m in Sources */,
@@ -2795,30 +2372,21 @@
 				E96ABE442611AB1600C0AC24 /* SpeedCell.m in Sources */,
 				E9FF4C07202D1A5C00DD0B86 /* Reachability.m in Sources */,
 				E9D260DC21ADED1D00632BAE /* ProfileViewController.m in Sources */,
-				E9B6CA3826854028000B5B51 /* ClaimsTokenResultResponse.m in Sources */,
 				E96ABF2226127DD200C0AC24 /* NSUserDefaultsExtension.swift in Sources */,
 				E939541A274BE8CC00E0289E /* SettingsAccidentCell.m in Sources */,
 				E95487DF2593F84C004E2610 /* UIView+parentViewController.m in Sources */,
 				FA12350C1DD4D417000C522D /* WiFiGPSChecker.m in Sources */,
-				E9B6CA2226853DB1000B5B51 /* CustomLocationPickerVC.m in Sources */,
-				E9B6CA062685392D000B5B51 /* GalleryPreviewViewController.m in Sources */,
 				E96ABE512611AB1600C0AC24 /* ScoreDecVC.m in Sources */,
 				E96ABEE02612229100C0AC24 /* OBDCell.swift in Sources */,
 				E9F6E520204F600A003BFAD3 /* NSDate+ISO8601.m in Sources */,
-				E9B6C9E1268536A0000B5B51 /* MainClaimViewController.m in Sources */,
 				E98B9BFB21222EB200ACCE06 /* CoreBarController.m in Sources */,
 				E9306C40231DCFB6003E98BB /* MapPopTip+Animation.m in Sources */,
-				E9B6CA032685392D000B5B51 /* KSPhotoBrowser.m in Sources */,
 				E914DBB82159A4BB002BB116 /* RegResponse.m in Sources */,
 				E96ABEE62612229100C0AC24 /* OBDSlideCarouselDelegate.swift in Sources */,
-				E9B6C9DE268536A0000B5B51 /* Step2ViewController.m in Sources */,
-				E9B6CA072685392D000B5B51 /* GalleryCarViewController.m in Sources */,
-				E9B6CA2126853DB1000B5B51 /* NSString+urlencode.m in Sources */,
 				E9E05D3121B80E9800F6C76C /* TelematicsAppContactsAccessor.m in Sources */,
 				E9E21E792641753700EE4FC9 /* VehiclesDictionaryResponse.m in Sources */,
 				E96ABE462611AB1600C0AC24 /* CornerCell.m in Sources */,
 				173973C21D621A2600C9447E /* NSDate+UI.m in Sources */,
-				E9B6C9D6268536A0000B5B51 /* ClaimQouteCell.m in Sources */,
 				E9E05D2821B80E9800F6C76C /* TelematicsAppCameraAccessor.m in Sources */,
 				E9C22D1D2552E21A0055644D /* EcoResponse.m in Sources */,
 				E925550E24352E9C00B4EF17 /* MeasuresViewCtrl.m in Sources */,
@@ -2827,10 +2395,7 @@
 				E98F3EA422CF76F700765837 /* UIApplication+CFABackgroundTask.m in Sources */,
 				173973C31D621A2600C9447E /* NSString+Date.m in Sources */,
 				E98661DE258ABA800074BE6F /* Configurator.m in Sources */,
-				E9B6CA3726854028000B5B51 /* ClaimsTokenResponse.m in Sources */,
-				E9B6C9DB268536A0000B5B51 /* RetypeVehicleCtrl.m in Sources */,
 				E98E20DA255096ED00BA30AF /* LatestDayScoringResponse.m in Sources */,
-				E9B6C9D2268536A0000B5B51 /* Step4ViewController.m in Sources */,
 				E9C22D3325534B230055644D /* EcoIndividualResultResponse.m in Sources */,
 				E98B9BFC21222EB200ACCE06 /* CoreTabBarController.m in Sources */,
 				E9E05D2921B80E9800F6C76C /* TelematicsAppMotionAccessor.m in Sources */,
@@ -2841,19 +2406,13 @@
 				E9745E54218B811D00EE8102 /* Model.xcdatamodeld in Sources */,
 				E96ABE4F2611AB1600C0AC24 /* ScoreSpeedVC.m in Sources */,
 				E914DBAA21598CF5002BB116 /* CheckResultResponse.m in Sources */,
-				E9A7FE1E26CF0BE9000F0C44 /* DriveCoinsSegmentView.m in Sources */,
 				1784632E1D8979D200B4FE32 /* NSArray+UITableViewAdditions.m in Sources */,
-				E9B6CA3626854028000B5B51 /* ClaimsUserResultResponse.m in Sources */,
 				E951AC212162A97900717D8C /* SettingsMenuCell.m in Sources */,
 				E9E05D2721B80E9800F6C76C /* TelematicsAppPushNotificationAccessor.m in Sources */,
-				E9A7FE0E26CEFC9D000F0C44 /* StreaksResponse.m in Sources */,
-				E9B6CA1226853C14000B5B51 /* ClaimsTokenRequestData.m in Sources */,
-				E9B6C9DA268536A0000B5B51 /* StepPhotoViewController.m in Sources */,
 				E9306C42231DCFB6003E98BB /* MapPopTip.m in Sources */,
 				E9E05D3021B80E9800F6C76C /* TelematicsAppMicrophoneAccessor.m in Sources */,
 				E919F73C21503A8500CCF3A6 /* UITableView+VisibleMenuCell.m in Sources */,
 				17F88BA11D90407F001164F0 /* DashboardResultResponse.m in Sources */,
-				E9B6CA4326854281000B5B51 /* GalleryResponse.m in Sources */,
 				E9306C48231DCFB6003E98BB /* MapPopTip+Exit.m in Sources */,
 				1700417A1D749B500058C934 /* Color.m in Sources */,
 				E9BFA2FD21FE467900D80C21 /* Country.swift in Sources */,
@@ -2866,14 +2425,10 @@
 				E924973B2303655900FC099F /* DrivingDetailsObject.m in Sources */,
 				173973B71D6219FE00C9447E /* ResponseObject.m in Sources */,
 				E990B1592154350500F2EF11 /* SettingsViewController.m in Sources */,
-				E9B6C9E0268536A0000B5B51 /* TowingViewController.m in Sources */,
 				E9BFA2FE21FE467900D80C21 /* CountriesViewControllerDelegate.swift in Sources */,
-				E9A7FE0F26CEFC9D000F0C44 /* StreaksResultResponse.m in Sources */,
 				E99ACAFA2200E1140083DD99 /* ProfileResponse.m in Sources */,
 				E9249737230364E200FC099F /* DrivingDetailsResponse.m in Sources */,
-				E9B6C9D3268536A0000B5B51 /* ClaimDetailsViewCtrl.m in Sources */,
 				E939541B274BE8CC00E0289E /* SettingsBatteryCell.m in Sources */,
-				E9B6C9D4268536A0000B5B51 /* DelegateCollectionViewFillLayout.m in Sources */,
 				E919F73A21503A8500CCF3A6 /* UIView+XIB.m in Sources */,
 				E9E05D2E21B80E9800F6C76C /* TelematicsAppPrivacyRequestManager+AppUtils.m in Sources */,
 				E99ACAF92200E1140083DD99 /* ProfileResultResponse.m in Sources */,
@@ -2882,7 +2437,6 @@
 				17D13F661D9E940F00F731CC /* Font.m in Sources */,
 				E96ABF1A26127CB900C0AC24 /* IconRightLabel.swift in Sources */,
 				E9395409274BC28600E0289E /* TagResultResponse.m in Sources */,
-				E9B6CA022685392D000B5B51 /* KSPhotoCell.m in Sources */,
 				E9524306214ECDC800C70E95 /* FeedViewController.m in Sources */,
 				E92963CD25D195E5000BF615 /* TelematicsAppRegPopup.m in Sources */,
 				E96ABEEB2612229100C0AC24 /* ConnectErrorViewCtrl.swift in Sources */,

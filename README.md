@@ -21,7 +21,6 @@ Telematics:
 - [My Rewards](#my-rewards)
 - [Profile & Settings](#settings)
 - [Connect OBD device](#connect-obd-device)
-- [Claims](#claims)
 - [Join a Company](#join-a-company)
 - [Advanced Settings & Links](#advanced-settings)
 
@@ -130,7 +129,6 @@ indicatorsServiceURL | Basic https address to work with `Indicators` APIs. By de
 driveCoinsServiceURL | Basic https address to work with `DriveCoins` API. 
 leaderboardServiceRootURL | Basic https address to work with the user leaderboard and `Leaderboard API`.
 carServiceURL | Basic https address to work with `CarService` API. 
-claimsServiceURL | Basic https address to work with `ClaimsService` API. 
 mapsAppIdKey | App Id for `HEREmaps API`
 mapsAppCode | App Code for `HEREmaps API`
 mapsLicenseKey | License key for `HEREmaps API`
@@ -341,11 +339,10 @@ All 9 types of Leaderboard are presented in the Telematics App and you can figur
 
 ## My Rewards
 
-Our telematics app allows you to work with DriveCoins and Streaks for each user:
+Our telematics app allows you to work with DriveCoins for each user:
 
 You can learn more about these services by following to our docs:
 DriveCoins - https://docs.telematicssdk.com/docs/drivecoins
-Streaks - https://docs.telematicssdk.com/docs/streaks-1
 
 In detail, you can see the work with methods for rewards in the Telematics App source code in the DriveCoins section.
 
@@ -386,11 +383,6 @@ Connecting and disconnecting to your iOS device happens automatically. OBD adapt
 Detailed documentation and the basic principles of operation can be found in the development portal https://docs.telematicssdk.com/docs/bluetooth-obd
 To fully work with this functionality, you need additional equipment, which we can provide upon your request.
 
-## Claims
-
-You can create Inspections, report road accidents, any damage to your vehicle, attach photos and fill out all the basic information directly from your mobile device.
-Machine learning technology from photos taken with a smartphone can determine the degree of damage, the honesty of the client, and rigged accidents.
-The created Inspection can be considered on your side, which gives you the most modern approach for the insurance business and many other areas of activity.
 
 ## Join a Company
 

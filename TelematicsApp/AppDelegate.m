@@ -137,7 +137,7 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
                             appCode:[Configurator sharedInstance].mapsAppCode
                          licenseKey:[Configurator sharedInstance].mapsLicenseKey];
     
-    //YOUR OWN GOOGLE MAPS KEYS FOR CLAIMS SECTION REQUIRED FOR MAPS
+    //YOUR OWN GOOGLE MAPS KEYS FOR AUTO DETECTING USER LOCATION FOR PROFILE ADDRESS TEXTFIELD
     [GMSServices provideAPIKey:[Configurator sharedInstance].googleApiKey];
     [GMSPlacesClient provideAPIKey:[Configurator sharedInstance].googleApiKey];
     

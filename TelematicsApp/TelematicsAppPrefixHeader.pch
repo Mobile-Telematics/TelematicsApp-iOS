@@ -16,7 +16,6 @@
 #import "TelematicsLeaderboardModel.h"
 #import "CoreDataCoordinator.h"
 #import "GeneralService.h"
-#import "ClaimsService.h"
 #import "BaseViewController.h"
 #import "MagicalRecord/MagicalRecord.h"
 #import "NSUserDefaults-helper.h"

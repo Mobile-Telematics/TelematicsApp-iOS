@@ -18,7 +18,6 @@
 #import "TagResultResponse.h"
 #import "CoinsResponse.h"
 #import "CoinsResultResponse.h"
-#import "StreaksResponse.h"
 #import "AppDelegate.h"
 #import "CoreTabBarController.h"
 #import "ProfileViewController.h"
@@ -60,16 +59,10 @@
 
 @property (strong, nonatomic) DashboardResultResponse           *dashboard;
 @property (strong, nonatomic) LatestDayScoringResultResponse    *latestScoring;
-
 @property (strong, nonatomic) DrivingDetailsResponse            *drivingDetails;
-
 @property (strong, nonatomic) EcoResultResponse                 *eco;
 @property (strong, nonatomic) EcoIndividualResultResponse       *ecoIndividual;
-
 @property (strong, nonatomic) CoinsResultResponse               *coinsDetails;
-
-@property (strong, nonatomic) StreaksResultResponse             *streaksDetails;
-
 @property (strong, nonatomic) TagResultResponse                 *tagIndividual;
 
 @property (nonatomic, weak) IBOutlet UIButton                   *showLeaderBtn;
@@ -214,12 +207,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_arrowPercentImg;
 @property (weak, nonatomic) IBOutlet UIImageView                *demo_zigzagIndividualImg;
 @property (weak, nonatomic) IBOutlet UILabel                    *demo_factor_costOfOwnershipLbl;
-
-//COMING SOON IN NEXT RELEASE
-@property (weak, nonatomic) IBOutlet UILabel                    *streaks_speedingLbl;
-@property (weak, nonatomic) IBOutlet UILabel                    *streaks_speedingValueLbl;
-@property (weak, nonatomic) IBOutlet UILabel                    *streaks_phoneLbl;
-@property (weak, nonatomic) IBOutlet UILabel                    *streaks_phoneValueLbl;
 
 //DELIVERY ON-DUTY MODE
 @property (weak, nonatomic) IBOutlet UIView                     *jobsMainView;
@@ -566,9 +553,6 @@
     [self getDashboardCoinsThisMonthTime:firstDayOfCurrentMonthDate endDate:currentDate];
     [self getDashboardCoinsLastMonthTime:firstDayOfLastMonthDate endDate:firstDayOfCurrentMonthDate];
     [self getCoinsLimitAllTimeNow];
-    
-    //STREAKS
-    [self startFetchStreaksForDashboard];
 }
 
 - (void)getDashboardIndicatorsStatisticsIndividualForPeriod:(NSDate *)startDate endDate:(NSDate *)endDate {
@@ -865,23 +849,6 @@
             defaults_set_object(@"userCoinsCountLastMonth", 0);
         }
     }] getCoinsTotal:sCoinsDate endDate:eCoinsDate];
-}
-
-
-#pragma mark - Streaks Backend Preload
-
-- (void)startFetchStreaksForDashboard {
-    [[MainApiRequest requestWithCompletion:^(id response, NSError *error) {
-        NSLog(@"%s %@ %@", __func__, response, error);
-        if (!error && [response isSuccesful]) {
-            self.streaksDetails = ((StreaksResponse *)response).Result;
-            self.streaks_speedingValueLbl.text = [NSString stringWithFormat:@"%@ trips", self.streaksDetails.StreakOverSpeedCurrentStreak.stringValue];
-            self.streaks_phoneValueLbl.text = [NSString stringWithFormat:@"%@ trips", self.streaksDetails.StreakPhoneUsageCurrentStreak.stringValue];
-            NSLog(@"Streaks Ok");
-        } else {
-            NSLog(@"%s %@ %@", __func__, response, error);
-        }
-    }] getIndicatorsStreaksSection];
 }
 
 
@@ -2472,15 +2439,15 @@
         }
         if (userRealDistance >= requiredDistance) {
             if (IS_IPHONE_5 || IS_IPHONE_4) {
-                heightConstraint.constant = 1700;
-            } else if (IS_IPHONE_8) {
-                heightConstraint.constant = 1600;
-            } else if (IS_IPHONE_8P) {
-                heightConstraint.constant = 1620;
-            } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
                 heightConstraint.constant = 1550;
+            } else if (IS_IPHONE_8) {
+                heightConstraint.constant = 1450;
+            } else if (IS_IPHONE_8P) {
+                heightConstraint.constant = 1420;
+            } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
+                heightConstraint.constant = 1370;
             } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
-                heightConstraint.constant = 1430;
+                heightConstraint.constant = 1280;
             }
         } else if (userRealDistance < requiredDistance) {
             if (IS_IPHONE_5 || IS_IPHONE_4) {
@@ -2511,15 +2478,15 @@
         }
         if (userRealDistance >= requiredDistance) {
             if (IS_IPHONE_5 || IS_IPHONE_4) {
-                heightConstraint.constant = 1000;
+                heightConstraint.constant = 880;
             } else if (IS_IPHONE_8) {
-                heightConstraint.constant = 890;
+                heightConstraint.constant = 780;
             } else if (IS_IPHONE_8P) {
-                heightConstraint.constant = 850;
+                heightConstraint.constant = 710;
             } else if (IS_IPHONE_11 || IS_IPHONE_13_PRO) {
-                heightConstraint.constant = 830;
+                heightConstraint.constant = 680;
             } else if (IS_IPHONE_11_PROMAX || IS_IPHONE_13_PROMAX) {
-                heightConstraint.constant = 730;
+                heightConstraint.constant = 580;
             }
         } else if (userRealDistance < requiredDistance) {
             if (IS_IPHONE_5 || IS_IPHONE_4) {
@@ -3700,12 +3667,6 @@
     [self presentViewController:settingsVC animated:YES completion:nil];
 }
 
-- (IBAction)openStreaksAction:(id)sender {
-    defaults_set_object(@"userWantOpenStreaksNow", @(1));
-    [HapticHelper generateFeedback:FeedbackTypeImpactMedium];
-    [self.tabBarController setSelectedIndex:[[Configurator sharedInstance].rewardsTabBarNumber intValue]];
-}
-
 - (IBAction)chatOpenAction:(id)sender {
     //TODO IF NEEDED
 }
@@ -3748,9 +3709,6 @@
     
     self.factor_costOfOwnershipLbl.font = [Font light13];
     self.demo_factor_costOfOwnershipLbl.font = [Font light13];
-    
-    self.streaks_speedingLbl.font = [Font semibold11];
-    self.streaks_phoneLbl.font = [Font semibold11];
     
     [self.arrowUpDownBtn addConstraint:[NSLayoutConstraint constraintWithItem:self.arrowUpDownBtn
                                                                       attribute:NSLayoutAttributeWidth

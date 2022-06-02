@@ -15,8 +15,6 @@
 		<string>https://leaderboard.telematicssdk.com/v1</string>
 		<key>carServiceURL</key>
 		<string>https://services.telematicssdk.com/api/carservice/v1</string>
-		<key>claimsServiceURL</key>
-		<string>https://insp.telematicssdk.com/api/v1</string>
 		<key>instanceId</key>
 		<string>&lt;YOUR_INSTANCE_ID&gt;</string>
 		<key>instanceKey</key>

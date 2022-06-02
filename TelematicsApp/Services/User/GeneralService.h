@@ -36,8 +36,6 @@
 @property (nonatomic, copy, readwrite) NSNumber         *stored_childrenCount;
 @property (nonatomic, copy, readwrite) NSString         *stored_profilePictureLink;
 
-@property (nonatomic, strong) NSString                  *claimsToken; //TOKEN FOR CLAIMS
-
 
 //ENTER USER IN APP
 - (void)enterUserInAppWith:(NSString*)deviceToken jwToken:(NSString*)jwToken refreshToken:(NSString*)refreshToken;

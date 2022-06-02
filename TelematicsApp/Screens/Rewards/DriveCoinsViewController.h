@@ -10,8 +10,5 @@
 
 @interface DriveCoinsViewController: BaseViewController
 
-@property (nonatomic) NSString *streakToken;
-@property (nonatomic) NSInteger streakTag;
-
 @end
 
