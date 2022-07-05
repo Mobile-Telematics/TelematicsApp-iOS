@@ -1125,7 +1125,8 @@
 }
 
 - (IBAction)backBtnClick:(id)sender {
-     [self dismissViewControllerAnimated:true completion:nil];
+    [self.mapView removeFromSuperview];
+    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 - (void)swipeHandlerRight:(id)sender {
