@@ -122,7 +122,6 @@ PODS:
   - GoogleUtilities/UserDefaults (7.11.0):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.7.2)
-  - HEREMaps (3.21.2.2)
   - HexColors (4.0.0)
   - ImagePicker (3.2.0)
   - IQDropDownTextField (3.0.2)
@@ -176,7 +175,6 @@ DEPENDENCIES:
   - "GKImagePicker@robseward"
   - GoogleMaps (= 3.9.0)
   - GooglePlaces (= 3.9.0)
-  - HEREMaps
   - ImagePicker (from `https://github.com/hyperoslo/ImagePicker.git`)
   - IQDropDownTextField
   - IQMediaPickerController
@@ -216,7 +214,6 @@ SPEC REPOS:
     - GooglePlaces
     - GoogleUtilities
     - GTMSessionFetcher
-    - HEREMaps
     - HexColors
     - IQDropDownTextField
     - IQMediaPickerController
@@ -275,7 +272,6 @@ SPEC CHECKSUMS:
   GooglePlaces: 1634d019549b969d40fe0ccb0b9513055adebe01
   GoogleUtilities: c2bdc4cf2ce786c4d2e6b3bcfd599a25ca78f06f
   GTMSessionFetcher: 5595ec75acf5be50814f81e9189490412bad82ba
-  HEREMaps: 49cad5a1fd4b6726d092aa3344abdd87d5460231
   HexColors: 5f95843ef89aff6a72e1fd3a8ebabf205cc43379
   ImagePicker: 1d950bbb2422548ed58791b4ec7f42fe42920511
   IQDropDownTextField: 6894c0f8b3acddd1e1bdf167ee23df7a3c30c705
@@ -301,6 +297,6 @@ SPEC CHECKSUMS:
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: dc54619fde6c2239e86cd15939f9cce3b2cb20ca
+PODFILE CHECKSUM: f874fa84aa7a8fad6f5d352165427c01125fbe20
 
 COCOAPODS: 1.11.3

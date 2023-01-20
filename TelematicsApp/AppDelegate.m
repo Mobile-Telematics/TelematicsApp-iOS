@@ -14,7 +14,6 @@
 #import "MainPhoneViewCtrl.h"
 #import "FeedViewController.h"
 #import "WiFiGPSChecker.h"
-#import <NMAKit/NMAKit.h>
 #import <AdSupport/AdSupport.h>
 #import <GoogleMaps/GoogleMaps.h>
 @import GooglePlaces;
@@ -132,10 +131,6 @@ static NSString * const kRecipesStoreName = @"Model.sqlite";
         }
     }
     
-    //HERE MAPS KEYS
-    [NMAApplicationContext setAppId:[Configurator sharedInstance].mapsAppIdKey
-                            appCode:[Configurator sharedInstance].mapsAppCode
-                         licenseKey:[Configurator sharedInstance].mapsLicenseKey];
     
     //YOUR OWN GOOGLE MAPS KEYS FOR AUTO DETECTING USER LOCATION FOR PROFILE ADDRESS TEXTFIELD
     [GMSServices provideAPIKey:[Configurator sharedInstance].googleApiKey];

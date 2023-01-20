@@ -46,7 +46,6 @@
 #import "JobsAcceptedCell.h"
 #import "JobsCompletedCell.h"
 #import <StoreKit/StoreKit.h>
-#import <NMAKit/NMAKit.h>
 
 
 @interface DashMainViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UITextFieldDelegate, GeneralPermissionsPopupProtocol, CongratulationsPopupProtocol, CMTabbarViewDelegate, CMTabbarViewDatasouce> {
@@ -123,7 +122,6 @@
 
 //LATEST TRIP
 @property (nonatomic) RPTrackProcessed                          *track;
-@property (nonatomic) NSArray<NMAGeoCoordinates *>              *speedPoints;
 @property (weak, nonatomic) IBOutlet UIImageView                *mapSnapshot;
 @property (weak, nonatomic) IBOutlet UIImageView                *mapSnapshotForDemo;
 @property (weak, nonatomic) IBOutlet UILabel                    *pointsLbl;

@@ -7,7 +7,7 @@
 //
 
 #import "FeedViewController.h"
-#import "TripDetailsViewController.h"
+#import "CustomLocationPickerVC.h"
 #import "DashMainViewController.h"
 #import "SettingsViewController.h"
 #import "ProfileViewController.h"
@@ -586,59 +586,52 @@ static NSString *rewardCellIdentifier = @"RewardCell";
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    if ([segue.destinationViewController isKindOfClass:[TripDetailsViewController class]]) {
+    if ([[segue destinationViewController] isKindOfClass:[CustomLocationPickerVC class]]) {
+        CustomLocationPickerVC *detailsVC = (CustomLocationPickerVC *)[segue destinationViewController];
         
         CGPoint senderPosition = [sender convertPoint:CGPointZero toView:self.tableView];
         NSIndexPath *indexPath = [self.tableView indexPathForRowAtPoint:senderPosition];
         
-        TripDetailsViewController *detailsVC = segue.destinationViewController;
+        RPTrackProcessed *track = self.tripsData[indexPath.row];
+        detailsVC.tripToken = track.trackToken;
         
-        if (indexPath.row < [self.tripsData count]) {
-            
-            RPTrackProcessed *track = self.tripsData[indexPath.row];
-            detailsVC.track = track;
-            detailsVC.trackToken = track.trackToken;
-            
-            float rating = track.rating100;
-            if (rating == 0)
-                rating = track.rating*20;
-            
-            detailsVC.trackPointsSummary = [NSString stringWithFormat:@"%.0f", rating];
-            detailsVC.trackDistanceSummary = [NSString stringWithFormat:@"%.0f", track.distance];
-            
-            NSDate* dateStart = track.startDate;
-            NSDate* dateEnd = track.endDate;
-            NSString *dateStartFormat = [dateStart dateTimeStringShort];
-            NSString *dateEndFormat = [dateEnd dateTimeStringShort];
-            
-            if ([Configurator sharedInstance].needAmPmTime || [defaults_object(@"needDateSpecialFormat") boolValue] || [defaults_object(@"needAmPmFormat") boolValue]) {
-                if ([defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
-                    dateStartFormat = [dateStart dateTimeStringShortMmDd24];
-                    dateEndFormat = [dateEnd dateTimeStringShortMmDd24];
-                } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && [defaults_object(@"needAmPmFormat") boolValue]) {
-                    dateStartFormat = [dateStart dateTimeStringShortDdMmAmPm];
-                    dateEndFormat = [dateEnd dateTimeStringShortDdMmAmPm];
-                } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
-                    dateStartFormat = [dateStart dateTimeStringShortDdMm24];
-                    dateEndFormat = [dateEnd dateTimeStringShortDdMm24];
-                } else {
-                    dateStartFormat = [dateStart dateTimeStringShortMmDdAmPm];
-                    dateEndFormat = [dateEnd dateTimeStringShortMmDdAmPm];
-                }
+        float rating = track.rating100;
+        if (rating == 0)
+            rating = track.rating*20;
+
+        
+        detailsVC.trackPointsSummary = [NSString stringWithFormat:@"%.0f", rating];
+        detailsVC.trackDistanceSummary = [NSString stringWithFormat:@"%.0f", track.distance];
+        
+        NSDate* dateStart = track.startDate;
+        NSDate* dateEnd = track.endDate;
+        NSString *dateStartFormat = [dateStart dateTimeStringShort];
+        NSString *dateEndFormat = [dateEnd dateTimeStringShort];
+        
+        if ([Configurator sharedInstance].needAmPmTime || [defaults_object(@"needDateSpecialFormat") boolValue] || [defaults_object(@"needAmPmFormat") boolValue]) {
+            if ([defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
+                dateStartFormat = [dateStart dateTimeStringShortMmDd24];
+                dateEndFormat = [dateEnd dateTimeStringShortMmDd24];
+            } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && [defaults_object(@"needAmPmFormat") boolValue]) {
+                dateStartFormat = [dateStart dateTimeStringShortDdMmAmPm];
+                dateEndFormat = [dateEnd dateTimeStringShortDdMmAmPm];
+            } else if (![defaults_object(@"needDateSpecialFormat") boolValue] && ![defaults_object(@"needAmPmFormat") boolValue]) {
+                dateStartFormat = [dateStart dateTimeStringShortDdMm24];
+                dateEndFormat = [dateEnd dateTimeStringShortDdMm24];
+            } else {
+                dateStartFormat = [dateStart dateTimeStringShortMmDdAmPm];
+                dateEndFormat = [dateEnd dateTimeStringShortMmDdAmPm];
             }
-
-            if ([Configurator sharedInstance].needDistanceInMiles || [defaults_object(@"needDistanceInMiles") boolValue]) {
-                float miles = convertKmToMiles(track.distance);
-                detailsVC.trackDistanceSummary = [NSString stringWithFormat:@"%.1f", miles];
-            }
-
-            detailsVC.simpleStartTime = dateStartFormat;
-            detailsVC.simpleEndTime = dateEndFormat;
-
-            detailsVC.sortedOnlyTrips = self.tripsData;
-
-            [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
         }
+
+            
+        detailsVC.simpleStartTime = dateStartFormat;
+        detailsVC.simpleEndTime = dateEndFormat;
+        
+        detailsVC.sortedOnlyTrips = self.tripsData;
+        
+        [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
+        
     }
 }
 

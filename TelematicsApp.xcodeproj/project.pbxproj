@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		07A787A72978C22900FAE7C2 /* CustomLocationPickerVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 07A787A62978C22900FAE7C2 /* CustomLocationPickerVC.m */; };
 		170041761D749B120058C934 /* UITableView+Preloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 170041751D749B120058C934 /* UITableView+Preloader.m */; };
 		1700417A1D749B500058C934 /* Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 170041791D749B500058C934 /* Color.m */; };
 		1700417D1D749B820058C934 /* UIViewController+Preloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 1700417C1D749B820058C934 /* UIViewController+Preloader.m */; };
@@ -71,7 +72,6 @@
 		E93082B5229F383800E17C1D /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = E93082B4229F383800E17C1D /* UIColor+FSPalette.m */; };
 		E93082B9229F384A00E17C1D /* LineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E93082B8229F384A00E17C1D /* LineChart.m */; };
 		E9313D6A2126314500C70A23 /* ProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9313D692126314500C70A23 /* ProgressBarView.m */; };
-		E9332F1522AEFA4700EC70B6 /* TripDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F1422AEFA4700EC70B6 /* TripDetailsViewController.m */; };
 		E9332F1822AF10D100EC70B6 /* Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F1622AF10D100EC70B6 /* Format.m */; };
 		E9332F3522B0376900EC70B6 /* BottomSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9332F2E22B0376900EC70B6 /* BottomSheetView.xib */; };
 		E9332F3622B0376900EC70B6 /* BottomSheetPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = E9332F2F22B0376900EC70B6 /* BottomSheetPresenter.m */; };
@@ -276,6 +276,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07A787A52978C22900FAE7C2 /* CustomLocationPickerVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomLocationPickerVC.h; sourceTree = "<group>"; };
+		07A787A62978C22900FAE7C2 /* CustomLocationPickerVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomLocationPickerVC.m; sourceTree = "<group>"; };
 		170041741D749B120058C934 /* UITableView+Preloader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+Preloader.h"; sourceTree = "<group>"; };
 		170041751D749B120058C934 /* UITableView+Preloader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+Preloader.m"; sourceTree = "<group>"; };
 		170041781D749B500058C934 /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
@@ -400,8 +402,6 @@
 		E93082B8229F384A00E17C1D /* LineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LineChart.m; sourceTree = "<group>"; };
 		E9313D682126314500C70A23 /* ProgressBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProgressBarView.h; sourceTree = "<group>"; };
 		E9313D692126314500C70A23 /* ProgressBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProgressBarView.m; sourceTree = "<group>"; };
-		E9332F1322AEFA4700EC70B6 /* TripDetailsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TripDetailsViewController.h; sourceTree = "<group>"; };
-		E9332F1422AEFA4700EC70B6 /* TripDetailsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TripDetailsViewController.m; sourceTree = "<group>"; };
 		E9332F1622AF10D100EC70B6 /* Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Format.m; sourceTree = "<group>"; };
 		E9332F1722AF10D100EC70B6 /* Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Format.h; sourceTree = "<group>"; };
 		E9332F2E22B0376900EC70B6 /* BottomSheetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomSheetView.xib; sourceTree = "<group>"; };
@@ -755,6 +755,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07A787A42978C0F600FAE7C2 /* GoogleMaps */ = {
+			isa = PBXGroup;
+			children = (
+				07A787A52978C22900FAE7C2 /* CustomLocationPickerVC.h */,
+				07A787A62978C22900FAE7C2 /* CustomLocationPickerVC.m */,
+			);
+			path = GoogleMaps;
+			sourceTree = "<group>";
+		};
 		170041771D749B470058C934 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1306,11 +1315,10 @@
 		E95242FF214ECD4900C70E95 /* Feed */ = {
 			isa = PBXGroup;
 			children = (
+				07A787A42978C0F600FAE7C2 /* GoogleMaps */,
 				E919F71921503A8500CCF3A6 /* Cells */,
 				E9524305214ECDC800C70E95 /* FeedViewController.h */,
 				E9524304214ECDC800C70E95 /* FeedViewController.m */,
-				E9332F1322AEFA4700EC70B6 /* TripDetailsViewController.h */,
-				E9332F1422AEFA4700EC70B6 /* TripDetailsViewController.m */,
 				E98CFA5523D8D61700580144 /* PaginationDataSource.h */,
 				E98CFA5423D8D61700580144 /* PaginationDataSource.m */,
 			);
@@ -2154,7 +2162,6 @@
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/libPhoneNumber-iOS/libPhoneNumber_iOS.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/HEREMaps/NMAKit.framework/NMAKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -2197,7 +2204,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/libPhoneNumber_iOS.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMAKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2335,6 +2341,7 @@
 				E9E05D2A21B80E9800F6C76C /* TelematicsAppPhotoLibraryAccessor.m in Sources */,
 				E970305221B5AFF8008CEA13 /* GeneralPermissionsPopupDelegate.m in Sources */,
 				E9745E51218B811D00EE8102 /* CoreDataCoordinator.m in Sources */,
+				07A787A72978C22900FAE7C2 /* CustomLocationPickerVC.m in Sources */,
 				E96ABE3F2611AB1600C0AC24 /* LeaderboardViewCtrl.m in Sources */,
 				E96ABEDD2612229100C0AC24 /* ConnectOBDViewCtrl.swift in Sources */,
 				E96ABE402611AB1600C0AC24 /* ScoreCornerVC.m in Sources */,
@@ -2421,7 +2428,6 @@
 				E930826D229EF83800E17C1D /* DashMainViewController.m in Sources */,
 				E96ABEE22612229100C0AC24 /* OBDSlideBluetoothViewCtrl.swift in Sources */,
 				E96ABEE52612229100C0AC24 /* FoundDevicesViewCtrl.swift in Sources */,
-				E9332F1522AEFA4700EC70B6 /* TripDetailsViewController.m in Sources */,
 				E924973B2303655900FC099F /* DrivingDetailsObject.m in Sources */,
 				173973B71D6219FE00C9447E /* ResponseObject.m in Sources */,
 				E990B1592154350500F2EF11 /* SettingsViewController.m in Sources */,

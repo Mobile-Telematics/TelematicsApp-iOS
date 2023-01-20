@@ -33,14 +33,6 @@
 		<string>support@telematicssdk.com</string>
 		<key>appStoreAppId</key>
 		<string>&lt;YOUR_APPSTORE_APP_ID&gt;</string>
-		<key>mapsAppIdKey</key>
-		<string>&lt;INSERT_YOUR_APPIDKEY_FOR_HEREMAPS_SERVICES&gt;</string>
-		<key>mapsAppCode</key>
-		<string>&lt;INSERT_YOUR_APPCODEKEY_FOR_HEREMAPS_SERVICES&gt;</string>
-		<key>mapsLicenseKey</key>
-		<string>&lt;INSERT_YOUR_LICENSEKEY_FOR_HEREMAPS_SERVICES&gt;</string>
-		<key>mapsRestApiKey</key>
-		<string>&lt;INSERT_YOUR_RESTAPIKEY_FOR_HEREMAPS_SERVICES&gt;</string>
 		<key>googleApiKey</key>
 		<string>&lt;INSERT_YOUR_KEY_FOR_GOOGLE_SERVICES&gt;</string>
 		<key>mainLogoColor</key>

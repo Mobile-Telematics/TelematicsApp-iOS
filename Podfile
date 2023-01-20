@@ -7,7 +7,6 @@ use_frameworks!
 def available_pods
   
     pod 'RaxelPulse', '5.16' #TELEMATICS SDK 5.16 NEW RELEASE JUNE 2022
-    pod 'HEREMaps'
     pod 'Firebase/Core', '8.6.1'
     pod ‘Firebase/Database’
     pod 'Firebase/Auth'
@@ -47,9 +46,8 @@ post_install do |installer|
     installer.pods_project.targets.each do |target|
         target.build_configurations.each do |config|
             config.build_settings['DEBUG_INFORMATION_FORMAT'] = 'dwarf'
-        end
-        target.build_configurations.each do |config|
             config.build_settings['CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF'] = 'NO'
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
         end
     end
 end
