@@ -129,10 +129,6 @@ indicatorsServiceURL | Basic https address to work with `Indicators` APIs. By de
 driveCoinsServiceURL | Basic https address to work with `DriveCoins` API. 
 leaderboardServiceRootURL | Basic https address to work with the user leaderboard and `Leaderboard API`.
 carServiceURL | Basic https address to work with `CarService` API. 
-mapsAppIdKey | App Id for `HEREmaps API`
-mapsAppCode | App Code for `HEREmaps API`
-mapsLicenseKey | License key for `HEREmaps API`
-mapsRestApiKey | Rest API key for `HEREmaps API`
 sdkEnableHighFrequency | BOOL parameter, that activates High Frequency data in Telematics SDK. By defaults `true`
 sdkEnableELM | BOOL parameter, that activates connection to ELM OBD Bluetooth devices in Telematics SDK. By defaults `true`
 linkPrivacyPolicy | Link for Privacy Policy
@@ -155,6 +151,39 @@ needTripsDeleting | BOOL parameter, determining if user can delete their trips
 needDistanceInMiles | BOOL parameter, determining use the default distance traveled in the entire application in km/miles
 needAmPmTime | BOOL parameter, determining use AM/PM time format in the entire application
 needEventsReviewButton | BOOL parameter, allowing to mark events on the map
+
+## Get Google Map API key
+
+In the next few simple steps, we'll show you how easy it is to create access keys in the Google Cloud Console.
+
+Step 1: After sign in your Google account open https://console.cloud.google.com/ </br>
+
+Step 2: Create new project in Google Cloud Console: https://console.cloud.google.com/projectcreate </br>
+
+
+![](https://github.com/Mobile-Telematics/TelematicsApp-Android/blob/master/img_readme/instruction_map_1.png)
+
+![](https://github.com/Mobile-Telematics/TelematicsApp-Android/blob/master/img_readme/instruction_map_2.png)
+
+![](https://github.com/Mobile-Telematics/TelematicsApp-Android/blob/master/img_readme/instruction_map_3.png)
+
+Step 3: Set billing for this project: https://console.cloud.google.com/projectselector/billing
+Note: use of maps is free </br>
+
+Step 4: Enable MapsSDK for iOS </br>
+
+Step 5: Go to the Google Maps Platform → Credentials page → Create credentials → API key. </br>
+
+![](https://github.com/Mobile-Telematics/TelematicsApp-Android/blob/master/img_readme/instruction_map_5.png)
+
+
+![](https://github.com/Mobile-Telematics/TelematicsApp-Android/blob/master/img_readme/instruction_map_6.png)
+
+![](https://github.com/Mobile-Telematics/TelematicsApp-Android/blob/master/img_readme/instruction_map_7.png)
+
+
+More info here: https://developers.google.com/maps/documentation/ios-sdk
+
 
 ## Telematics SDK Setup
 
@@ -308,18 +337,6 @@ You can also remove back any tag previously set:
 
 NOTE: you can use `DEL` tag and hide the trips marked by it in the app. These trips will be shown in DataHub on List of Trips page with a special mark that these trips were hidden in the app.
 
-## Trip Details
-
->Telematics App for iOS uses HERE Maps to display the user's trips on a map. Before you use this screen for `PRODUCTION` environment, you need to get access API keys to the HERE Maps to view the details of user trips. In the app we provide you with a key for `TEST` environment. If you would like to use `PRODUCTION` environment with your app Bunble Identifier for `HEREMaps API`, visit https://developer.here.com
-
-Having received a list of the user's trips, you can refer to your array of trips and get even more detailed information, as well as a set of waypoints to be displayed on the HEREmaps API.
-
-    [[RPEntry instance].api getTrackWithTrackToken:`SELECTED_TRACK_TOKEN` completion:^(id response, NSError *error) {
-        RPTrackProcessed * track = response; // Detailed track information with points
-    }];
-
-Our Telematics App provides you with its own version of displaying and drawing trips.
-Study this view's' carefully and figure out what functionality you want to leave in your future application.
 
 ## Trip Details events
 
@@ -405,7 +422,6 @@ To fully understand how the Telematics SDK and all our services work, use our de
 
 All detailed information on using Firebase© can be found in the documentation https://firebase.google.com/docs/auth/ios/start
 
-Telematics App for iOS works together with HERE maps to display the user's trips on a map. To receive a key for the `PRODUCTION` environment, you need to create your own account https://developer.here.com 
 
 Happy coding!
 
