@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import ImagePicker
+import DKImagePickerController
 import SafariServices
 
 class OBDSlideCarouselViewCtrl: UIViewController, UIImagePickerControllerDelegate {
@@ -17,7 +17,6 @@ class OBDSlideCarouselViewCtrl: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var canFindCanPortBtn:       UIButton!
     
     var images:                                 [UIImage]!
-    var imagePickerController:                  ImagePickerController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,31 +75,35 @@ class OBDSlideCarouselViewCtrl: UIViewController, UIImagePickerControllerDelegat
     
     // MARK: - ====================== Camera =================
     
-    func setupImagePicker() {
-        imagePickerController.delegate = self
-        imagePickerController.imageLimit = 1
-        imagePickerController.modalPresentationStyle = .fullScreen
-    }
-    
     func showImagePicker() {
-
-        if imagePickerController == nil {
-
-            let configuration = ImagePickerConfiguration()
-            configuration.recordLocation = false
-            //configuration.savePhotosToCameraRoll = false
-            imagePickerController = ImagePickerController(configuration: configuration)
-
-            //imagePickerController = ImagePickerController()
-            setupImagePicker()
+        let pickerController = DKImagePickerController()
+        pickerController.singleSelect = true
+        pickerController.autoCloseOnSingleSelect = true
+        pickerController.maxSelectableCount = 1
+        pickerController.assetType = .allPhotos
+        pickerController.extensionController.disable(extensionType: .photoEditor)
+        pickerController.navigationBar.isTranslucent = false
+        
+        pickerController.didSelectAssets = { [weak self] (assets: [DKAsset]) in
+            guard let asset = assets.first else {
+                return
+            }
+            
+            asset.fetchOriginalImage { image, info in
+                guard let image = image else {
+                    return
+                }
+                
+                DispatchQueue.main.async { [weak self] in
+                    let connectStoryboard: UIStoryboard = UIStoryboard(name: "ConnectOBD", bundle: nil)
+                    let usePhotoViewController = connectStoryboard.instantiateViewController(withIdentifier: "UsePhotoViewCtrl") as! UsePhotoViewCtrl
+                    usePhotoViewController.odometerPhoto = image
+                    self?.navigationController?.pushViewController(usePhotoViewController, animated: true)
+                }
+            }
         }
-        present(imagePickerController, animated: true, completion: nil)
-    }
-
-    func closeImagePicker() {
-        imagePickerController.dismiss(animated: true){ [unowned self] in
-            self.imagePickerController = nil
-        }
+        
+        self.present(pickerController, animated: true)
     }
 
     func openCameraForPhoto() {
@@ -121,44 +124,5 @@ class OBDSlideCarouselViewCtrl: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func backToRootClick(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
-    }
-}
-
-
-extension OBDSlideCarouselViewCtrl: ImagePickerDelegate {
-
-    func pictureWasTaken(_ imagePicker: ImagePickerController, image: UIImage) {
-
-        closeImagePicker()
-
-        DispatchQueue.main.async {
-            let connectStoryboard: UIStoryboard = UIStoryboard(name: "ConnectOBD", bundle: nil)
-            let usePhotoViewController = connectStoryboard.instantiateViewController(withIdentifier: "OBDSlideBluetoothViewCtrl") as! OBDSlideBluetoothViewCtrl
-            //usePhotoViewController.odometerPhoto = image
-            self.navigationController?.pushViewController(usePhotoViewController, animated: true)
-        }
-    }
-
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        // Do nothing
-    }
-
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-
-        if (images.count != 1) {
-            return
-        }
-        closeImagePicker()
-
-        DispatchQueue.main.async {
-            let connectStoryboard: UIStoryboard = UIStoryboard(name: "ConnectOBD", bundle: nil)
-            let usePhotoViewController = connectStoryboard.instantiateViewController(withIdentifier: "UsePhotoViewCtrl") as! UsePhotoViewCtrl
-            usePhotoViewController.odometerPhoto = images.first!
-            self.navigationController?.pushViewController(usePhotoViewController, animated: true)
-        }
-    }
-
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        closeImagePicker()
     }
 }

@@ -22,6 +22,9 @@
             return TelematicsAppAuthorizationStatusDenied;
         case CNAuthorizationStatusAuthorized:
             return TelematicsAppAuthorizationStatusAuthorized;
+        case CNAuthorizationStatusLimited:
+            return TelematicsAppAuthorizationStatusLimited;
+            break;
     }
 }
 

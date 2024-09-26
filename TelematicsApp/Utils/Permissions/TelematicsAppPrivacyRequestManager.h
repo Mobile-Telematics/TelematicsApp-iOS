@@ -24,6 +24,7 @@ typedef NS_ENUM(NSInteger, TelematicsAppAuthorizationStatus) {
     TelematicsAppAuthorizationStatusNotSupportForLowerOSVersion = 6,
     TelematicsAppAuthorizationStatusUnavailable = 7,
     TelematicsAppAuthorizationStatusUnknown = 8,
+    TelematicsAppAuthorizationStatusLimited = 9
 };
 
 typedef NS_ENUM(NSInteger, TelematicsAppPrivacyType) {

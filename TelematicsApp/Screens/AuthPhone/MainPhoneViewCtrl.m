@@ -134,7 +134,8 @@
     
     NSString *phone = [NSString stringWithFormat:@"%@%@", self.selectedCode, self.phoneField.text];
     
-    NBPhoneNumberUtil *phoneUtil = [[NBPhoneNumberUtil alloc] init];
+    NBPhoneNumberUtil *phoneUtil = [NBPhoneNumberUtil sharedInstance];
+    
     NSError *anError = nil;
     NSString *detectCountry = [phoneUtil getRegionCodeForCountryCode:@([self.selectedCode intValue])];
                                                           
